@@ -1,6 +1,5 @@
 package usecases.SetGoal;
 
-import context.Context;
 import entities.Location;
 import entities.Teams;
 import game.Game;
@@ -12,6 +11,8 @@ import gateways.Permissions;
 public class SetGoalUseCase implements SetGoal {
 
 	private SetGoalRequest request;
+	private GameGateway gameGateway;
+	private PermissionGateway permissionGateway;
 
 	@Override
 	public void execute(SetGoalRequest request, SetGoalResponse response) {
@@ -37,7 +38,6 @@ public class SetGoalUseCase implements SetGoal {
 			return;
 		}
 
-		GameGateway gameGateway = Context.gameGateway;
 		Game game = gameGateway.findGameByName(request.getGame());
 		
 		if (request.getLocationId().equals("loc1")) {
@@ -72,14 +72,12 @@ public class SetGoalUseCase implements SetGoal {
 	}
 
 	private boolean teamNotExists() {
-		GameGateway gameGateway = Context.gameGateway;
 		Game game = gameGateway.findGameByName(request.getGame());
 		Teams teams = game.getTeams();
 		return !teams.containsTeamWithName(request.getTeam());
 	}
 
 	private boolean gameNotExists() {
-		GameGateway gameGateway = Context.gameGateway;
 		return !gameGateway.containsGame(request.getGame());
 	}
 
@@ -88,8 +86,17 @@ public class SetGoalUseCase implements SetGoal {
 	}
 
 	private boolean playerHasNoPermission() {
-		PermissionGateway permissionGateway = Context.permissionGateway;
 		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.SET_GOAL);
+	}
+
+	@Override
+	public void setGameGateway(GameGateway gameGateway) {
+		this.gameGateway = gameGateway;
+	}
+
+	@Override
+	public void setPermissionGateway(PermissionGateway permissionGateway) {
+		this.permissionGateway = permissionGateway;
 	}
 
 }

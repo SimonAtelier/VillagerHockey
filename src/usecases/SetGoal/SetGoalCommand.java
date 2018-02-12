@@ -18,6 +18,8 @@ public class SetGoalCommand extends AbstractCommand {
 		SetGoal useCase = new SetGoalUseCase();
 		SetGoalView view = new SetGoalViewImpl(player);
 		SetGoalResponse presenter = new SetGoalPresenter(view);
+		useCase.setGameGateway(Context.gameGateway);
+		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.execute(request, presenter);
 	}
 	
