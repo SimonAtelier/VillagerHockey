@@ -5,7 +5,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 
 import gateways.SignGateway;
-import spigot.LocationConvert;
+import util.LocationConvert;
 
 public class SignGatewayImpl implements SignGateway {
 

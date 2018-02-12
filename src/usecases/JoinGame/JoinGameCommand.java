@@ -3,8 +3,8 @@ package usecases.JoinGame;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.JoinGame.JoinGame.JoinGameRequest;
 import usecases.JoinGame.JoinGame.JoinGameResponse;
 

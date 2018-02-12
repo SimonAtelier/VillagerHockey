@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import command.Command;
 import gateways.CommandGateway;
-import spigot.Command;
 
 public class CommandGatewayImpl implements CommandGateway {
 	

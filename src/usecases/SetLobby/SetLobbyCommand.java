@@ -3,8 +3,8 @@ package usecases.SetLobby;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.SetLobby.SetLobby.SetLobbyResponse;
 
 public class SetLobbyCommand extends AbstractCommand {

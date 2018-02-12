@@ -2,7 +2,7 @@ package gateways;
 
 import java.util.List;
 
-import spigot.Command;
+import command.Command;
 
 public interface CommandGateway {
 

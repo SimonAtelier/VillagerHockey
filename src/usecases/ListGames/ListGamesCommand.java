@@ -3,7 +3,7 @@ package usecases.ListGames;
 import java.util.List;
 import java.util.UUID;
 
-import spigot.AbstractCommand;
+import command.AbstractCommand;
 import usecases.ListGames.ListGames.ListGamesResponse;
 
 public class ListGamesCommand extends AbstractCommand {

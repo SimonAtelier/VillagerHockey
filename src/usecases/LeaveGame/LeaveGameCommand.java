@@ -3,8 +3,8 @@ package usecases.LeaveGame;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.LeaveGame.LeaveGame.LeaveGameResponse;
 
 public class LeaveGameCommand extends AbstractCommand {

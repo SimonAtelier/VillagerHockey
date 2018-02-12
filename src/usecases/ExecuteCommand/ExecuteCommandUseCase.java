@@ -3,8 +3,8 @@ package usecases.ExecuteCommand;
 import java.util.List;
 import java.util.UUID;
 
+import command.Command;
 import gateways.CommandGateway;
-import spigot.Command;
 
 public class ExecuteCommandUseCase implements ExecuteCommand {
 

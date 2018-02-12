@@ -3,8 +3,8 @@ package usecases.SaveGame;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.SaveGame.SaveGame.SaveGameResponse;
 
 public class SaveGameCommand extends AbstractCommand {

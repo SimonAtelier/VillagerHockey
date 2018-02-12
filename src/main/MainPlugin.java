@@ -11,12 +11,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import command.ArgumentsWithLabel;
 import context.Context;
 import gateways.CommandGateway;
 import gateways.Configuration;
 import gateways.impl.ConfigurationYaml;
 import gateways.impl.GameManager;
-import spigot.ArgumentsWithLabel;
 import usecases.AddGame.AddGameCommand;
 import usecases.AddTeam.AddTeamCommand;
 import usecases.AddTeamSpawn.AddTeamSpawnCommand;

@@ -6,7 +6,7 @@ import org.bukkit.entity.Villager;
 
 import entities.Region;
 import main.MainPlugin;
-import spigot.LocationConvert;
+import util.LocationConvert;
 
 public class Goal extends Region {
 

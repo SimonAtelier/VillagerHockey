@@ -3,8 +3,8 @@ package usecases.ShowHelp;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.ShowHelp.ShowHelp.ShowHelpResponse;
 
 public class ShowHelpCommand extends AbstractCommand {

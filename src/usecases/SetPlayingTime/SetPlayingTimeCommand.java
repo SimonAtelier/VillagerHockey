@@ -3,8 +3,8 @@ package usecases.SetPlayingTime;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.SetPlayingTime.SetPlayingTime.SetPlayingTimeRequest;
 import usecases.SetPlayingTime.SetPlayingTime.SetPlayingTimeResponse;
 

@@ -3,10 +3,10 @@ package usecases.ShowHelp;
 import java.util.List;
 import java.util.UUID;
 
+import command.Command;
 import gateways.CommandGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
-import spigot.Command;
 
 public class ShowHelpUseCase implements ShowHelp {
 

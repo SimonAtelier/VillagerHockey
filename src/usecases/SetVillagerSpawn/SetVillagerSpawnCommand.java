@@ -3,7 +3,7 @@ package usecases.SetVillagerSpawn;
 import java.util.List;
 import java.util.UUID;
 
-import spigot.AbstractCommand;
+import command.AbstractCommand;
 import usecases.SetVillagerSpawn.SetVillagerSpawn.SetVillagerSpawnResponse;
 
 public class SetVillagerSpawnCommand extends AbstractCommand {

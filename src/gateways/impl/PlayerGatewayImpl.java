@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import entities.Location;
 import gateways.PlayerGateway;
-import spigot.LocationConvert;
+import util.LocationConvert;
 
 public class PlayerGatewayImpl implements PlayerGateway {
 

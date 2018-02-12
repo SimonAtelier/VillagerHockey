@@ -2,7 +2,7 @@ package usecases.ShowHelp;
 
 import java.util.List;
 
-import spigot.Command;
+import command.Command;
 import usecases.ShowHelp.ShowHelp.ShowHelpResponse;
 
 public class ShowHelpPresenter implements ShowHelpResponse {

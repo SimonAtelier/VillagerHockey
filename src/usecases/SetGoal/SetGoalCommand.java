@@ -3,10 +3,10 @@ package usecases.SetGoal;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
 import entities.Location;
 import gateways.PlayerGateway;
-import spigot.AbstractCommand;
 import usecases.SetGoal.SetGoal.SetGoalRequest;
 import usecases.SetGoal.SetGoal.SetGoalResponse;
 

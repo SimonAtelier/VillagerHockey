@@ -3,9 +3,9 @@ package usecases.AddTeamSpawn;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
 import entities.Location;
-import spigot.AbstractCommand;
 import usecases.AddTeamSpawn.AddTeamSpawn.AddTeamSpawnRequest;
 import usecases.AddTeamSpawn.AddTeamSpawn.AddTeamSpawnResponse;
 

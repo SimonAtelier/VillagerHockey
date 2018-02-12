@@ -12,7 +12,7 @@ import entities.Team;
 import entities.TeamColor;
 import game.Game;
 import game.Goal;
-import spigot.LocationConvert;
+import util.LocationConvert;
 
 public class GamePersistanceYaml {
 

@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import entities.Location;
 import game.Game;
 import gateways.GameGateway;
-import spigot.LocationConvert;
+import util.LocationConvert;
 
 public class TeleportPlayerToLobbyImpl implements TeleportPlayerToLobby {
 

@@ -1,4 +1,4 @@
-package spigot;
+package command;
 
 public class ArgumentsWithLabel {
 

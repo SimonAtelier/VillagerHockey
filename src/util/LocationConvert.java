@@ -1,4 +1,4 @@
-package spigot;
+package util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

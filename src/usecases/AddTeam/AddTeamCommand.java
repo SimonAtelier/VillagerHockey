@@ -3,8 +3,8 @@ package usecases.AddTeam;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.AddTeam.AddTeam.AddTeamRequest;
 import usecases.AddTeam.AddTeam.AddTeamResponse;
 

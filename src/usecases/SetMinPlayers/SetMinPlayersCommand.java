@@ -3,8 +3,8 @@ package usecases.SetMinPlayers;
 import java.util.List;
 import java.util.UUID;
 
+import command.AbstractCommand;
 import context.Context;
-import spigot.AbstractCommand;
 import usecases.SetMinPlayers.SetMinPlayers.SetMinPlayersResponse;
 
 public class SetMinPlayersCommand extends AbstractCommand {

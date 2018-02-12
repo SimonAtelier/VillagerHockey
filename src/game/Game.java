@@ -23,7 +23,7 @@ import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import main.MainPlugin;
-import spigot.LocationConvert;
+import util.LocationConvert;
 import view.impl.ScoreView;
 
 public class Game implements IGame {
