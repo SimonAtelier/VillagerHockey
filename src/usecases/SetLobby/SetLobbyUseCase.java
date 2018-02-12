@@ -1,6 +1,5 @@
 package usecases.SetLobby;
 
-import context.Context;
 import entities.Location;
 import game.Game;
 import gateways.GameGateway;
@@ -8,17 +7,16 @@ import gateways.PermissionGateway;
 import gateways.Permissions;
 
 public class SetLobbyUseCase implements SetLobby {
-
+	
+	private GameGateway gameGateway;
+	private PermissionGateway permissionGateway;
+	
 	@Override
 	public void execute(SetLobbyRequest request, SetLobbyResponse response) {
-		PermissionGateway permissionGateway = Context.permissionGateway;
-		
 		if (!permissionGateway.hasPermission(request.getPlayer(), Permissions.SET_LOBBY)) {
 			response.onNoPermission();
 			return;
 		}
-		
-		GameGateway gameGateway = Context.gameGateway;
 
 		if (!gameGateway.containsGame(request.getGame())) {
 			response.onNoGameWithSuchName(request.getGame());
@@ -41,6 +39,16 @@ public class SetLobbyUseCase implements SetLobby {
 		location.setYaw(request.getYaw());
 		location.setWorld(request.getWorld());
 		return location;
+	}
+
+	@Override
+	public void setGameGateway(GameGateway gameGateway) {
+		this.gameGateway = gameGateway;
+	}
+
+	@Override
+	public void setPermissionGateway(PermissionGateway permissionGateway) {
+		this.permissionGateway = permissionGateway;
 	}
  
 }
