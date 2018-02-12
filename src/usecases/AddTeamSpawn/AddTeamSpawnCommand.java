@@ -43,7 +43,7 @@ public class AddTeamSpawnCommand extends AbstractCommand {
 
 	@Override
 	public String getName() {
-		return "teamspawn";
+		return "addteamspawn";
 	}
 
 	@Override
