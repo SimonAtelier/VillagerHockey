@@ -16,7 +16,7 @@ public class SetGoalUseCase implements SetGoal {
 
 	@Override
 	public void execute(SetGoalRequest request, SetGoalResponse response) {
-		this.request = request;
+		setRequest(request);
 
 		if (playerHasNoPermission()) {
 			response.onNoPermission();
@@ -87,6 +87,10 @@ public class SetGoalUseCase implements SetGoal {
 
 	private boolean playerHasNoPermission() {
 		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.SET_GOAL);
+	}
+	
+	private void setRequest(SetGoalRequest request) {
+		this.request = request;
 	}
 
 	@Override
