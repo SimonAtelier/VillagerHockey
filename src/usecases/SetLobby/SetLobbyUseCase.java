@@ -8,24 +8,25 @@ import gateways.Permissions;
 
 public class SetLobbyUseCase implements SetLobby {
 	
+	private SetLobbyRequest request;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
 	
 	@Override
 	public void execute(SetLobbyRequest request, SetLobbyResponse response) {
-		if (!permissionGateway.hasPermission(request.getPlayer(), Permissions.SET_LOBBY)) {
+		setRequest(request);
+		
+		if (noPermission()) {
 			response.onNoPermission();
 			return;
 		}
 
-		if (!gameGateway.containsGame(request.getGame())) {
+		if (noSuchGame()) {
 			response.onNoGameWithSuchName(request.getGame());
 			return;
 		}
 		
-		Game game = gameGateway.findGameByName(request.getGame());
-		Location location = createLocationFromRequest(request);
-		game.setLobby(location);
+		setLobby();
 		
 		response.onLobbySuccessfullySet(request.getGame());
 	}
@@ -39,6 +40,23 @@ public class SetLobbyUseCase implements SetLobby {
 		location.setYaw(request.getYaw());
 		location.setWorld(request.getWorld());
 		return location;
+	}
+	
+	private boolean noSuchGame() {
+		return !gameGateway.containsGame(request.getGame());
+	}
+	
+	private boolean noPermission() {
+		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.SET_LOBBY);
+	}
+	
+	private void setRequest(SetLobbyRequest request) {
+		this.request = request;
+	}
+	
+	private void setLobby() {
+		Game game = gameGateway.findGameByName(request.getGame());
+		game.setLobby(createLocationFromRequest(request));
 	}
 
 	@Override
