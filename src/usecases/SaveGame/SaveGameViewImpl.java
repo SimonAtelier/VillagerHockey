@@ -55,4 +55,9 @@ public class SaveGameViewImpl implements SaveGameView {
 		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_PLAYING_TIME_MUST_BE_GREATER_THAN_ZERO);
 	}
 
+	@Override
+	public void displayCannotSaveNumberOfTeamsIsLessThanTwo() {
+		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NUMBER_OF_TEAMS_IS_LESS_THAN_TWO);
+	}
+
 }

@@ -29,6 +29,8 @@ public interface SaveGame {
 		
 		void onCannotSavePlayingTimeIsLessOrEqualToZero();
 		
+		void onCannotSaveNumberOfTeamsIsLessThanTwo();
+		
 	}
 	
 }

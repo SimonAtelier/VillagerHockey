@@ -16,4 +16,6 @@ public interface SaveGameViewMessages {
 
 	static final String SAVE_GAME_CANNOT_SAVE_PLAYING_TIME_MUST_BE_GREATER_THAN_ZERO = "Das Spiel konnte nicht gespeichert werden. Die Spielzeit muss mehr als 0 Sekunden betragen.";
 	
+	static final String SAVE_GAME_CANNOT_SAVE_NUMBER_OF_TEAMS_IS_LESS_THAN_TWO = "Das Spiel konnte nicht gespeichert werden. Die Anzahl der Teams ist kleiner als 2.";
+	
 }

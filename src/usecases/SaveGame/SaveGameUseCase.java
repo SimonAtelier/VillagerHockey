@@ -54,8 +54,17 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
+		if (numberOfTeamsIsLessThanTwo()) {
+			response.onCannotSaveNumberOfTeamsIsLessThanTwo();
+			return;
+		}
+		
 		gameGateway.saveGame(name);
 		response.onGameSuccessfullySaved();
+	}
+	
+	private boolean numberOfTeamsIsLessThanTwo() {
+		return game.getTeams().getNumberOfTeams() < 2;
 	}
 	
 	private boolean noSuchGame() {
