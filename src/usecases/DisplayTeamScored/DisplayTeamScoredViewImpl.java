@@ -6,8 +6,8 @@ import java.util.UUID;
 import context.Context;
 import view.MessageView;
 import view.TitleBarView;
+import view.impl.ScoreView;
 import view.impl.TitleBarViewImpl;
-import wip.ScoreView.ScoreView;
 
 public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 

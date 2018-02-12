@@ -1,10 +1,10 @@
-package wip.SelectTeam;
+package usecases.SelectTeam;
 
 import java.util.List;
 import java.util.UUID;
 
 import game.TeamSelectListener;
-import wip.ShowTeams.ShowTeamsResponseItem;
+import usecases.ShowTeams.ShowTeamsResponseItem;
 
 public interface SelectTeamView {
 	

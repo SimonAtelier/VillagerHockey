@@ -1,4 +1,4 @@
-package wip.ScoreView;
+package view.impl;
 
 import java.util.List;
 import java.util.UUID;

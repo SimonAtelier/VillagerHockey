@@ -1,4 +1,4 @@
-package wip.SelectTeam;
+package usecases.SelectTeam;
 
 public interface SelectTeamViewMessages {
 

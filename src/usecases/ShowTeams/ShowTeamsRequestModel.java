@@ -1,8 +1,8 @@
-package wip.ShowTeams;
+package usecases.ShowTeams;
 
 import java.util.UUID;
 
-import wip.ShowTeams.ShowTeams.ShowTeamsRequest;
+import usecases.ShowTeams.ShowTeams.ShowTeamsRequest;
 
 public class ShowTeamsRequestModel implements ShowTeamsRequest {
 

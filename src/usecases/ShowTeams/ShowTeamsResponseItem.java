@@ -1,4 +1,4 @@
-package wip.ShowTeams;
+package usecases.ShowTeams;
 
 public class ShowTeamsResponseItem {
 

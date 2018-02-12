@@ -1,4 +1,4 @@
-package wip.SelectTeam;
+package usecases.SelectTeam;
 
 import java.util.UUID;
 
@@ -10,11 +10,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import context.Context;
-import wip.ShowTeams.ShowTeams;
-import wip.ShowTeams.ShowTeamsPresenter;
-import wip.ShowTeams.ShowTeamsRequestModel;
-import wip.ShowTeams.ShowTeamsUseCase;
-import wip.ShowTeams.ShowTeams.ShowTeamsResponse;
+import usecases.ShowTeams.ShowTeams;
+import usecases.ShowTeams.ShowTeamsPresenter;
+import usecases.ShowTeams.ShowTeamsRequestModel;
+import usecases.ShowTeams.ShowTeamsUseCase;
+import usecases.ShowTeams.ShowTeams.ShowTeamsResponse;
 
 public class ShowTeamsEventListener implements Listener {
 

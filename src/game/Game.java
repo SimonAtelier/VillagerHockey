@@ -24,7 +24,7 @@ import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import main.MainPlugin;
 import spigot.LocationConvert;
-import wip.ScoreView.ScoreView;
+import view.impl.ScoreView;
 
 public class Game implements IGame {
 

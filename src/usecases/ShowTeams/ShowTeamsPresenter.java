@@ -1,9 +1,9 @@
-package wip.ShowTeams;
+package usecases.ShowTeams;
 
 import java.util.List;
 
-import wip.SelectTeam.SelectTeamView;
-import wip.ShowTeams.ShowTeams.ShowTeamsResponse;
+import usecases.SelectTeam.SelectTeamView;
+import usecases.ShowTeams.ShowTeams.ShowTeamsResponse;
 
 public class ShowTeamsPresenter implements ShowTeamsResponse {
 

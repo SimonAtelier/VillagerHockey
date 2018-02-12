@@ -1,4 +1,4 @@
-package wip.SelectTeam;
+package usecases.SelectTeam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,8 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import context.Context;
 import game.TeamSelectListener;
 import main.MainPlugin;
+import usecases.ShowTeams.ShowTeamsResponseItem;
 import view.MessageView;
-import wip.ShowTeams.ShowTeamsResponseItem;
 
 public class SelectTeamViewImpl implements SelectTeamView, Listener {
 

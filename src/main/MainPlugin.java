@@ -47,13 +47,13 @@ import usecases.PerformAction.Quit.QuitEventListener;
 import usecases.PerformAction.ReceiveDamage.ReceiveDamageEventListener;
 import usecases.PerformAction.ShootPuck.ShootPuckEventListener;
 import usecases.SaveGame.SaveGameCommand;
+import usecases.SelectTeam.ShowTeamsEventListener;
 import usecases.SetGoal.SetGoalCommand;
 import usecases.SetLobby.SetLobbyCommand;
 import usecases.SetMinPlayers.SetMinPlayersCommand;
 import usecases.SetPlayingTime.SetPlayingTimeCommand;
 import usecases.SetVillagerSpawn.SetVillagerSpawnCommand;
 import usecases.ShowHelp.ShowHelpCommand;
-import wip.SelectTeam.ShowTeamsEventListener;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 

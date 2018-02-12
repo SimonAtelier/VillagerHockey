@@ -1,4 +1,4 @@
-package wip.ShowTeams;
+package usecases.ShowTeams;
 
 import java.util.List;
 import java.util.UUID;
