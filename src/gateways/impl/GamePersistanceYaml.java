@@ -15,6 +15,13 @@ import game.Goal;
 import util.LocationConvert;
 
 public class GamePersistanceYaml {
+	
+	public void deleteGame(Game game) {
+		File file = new File("plugins/VillagerHockey/games/" + game.getName() + ".yml");
+		if (file.exists()) {
+			file.delete();
+		}
+	}
 
 	public void saveGame(Game game) throws GatewayException {
 		File file = new File("plugins/VillagerHockey/games/" + game.getName() + ".yml");

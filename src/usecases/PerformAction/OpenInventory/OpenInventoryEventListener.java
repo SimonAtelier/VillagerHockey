@@ -6,6 +6,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
+import context.Context;
+
 public class OpenInventoryEventListener implements Listener {
 
 	@EventHandler
@@ -15,6 +17,7 @@ public class OpenInventoryEventListener implements Listener {
 			return;
 		Player player = (Player) entity;
 		OpenInventory useCase = new OpenInventoryUseCase();
+		useCase.setGameGateway(Context.gameGateway);
 		e.setCancelled(!useCase.canOpenInventory(player.getUniqueId()));
 	}
 

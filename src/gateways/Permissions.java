@@ -34,4 +34,6 @@ public interface Permissions {
 	
 	static final String REMOVE_JOIN_SIGN = "setup";
 	
+	static final String REMOVE_GAME = "setup";
+	
 }

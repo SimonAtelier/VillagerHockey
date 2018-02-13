@@ -150,4 +150,9 @@ public class GameManager implements GameGateway {
 		new GamePersistanceYaml().saveGame(findGameByName(game));
 	}
 
+	@Override
+	public void deleteGame(String game) {
+		new GamePersistanceYaml().deleteGame(findGameByName(game));
+	}
+
 }

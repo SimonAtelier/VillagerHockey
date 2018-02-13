@@ -24,4 +24,6 @@ public interface GameGateway {
 	
 	void saveGame(String game) throws GatewayException;
 	
+	void deleteGame(String game);
+	
 }

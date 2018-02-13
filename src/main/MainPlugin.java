@@ -46,6 +46,7 @@ import usecases.PerformAction.PlaceJoinSign.PlaceJoinSignEventListener;
 import usecases.PerformAction.Quit.QuitEventListener;
 import usecases.PerformAction.ReceiveDamage.ReceiveDamageEventListener;
 import usecases.PerformAction.ShootPuck.ShootPuckEventListener;
+import usecases.RemoveGame.RemoveGameCommand;
 import usecases.SaveGame.SaveGameCommand;
 import usecases.SelectTeam.ShowTeamsEventListener;
 import usecases.SetGoal.SetGoalCommand;
@@ -135,6 +136,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		commandGateway.registerCommand(new SetMinPlayersCommand());
 		commandGateway.registerCommand(new SetPlayingTimeCommand());
 		commandGateway.registerCommand(new AddTeamCommand());
+		commandGateway.registerCommand(new RemoveGameCommand());
 		
 		getCommand("vh").setExecutor(this);
 	}
