@@ -1,9 +1,11 @@
 package usecases.ListGames;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
+import game.Game;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -27,8 +29,22 @@ public class ListGamesUseCase implements ListGames {
 		if (games.isEmpty()) {
 			response.onNoGamesToList();
 		} else {
-			response.present(games);
+			response.present(createGameListItems());
 		}
+	}
+	
+	private List<GameListItem> createGameListItems() {
+		List<GameListItem> gameListItems = new ArrayList<GameListItem>();
+		
+		for (String gameName : games) {
+			Game game = Context.gameGateway.findGameByName(gameName);
+			GameListItem gameListItem = new GameListItem();
+			gameListItem.setGameName(gameName);
+			gameListItem.setGameState(game.getGameState().getName());
+			gameListItems.add(gameListItem);
+		}
+		
+		return gameListItems;
 	}
 	
 	private List<String> findGames() {

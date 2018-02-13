@@ -30,16 +30,18 @@ public class ListGamesViewImpl implements ListGamesView {
 	}
 
 	@Override
-	public void displayGamesList(List<String> games) {
+	public void displayGamesList(List<GameListItem> games) {
 		displayMessage(viewer, createListView(games));
 	}
 	
-	private String createListView(List<String> games) {
+	private String createListView(List<GameListItem> games) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("Games:");
-		for (String game : games) {
+		for (GameListItem listItem : games) {
 			buffer.append("\n");
-			buffer.append(game);
+			buffer.append(listItem.getGameName());
+			buffer.append(" ");
+			buffer.append(listItem.getGameState());
 		}
 		return buffer.toString();
 	}

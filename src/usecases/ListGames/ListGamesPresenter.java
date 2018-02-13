@@ -23,7 +23,7 @@ public class ListGamesPresenter implements ListGamesResponse {
 	}
 
 	@Override
-	public void present(List<String> games) {
+	public void present(List<GameListItem> games) {
 		view.displayGamesList(games);
 	}	
 	

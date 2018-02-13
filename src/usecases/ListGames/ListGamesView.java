@@ -8,6 +8,6 @@ public interface ListGamesView {
 	
 	void displayNoPermission();
 	
-	void displayGamesList(List<String> games);
+	void displayGamesList(List<GameListItem> games);
 	
 }

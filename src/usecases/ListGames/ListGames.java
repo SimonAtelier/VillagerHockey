@@ -13,7 +13,7 @@ public interface ListGames {
 		
 		void onNoPermission();
 		
-		void present(List<String> games);
+		void present(List<GameListItem> games);
 		
 	}
 	
