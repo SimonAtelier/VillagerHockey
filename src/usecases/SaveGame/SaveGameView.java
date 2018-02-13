@@ -20,4 +20,6 @@ public interface SaveGameView {
 	
 	void displayCannotSaveSpawnLocationsMissing();
 	
+	void displayCannotSaveAmountOfTeamSpawnsIsNotEqual();
+	
 }

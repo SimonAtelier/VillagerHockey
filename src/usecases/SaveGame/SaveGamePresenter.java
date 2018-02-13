@@ -55,4 +55,9 @@ public class SaveGamePresenter implements SaveGameResponse {
 		view.displayCannotSaveSpawnLocationsMissing();
 	}
 
+	@Override
+	public void onCannotSaveAmountOfTeamSpawnsIsNotEqual() {
+		view.displayCannotSaveAmountOfTeamSpawnsIsNotEqual();
+	}
+
 }

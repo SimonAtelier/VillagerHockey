@@ -1,5 +1,6 @@
 package usecases.SaveGame;
 
+import java.util.List;
 import java.util.UUID;
 
 import entities.Team;
@@ -63,6 +64,11 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
+		if (amountOfTeamSpawnsIsNotEqual()) {
+			response.onCannotSaveAmountOfTeamSpawnsIsNotEqual();
+			return;
+		}
+		
 		save();
 		response.onGameSuccessfullySaved();
 	}
@@ -81,6 +87,16 @@ public class SaveGameUseCase implements SaveGame {
 				return true;
 		}
 		return false;
+	}
+	
+	private boolean amountOfTeamSpawnsIsNotEqual() {
+		List<Team> teams = game.getTeams().findAllTeams();
+		int size = teams.get(0).getMaximumSize();
+		boolean equalSize = true;
+		for (Team team : teams) {
+			equalSize &= (size == team.getMaximumSize());
+		}
+		return !equalSize;
 	}
 	
 	private void save() {

@@ -6,9 +6,9 @@ import context.Context;
 import view.MessageView;
 
 public class SaveGameViewImpl implements SaveGameView {
-	
+
 	private UUID viewer;
-	
+
 	public SaveGameViewImpl(UUID viewer) {
 		this.viewer = viewer;
 	}
@@ -17,7 +17,7 @@ public class SaveGameViewImpl implements SaveGameView {
 		MessageView messageView = Context.messageView;
 		messageView.displayMessage(viewer, message);
 	}
-	
+
 	@Override
 	public void displayNoSuchGame(String name) {
 		String message = SaveGameViewMessages.SAVE_GAME_NO_SUCH_GAME;
@@ -63,6 +63,11 @@ public class SaveGameViewImpl implements SaveGameView {
 	@Override
 	public void displayCannotSaveSpawnLocationsMissing() {
 		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_SPAWN_LOCATIONS_MISSING);
+	}
+
+	@Override
+	public void displayCannotSaveAmountOfTeamSpawnsIsNotEqual() {
+		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_AMOUNT_OF_TEAM_SPAWNS_IS_NOT_EQUAL);
 	}
 
 }

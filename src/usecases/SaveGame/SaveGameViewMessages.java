@@ -22,4 +22,6 @@ public interface SaveGameViewMessages {
 	
 	static final String SAVE_GAME_CANNOT_SAVE_SPAWN_LOCATIONS_MISSING = "Das Spiel konnte nicht gespeichert werden. Es sind noch nicht für alle Teams 'Spawns' gesetzt.";
 	
+	static final String SAVE_GAME_CANNOT_SAVE_AMOUNT_OF_TEAM_SPAWNS_IS_NOT_EQUAL = "Das Spiel konnte nicht gespeichert werden. Die Spawnanzahl der einzelnen Teams ist unterschiedlich.";
+	
 }

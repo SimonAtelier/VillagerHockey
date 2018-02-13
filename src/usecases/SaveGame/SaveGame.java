@@ -33,6 +33,8 @@ public interface SaveGame {
 		
 		void onCannotSaveSpawnLocationsMissing();
 		
+		void onCannotSaveAmountOfTeamSpawnsIsNotEqual();
+		
 	}
 	
 }
