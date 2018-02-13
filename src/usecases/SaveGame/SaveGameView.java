@@ -16,6 +16,6 @@ public interface SaveGameView {
 	
 	void displayCannotSavePlayingMustBeGreaterThanZero();
 	
-	void displayCannotSaveNumberOfTeamsIsLessThanTwo();
+	void displayCannotSaveNumberOfTeamsIsNotTwo();
 	
 }

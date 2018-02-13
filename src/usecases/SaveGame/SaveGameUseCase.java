@@ -39,6 +39,11 @@ public class SaveGameUseCase implements SaveGame {
 		
 		setGame(game);
 		
+		if (numberOfTeamsIsNotTwo()) {
+			response.onCannotSaveNumberOfTeamsIsNotTwo();
+			return;
+		}
+		
 		if (noLobbySet()) {
 			response.onCannotSaveGameNoLobbySet();
 			return;
@@ -54,17 +59,12 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
-		if (numberOfTeamsIsLessThanTwo()) {
-			response.onCannotSaveNumberOfTeamsIsLessThanTwo();
-			return;
-		}
-		
 		gameGateway.saveGame(name);
 		response.onGameSuccessfullySaved();
 	}
 	
-	private boolean numberOfTeamsIsLessThanTwo() {
-		return game.getTeams().getNumberOfTeams() < 2;
+	private boolean numberOfTeamsIsNotTwo() {
+		return game.getTeams().getNumberOfTeams() != 2;
 	}
 	
 	private boolean noSuchGame() {

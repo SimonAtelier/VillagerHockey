@@ -46,8 +46,8 @@ public class SaveGamePresenter implements SaveGameResponse {
 	}
 
 	@Override
-	public void onCannotSaveNumberOfTeamsIsLessThanTwo() {
-		view.displayCannotSaveNumberOfTeamsIsLessThanTwo();
+	public void onCannotSaveNumberOfTeamsIsNotTwo() {
+		view.displayCannotSaveNumberOfTeamsIsNotTwo();
 	}
 
 }

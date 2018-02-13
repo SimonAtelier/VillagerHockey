@@ -56,8 +56,8 @@ public class SaveGameViewImpl implements SaveGameView {
 	}
 
 	@Override
-	public void displayCannotSaveNumberOfTeamsIsLessThanTwo() {
-		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NUMBER_OF_TEAMS_IS_LESS_THAN_TWO);
+	public void displayCannotSaveNumberOfTeamsIsNotTwo() {
+		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NUMBER_OF_TEAMS_IS_NOT_TWO);
 	}
 
 }
