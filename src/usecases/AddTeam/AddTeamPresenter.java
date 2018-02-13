@@ -23,11 +23,6 @@ public class AddTeamPresenter implements AddTeamResponse {
 	}
 
 	@Override
-	public void onTeamSizeIsNotAValidNumber(String size) {
-		view.displayTeamSizeIsNotAValidNumber(size);
-	}
-
-	@Override
 	public void onTeamWithNameAlreadyExists(String name) {
 		view.displayTeamWithNameAlreadyExists(name);
 	}

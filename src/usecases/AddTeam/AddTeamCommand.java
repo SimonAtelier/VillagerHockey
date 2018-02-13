@@ -27,7 +27,6 @@ public class AddTeamCommand extends AbstractCommand {
 		requestModel.setGame(arguments.get(0));
 		requestModel.setName(arguments.get(1));
 		requestModel.setColor(arguments.get(2));
-		requestModel.setSize(arguments.get(3));
 		return requestModel;
 	}
 
@@ -38,7 +37,7 @@ public class AddTeamCommand extends AbstractCommand {
 
 	@Override
 	public String[] getArgumentLabels() {
-		return new String[] {"game", "name", "color", "size"};
+		return new String[] {"game", "name", "color"};
 	}
 
 }

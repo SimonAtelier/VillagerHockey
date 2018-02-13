@@ -22,8 +22,6 @@ public interface AddTeam {
 		
 		String getName();
 		
-		String getSize();
-		
 		String getColor();
 		
 	}
@@ -35,8 +33,6 @@ public interface AddTeam {
 		void onNoSuchGame(String name);
 		
 		void onInvalidTeamName(String name);
-		
-		void onTeamSizeIsNotAValidNumber(String size);
 		
 		void onTeamColorIsNotValid(String color, List<String> possibleValues);
 		

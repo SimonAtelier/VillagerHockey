@@ -8,8 +8,6 @@ public interface AddTeamView {
 	
 	void displayNoSuchGame(String name);
 	
-	void displayTeamSizeIsNotAValidNumber(String size);
-	
 	void displayTeamWithNameAlreadyExists(String name);
 	
 	void displayTeamWithColorAlreadyExists(String color);

@@ -42,11 +42,6 @@ public class AddTeamUseCase implements AddTeam {
 			response.onTeamWithNameAlreadyExists(request.getName());
 			return;
 		}
-				
-		if (parseTeamSize() == null) {
-			response.onTeamSizeIsNotAValidNumber(request.getSize());
-			return;
-		}
 		
 		if (parseTeamColor() == null) {
 			response.onTeamColorIsNotValid(request.getColor(), getPossibleTeamColorValues());
@@ -90,14 +85,6 @@ public class AddTeamUseCase implements AddTeam {
 		try {
 			return TeamColor.valueOf(request.getColor());
 		} catch (Exception e) {
-			return null;
-		}
-	}
-	
-	private Integer parseTeamSize() {
-		try {
-			return Integer.parseInt(request.getSize());
-		} catch (NumberFormatException e) {
 			return null;
 		}
 	}

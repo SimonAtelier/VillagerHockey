@@ -32,13 +32,6 @@ public class AddTeamViewImpl implements AddTeamView {
 	}
 
 	@Override
-	public void displayTeamSizeIsNotAValidNumber(String size) {
-		String message = AddTeamViewMessages.ADD_TEAM_SIZE_IS_NOT_A_NUMBER;
-		message = message.replace("$size$", size);
-		displayMessage(viewer, message);
-	}
-
-	@Override
 	public void displayTeamWithNameAlreadyExists(String name) {
 		String message = AddTeamViewMessages.ADD_TEAM_NAME_ALREADY_EXISTS;
 		message = message.replace("$team$", name);
