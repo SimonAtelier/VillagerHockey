@@ -17,7 +17,6 @@ import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Respawn.RespawnCountDownController;
 import game.States.AnnounceWinnerGameState;
 import game.States.GameState;
-import game.States.StoppedGameState;
 import game.States.WaitingGameState;
 import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
@@ -52,8 +51,7 @@ public class Game implements IGame {
 		playingTimeInSeconds = 300;
 		this.name = name;
 		villagerSpawner = new VillagerSpawner();
-		gameState = new StoppedGameState();
-		setGameState(new WaitingGameState());
+		gameState = new WaitingGameState();
 		players = new ArrayList<Player>();
 		goals = new ArrayList<Goal>();
 		teams = new Teams();
