@@ -17,7 +17,6 @@ import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Respawn.RespawnCountDownController;
 import game.States.AnnounceWinnerGameState;
 import game.States.GameState;
-import game.States.RunningGameState;
 import game.States.StoppedGameState;
 import game.States.WaitingGameState;
 import gateways.InventoryGateway;
