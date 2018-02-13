@@ -58,7 +58,7 @@ public class RunningGameState extends AbstractGameState {
 		initializeCountDown(game);
 		startCountDown();
 	}
-	
+		
 	private void startCountDown() {
 		gameCountDown.start();
 	}
