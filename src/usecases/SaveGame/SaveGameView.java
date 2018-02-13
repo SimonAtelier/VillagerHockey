@@ -8,8 +8,6 @@ public interface SaveGameView {
 	
 	void displayNoPermission();
 	
-	void displayError();
-	
 	void displayCannotSaveGameNoLobbySet();
 	
 	void displayCannotSaveGameNoVillagerSpawnSet();

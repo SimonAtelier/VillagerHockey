@@ -21,8 +21,6 @@ public interface SaveGame {
 		
 		void onNoPermission();
 		
-		void onInternalError();
-		
 		void onCannotSaveGameNoLobbySet();
 		
 		void onCannotSaveGameNoVillagerSpawnSet();

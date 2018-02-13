@@ -36,11 +36,6 @@ public class SaveGameViewImpl implements SaveGameView {
 	}
 
 	@Override
-	public void displayError() {
-		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_ERROR);
-	}
-
-	@Override
 	public void displayCannotSaveGameNoLobbySet() {
 		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NO_LOBBY_SET);
 	}

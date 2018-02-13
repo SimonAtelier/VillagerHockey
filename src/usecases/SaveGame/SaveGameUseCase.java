@@ -30,14 +30,7 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
-		Game game = gameGateway.findGameByName(name);
-				
-		if (game == null) {
-			response.onInternalError();
-			return;
-		}
-		
-		setGame(game);
+		findGame();
 		
 		if (numberOfTeamsIsNotTwo()) {
 			response.onCannotSaveNumberOfTeamsIsNotTwo();
@@ -59,8 +52,16 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
-		gameGateway.saveGame(name);
+		save();
 		response.onGameSuccessfullySaved();
+	}
+	
+	private void save() {
+		gameGateway.saveGame(name);
+	}
+	
+	private void findGame() {
+		game = gameGateway.findGameByName(name);
 	}
 	
 	private boolean numberOfTeamsIsNotTwo() {
@@ -85,10 +86,6 @@ public class SaveGameUseCase implements SaveGame {
 	
 	private boolean noVillagerSpawnSet() {
 		return !game.isVillageSpawnLocationSet();
-	}
-	
-	private void setGame(Game game) {
-		this.game = game;
 	}
 
 	@Override

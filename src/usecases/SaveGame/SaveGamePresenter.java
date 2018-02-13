@@ -26,11 +26,6 @@ public class SaveGamePresenter implements SaveGameResponse {
 	}
 
 	@Override
-	public void onInternalError() {
-		view.displayError();
-	}
-
-	@Override
 	public void onCannotSaveGameNoLobbySet() {
 		view.displayCannotSaveGameNoLobbySet();
 	}
