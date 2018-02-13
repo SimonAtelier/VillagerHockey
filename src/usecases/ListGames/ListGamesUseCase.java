@@ -39,6 +39,8 @@ public class ListGamesUseCase implements ListGames {
 		for (String gameName : games) {
 			Game game = Context.gameGateway.findGameByName(gameName);
 			GameListItem gameListItem = new GameListItem();
+			gameListItem.setPlayersCount(game.getPlayersCount());
+			gameListItem.setMaxPlayers(game.getTeams().getMaximumAmountOfPlayers());
 			gameListItem.setGameName(gameName);
 			gameListItem.setGameState(game.getGameState().getName());
 			gameListItems.add(gameListItem);

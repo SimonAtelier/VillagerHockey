@@ -40,8 +40,13 @@ public class ListGamesViewImpl implements ListGamesView {
 		for (GameListItem listItem : games) {
 			buffer.append("\n");
 			buffer.append(listItem.getGameName());
-			buffer.append(" ");
+			buffer.append(" : ");
 			buffer.append(listItem.getGameState());
+			buffer.append(" : (");
+			buffer.append(listItem.getPlayersCount());
+			buffer.append("/");
+			buffer.append(listItem.getMaxPlayers());
+			buffer.append(")");
 		}
 		return buffer.toString();
 	}
