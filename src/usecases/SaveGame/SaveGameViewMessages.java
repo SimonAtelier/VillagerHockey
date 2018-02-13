@@ -18,6 +18,6 @@ public interface SaveGameViewMessages {
 	
 	static final String SAVE_GAME_CANNOT_SAVE_NUMBER_OF_TEAMS_IS_NOT_TWO = "Das Spiel konnte nicht gespeichert werden. Die Anzahl der Teams muss 2 betragen.";
 	
-	static final String SAVE_GAME_CANNOT_SAVE_NOT_ALL_GOALS_SET = "Das Spiel konnte nicht gespeichert werden. Es is noch nicht für alle Teams ein Tor gesetzt.";
+	static final String SAVE_GAME_CANNOT_SAVE_NOT_ALL_GOALS_SET = "Das Spiel konnte nicht gespeichert werden. Es ist noch nicht für alle Teams ein Tor gesetzt.";
 	
 }
