@@ -58,6 +58,11 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
+		if (teamSpawnLocationsMissing()) {
+			response.onCannotSaveSpawnLocationsMissing();
+			return;
+		}
+		
 		save();
 		response.onGameSuccessfullySaved();
 	}
@@ -65,6 +70,14 @@ public class SaveGameUseCase implements SaveGame {
 	private boolean goalMissing() {
 		for (Team team : game.getTeams().findAllTeams()) {
 			if (game.findGoalOfTeam(team.getName()) == null)
+				return true;
+		}
+		return false;
+	}
+	
+	private boolean teamSpawnLocationsMissing() {
+		for (Team team : game.getTeams().findAllTeams()) {
+			if (team.getSpawnLocations().isEmpty())
 				return true;
 		}
 		return false;

@@ -31,6 +31,8 @@ public interface SaveGame {
 		
 		void onCannotSaveNotAllGoalsSet();
 		
+		void onCannotSaveSpawnLocationsMissing();
+		
 	}
 	
 }

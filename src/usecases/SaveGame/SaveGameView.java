@@ -18,4 +18,6 @@ public interface SaveGameView {
 	
 	void displayCannotSaveNotAllGoalsSet();
 	
+	void displayCannotSaveSpawnLocationsMissing();
+	
 }

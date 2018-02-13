@@ -20,4 +20,6 @@ public interface SaveGameViewMessages {
 	
 	static final String SAVE_GAME_CANNOT_SAVE_NOT_ALL_GOALS_SET = "Das Spiel konnte nicht gespeichert werden. Es ist noch nicht für alle Teams ein Tor gesetzt.";
 	
+	static final String SAVE_GAME_CANNOT_SAVE_SPAWN_LOCATIONS_MISSING = "Das Spiel konnte nicht gespeichert werden. Es sind noch nicht für alle Teams 'Spawns' gesetzt.";
+	
 }

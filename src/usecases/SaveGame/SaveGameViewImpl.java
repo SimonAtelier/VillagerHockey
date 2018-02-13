@@ -60,4 +60,9 @@ public class SaveGameViewImpl implements SaveGameView {
 		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NOT_ALL_GOALS_SET);
 	}
 
+	@Override
+	public void displayCannotSaveSpawnLocationsMissing() {
+		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_SPAWN_LOCATIONS_MISSING);
+	}
+
 }

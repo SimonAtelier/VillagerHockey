@@ -50,4 +50,9 @@ public class SaveGamePresenter implements SaveGameResponse {
 		view.displayCannotSaveNotAllGoalsSet();
 	}
 
+	@Override
+	public void onCannotSaveSpawnLocationsMissing() {
+		view.displayCannotSaveSpawnLocationsMissing();
+	}
+
 }
