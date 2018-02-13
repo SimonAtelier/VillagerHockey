@@ -8,7 +8,6 @@ import java.util.UUID;
 
 import game.Game;
 import game.VillagerSpawner;
-import game.States.RunningGameState;
 import gateways.Configuration;
 import gateways.GameGateway;
 import main.MainPlugin;
@@ -102,7 +101,6 @@ public class GameManager implements GameGateway {
 			game.addTeamSelectListener(new JoinTeamController());
 			game.addGameListener(new UpdateJoinSignController());
 			game.addGameListener(new ScoreEventListener());
-			game.setGameState(new RunningGameState());
 			return true;
 		}
 	}
