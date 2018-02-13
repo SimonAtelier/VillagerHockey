@@ -2,6 +2,7 @@ package usecases.SaveGame;
 
 import java.util.UUID;
 
+import entities.Team;
 import game.Game;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
@@ -52,8 +53,21 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
+		if (goalMissing()) {
+			response.onCannotSaveNotAllGoalsSet();
+			return;
+		}
+		
 		save();
 		response.onGameSuccessfullySaved();
+	}
+	
+	private boolean goalMissing() {
+		for (Team team : game.getTeams().findAllTeams()) {
+			if (game.findGoalOfTeam(team.getName()) == null)
+				return true;
+		}
+		return false;
 	}
 	
 	private void save() {

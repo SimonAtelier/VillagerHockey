@@ -55,4 +55,9 @@ public class SaveGameViewImpl implements SaveGameView {
 		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NUMBER_OF_TEAMS_IS_NOT_TWO);
 	}
 
+	@Override
+	public void displayCannotSaveNotAllGoalsSet() {
+		displayMessage(viewer, SaveGameViewMessages.SAVE_GAME_CANNOT_SAVE_NOT_ALL_GOALS_SET);
+	}
+
 }

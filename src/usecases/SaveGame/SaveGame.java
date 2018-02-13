@@ -29,6 +29,8 @@ public interface SaveGame {
 		
 		void onCannotSaveNumberOfTeamsIsNotTwo();
 		
+		void onCannotSaveNotAllGoalsSet();
+		
 	}
 	
 }

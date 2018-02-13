@@ -45,4 +45,9 @@ public class SaveGamePresenter implements SaveGameResponse {
 		view.displayCannotSaveNumberOfTeamsIsNotTwo();
 	}
 
+	@Override
+	public void onCannotSaveNotAllGoalsSet() {
+		view.displayCannotSaveNotAllGoalsSet();
+	}
+
 }

@@ -16,4 +16,6 @@ public interface SaveGameView {
 	
 	void displayCannotSaveNumberOfTeamsIsNotTwo();
 	
+	void displayCannotSaveNotAllGoalsSet();
+	
 }
