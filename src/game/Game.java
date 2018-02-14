@@ -120,10 +120,6 @@ public class Game extends AbstractGame {
 		return players;
 	}
 
-	public void onGameCountDownFinished() {
-		villagerSpawner.removeVillager();
-	}
-
 	public void resetTeamScores() {
 		teams.resetTeamScores();
 	}
@@ -183,6 +179,10 @@ public class Game extends AbstractGame {
 	public void setVillagerSpawnLocation(Location location) {
 		villagerSpawner.setVillagerSpawnLocation(location);
 	}
+	
+	// -------------------------------------------------------------------------------
+	// Listeners
+	// -------------------------------------------------------------------------------
 	
 	public void addGameListener(GameListener listener) {
 		gameListeners.add(listener);

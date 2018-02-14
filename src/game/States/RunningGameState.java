@@ -45,6 +45,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void leaveGameState(Game game) {
 		if (gameCountDown != null && gameCountDown.isFinished()) {
+			game.getVillagerSpawner().removeVillager();
 			new TeleportPlayersToLobbyController().onTeleportPlayersToLobby(game.getName());
 		} else if (gameCountDown != null && !gameCountDown.isFinished()) {
 			gameCountDown.pause();
