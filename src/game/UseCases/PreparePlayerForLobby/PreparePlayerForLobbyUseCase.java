@@ -17,7 +17,7 @@ import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import view.impl.HockeySticksViewImpl;
 
-public class PreparePlayerForLobbyImpl implements PreparePlayerForLobby {
+public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 
 	@Override
 	public void execute(UUID uniquePlayerId) {
