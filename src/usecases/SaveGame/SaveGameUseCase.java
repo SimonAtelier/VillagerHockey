@@ -54,7 +54,7 @@ public class SaveGameUseCase implements SaveGame {
 			return;
 		}
 		
-		if (goalMissing()) {
+		if (notAllGoalsSet()) {
 			response.onCannotSaveNotAllGoalsSet();
 			return;
 		}
@@ -73,7 +73,7 @@ public class SaveGameUseCase implements SaveGame {
 		response.onGameSuccessfullySaved();
 	}
 	
-	private boolean goalMissing() {
+	private boolean notAllGoalsSet() {
 		for (Team team : game.getTeams().findAllTeams()) {
 			if (game.findGoalOfTeam(team.getName()) == null)
 				return true;
