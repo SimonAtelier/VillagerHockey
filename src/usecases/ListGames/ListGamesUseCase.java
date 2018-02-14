@@ -25,13 +25,14 @@ public class ListGamesUseCase implements ListGames {
 			return;
 		}
 		
-		games = findGames();
+		findGames();
 		
-		if (games.isEmpty()) {
+		if (noGamesFound()) {
 			response.onNoGamesToList();
-		} else {
-			response.present(createGameListItems());
+			return;
 		}
+		
+		response.present(createGameListItems());
 	}
 	
 	private List<GameListItem> createGameListItems() {
@@ -50,8 +51,12 @@ public class ListGamesUseCase implements ListGames {
 		return gameListItems;
 	}
 	
-	private List<String> findGames() {
-		return gameGateway.findAllGameNames();
+	private boolean noGamesFound() {
+		return games.isEmpty();
+	}
+	
+	private void findGames() {
+		games = gameGateway.findAllGameNames();
 	}
 	
 	private boolean noPermission() {
