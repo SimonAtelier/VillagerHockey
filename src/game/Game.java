@@ -78,8 +78,8 @@ public class Game extends AbstractGame {
 	}
 
 	public void leave(UUID uniquePlayerId) {
-		removePlayer(uniquePlayerId);
 		teleportPlayerToLobby(uniquePlayerId);
+		removePlayer(uniquePlayerId);
 		gameState.onPlayerLeave(this, uniquePlayerId);
 		firePlayerLeave(uniquePlayerId);
 	}
