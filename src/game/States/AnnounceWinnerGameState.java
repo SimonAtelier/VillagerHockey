@@ -4,19 +4,22 @@ import java.util.UUID;
 
 import game.Game;
 import game.CountDown.CountDown;
+import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Winner.WinnerCountDownController;
 import main.MainPlugin;
 
-public class AnnounceWinnerGameState extends AbstractGameState {
+public class AnnounceWinnerGameState extends AbstractGameState implements OnCountDownFinished {
 
 	private CountDown winnerCountdown;
 	
 	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
+		WinnerCountDownController controller = new WinnerCountDownController();
+		controller.setOnCountDownFinished(this);
 		winnerCountdown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, 5);
-		winnerCountdown.setCountDownListener(new WinnerCountDownController());
+		winnerCountdown.setCountDownListener(controller);
 		winnerCountdown.start();
 	}
 
@@ -35,6 +38,11 @@ public class AnnounceWinnerGameState extends AbstractGameState {
 	@Override
 	public String getName() {
 		return "AnnounceWinner";
+	}
+
+	@Override
+	public void onCountDownFinished(Game game) {
+		transitionToGameState(game, new WaitingGameState());	
 	}
 
 }

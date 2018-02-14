@@ -5,6 +5,7 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.CountDown.CountDown;
+import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Lobby.LobbyCountDownController;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobby;
@@ -13,7 +14,7 @@ import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobby;
 import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyImpl;
 import main.MainPlugin;
 
-public class WaitingGameState extends AbstractGameState {
+public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
 
 	private CountDown lobbyCountdown;
 
@@ -21,8 +22,15 @@ public class WaitingGameState extends AbstractGameState {
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
 		int lobbyTimeInSeconds = MainPlugin.getInstance().getConfiguration().getLobbyTime();
+		LobbyCountDownController controller = new LobbyCountDownController();
+		controller.setOnCountDownFinished(this);
 		lobbyCountdown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, lobbyTimeInSeconds);
-		lobbyCountdown.setCountDownListener(new LobbyCountDownController());
+		lobbyCountdown.setCountDownListener(controller);
+	}
+
+	@Override
+	public void onCountDownFinished(Game game) {
+		transitionToGameState(game, new RunningGameState());		
 	}
 
 	@Override

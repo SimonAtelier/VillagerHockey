@@ -5,6 +5,7 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.CountDown.CountDown;
+import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Game.GameCountDownController;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGame;
@@ -15,17 +16,19 @@ import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.RemoveVillagers.RemoveVillagers;
 import game.UseCases.RemoveVillagers.RemoveVillagersImpl;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobby;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyPresenter;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyUseCase;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyView;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyViewImpl;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyController;
 import main.MainPlugin;
 
-public class RunningGameState extends AbstractGameState {
+public class RunningGameState extends AbstractGameState implements OnCountDownFinished {
 
 	private CountDown gameCountDown;
+	
+	private void initializeCountDown(Game game) {
+		GameCountDownController controller = new GameCountDownController();
+		controller.setOnCountDownFinished(this);
+		gameCountDown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, game.getPlayingTimeInSeconds());
+		gameCountDown.setCountDownListener(controller);
+	}
 
 	private void preparePlayersForGame(Game game) {
 		PreparePlayerForGameView view = new PreparePlayerForGameViewImpl();
@@ -38,14 +41,6 @@ public class RunningGameState extends AbstractGameState {
 				game.selectLowestTeam(player);
 			}
 		}
-	}
-	
-	private void teleportPlayersToLobby(Game game) {
-		TeleportPlayersToLobbyView view = new TeleportPlayersToLobbyViewImpl();
-		TeleportPlayersToLobbyResponse presenter = new TeleportPlayersToLobbyPresenter(view);
-		TeleportPlayersToLobby useCase = new TeleportPlayersToLobbyUseCase();
-		useCase.setGameGateway(Context.gameGateway);
-		useCase.execute(game.getName(), presenter);
 	}
 
 	private void removeVillagers(String game) {
@@ -75,17 +70,11 @@ public class RunningGameState extends AbstractGameState {
 	
 	@Override
 	public void leaveGameState(Game game) {
-		teleportPlayersToLobby(game);
-		game.setGameState(new AnnounceWinnerGameState());
+		new TeleportPlayersToLobbyController().onTeleportPlayersToLobby(game.getName());
 	}
 
 	private void startCountDown() {
 		gameCountDown.start();
-	}
-
-	private void initializeCountDown(Game game) {
-		gameCountDown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, game.getPlayingTimeInSeconds());
-		gameCountDown.setCountDownListener(new GameCountDownController());
 	}
 
 	@Override
@@ -98,4 +87,9 @@ public class RunningGameState extends AbstractGameState {
 		return "Running";
 	}
 
+	@Override
+	public void onCountDownFinished(Game game) {
+		transitionToGameState(game, new AnnounceWinnerGameState());
+	}
+	
 }

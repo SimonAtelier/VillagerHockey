@@ -14,6 +14,8 @@ public interface GameState {
 	
 	void leaveGameState(Game game);
 	
+	void transitionToGameState(Game game, GameState gameState);
+	
 	void onPlayerJoin(Game game, UUID player);
 	
 	void onPlayerLeave(Game game, UUID player);

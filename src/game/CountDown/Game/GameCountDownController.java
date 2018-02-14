@@ -5,11 +5,13 @@ import java.util.UUID;
 
 import context.Context;
 import game.CountDown.CountDownListener;
+import game.CountDown.OnCountDownFinished;
 import game.Game;
 import game.CountDown.CountDown;
 
 public class GameCountDownController implements CountDownListener {
 
+	private OnCountDownFinished onCountDownFinished;
 	private GameCountDownView view = new GameCountDownViewImpl();
 
 	@Override
@@ -28,6 +30,7 @@ public class GameCountDownController implements CountDownListener {
 	public void onStop(String game, int timeLeftInSeconds) {
 		Game gameObject = Context.gameGateway.findGameByName(game);
 		gameObject.onGameCountDownFinished();
+		onCountDownFinished.onCountDownFinished(gameObject);
 	}
 
 	@Override
@@ -56,6 +59,10 @@ public class GameCountDownController implements CountDownListener {
 	private List<UUID> getPlayers(String gameName) {
 		Game game = Context.gameGateway.findGameByName(gameName);
 		return game.getUniquePlayerIds();
+	}
+	
+	public void setOnCountDownFinished(OnCountDownFinished onCountDownFinished) {
+		this.onCountDownFinished = onCountDownFinished;
 	}
 
 }

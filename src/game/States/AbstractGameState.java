@@ -30,6 +30,19 @@ public abstract class AbstractGameState implements GameState {
 	}
 	
 	@Override
+	public void transitionToGameState(Game game, GameState gameState) {
+		leaveGameState(game);
+		game.setGameState(gameState);
+		gameState.enterGameState(game);
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void onPlayerJoin(Game game, UUID player) {
 	}
 

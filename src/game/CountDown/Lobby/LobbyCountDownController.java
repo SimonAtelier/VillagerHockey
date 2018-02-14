@@ -4,15 +4,16 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import game.CountDown.CountDownListener;
-import game.States.RunningGameState;
 import game.Game;
 import game.CountDown.CountDown;
+import game.CountDown.CountDownListener;
+import game.CountDown.OnCountDownFinished;
 import main.MainPlugin;
 
 public class LobbyCountDownController implements CountDownListener {
 
 	private LobbyCountDownView view;
+	private OnCountDownFinished onCountDownFinished;
 
 	public LobbyCountDownController() {
 		view = new LobbyCountDownViewImpl();
@@ -33,7 +34,8 @@ public class LobbyCountDownController implements CountDownListener {
 		Game game1 = Context.gameGateway.findGameByName(game);
 		List<UUID> players = getPlayers(game);
 
-		game1.setGameState(new RunningGameState());
+//		game1.setGameState(new RunningGameState());
+		onCountDownFinished.onCountDownFinished(game1);
 		game1.warmUp();
 		
 		view.displayGameStarts(players);
@@ -83,6 +85,10 @@ public class LobbyCountDownController implements CountDownListener {
 		default:
 			return false;
 		}
+	}
+	
+	public void setOnCountDownFinished(OnCountDownFinished onCountDownFinished) {
+		this.onCountDownFinished = onCountDownFinished;
 	}
 
 }
