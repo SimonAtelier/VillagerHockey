@@ -11,7 +11,7 @@ import org.bukkit.entity.Villager;
 import game.Game;
 import gateways.GameGateway;
 
-public class RemoveVillagersImpl implements RemoveVillagers {
+public class RemoveVillagersUseCase implements RemoveVillagers {
 	
 	private GameGateway gameGateway;
 	
