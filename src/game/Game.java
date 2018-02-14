@@ -112,6 +112,12 @@ public class Game extends AbstractGame {
 		fireTeamScored(teamName);
 	}
 
+	public void removePlayers() {
+		for (UUID player : getUniquePlayerIds()) {
+			removePlayer(player);
+		}
+	}
+	
 	public List<UUID> getUniquePlayerIds() {
 		List<UUID> players = new ArrayList<UUID>();
 		synchronized (PLAYERS_LOCK) {
@@ -120,12 +126,6 @@ public class Game extends AbstractGame {
 			}
 		}
 		return players;
-	}
-
-	public void removePlayers() {
-		for (UUID player : getUniquePlayerIds()) {
-			removePlayer(player);
-		}
 	}
 
 	public void onGameCountDownFinished() {
@@ -169,6 +169,45 @@ public class Game extends AbstractGame {
 		gameState.onLeaveRespawnPhase(this);
 	}
 
+	public Goal findGoalOfTeam(String team) {
+		for (int i = 0; i < goals.size(); i++) {
+			Goal goal = goals.get(i);
+			if (goal.getTeam().equals(team)) {
+				return goal;
+			}
+		}
+		return null;
+	}
+
+	public Teams getTeams() {
+		return teams;
+	}
+
+	public boolean isCanMove() {
+		return canPlayersMove;
+	}
+
+	public void setCanMove(boolean canMove) {
+		this.canPlayersMove = canMove;
+	}
+
+	public boolean isMaximumAmountOfPlayersReached() {
+		return getTeams().getMaximumAmountOfPlayers() == getPlayersCount();
+	}
+	
+	@Override
+	public int getMaximumAmountOfPlayers() {
+		return getTeams().getMaximumAmountOfPlayers();
+	}
+
+	public VillagerSpawner getVillagerSpawner() {
+		return villagerSpawner;
+	}
+
+	public void setVillagerSpawnLocation(Location location) {
+		villagerSpawner.setVillagerSpawnLocation(location);
+	}
+	
 	public void addGameListener(GameListener listener) {
 		gameListeners.add(listener);
 	}
@@ -209,59 +248,8 @@ public class Game extends AbstractGame {
 		}
 	}
 
-	private void fireGameStateChanged(GameState from, GameState to) {
-		for (GameListener listener : getGameListeners()) {
-			listener.onGameStateChanged(this, from, to);
-		}
-	}
-
 	private List<GameListener> getGameListeners() {
 		return new ArrayList<GameListener>(gameListeners);
-	}
-
-	public Goal findGoalOfTeam(String team) {
-		for (int i = 0; i < goals.size(); i++) {
-			Goal goal = goals.get(i);
-			if (goal.getTeam().equals(team)) {
-				return goal;
-			}
-		}
-		return null;
-	}
-
-	public GameState getGameState() {
-		return gameState;
-	}
-
-	@Override
-	public void setGameState(GameState gameState) {
-		GameState oldGameState = this.gameState;
-		this.gameState = gameState;
-		fireGameStateChanged(oldGameState, gameState);
-	}
-
-	public Teams getTeams() {
-		return teams;
-	}
-
-	public boolean isCanMove() {
-		return canPlayersMove;
-	}
-
-	public void setCanMove(boolean canMove) {
-		this.canPlayersMove = canMove;
-	}
-
-	public boolean isMaximumAmountOfPlayersReached() {
-		return getTeams().getMaximumAmountOfPlayers() == getPlayersCount();
-	}
-
-	public VillagerSpawner getVillagerSpawner() {
-		return villagerSpawner;
-	}
-
-	public void setVillagerSpawnLocation(Location location) {
-		villagerSpawner.setVillagerSpawnLocation(location);
 	}
 
 }

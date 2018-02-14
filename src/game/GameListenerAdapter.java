@@ -4,10 +4,10 @@ import java.util.UUID;
 
 import game.States.GameState;
 
-public class GameListenerAdapter implements GameListener {
+public class GameListenerAdapter implements GameListener, GameStateChangeListener {
 
 	@Override
-	public void onGameStateChanged(Game game, GameState from, GameState to) {
+	public void onGameStateChanged(IGame game, GameState from, GameState to) {
 		// TODO Auto-generated method stub
 		
 	}

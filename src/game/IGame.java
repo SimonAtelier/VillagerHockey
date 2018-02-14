@@ -6,6 +6,10 @@ import game.States.GameState;
 
 public interface IGame {
 
+	void addGameStateChangeListener(GameStateChangeListener listener);
+	
+	void removeGameStateChangeListener(GameStateChangeListener listener);
+	
 	int getPlayersCount();
 	
 	String getName();
@@ -19,12 +23,16 @@ public interface IGame {
 	int getMinimumPlayersToStart();
 
 	void setMinimumPlayersToStart(int minimumPlayersToStart);
+	
+	int getMaximumAmountOfPlayers();
 
 	Location getLobby();
 
 	void setLobby(Location lobby);
 
 	JoinSigns getJoinSigns();
+	
+	GameState getGameState();
 	
 	void setGameState(GameState gameState);
 	

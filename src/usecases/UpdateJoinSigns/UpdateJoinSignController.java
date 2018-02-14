@@ -5,6 +5,7 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.GameListenerAdapter;
+import game.IGame;
 import game.States.GameState;
 
 public class UpdateJoinSignController extends GameListenerAdapter {
@@ -20,16 +21,16 @@ public class UpdateJoinSignController extends GameListenerAdapter {
 	}
 
 	@Override
-	public void onGameStateChanged(Game game, GameState from, GameState to) {
+	public void onGameStateChanged(IGame game, GameState from, GameState to) {
 		updateJoinSigns(game);
 	}
 
-	private void updateJoinSigns(Game game) {
+	private void updateJoinSigns(IGame game) {
 		UpdateJoinSignsRequestModel requestModel = new UpdateJoinSignsRequestModel();
 		requestModel.setGame(game.getName());
 		requestModel.setGameState(game.getGameState().toString());
 		requestModel.setPlayersCount(game.getPlayersCount());
-		requestModel.setMaximumAmountOfPlayers(game.getTeams().getMaximumAmountOfPlayers());
+		requestModel.setMaximumAmountOfPlayers(game.getMaximumAmountOfPlayers());
 		
 		UpdateJoinSigns useCase = new UpdateJoinSignsUseCase();
 		useCase.setGameGateway(Context.gameGateway);

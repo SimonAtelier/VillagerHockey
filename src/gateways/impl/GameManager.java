@@ -97,8 +97,10 @@ public class GameManager implements GameGateway {
 		synchronized (GAMES_MAP_LOCK) {
 			if (games.containsKey(game.getName()))
 				return false;
+			UpdateJoinSignController controller = new UpdateJoinSignController();
 			game.addTeamSelectListener(new JoinTeamController());
-			game.addGameListener(new UpdateJoinSignController());
+			game.addGameListener(controller);
+			game.addGameStateChangeListener(controller);
 			game.addGameListener(new ScoreEventListener());
 			games.put(game.getName(), game);
 			return true;

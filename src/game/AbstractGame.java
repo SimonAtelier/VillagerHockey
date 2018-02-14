@@ -9,7 +9,7 @@ import entities.Location;
 import game.States.GameState;
 
 public abstract class AbstractGame implements IGame {
-	
+
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
 	private String name;
@@ -17,13 +17,33 @@ public abstract class AbstractGame implements IGame {
 	private Location lobby;
 	private JoinSigns joinSigns;
 	protected List<UUID> players;
-	
+	private List<GameStateChangeListener> gameStateChangeListeners;
+
 	public AbstractGame(String name) {
 		this.name = name;
 		joinSigns = new JoinSigns();
 		players = new ArrayList<UUID>();
+		gameStateChangeListeners = new ArrayList<GameStateChangeListener>();
 	}
 	
+	private void fireGameStateChanged(GameState from, GameState to) {
+		for (GameStateChangeListener listener : gameStateChangeListeners) {
+			listener.onGameStateChanged(this, from, to);
+		}
+	}
+
+	@Override
+	public void addGameStateChangeListener(GameStateChangeListener listener) {
+		if (listener == null)
+			return;
+		gameStateChangeListeners.add(listener);
+	}
+
+	@Override
+	public void removeGameStateChangeListener(GameStateChangeListener listener) {
+		gameStateChangeListeners.remove(listener);
+	}
+
 	@Override
 	public int getMinimumPlayersToStart() {
 		return minimumPlayersToStart;
@@ -33,7 +53,7 @@ public abstract class AbstractGame implements IGame {
 	public void setMinimumPlayersToStart(int minimumPlayersToStart) {
 		this.minimumPlayersToStart = minimumPlayersToStart;
 	}
-	
+
 	@Override
 	public int getPlayingTimeInSeconds() {
 		return playingTimeInSeconds;
@@ -68,15 +88,22 @@ public abstract class AbstractGame implements IGame {
 	public JoinSigns getJoinSigns() {
 		return joinSigns;
 	}
-	
+
 	@Override
 	public int getPlayersCount() {
 		return players.size();
 	}
+	
+	@Override
+	public GameState getGameState() {
+		return gameState;
+	}
 
 	@Override
 	public void setGameState(GameState gameState) {
+		GameState oldGameState = this.gameState;
 		this.gameState = gameState;
+		fireGameStateChanged(oldGameState, gameState);
 	}
-		
+
 }

@@ -6,7 +6,7 @@ import game.States.GameState;
 
 public interface GameListener {
 
-	void onGameStateChanged(Game game, GameState from, GameState to);
+//	void onGameStateChanged(Game game, GameState from, GameState to);
 
 	void onPlayerJoin(Game game, UUID player);
 	
