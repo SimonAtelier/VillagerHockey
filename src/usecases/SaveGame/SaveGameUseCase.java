@@ -124,7 +124,7 @@ public class SaveGameUseCase implements SaveGame {
 	}
 	
 	private boolean noLobbySet() {
-		return !game.isLobbySet();
+		return game.getLobby() == null;
 	}
 	
 	private boolean noVillagerSpawnSet() {
