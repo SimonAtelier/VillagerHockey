@@ -1,7 +1,7 @@
-package game.UseCases.TeleportPlayersToLobby;
+package usecases.TeleportPlayersToLobby;
 
 import context.Context;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
+import usecases.TeleportPlayersToLobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
 
 public class TeleportPlayersToLobbyController {
 

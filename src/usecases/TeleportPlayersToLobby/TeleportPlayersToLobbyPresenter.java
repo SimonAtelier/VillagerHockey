@@ -1,10 +1,10 @@
-package game.UseCases.TeleportPlayersToLobby;
+package usecases.TeleportPlayersToLobby;
 
 import java.util.List;
 import java.util.UUID;
 
 import entities.Location;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
+import usecases.TeleportPlayersToLobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
 
 public class TeleportPlayersToLobbyPresenter implements TeleportPlayersToLobbyResponse {
 

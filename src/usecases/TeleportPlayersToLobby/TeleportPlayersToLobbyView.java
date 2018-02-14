@@ -1,4 +1,4 @@
-package game.UseCases.TeleportPlayersToLobby;
+package usecases.TeleportPlayersToLobby;
 
 import java.util.List;
 import java.util.UUID;
