@@ -10,6 +10,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 
+import util.LocationConvert;
+
 public class VillagerSpawner {
 
 	private boolean aiEnabled;
@@ -113,10 +115,10 @@ public class VillagerSpawner {
 		return villagerSpawnLocation;
 	}
 
-	public void setVillagerSpawnLocation(Location villagerSpawnLocation) {
+	public void setVillagerSpawnLocation(entities.Location villagerSpawnLocation) {
 		if (villagerSpawnLocation == null)
 			return;
-		this.villagerSpawnLocation = villagerSpawnLocation;
+		this.villagerSpawnLocation = LocationConvert.toBukkitLocation(villagerSpawnLocation);
 	}
 
 	public Villager getVillager() {

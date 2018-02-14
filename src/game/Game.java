@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
+import entities.Location;
 import entities.Team;
 import entities.Teams;
 import game.CountDown.CountDown;
@@ -19,7 +20,6 @@ import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import main.MainPlugin;
 import usecases.TeleportPlayersToTeamSpawns.TeleportPlayersToTeamSpawnsController;
-import util.LocationConvert;
 import view.impl.ScoreView;
 
 public class Game extends AbstractGame {
@@ -266,8 +266,8 @@ public class Game extends AbstractGame {
 		return villagerSpawner;
 	}
 
-	public void setVillagerSpawnLocation(entities.Location location) {
-		villagerSpawner.setVillagerSpawnLocation(LocationConvert.toBukkitLocation(location));
+	public void setVillagerSpawnLocation(Location location) {
+		villagerSpawner.setVillagerSpawnLocation(location);
 	}
 
 }
