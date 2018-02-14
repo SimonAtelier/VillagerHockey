@@ -14,7 +14,6 @@ import game.CountDown.Respawn.RespawnCountDownController;
 import game.States.GameState;
 import game.States.StoppedGameState;
 import game.States.WaitingGameState;
-import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
 import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
@@ -78,7 +77,6 @@ public class Game extends AbstractGame {
 	}
 
 	public void leave(UUID uniquePlayerId) {
-		teleportPlayerToLobby(uniquePlayerId);
 		removePlayer(uniquePlayerId);
 		gameState.onPlayerLeave(this, uniquePlayerId);
 		firePlayerLeave(uniquePlayerId);
@@ -101,10 +99,6 @@ public class Game extends AbstractGame {
 
 			return true;
 		}
-	}
-
-	private void teleportPlayerToLobby(UUID player) {
-		new TeleportPlayerToLobbyController().onTeleportPlayerToLobby(player);
 	}
 
 	public void selectLowestTeam(UUID player) {
