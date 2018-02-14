@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import command.AbstractCommand;
+import context.Context;
 import usecases.ListGames.ListGames.ListGamesResponse;
 
 public class ListGamesCommand extends AbstractCommand {
@@ -13,6 +14,8 @@ public class ListGamesCommand extends AbstractCommand {
 		ListGames useCase = new ListGamesUseCase();
 		ListGamesView view = new ListGamesViewImpl(player);
 		ListGamesResponse presenter = new ListGamesPresenter(view);
+		useCase.setGameGateway(Context.gameGateway);
+		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.execute(player, presenter);
 	}
 

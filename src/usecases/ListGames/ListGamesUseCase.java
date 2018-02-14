@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import context.Context;
 import game.Game;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
@@ -14,6 +13,8 @@ public class ListGamesUseCase implements ListGames {
 
 	private UUID player;
 	private List<String> games;
+	private GameGateway gameGateway;
+	private PermissionGateway permissionGateway;
 	
 	@Override
 	public void execute(UUID player, ListGamesResponse response) {
@@ -37,7 +38,7 @@ public class ListGamesUseCase implements ListGames {
 		List<GameListItem> gameListItems = new ArrayList<GameListItem>();
 		
 		for (String gameName : games) {
-			Game game = Context.gameGateway.findGameByName(gameName);
+			Game game = gameGateway.findGameByName(gameName);
 			GameListItem gameListItem = new GameListItem();
 			gameListItem.setPlayersCount(game.getPlayersCount());
 			gameListItem.setMaxPlayers(game.getTeams().getMaximumAmountOfPlayers());
@@ -50,17 +51,25 @@ public class ListGamesUseCase implements ListGames {
 	}
 	
 	private List<String> findGames() {
-		GameGateway gameGateway = Context.gameGateway;
 		return gameGateway.findAllGameNames();
 	}
 	
 	private boolean noPermission() {
-		PermissionGateway permissionGateway = Context.permissionGateway;
 		return !permissionGateway.hasPermission(player, Permissions.LIST_GAMES);
 	}
 
 	private void setPlayer(UUID player) {
 		this.player = player;
+	}
+
+	@Override
+	public void setGameGateway(GameGateway gameGateway) {
+		this.gameGateway = gameGateway;
+	}
+
+	@Override
+	public void setPermissionGateway(PermissionGateway permissionGateway) {
+		this.permissionGateway = permissionGateway;
 	}
 
 }
