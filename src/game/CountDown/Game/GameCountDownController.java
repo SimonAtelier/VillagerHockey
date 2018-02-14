@@ -29,7 +29,6 @@ public class GameCountDownController implements CountDownListener {
 	@Override
 	public void onStop(String game, int timeLeftInSeconds) {
 		Game gameObject = Context.gameGateway.findGameByName(game);
-		gameObject.onGameCountDownFinished();
 		onCountDownFinished.onCountDownFinished(gameObject);
 	}
 
