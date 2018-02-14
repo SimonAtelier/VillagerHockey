@@ -15,6 +15,12 @@ import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.RemoveVillagers.RemoveVillagers;
 import game.UseCases.RemoveVillagers.RemoveVillagersImpl;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobby;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyPresenter;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyUseCase;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyView;
+import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyViewImpl;
 import main.MainPlugin;
 
 public class RunningGameState extends AbstractGameState {
@@ -32,6 +38,14 @@ public class RunningGameState extends AbstractGameState {
 				game.selectLowestTeam(player);
 			}
 		}
+	}
+	
+	private void teleportPlayersToLobby(Game game) {
+		TeleportPlayersToLobbyView view = new TeleportPlayersToLobbyViewImpl();
+		TeleportPlayersToLobbyResponse presenter = new TeleportPlayersToLobbyPresenter(view);
+		TeleportPlayersToLobby useCase = new TeleportPlayersToLobbyUseCase();
+		useCase.setGameGateway(Context.gameGateway);
+		useCase.execute(game.getName(), presenter);
 	}
 
 	private void removeVillagers(String game) {
@@ -58,7 +72,13 @@ public class RunningGameState extends AbstractGameState {
 		initializeCountDown(game);
 		startCountDown();
 	}
-		
+	
+	@Override
+	public void leaveGameState(Game game) {
+		teleportPlayersToLobby(game);
+		game.setGameState(new AnnounceWinnerGameState());
+	}
+
 	private void startCountDown() {
 		gameCountDown.start();
 	}

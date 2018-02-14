@@ -15,7 +15,6 @@ import entities.Teams;
 import game.CountDown.CountDown;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Respawn.RespawnCountDownController;
-import game.States.AnnounceWinnerGameState;
 import game.States.GameState;
 import game.States.StoppedGameState;
 import game.States.WaitingGameState;
@@ -131,11 +130,11 @@ public class Game implements IGame {
 		player.teleport(LocationConvert.toBukkitLocation(lobby));
 	}
 
-	private void teleportPlayersToLobby() {
-		for (UUID uniquePlayerId : getUniquePlayerIds()) {
-			teleportPlayerToLobby(uniquePlayerId);
-		}
-	}
+//	private void teleportPlayersToLobby() {
+//		for (UUID uniquePlayerId : getUniquePlayerIds()) {
+//			teleportPlayerToLobby(uniquePlayerId);
+//		}
+//	}
 
 	public void onTeamScored(String teamName) {
 		Team team = teams.findTeamByName(teamName);
@@ -161,8 +160,7 @@ public class Game implements IGame {
 	
 	public void onGameCountDownFinished() {
 		villagerSpawner.removeVillager();
-		teleportPlayersToLobby();
-		setGameState(new AnnounceWinnerGameState());
+//		teleportPlayersToLobby();
 	}
 
 	public void resetTeamScores() {
