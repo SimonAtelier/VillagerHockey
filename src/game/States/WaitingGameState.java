@@ -2,7 +2,6 @@ package game.States;
 
 import java.util.UUID;
 
-import context.Context;
 import game.Game;
 import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
@@ -10,8 +9,7 @@ import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Lobby.LobbyCountDownController;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobby;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobbyUseCase;
-import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobby;
-import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyUseCase;
+import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
 import main.MainPlugin;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
@@ -60,9 +58,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	}
 
 	private void teleportPlayerToLobby(UUID player) {
-		TeleportPlayerToLobby useCase = new TeleportPlayerToLobbyUseCase();
-		useCase.setGameGateway(Context.gameGateway);
-		useCase.execute(player);
+		new TeleportPlayerToLobbyController().onTeleportPlayerToLobby(player);
 	}
 
 	private boolean shouldStopCountDown(Game game) {

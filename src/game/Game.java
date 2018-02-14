@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-
 import context.Context;
 import entities.Team;
 import entities.Teams;
@@ -17,10 +13,12 @@ import game.CountDown.Respawn.RespawnCountDownController;
 import game.States.GameState;
 import game.States.StoppedGameState;
 import game.States.WaitingGameState;
+import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
 import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import main.MainPlugin;
+import usecases.TeleportPlayersToTeamSpawns.TeleportPlayersToTeamSpawnsController;
 import util.LocationConvert;
 import view.impl.ScoreView;
 
@@ -33,7 +31,7 @@ public class Game extends AbstractGame {
 	private Teams teams;
 	private CountDown respawnCountDown;
 	private List<Goal> goals;
-	
+
 	private List<TeamSelectListener> listeners = new ArrayList<TeamSelectListener>();
 	private List<GameListener> gameListeners = new ArrayList<GameListener>();
 
@@ -78,11 +76,6 @@ public class Game extends AbstractGame {
 			return true;
 		}
 	}
-	
-	public void selectLowestTeam(UUID player) {
-		Team team = teams.findLowestTeam();
-		fireTeamSelected(player, team.getName());
-	}
 
 	public void leave(UUID uniquePlayerId) {
 		removePlayer(uniquePlayerId);
@@ -103,16 +96,20 @@ public class Game extends AbstractGame {
 
 			restoreInventory(player);
 			restorePlayerData(player);
-			
+
 			new ScoreView().hide(player);
-			
+
 			return true;
 		}
 	}
 
-	private void teleportPlayerToLobby(UUID uniquePlayerId) {
-		Player player = Bukkit.getPlayer(uniquePlayerId);
-		player.teleport(LocationConvert.toBukkitLocation(getLobby()));
+	private void teleportPlayerToLobby(UUID player) {
+		new TeleportPlayerToLobbyController().onTeleportPlayerToLobby(player);
+	}
+
+	public void selectLowestTeam(UUID player) {
+		Team team = teams.findLowestTeam();
+		fireTeamSelected(player, team.getName());
 	}
 
 	public void onTeamScored(String teamName) {
@@ -136,30 +133,13 @@ public class Game extends AbstractGame {
 			removePlayer(player);
 		}
 	}
-	
+
 	public void onGameCountDownFinished() {
 		villagerSpawner.removeVillager();
 	}
 
 	public void resetTeamScores() {
 		teams.resetTeamScores();
-	}
-
-	private void teleportPlayersToTeamSpawns() {
-		for (Team team : teams.findAllTeams()) {
-			teleportPlayersToTeamSpawns(team);
-		}
-	}
-
-	private void teleportPlayersToTeamSpawns(Team team) {
-		List<UUID> players = team.getPlayers();
-		List<entities.Location> locations = team.getSpawnLocations();
-		for (int i = 0; i < players.size(); i++) {
-			Player player = Bukkit.getPlayer(players.get(i));
-			entities.Location location = locations.get(i);
-			Location bukkitLocation = LocationConvert.toBukkitLocation(location);
-			player.teleport(bukkitLocation);
-		}
 	}
 
 	private void restoreInventory(UUID uniquePlayerId) {
@@ -176,7 +156,7 @@ public class Game extends AbstractGame {
 	public void warmUp() {
 		respawnCountDown.start();
 	}
-	
+
 	public void addGoal(Goal goal) {
 		if (goal == null)
 			return;
@@ -185,7 +165,7 @@ public class Game extends AbstractGame {
 
 	public void enterRespawnPhase() {
 		setCanMove(false);
-		teleportPlayersToTeamSpawns();
+		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(getName());
 		gameState.onEnterRespawnPhase(this);
 	}
 
@@ -259,9 +239,10 @@ public class Game extends AbstractGame {
 		return gameState;
 	}
 
+	@Override
 	public void setGameState(GameState gameState) {
 		GameState oldGameState = this.gameState;
-		super.setGameState(oldGameState);
+		this.gameState = gameState;
 		fireGameStateChanged(oldGameState, gameState);
 	}
 
@@ -283,10 +264,6 @@ public class Game extends AbstractGame {
 
 	public VillagerSpawner getVillagerSpawner() {
 		return villagerSpawner;
-	}
-
-	public boolean isVillageSpawnLocationSet() {
-		return villagerSpawner.getVillagerSpawnLocation() != null;
 	}
 
 	public void setVillagerSpawnLocation(entities.Location location) {

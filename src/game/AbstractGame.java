@@ -20,8 +20,8 @@ public abstract class AbstractGame implements IGame {
 	
 	public AbstractGame(String name) {
 		this.name = name;
-		this.joinSigns = new JoinSigns();
-		this.players = new ArrayList<UUID>();
+		joinSigns = new JoinSigns();
+		players = new ArrayList<UUID>();
 	}
 	
 	@Override
