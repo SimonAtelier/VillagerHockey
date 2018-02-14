@@ -10,12 +10,12 @@ import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Game.GameCountDownController;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGame;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameImpl;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGameUseCase;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGamePresenter;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.RemoveVillagers.RemoveVillagers;
-import game.UseCases.RemoveVillagers.RemoveVillagersImpl;
+import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
 import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyController;
 import main.MainPlugin;
 
@@ -33,7 +33,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	private void preparePlayersForGame(Game game) {
 		PreparePlayerForGameView view = new PreparePlayerForGameViewImpl();
 		PreparePlayerForGameResponse presenter = new PreparePlayerForGamePresenter(view);
-		PreparePlayerForGame useCase = new PreparePlayerForGameImpl();
+		PreparePlayerForGame useCase = new PreparePlayerForGameUseCase();
 		
 		for (UUID player : game.getUniquePlayerIds()) {
 			useCase.execute(player, presenter);
@@ -44,7 +44,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	}
 
 	private void removeVillagers(String game) {
-		RemoveVillagers removeVillagers = new RemoveVillagersImpl();
+		RemoveVillagers removeVillagers = new RemoveVillagersUseCase();
 		removeVillagers.setGameGateway(Context.gameGateway);
 		removeVillagers.execute(game);
 	}

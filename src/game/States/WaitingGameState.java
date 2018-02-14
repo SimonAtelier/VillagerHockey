@@ -9,9 +9,9 @@ import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Lobby.LobbyCountDownController;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobby;
-import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobbyImpl;
+import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobbyUseCase;
 import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobby;
-import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyImpl;
+import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyUseCase;
 import main.MainPlugin;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
@@ -55,12 +55,12 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	}
 
 	private void preparePlayerForLobby(UUID player) {
-		PreparePlayerForLobby useCase = new PreparePlayerForLobbyImpl();
+		PreparePlayerForLobby useCase = new PreparePlayerForLobbyUseCase();
 		useCase.execute(player);
 	}
 
 	private void teleportPlayerToLobby(UUID player) {
-		TeleportPlayerToLobby useCase = new TeleportPlayerToLobbyImpl();
+		TeleportPlayerToLobby useCase = new TeleportPlayerToLobbyUseCase();
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.execute(player);
 	}
