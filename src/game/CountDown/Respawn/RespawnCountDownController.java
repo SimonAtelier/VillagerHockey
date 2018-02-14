@@ -7,10 +7,12 @@ import context.Context;
 import game.Game;
 import game.CountDown.CountDown;
 import game.CountDown.CountDownListener;
+import game.CountDown.OnCountDownFinished;
 
 public class RespawnCountDownController implements CountDownListener {
 
 	private RespawnCountDownView view = new RespawnCountDownViewImpl();
+	private OnCountDownFinished OnCountDownFinished;
 	
 	@Override
 	public void onUpdateIgnorePaused(CountDown countdown, String game, int timeLeftInSeconds) {
@@ -18,14 +20,12 @@ public class RespawnCountDownController implements CountDownListener {
 
 	@Override
 	public void onStart(String game, int timeLeftInSeconds) {
-		Game gameObject = Context.gameGateway.findGameByName(game);
-		gameObject.enterRespawnPhase();
 	}
 
 	@Override
 	public void onStop(String game, int timeLeftInSeconds) {
 		Game gameObject = Context.gameGateway.findGameByName(game);
-		gameObject.leaveRespawnPhase();
+		OnCountDownFinished.onCountDownFinished(gameObject);
 		view.displayRespawnTimeOver(getPlayers(game), timeLeftInSeconds);
 	}
 
@@ -37,6 +37,10 @@ public class RespawnCountDownController implements CountDownListener {
 	private List<UUID> getPlayers(String game) {
 		Game gameObject = Context.gameGateway.findGameByName(game);
 		return gameObject.getUniquePlayerIds();
+	}
+	
+	public void setOnCountDownFinished(OnCountDownFinished onCountDownFinished) {
+		this.OnCountDownFinished = onCountDownFinished;
 	}
 
 }

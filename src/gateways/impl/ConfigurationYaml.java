@@ -27,7 +27,7 @@ public class ConfigurationYaml implements Configuration {
 	public int getLobbyTime() {
 		if (config.contains("lobbytime"))
 			return config.getInt("lobbytime");
-		return 60;
+		return 5;
 	}
 
 	@Override

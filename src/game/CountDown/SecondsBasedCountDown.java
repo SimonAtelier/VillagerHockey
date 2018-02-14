@@ -94,4 +94,9 @@ public class SecondsBasedCountDown implements CountDown {
 		this.listener = listener;
 	}
 
+	@Override
+	public boolean isFinished() {
+		return timeLeftInSeconds <= 0;
+	}
+
 }

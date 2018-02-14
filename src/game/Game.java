@@ -13,6 +13,7 @@ import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Respawn.RespawnCountDownController;
 import game.Event.GameListener;
 import game.Event.TeamSelectListener;
+import game.States.RespawnGameState;
 import game.States.StoppedGameState;
 import game.States.WaitingGameState;
 import gateways.InventoryGateway;
@@ -29,7 +30,6 @@ public class Game extends AbstractGame {
 	private boolean canPlayersMove;
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
-	private CountDown respawnCountDown;
 	private List<Goal> goals;
 
 	private List<TeamSelectListener> listeners = new ArrayList<TeamSelectListener>();
@@ -41,14 +41,8 @@ public class Game extends AbstractGame {
 		villagerSpawner = new VillagerSpawner();
 		goals = new ArrayList<Goal>();
 		teams = new Teams();
-		initializeCountDowns();
 		gameState = new StoppedGameState();
 		gameState.transitionToGameState(this, new WaitingGameState());
-	}
-
-	private void initializeCountDowns() {
-		respawnCountDown = new SecondsBasedCountDown(MainPlugin.getInstance(), this, 3);
-		respawnCountDown.setCountDownListener(new RespawnCountDownController());
 	}
 
 	public boolean canJoin(UUID player) {
@@ -149,7 +143,8 @@ public class Game extends AbstractGame {
 	}
 
 	public void warmUp() {
-		respawnCountDown.start();
+		gameState.transitionToGameState(this, new RespawnGameState(gameState));
+//		respawnCountDown.start();
 	}
 
 	public void addGoal(Goal goal) {
@@ -158,17 +153,17 @@ public class Game extends AbstractGame {
 		goals.add(goal);
 	}
 
-	public void enterRespawnPhase() {
-		setCanMove(false);
-		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(getName());
-		gameState.onEnterRespawnPhase(this);
-	}
-
-	public void leaveRespawnPhase() {
-		getVillagerSpawner().spawnVillager();
-		setCanMove(true);
-		gameState.onLeaveRespawnPhase(this);
-	}
+//	public void enterRespawnPhase() {
+//		setCanMove(false);
+//		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(getName());
+//		gameState.onEnterRespawnPhase(this);
+//	}
+//
+//	public void leaveRespawnPhase() {
+//		getVillagerSpawner().spawnVillager();
+//		setCanMove(true);
+//		gameState.onLeaveRespawnPhase(this);
+//	}
 
 	public Goal findGoalOfTeam(String team) {
 		for (int i = 0; i < goals.size(); i++) {

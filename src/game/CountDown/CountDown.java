@@ -14,4 +14,6 @@ public interface CountDown {
 	
 	void setCountDownListener(CountDownListener listener);
 	
+	boolean isFinished();
+	
 }

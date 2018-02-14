@@ -5,14 +5,6 @@ import java.util.UUID;
 import game.Game;
 
 public abstract class AbstractGameState implements GameState {
-	
-	@Override
-	public void onEnterRespawnPhase(Game game) {
-	}
-
-	@Override
-	public void onLeaveRespawnPhase(Game game) {
-	}
 
 	@Override
 	public boolean canPlayerJoin(Game game, UUID player) {
@@ -38,8 +30,7 @@ public abstract class AbstractGameState implements GameState {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Unknown";
 	}
 
 	@Override

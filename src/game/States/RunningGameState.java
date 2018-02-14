@@ -8,12 +8,6 @@ import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Game.GameCountDownController;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGame;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameUseCase;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGamePresenter;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.RemoveVillagers.RemoveVillagers;
 import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
 import main.MainPlugin;
@@ -30,19 +24,6 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 		gameCountDown.setCountDownListener(controller);
 	}
 
-	private void preparePlayersForGame(Game game) {
-		PreparePlayerForGameView view = new PreparePlayerForGameViewImpl();
-		PreparePlayerForGameResponse presenter = new PreparePlayerForGamePresenter(view);
-		PreparePlayerForGame useCase = new PreparePlayerForGameUseCase();
-		
-		for (UUID player : game.getUniquePlayerIds()) {
-			useCase.execute(player, presenter);
-			if (game.getTeams().findTeamOfPlayer(player) == null) {
-				game.selectLowestTeam(player);
-			}
-		}
-	}
-
 	private void removeVillagers(String game) {
 		RemoveVillagers removeVillagers = new RemoveVillagersUseCase();
 		removeVillagers.setGameGateway(Context.gameGateway);
@@ -50,27 +31,24 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	}
 
 	@Override
-	public void onEnterRespawnPhase(Game game) {
-		gameCountDown.pause();
-	}
-
-	@Override
-	public void onLeaveRespawnPhase(Game game) {
-		gameCountDown.resume();
-	}
-
-	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
-		removeVillagers(game.getName());
-		preparePlayersForGame(game);
-		initializeCountDown(game);
-		startCountDown();
+		if (gameCountDown != null) {
+			gameCountDown.resume();
+		} else {
+//			removeVillagers(game.getName());
+			initializeCountDown(game);
+			startCountDown();
+		}
 	}
 	
 	@Override
 	public void leaveGameState(Game game) {
-		new TeleportPlayersToLobbyController().onTeleportPlayersToLobby(game.getName());
+		if (gameCountDown != null && gameCountDown.isFinished()) {
+			new TeleportPlayersToLobbyController().onTeleportPlayersToLobby(game.getName());
+		} else if (gameCountDown != null && !gameCountDown.isFinished()) {
+			gameCountDown.pause();
+		}
 	}
 
 	private void startCountDown() {

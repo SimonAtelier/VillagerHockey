@@ -36,7 +36,7 @@ public class LobbyCountDownController implements CountDownListener {
 
 //		game1.setGameState(new RunningGameState());
 		onCountDownFinished.onCountDownFinished(game1);
-		game1.warmUp();
+//		game1.warmUp();
 		
 		view.displayGameStarts(players);
 		view.displayCountDownTimeInSeconds(players, 0);

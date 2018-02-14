@@ -7,6 +7,12 @@ import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Lobby.LobbyCountDownController;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGame;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGamePresenter;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGameUseCase;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
+import game.UseCases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobby;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobbyUseCase;
 import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
@@ -28,12 +34,13 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void onCountDownFinished(Game game) {
-		transitionToGameState(game, new RunningGameState());		
+		transitionToGameState(game, new RespawnGameState(new RunningGameState()));		
 	}
 
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
+		preparePlayersForGame(game);
 	}
 
 	@Override
@@ -49,6 +56,19 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	public void onPlayerLeave(Game game, UUID player) {
 		if (shouldStopCountDown(game)) {
 			lobbyCountdown.stop();
+		}
+	}
+	
+	private void preparePlayersForGame(Game game) {
+		PreparePlayerForGameView view = new PreparePlayerForGameViewImpl();
+		PreparePlayerForGameResponse presenter = new PreparePlayerForGamePresenter(view);
+		PreparePlayerForGame useCase = new PreparePlayerForGameUseCase();
+		
+		for (UUID player : game.getUniquePlayerIds()) {
+			useCase.execute(player, presenter);
+			if (game.getTeams().findTeamOfPlayer(player) == null) {
+				game.selectLowestTeam(player);
+			}
 		}
 	}
 
