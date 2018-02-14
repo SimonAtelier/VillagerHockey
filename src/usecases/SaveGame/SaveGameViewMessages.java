@@ -4,7 +4,7 @@ public interface SaveGameViewMessages {
 
 	static final String SAVE_GAME_NO_SUCH_GAME = "Ein Spiel mit dem Namen '$game$' existiert nicht.";
 
-	static final String SAVE_GAME_SUCCESSFULLY_SAVED_GAME = "Das Spiel wurde erfolgreich gespeichert";
+	static final String SAVE_GAME_SUCCESSFULLY_SAVED_GAME = "Das Spiel wurde erfolgreich gespeichert.";
 
 	static final String SAVE_GAME_ERROR = "Es ist ein Fehler aufgetreten. Das Spiel konnte nicht gespeichert werden.";
 
