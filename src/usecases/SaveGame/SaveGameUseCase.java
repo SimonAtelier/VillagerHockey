@@ -128,7 +128,7 @@ public class SaveGameUseCase implements SaveGame {
 	}
 	
 	private boolean noVillagerSpawnSet() {
-		return !game.isVillageSpawnLocationSet();
+		return game.getVillagerSpawner().getVillagerSpawnLocation() == null;
 	}
 
 	@Override
