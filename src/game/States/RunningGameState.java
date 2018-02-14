@@ -16,8 +16,8 @@ import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.RemoveVillagers.RemoveVillagers;
 import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
-import game.UseCases.TeleportPlayersToLobby.TeleportPlayersToLobbyController;
 import main.MainPlugin;
+import usecases.TeleportPlayersToLobby.TeleportPlayersToLobbyController;
 
 public class RunningGameState extends AbstractGameState implements OnCountDownFinished {
 

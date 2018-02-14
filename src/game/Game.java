@@ -9,7 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import context.Context;
-import entities.JoinSigns;
 import entities.Team;
 import entities.Teams;
 import game.CountDown.CountDown;
@@ -25,36 +24,25 @@ import main.MainPlugin;
 import util.LocationConvert;
 import view.impl.ScoreView;
 
-public class Game implements IGame {
+public class Game extends AbstractGame {
 
 	private final Object PLAYERS_LOCK = new Object();
 
 	private boolean canPlayersMove;
-	private int minimumPlayersToStart;
-	private int playingTimeInSeconds;
-	
-	private String name;
-	private GameState gameState;
-	private entities.Location lobby;
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
-	private JoinSigns joinSigns;
 	private CountDown respawnCountDown;
 	private List<Goal> goals;
-	private List<Player> players;
 	
 	private List<TeamSelectListener> listeners = new ArrayList<TeamSelectListener>();
 	private List<GameListener> gameListeners = new ArrayList<GameListener>();
 
 	public Game(String name) {
+		super(name);
 		canPlayersMove = true;
-		playingTimeInSeconds = 300;
-		this.name = name;
 		villagerSpawner = new VillagerSpawner();
-		players = new ArrayList<Player>();
 		goals = new ArrayList<Goal>();
 		teams = new Teams();
-		joinSigns = new JoinSigns();
 		initializeCountDowns();
 		gameState = new StoppedGameState();
 		gameState.transitionToGameState(this, new WaitingGameState());
@@ -69,26 +57,24 @@ public class Game implements IGame {
 		return gameState.canPlayerJoin(this, player);
 	}
 
-	public void join(UUID uniquePlayerId) {
-		if (!canJoin(uniquePlayerId))
+	public void join(UUID player) {
+		if (!canJoin(player))
 			return;
 
-		Player player = Bukkit.getPlayer(uniquePlayerId);
-
 		if (addPlayer(player)) {
-			gameState.onPlayerJoin(this, uniquePlayerId);
-			firePlayerJoin(uniquePlayerId);
+			gameState.onPlayerJoin(this, player);
+			firePlayerJoin(player);
 		}
 	}
 
-	private boolean addPlayer(Player player) {
+	private boolean addPlayer(UUID player) {
 		synchronized (PLAYERS_LOCK) {
 			if (player == null)
 				return false;
 			if (players.contains(player))
 				return false;
 			players.add(player);
-			MainPlugin.getInstance().getGameManager().addPlayer(player.getUniqueId(), this);
+			MainPlugin.getInstance().getGameManager().addPlayer(player, this);
 			return true;
 		}
 	}
@@ -105,21 +91,20 @@ public class Game implements IGame {
 		firePlayerLeave(uniquePlayerId);
 	}
 
-	private boolean removePlayer(UUID uniquePlayerId) {
-		Player player = Bukkit.getPlayer(uniquePlayerId);
+	private boolean removePlayer(UUID player) {
 		synchronized (PLAYERS_LOCK) {
 			if (player == null)
 				return false;
 			players.remove(player);
-			MainPlugin.getInstance().getGameManager().removePlayer(player.getUniqueId());
-			Team team = teams.findTeamOfPlayer(player.getUniqueId());
+			MainPlugin.getInstance().getGameManager().removePlayer(player);
+			Team team = teams.findTeamOfPlayer(player);
 			if (team != null)
-				team.removePlayer(player.getUniqueId());
+				team.removePlayer(player);
 
-			restoreInventory(player.getUniqueId());
+			restoreInventory(player);
 			restorePlayerData(player);
 			
-			new ScoreView().hide(player.getUniqueId());
+			new ScoreView().hide(player);
 			
 			return true;
 		}
@@ -127,14 +112,8 @@ public class Game implements IGame {
 
 	private void teleportPlayerToLobby(UUID uniquePlayerId) {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
-		player.teleport(LocationConvert.toBukkitLocation(lobby));
+		player.teleport(LocationConvert.toBukkitLocation(getLobby()));
 	}
-
-//	private void teleportPlayersToLobby() {
-//		for (UUID uniquePlayerId : getUniquePlayerIds()) {
-//			teleportPlayerToLobby(uniquePlayerId);
-//		}
-//	}
 
 	public void onTeamScored(String teamName) {
 		Team team = teams.findTeamByName(teamName);
@@ -145,8 +124,8 @@ public class Game implements IGame {
 	public List<UUID> getUniquePlayerIds() {
 		List<UUID> players = new ArrayList<UUID>();
 		synchronized (PLAYERS_LOCK) {
-			for (Player player : this.players) {
-				players.add(player.getUniqueId());
+			for (UUID player : this.players) {
+				players.add(player);
 			}
 		}
 		return players;
@@ -160,7 +139,6 @@ public class Game implements IGame {
 	
 	public void onGameCountDownFinished() {
 		villagerSpawner.removeVillager();
-//		teleportPlayersToLobby();
 	}
 
 	public void resetTeamScores() {
@@ -190,9 +168,9 @@ public class Game implements IGame {
 		inventoryGateway.load(uniquePlayerId);
 	}
 
-	private void restorePlayerData(Player player) {
+	private void restorePlayerData(UUID player) {
 		PlayerDataGateway repository = new PlayerDataGatewayYaml();
-		repository.load(player.getUniqueId());
+		repository.load(player);
 	}
 
 	public void warmUp() {
@@ -235,7 +213,7 @@ public class Game implements IGame {
 
 	private void fireTeamSelected(UUID player, String team) {
 		for (TeamSelectListener listener : listeners) {
-			listener.onTeamSelected(player, name, team);
+			listener.onTeamSelected(player, getName(), team);
 		}
 	}
 
@@ -283,9 +261,7 @@ public class Game implements IGame {
 
 	public void setGameState(GameState gameState) {
 		GameState oldGameState = this.gameState;
-//		oldGameState.leaveGameState(this);
-//		gameState.enterGameState(this);
-		this.gameState = gameState;
+		super.setGameState(oldGameState);
 		fireGameStateChanged(oldGameState, gameState);
 	}
 
@@ -305,10 +281,6 @@ public class Game implements IGame {
 		return getTeams().getMaximumAmountOfPlayers() == getPlayersCount();
 	}
 
-	public boolean isLobbySet() {
-		return getLobby() != null;
-	}
-
 	public VillagerSpawner getVillagerSpawner() {
 		return villagerSpawner;
 	}
@@ -319,56 +291,6 @@ public class Game implements IGame {
 
 	public void setVillagerSpawnLocation(entities.Location location) {
 		villagerSpawner.setVillagerSpawnLocation(LocationConvert.toBukkitLocation(location));
-	}
-
-	@Override
-	public int getPlayersCount() {
-		return players.size();
-	}
-
-	@Override
-	public int getMinimumPlayersToStart() {
-		return minimumPlayersToStart;
-	}
-
-	@Override
-	public void setMinimumPlayersToStart(int minimumPlayersToStart) {
-		this.minimumPlayersToStart = minimumPlayersToStart;
-	}
-
-	@Override
-	public int getPlayingTimeInSeconds() {
-		return playingTimeInSeconds;
-	}
-
-	@Override
-	public void setPlayingTimeInSeconds(int playingTimeInSeconds) {
-		this.playingTimeInSeconds = playingTimeInSeconds;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public entities.Location getLobby() {
-		return lobby;
-	}
-
-	@Override
-	public void setLobby(entities.Location lobby) {
-		this.lobby = lobby;
-	}
-
-	@Override
-	public JoinSigns getJoinSigns() {
-		return joinSigns;
 	}
 
 }

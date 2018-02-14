@@ -2,6 +2,7 @@ package game;
 
 import entities.JoinSigns;
 import entities.Location;
+import game.States.GameState;
 
 public interface IGame {
 
@@ -24,5 +25,7 @@ public interface IGame {
 	void setLobby(Location lobby);
 
 	JoinSigns getJoinSigns();
-
+	
+	void setGameState(GameState gameState);
+	
 }
