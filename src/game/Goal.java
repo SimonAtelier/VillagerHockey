@@ -38,7 +38,6 @@ public class Goal extends Region {
 				if (contains(LocationConvert.toEntityLocation(location))) {
 					game.getVillagerSpawner().removeVillager();
 					game.onTeamScored(team);
-					game.warmUp();
 				}
 			}
 		}, 0, 5);

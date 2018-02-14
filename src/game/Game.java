@@ -8,9 +8,6 @@ import context.Context;
 import entities.Location;
 import entities.Team;
 import entities.Teams;
-import game.CountDown.CountDown;
-import game.CountDown.SecondsBasedCountDown;
-import game.CountDown.Respawn.RespawnCountDownController;
 import game.Event.GameListener;
 import game.Event.TeamSelectListener;
 import game.States.RespawnGameState;
@@ -20,7 +17,6 @@ import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import main.MainPlugin;
-import usecases.TeleportPlayersToTeamSpawns.TeleportPlayersToTeamSpawnsController;
 import view.impl.ScoreView;
 
 public class Game extends AbstractGame {
@@ -105,6 +101,7 @@ public class Game extends AbstractGame {
 		Team team = teams.findTeamByName(teamName);
 		team.setScore(team.getScore() + 1);
 		fireTeamScored(teamName);
+		warmUp();
 	}
 
 	public void removePlayers() {
@@ -142,9 +139,8 @@ public class Game extends AbstractGame {
 		repository.load(player);
 	}
 
-	public void warmUp() {
+	private void warmUp() {
 		gameState.transitionToGameState(this, new RespawnGameState(gameState));
-//		respawnCountDown.start();
 	}
 
 	public void addGoal(Goal goal) {
@@ -152,18 +148,6 @@ public class Game extends AbstractGame {
 			return;
 		goals.add(goal);
 	}
-
-//	public void enterRespawnPhase() {
-//		setCanMove(false);
-//		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(getName());
-//		gameState.onEnterRespawnPhase(this);
-//	}
-//
-//	public void leaveRespawnPhase() {
-//		getVillagerSpawner().spawnVillager();
-//		setCanMove(true);
-//		gameState.onLeaveRespawnPhase(this);
-//	}
 
 	public Goal findGoalOfTeam(String team) {
 		for (int i = 0; i < goals.size(); i++) {
