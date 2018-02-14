@@ -10,7 +10,7 @@ import game.Game;
 import gateways.GameGateway;
 import util.LocationConvert;
 
-public class TeleportPlayerToLobbyImpl implements TeleportPlayerToLobby {
+public class TeleportPlayerToLobbyUseCase implements TeleportPlayerToLobby {
 
 	private GameGateway gameGateway;
 	
