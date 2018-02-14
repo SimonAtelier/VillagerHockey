@@ -17,9 +17,6 @@ import gateways.CommandGateway;
 import gateways.Configuration;
 import gateways.impl.ConfigurationYaml;
 import gateways.impl.GameManager;
-import usecases.AddGame.AddGameCommand;
-import usecases.AddTeam.AddTeamCommand;
-import usecases.AddTeamSpawn.AddTeamSpawnCommand;
 import usecases.ExecuteCommand.ExecuteCommand;
 import usecases.ExecuteCommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.ExecuteCommand.ExecuteCommandController;
@@ -27,10 +24,6 @@ import usecases.ExecuteCommand.ExecuteCommandPresenter;
 import usecases.ExecuteCommand.ExecuteCommandUseCase;
 import usecases.ExecuteCommand.ExecuteCommandView;
 import usecases.ExecuteCommand.ExecuteCommandViewImpl;
-import usecases.JoinGame.JoinGameCommand;
-import usecases.KickPlayer.KickPlayerCommand;
-import usecases.LeaveGame.LeaveGameCommand;
-import usecases.ListGames.ListGamesCommand;
 import usecases.PerformAction.BreakBlock.BreakBlockEventListener;
 import usecases.PerformAction.BreakJoinSign.BreakJoinSignEventListener;
 import usecases.PerformAction.ChangeFoodLevel.ChangeFoodLevelEventListener;
@@ -46,15 +39,7 @@ import usecases.PerformAction.PlaceJoinSign.PlaceJoinSignEventListener;
 import usecases.PerformAction.Quit.QuitEventListener;
 import usecases.PerformAction.ReceiveDamage.ReceiveDamageEventListener;
 import usecases.PerformAction.ShootPuck.ShootPuckEventListener;
-import usecases.RemoveGame.RemoveGameCommand;
-import usecases.SaveGame.SaveGameCommand;
 import usecases.SelectTeam.ShowTeamsEventListener;
-import usecases.SetGoal.SetGoalCommand;
-import usecases.SetLobby.SetLobbyCommand;
-import usecases.SetMinPlayers.SetMinPlayersCommand;
-import usecases.SetPlayingTime.SetPlayingTimeCommand;
-import usecases.SetVillagerSpawn.SetVillagerSpawnCommand;
-import usecases.ShowHelp.ShowHelpCommand;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
@@ -121,23 +106,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void registerCommands() {
 		CommandGateway commandGateway = Context.commandGateway;
-		
-		commandGateway.registerCommand(new AddGameCommand());
-		commandGateway.registerCommand(new AddTeamSpawnCommand());
-		commandGateway.registerCommand(new JoinGameCommand());
-		commandGateway.registerCommand(new KickPlayerCommand());
-		commandGateway.registerCommand(new LeaveGameCommand());
-		commandGateway.registerCommand(new ListGamesCommand());
-		commandGateway.registerCommand(new SaveGameCommand());
-		commandGateway.registerCommand(new SetGoalCommand());
-		commandGateway.registerCommand(new SetLobbyCommand());
-		commandGateway.registerCommand(new SetVillagerSpawnCommand());
-		commandGateway.registerCommand(new ShowHelpCommand());
-		commandGateway.registerCommand(new SetMinPlayersCommand());
-		commandGateway.registerCommand(new SetPlayingTimeCommand());
-		commandGateway.registerCommand(new AddTeamCommand());
-		commandGateway.registerCommand(new RemoveGameCommand());
-		
+		new CommandRegistrationImpl().registerCommands(commandGateway);
 		getCommand("vh").setExecutor(this);
 	}
 	
