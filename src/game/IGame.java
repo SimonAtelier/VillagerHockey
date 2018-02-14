@@ -37,4 +37,6 @@ public interface IGame {
 	
 	void setGameState(GameState gameState);
 	
+	boolean isMaximumAmountOfPlayersReached();
+	
 }

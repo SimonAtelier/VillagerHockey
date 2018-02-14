@@ -106,5 +106,10 @@ public abstract class AbstractGame implements IGame {
 		this.gameState = gameState;
 		fireGameStateChanged(oldGameState, gameState);
 	}
+	
+	@Override
+	public boolean isMaximumAmountOfPlayersReached() {
+		return getMaximumAmountOfPlayers() == getPlayersCount();
+	}
 
 }

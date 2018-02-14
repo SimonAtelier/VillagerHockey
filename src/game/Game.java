@@ -170,10 +170,6 @@ public class Game extends AbstractGame {
 	public void setCanMove(boolean canMove) {
 		this.canPlayersMove = canMove;
 	}
-
-	public boolean isMaximumAmountOfPlayersReached() {
-		return getTeams().getMaximumAmountOfPlayers() == getPlayersCount();
-	}
 	
 	@Override
 	public int getMaximumAmountOfPlayers() {
