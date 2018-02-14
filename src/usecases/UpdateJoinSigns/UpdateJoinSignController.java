@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import context.Context;
 import game.Game;
-import game.GameListenerAdapter;
 import game.IGame;
+import game.Event.GameListenerAdapter;
 import game.States.GameState;
 
 public class UpdateJoinSignController extends GameListenerAdapter {

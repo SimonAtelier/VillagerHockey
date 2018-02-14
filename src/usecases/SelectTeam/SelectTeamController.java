@@ -3,7 +3,7 @@ package usecases.SelectTeam;
 import java.util.UUID;
 
 import context.Context;
-import game.TeamSelectListener;
+import game.Event.TeamSelectListener;
 import usecases.JoinTeam.JoinTeamController;
 import usecases.LeaveTeam.LeaveTeam;
 import usecases.LeaveTeam.LeaveTeam.LeaveTeamResponse;

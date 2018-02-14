@@ -3,7 +3,7 @@ package usecases.JoinTeam;
 import java.util.UUID;
 
 import context.Context;
-import game.TeamSelectListener;
+import game.Event.TeamSelectListener;
 import usecases.JoinTeam.JoinTeam.JoinTeamResponse;
 import view.ColoredTeamArmourView;
 import view.impl.ColoredTeamArmourViewImpl;

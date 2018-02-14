@@ -1,4 +1,4 @@
-package game;
+package game.Event;
 
 import java.util.UUID;
 

@@ -3,7 +3,7 @@ package usecases.SelectTeam;
 import java.util.List;
 import java.util.UUID;
 
-import game.TeamSelectListener;
+import game.Event.TeamSelectListener;
 import usecases.ShowTeams.ShowTeamsResponseItem;
 
 public interface SelectTeamView {

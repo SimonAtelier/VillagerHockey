@@ -1,7 +1,7 @@
 package usecases.DisplayTeamScored;
 
 import context.Context;
-import game.GameListenerAdapter;
+import game.Event.GameListenerAdapter;
 import usecases.DisplayTeamScored.DisplayTeamScored.DisplayTeamScoredResponse;
 
 public class ScoreEventListener extends GameListenerAdapter {

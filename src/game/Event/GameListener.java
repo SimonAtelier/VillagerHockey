@@ -1,6 +1,8 @@
-package game;
+package game.Event;
 
 import java.util.UUID;
+
+import game.Game;
 
 public interface GameListener {
 

@@ -2,6 +2,7 @@ package game;
 
 import entities.JoinSigns;
 import entities.Location;
+import game.Event.GameStateChangeListener;
 import game.States.GameState;
 
 public interface IGame {

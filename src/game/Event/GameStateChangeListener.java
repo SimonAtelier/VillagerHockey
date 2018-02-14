@@ -1,5 +1,6 @@
-package game;
+package game.Event;
 
+import game.IGame;
 import game.States.GameState;
 
 public interface GameStateChangeListener {

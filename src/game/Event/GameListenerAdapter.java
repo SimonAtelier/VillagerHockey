@@ -1,7 +1,9 @@
-package game;
+package game.Event;
 
 import java.util.UUID;
 
+import game.Game;
+import game.IGame;
 import game.States.GameState;
 
 public class GameListenerAdapter implements GameListener, GameStateChangeListener {

@@ -18,7 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import context.Context;
-import game.TeamSelectListener;
+import game.Event.TeamSelectListener;
 import main.MainPlugin;
 import usecases.ShowTeams.ShowTeamsResponseItem;
 import view.MessageView;
