@@ -20,12 +20,12 @@ public abstract class AbstractGameState implements GameState {
 	}
 
 	@Override
-	public void onEnterGameState(Game game) {
+	public void enterGameState(Game game) {
 		System.out.println("Enter GameState " + getName());
 	}
 
 	@Override
-	public void onLeaveGameState(Game game) {
+	public void leaveGameState(Game game) {
 		System.out.println("Leave GameState " + getName());
 	}
 	

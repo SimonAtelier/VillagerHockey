@@ -51,8 +51,8 @@ public class RunningGameState extends AbstractGameState {
 	}
 
 	@Override
-	public void onEnterGameState(Game game) {
-		super.onEnterGameState(game);
+	public void enterGameState(Game game) {
+		super.enterGameState(game);
 		removeVillagers(game.getName());
 		preparePlayersForGame(game);
 		initializeCountDown(game);

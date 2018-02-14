@@ -10,9 +10,9 @@ public interface GameState {
 	
 	void onLeaveRespawnPhase(Game game);
 	
-	void onEnterGameState(Game game);
+	void enterGameState(Game game);
 	
-	void onLeaveGameState(Game game);
+	void leaveGameState(Game game);
 	
 	void onPlayerJoin(Game game, UUID player);
 	

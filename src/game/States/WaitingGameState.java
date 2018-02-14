@@ -18,16 +18,16 @@ public class WaitingGameState extends AbstractGameState {
 	private CountDown lobbyCountdown;
 
 	@Override
-	public void onEnterGameState(Game game) {
-		super.onEnterGameState(game);
+	public void enterGameState(Game game) {
+		super.enterGameState(game);
 		int lobbyTimeInSeconds = MainPlugin.getInstance().getConfiguration().getLobbyTime();
 		lobbyCountdown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, lobbyTimeInSeconds);
 		lobbyCountdown.setCountDownListener(new LobbyCountDownController());
 	}
 
 	@Override
-	public void onLeaveGameState(Game game) {
-		super.onLeaveGameState(game);
+	public void leaveGameState(Game game) {
+		super.leaveGameState(game);
 	}
 
 	@Override

@@ -285,8 +285,8 @@ public class Game implements IGame {
 
 	public void setGameState(GameState gameState) {
 		GameState oldGameState = this.gameState;
-		oldGameState.onLeaveGameState(this);
-		gameState.onEnterGameState(this);
+		oldGameState.leaveGameState(this);
+		gameState.enterGameState(this);
 		this.gameState = gameState;
 		fireGameStateChanged(oldGameState, gameState);
 	}
