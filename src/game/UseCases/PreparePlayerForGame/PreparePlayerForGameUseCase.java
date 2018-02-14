@@ -2,7 +2,7 @@ package game.UseCases.PreparePlayerForGame;
 
 import java.util.UUID;
 
-public class PreparePlayerForGameImpl implements PreparePlayerForGame {
+public class PreparePlayerForGameUseCase implements PreparePlayerForGame {
 
 	@Override
 	public void execute(UUID uniquePlayerId, PreparePlayerForGameResponse response) {
