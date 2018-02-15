@@ -49,15 +49,15 @@ public interface Game {
 	
 
 	
-	Teams getTeams();
-	
-	List<UUID> getUniquePlayerIds();
-	
-	VillagerSpawner getVillagerSpawner();
-	
 	void join(UUID player);
 	
 	void leave(UUID player);
+	
+	List<UUID> getUniquePlayerIds();
+	
+	Teams getTeams();
+	
+	VillagerSpawner getVillagerSpawner();
 	
 	void selectLowestTeam(UUID player);
 	
