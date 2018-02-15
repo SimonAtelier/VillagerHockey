@@ -37,13 +37,13 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void onCountDownFinished(Game game) {
+		removeVillagers(game.getName());
 		transitionToGameState(game, new RespawnGameState(new RunningGameState()));		
 	}
 
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
-		removeVillagers(game.getName());
 		preparePlayersForGame(game);
 	}
 

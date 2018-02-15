@@ -16,6 +16,7 @@ public class RemoveVillagersUseCase implements RemoveVillagers {
 	@Override
 	public void execute(String game) {
 		Game gameObject = gameGateway.findGameByName(game);
+		gameObject.getVillagerSpawner().removeVillager();
 		Location location = gameObject.getVillagerSpawner().getVillagerSpawnLocation();
 		World world = Bukkit.getServer().getWorld(location.getWorld().getName());
 		for (Entity entity : world.getEntities()) {
