@@ -1,10 +1,10 @@
 package usecases.DisplayTeamScored;
 
 import context.Context;
-import game.Event.GameListenerAdapter;
+import game.Event.TeamScoreListener;
 import usecases.DisplayTeamScored.DisplayTeamScored.DisplayTeamScoredResponse;
 
-public class ScoreEventListener extends GameListenerAdapter {
+public class ScoreEventListener implements TeamScoreListener {
 
 	@Override
 	public void onTeamScored(String game, String team) {

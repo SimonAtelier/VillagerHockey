@@ -8,8 +8,6 @@ import context.Context;
 import entities.Location;
 import entities.Team;
 import entities.Teams;
-import game.Event.GameListener;
-import game.Event.TeamSelectListener;
 import game.States.RespawnGameState;
 import game.States.StoppedGameState;
 import game.States.WaitingGameState;
@@ -26,10 +24,7 @@ public class BaseGame extends AbstractGame {
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
 	private List<Goal> goals;
-
-	private List<TeamSelectListener> listeners = new ArrayList<TeamSelectListener>();
-	private List<GameListener> gameListeners = new ArrayList<GameListener>();
-
+	
 	public BaseGame(String name) {
 		super(name);
 		villagerSpawner = new VillagerSpawner();
@@ -39,14 +34,21 @@ public class BaseGame extends AbstractGame {
 		gameState.transitionToGameState(this, new WaitingGameState());
 	}
 
+	@Override
 	public void join(UUID player) {
 		if (!canPlayerJoin(player))
 			return;
-
 		if (addPlayer(player)) {
 			gameState.onPlayerJoin(this, player);
-			firePlayerJoin(player);
+			gameChangeSupport.firePlayerJoin(player);
 		}
+	}
+	
+	@Override
+	public void leave(UUID player) {
+		removePlayer(player);
+		gameState.onPlayerLeave(this, player);
+		gameChangeSupport.firePlayerLeave(player);
 	}
 
 	private boolean addPlayer(UUID player) {
@@ -59,12 +61,6 @@ public class BaseGame extends AbstractGame {
 			MainPlugin.getInstance().getGameManager().addPlayer(player, this);
 			return true;
 		}
-	}
-
-	public void leave(UUID uniquePlayerId) {
-		removePlayer(uniquePlayerId);
-		gameState.onPlayerLeave(this, uniquePlayerId);
-		firePlayerLeave(uniquePlayerId);
 	}
 
 	private boolean removePlayer(UUID player) {
@@ -88,13 +84,13 @@ public class BaseGame extends AbstractGame {
 
 	public void selectLowestTeam(UUID player) {
 		Team team = teams.findLowestTeam();
-		fireTeamSelected(player, team.getName());
+		gameChangeSupport.fireTeamSelected(player, team.getName());
 	}
 
 	public void onTeamScored(String teamName) {
 		Team team = teams.findTeamByName(teamName);
 		team.setScore(team.getScore() + 1);
-		fireTeamScored(teamName);
+		gameChangeSupport.fireTeamScored(teamName);
 		warmUp();
 	}
 
@@ -104,6 +100,7 @@ public class BaseGame extends AbstractGame {
 		}
 	}
 	
+	@Override
 	public List<UUID> getUniquePlayerIds() {
 		List<UUID> players = new ArrayList<UUID>();
 		synchronized (PLAYERS_LOCK) {
@@ -155,61 +152,6 @@ public class BaseGame extends AbstractGame {
 
 	public void setVillagerSpawnLocation(Location location) {
 		villagerSpawner.setVillagerSpawnLocation(location);
-	}
-	
-	// -------------------------------------------------------------------------------
-	
-	@Override
-	public int getMaximumAmountOfPlayers() {
-		return getTeams().getMaximumAmountOfPlayers();
-	}
-	
-	// -------------------------------------------------------------------------------
-	// Listeners
-	// -------------------------------------------------------------------------------
-	
-	public void addGameListener(GameListener listener) {
-		gameListeners.add(listener);
-	}
-
-	public void removeGameListener(GameListener listener) {
-		gameListeners.remove(listener);
-	}
-
-	public void addTeamSelectListener(TeamSelectListener listener) {
-		listeners.add(listener);
-	}
-
-	public void removeTeamSelectListener(TeamSelectListener listener) {
-		listeners.remove(listener);
-	}
-
-	private void fireTeamSelected(UUID player, String team) {
-		for (TeamSelectListener listener : listeners) {
-			listener.onTeamSelected(player, getName(), team);
-		}
-	}
-
-	private void fireTeamScored(String team) {
-		for (GameListener listener : getGameListeners()) {
-			listener.onTeamScored(getName(), team);
-		}
-	}
-
-	private void firePlayerLeave(UUID player) {
-		for (GameListener listener : getGameListeners()) {
-			listener.onPlayerLeave(this, player);
-		}
-	}
-
-	private void firePlayerJoin(UUID player) {
-		for (GameListener listener : getGameListeners()) {
-			listener.onPlayerJoin(this, player);
-		}
-	}
-
-	private List<GameListener> getGameListeners() {
-		return new ArrayList<GameListener>(gameListeners);
 	}
 
 }

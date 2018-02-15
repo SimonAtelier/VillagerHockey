@@ -4,11 +4,26 @@ import java.util.UUID;
 
 import context.Context;
 import game.Game;
-import game.Event.GameListenerAdapter;
+import game.Event.GameStateChangeListener;
+import game.Event.JoinListener;
+import game.Event.LeaveListener;
 import game.States.GameState;
 
-public class UpdateJoinSignController extends GameListenerAdapter {
+public class UpdateJoinSignController implements JoinListener, LeaveListener, GameStateChangeListener {
 
+	private Game game;
+	
+	public UpdateJoinSignController(Game game) {
+		this.game = game;
+		enable();
+	}
+	
+	private void enable() {
+		game.addJoinListener(this);
+		game.addLeaveListener(this);
+		game.addGameStateChangeListener(this);
+	}
+	
 	@Override
 	public void onPlayerJoin(Game game, UUID player) {
 		updateJoinSigns(game);

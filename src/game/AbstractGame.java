@@ -6,7 +6,12 @@ import java.util.UUID;
 
 import entities.JoinSigns;
 import entities.Location;
+import game.Event.GameChangeSupport;
 import game.Event.GameStateChangeListener;
+import game.Event.JoinListener;
+import game.Event.LeaveListener;
+import game.Event.TeamScoreListener;
+import game.Event.TeamSelectListener;
 import game.States.GameState;
 
 public abstract class AbstractGame implements Game {
@@ -18,31 +23,63 @@ public abstract class AbstractGame implements Game {
 	private Location lobby;
 	private JoinSigns joinSigns;
 	protected List<UUID> players;
-	private List<GameStateChangeListener> gameStateChangeListeners;
+	protected GameChangeSupport gameChangeSupport;
 
 	public AbstractGame(String name) {
 		this.name = name;
 		joinSigns = new JoinSigns();
 		players = new ArrayList<UUID>();
-		gameStateChangeListeners = new ArrayList<GameStateChangeListener>();
+		gameChangeSupport = new GameChangeSupport(this);
 	}
 	
-	private void fireGameStateChanged(GameState from, GameState to) {
-		for (GameStateChangeListener listener : gameStateChangeListeners) {
-			listener.onGameStateChanged(this, from, to);
-		}
-	}
-
 	@Override
 	public void addGameStateChangeListener(GameStateChangeListener listener) {
-		if (listener == null)
-			return;
-		gameStateChangeListeners.add(listener);
+		gameChangeSupport.addGameStateChangeListener(listener);
 	}
 
 	@Override
 	public void removeGameStateChangeListener(GameStateChangeListener listener) {
-		gameStateChangeListeners.remove(listener);
+		gameChangeSupport.removeGameStateChangeListener(listener);
+	}
+	
+	@Override
+	public void addJoinListener(JoinListener listener) {
+		gameChangeSupport.addJoinListener(listener);
+	}
+
+	@Override
+	public void removeJoinListener(JoinListener listener) {
+		gameChangeSupport.removeJoinListener(listener);
+	}
+
+	@Override
+	public void addLeaveListener(LeaveListener listener) {
+		gameChangeSupport.addLeaveListener(listener);
+	}
+
+	@Override
+	public void removeLeaveListener(LeaveListener listener) {
+		gameChangeSupport.removeLeaveListener(listener);
+	}
+	
+	@Override
+	public void addTeamSelectListener(TeamSelectListener listener) {
+		gameChangeSupport.addTeamSelectListener(listener);
+	}
+
+	@Override
+	public void removeTeamSelectListener(TeamSelectListener listener) {
+		gameChangeSupport.removeTeamSelectListener(listener);
+	}
+	
+	@Override
+	public void addTeamScoreListener(TeamScoreListener listener) {
+		gameChangeSupport.addTeamScoreListener(listener);
+	}
+
+	@Override
+	public void removeTeamScoreListener(TeamScoreListener listener) {
+		gameChangeSupport.removeTeamScoreListener(listener);
 	}
 
 	@Override
@@ -53,6 +90,11 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public void setMinimumPlayersToStart(int minimumPlayersToStart) {
 		this.minimumPlayersToStart = minimumPlayersToStart;
+	}
+	
+	@Override
+	public int getMaximumAmountOfPlayers() {
+		return getTeams().getMaximumAmountOfPlayers();
 	}
 
 	@Override
@@ -104,7 +146,7 @@ public abstract class AbstractGame implements Game {
 	public void setGameState(GameState gameState) {
 		GameState oldGameState = this.gameState;
 		this.gameState = gameState;
-		fireGameStateChanged(oldGameState, gameState);
+		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);
 	}
 	
 	@Override

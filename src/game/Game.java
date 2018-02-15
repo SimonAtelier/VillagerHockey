@@ -6,8 +6,10 @@ import java.util.UUID;
 import entities.JoinSigns;
 import entities.Location;
 import entities.Teams;
-import game.Event.GameListener;
 import game.Event.GameStateChangeListener;
+import game.Event.JoinListener;
+import game.Event.LeaveListener;
+import game.Event.TeamScoreListener;
 import game.Event.TeamSelectListener;
 import game.States.GameState;
 
@@ -20,6 +22,22 @@ public interface Game {
 	void addGameStateChangeListener(GameStateChangeListener listener);
 	
 	void removeGameStateChangeListener(GameStateChangeListener listener);
+	
+	void addJoinListener(JoinListener listener);
+	
+	void removeJoinListener(JoinListener listener);
+	
+	void addLeaveListener(LeaveListener listener);
+	
+	void removeLeaveListener(LeaveListener listener);
+	
+	void addTeamSelectListener(TeamSelectListener listener);
+	
+	void removeTeamSelectListener(TeamSelectListener listener);
+	
+	void addTeamScoreListener(TeamScoreListener listener);
+	
+	void removeTeamScoreListener(TeamScoreListener listener);
 	
 	int getPlayersCount();
 	
@@ -54,7 +72,6 @@ public interface Game {
 	
 	
 	
-	
 	List<UUID> getUniquePlayerIds();
 	
 	Teams getTeams();
@@ -72,9 +89,5 @@ public interface Game {
 	void onTeamScored(String team);
 	
 	void removePlayers();
-	
-	void addTeamSelectListener(TeamSelectListener listener);
-	
-	void addGameListener(GameListener listener);
 	
 }
