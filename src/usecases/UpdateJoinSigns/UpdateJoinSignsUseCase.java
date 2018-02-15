@@ -22,7 +22,7 @@ public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
 		
 		findGame();
 		
-		if (game == null) {
+		if (gameNotFound()) {
 			return;
 		}
 		
@@ -43,6 +43,10 @@ public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
 	
 	private void findGame() {
 		this.game = gameGateway.findGameByName(request.getGame());
+	}
+	
+	private boolean gameNotFound() {
+		return game == null;
 	}
 	
 	private void setRequest(UpdateJoinSignsRequest request) {
