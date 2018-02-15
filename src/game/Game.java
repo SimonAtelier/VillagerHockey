@@ -62,11 +62,7 @@ public interface Game {
 	VillagerSpawner getVillagerSpawner();
 	
 	void selectLowestTeam(UUID player);
-	
-	boolean isCanMove();
-	
-	void setCanMove(boolean canMove);
-	
+		
 	Goal findGoalOfTeam(String team);
 	
 	void addGoal(Goal goal);

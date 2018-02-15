@@ -3,6 +3,7 @@ package usecases.PerformAction.Move;
 import java.util.UUID;
 
 import game.Game;
+import game.States.RespawnGameState;
 import gateways.GameGateway;
 
 public class MoveUseCase implements Move {
@@ -22,7 +23,7 @@ public class MoveUseCase implements Move {
 	
 	private boolean gameOfPlayerAllowsMove() {
 		Game game = gameGateway.getGameOfPlayer(player);
-		return game.isCanMove();
+		return game.getGameState().getClass() != RespawnGameState.class;
 	}
 
 	private boolean playerIsNotIngame() {

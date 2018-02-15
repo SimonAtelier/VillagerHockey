@@ -30,7 +30,6 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
 		initializeCountDown(game);
-		game.setCanMove(false);
 		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(game.getName());	
 		respawnCountDown.start();
 	}
@@ -39,7 +38,6 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
 		game.getVillagerSpawner().spawnVillager();
-		game.setCanMove(true);
 	}
 
 	@Override
