@@ -31,7 +31,7 @@ public class BaseGame extends AbstractGame {
 		goals = new ArrayList<Goal>();
 		teams = new Teams();
 		gameState = new StoppedGameState();
-		gameState.transitionToGameState(this, new WaitingGameState());
+//		gameState.transitionToGameState(this, new WaitingGameState());
 	}
 
 	@Override

@@ -36,4 +36,6 @@ public interface Permissions {
 	
 	static final String REMOVE_GAME = "setup";
 	
+	static final String START_GAME = "setup";
+	
 }
