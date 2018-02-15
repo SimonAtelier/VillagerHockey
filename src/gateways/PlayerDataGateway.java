@@ -6,8 +6,8 @@ import gateways.impl.GatewayException;
 
 public interface PlayerDataGateway {
 
-	public void save(UUID uniquePlayerId) throws GatewayException;
+	void save(UUID uniquePlayerId) throws GatewayException;
 	
-	public void load(UUID uniquePlayerId) throws GatewayException;
+	void load(UUID uniquePlayerId) throws GatewayException;
 	
 }
