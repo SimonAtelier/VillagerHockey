@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import entities.Team;
 import entities.TeamColor;
+import game.BaseGame;
 import game.Game;
 import game.Goal;
 import util.LocationConvert;
@@ -82,7 +83,7 @@ public class GamePersistanceYaml {
 	}
 
 	public Game loadGame(String name) throws GatewayException {
-		Game game = new Game("");
+		Game game = new BaseGame("");
 		File file = new File("plugins/VillagerHockey/games/" + name + ".yml");
 
 		try {

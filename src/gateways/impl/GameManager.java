@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import game.BaseGame;
 import game.Game;
 import game.VillagerSpawner;
 import gateways.Configuration;
@@ -86,7 +87,7 @@ public class GameManager implements GameGateway {
 
 	@Override
 	public boolean addGame(String name) {
-		Game game = new Game(name);
+		Game game = new BaseGame(name);
 		return addGame(game);
 	}
 

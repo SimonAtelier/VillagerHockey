@@ -9,7 +9,7 @@ import entities.Location;
 import game.Event.GameStateChangeListener;
 import game.States.GameState;
 
-public abstract class AbstractGame implements IGame {
+public abstract class AbstractGame implements Game {
 
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
@@ -110,6 +110,11 @@ public abstract class AbstractGame implements IGame {
 	@Override
 	public boolean isMaximumAmountOfPlayersReached() {
 		return getMaximumAmountOfPlayers() == getPlayersCount();
+	}
+	
+	@Override
+	public boolean canPlayerJoin(UUID player) {
+		return getGameState().canPlayerJoin(this, player);
 	}
 
 }

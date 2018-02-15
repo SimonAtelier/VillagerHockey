@@ -1,10 +1,10 @@
 package game.Event;
 
-import game.IGame;
+import game.Game;
 import game.States.GameState;
 
 public interface GameStateChangeListener {
 
-	public void onGameStateChanged(IGame game, GameState from, GameState to);
+	public void onGameStateChanged(Game game, GameState from, GameState to);
 	
 }
