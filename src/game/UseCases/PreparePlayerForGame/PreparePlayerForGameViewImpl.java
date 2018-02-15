@@ -25,7 +25,7 @@ public class PreparePlayerForGameViewImpl implements PreparePlayerForGameView {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
 		PlayerInventory inventory = player.getInventory();
 		
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 9; i++) {
 			inventory.clear(i);
 		}
 		
