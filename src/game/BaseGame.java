@@ -23,7 +23,6 @@ public class BaseGame extends AbstractGame {
 
 	private final Object PLAYERS_LOCK = new Object();
 
-	private boolean canPlayersMove;
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
 	private List<Goal> goals;
@@ -33,7 +32,6 @@ public class BaseGame extends AbstractGame {
 
 	public BaseGame(String name) {
 		super(name);
-		canPlayersMove = true;
 		villagerSpawner = new VillagerSpawner();
 		goals = new ArrayList<Goal>();
 		teams = new Teams();
@@ -149,14 +147,6 @@ public class BaseGame extends AbstractGame {
 
 	public Teams getTeams() {
 		return teams;
-	}
-
-	public boolean isCanMove() {
-		return canPlayersMove;
-	}
-
-	public void setCanMove(boolean canMove) {
-		this.canPlayersMove = canMove;
 	}
 	
 	public VillagerSpawner getVillagerSpawner() {
