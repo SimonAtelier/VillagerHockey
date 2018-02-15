@@ -6,23 +6,18 @@ import java.util.UUID;
 import entities.JoinSigns;
 import entities.Location;
 import entities.Teams;
-import game.Event.GameStateChangeListener;
 import game.Event.JoinListener;
 import game.Event.LeaveListener;
 import game.Event.TeamScoreListener;
 import game.Event.TeamSelectListener;
-import game.States.GameState;
+import game.States.GameStateContext;
 
-public interface Game {
+public interface Game extends GameStateContext {
 
 	void join(UUID player);
 	
 	void leave(UUID player);
-	
-	void addGameStateChangeListener(GameStateChangeListener listener);
-	
-	void removeGameStateChangeListener(GameStateChangeListener listener);
-	
+		
 	void addJoinListener(JoinListener listener);
 	
 	void removeJoinListener(JoinListener listener);
@@ -60,11 +55,7 @@ public interface Game {
 	void setLobby(Location lobby);
 
 	JoinSigns getJoinSigns();
-	
-	GameState getGameState();
-	
-	void setGameState(GameState gameState);
-	
+		
 	boolean isMaximumAmountOfPlayersReached();
 	
 	boolean canPlayerJoin(UUID player);
