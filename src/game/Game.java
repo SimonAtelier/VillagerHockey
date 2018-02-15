@@ -13,6 +13,10 @@ import game.States.GameState;
 
 public interface Game {
 
+	void join(UUID player);
+	
+	void leave(UUID player);
+	
 	void addGameStateChangeListener(GameStateChangeListener listener);
 	
 	void removeGameStateChangeListener(GameStateChangeListener listener);
@@ -47,11 +51,9 @@ public interface Game {
 	
 	boolean canPlayerJoin(UUID player);
 	
-
 	
-	void join(UUID player);
 	
-	void leave(UUID player);
+	
 	
 	List<UUID> getUniquePlayerIds();
 	
