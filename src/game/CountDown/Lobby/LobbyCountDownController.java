@@ -52,7 +52,6 @@ public class LobbyCountDownController implements CountDownListener {
 
 		if (timeLeftInSeconds == 2) {
 			Game game1 = Context.gameGateway.findGameByName(game);
-			game1.getVillagerSpawner().removeVillager();
 		}
 
 		if (shouldDisplayGameStartsInGivenSeconds(timeLeftInSeconds)) {

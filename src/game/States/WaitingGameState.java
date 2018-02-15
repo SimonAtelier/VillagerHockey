@@ -2,6 +2,7 @@ package game.States;
 
 import java.util.UUID;
 
+import context.Context;
 import game.Game;
 import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
@@ -15,6 +16,8 @@ import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
 import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobby;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobbyUseCase;
+import game.UseCases.RemoveVillagers.RemoveVillagers;
+import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
 import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
 import main.MainPlugin;
 
@@ -40,6 +43,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
+		removeVillagers(game.getName());
 		preparePlayersForGame(game);
 	}
 
@@ -57,6 +61,12 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		if (shouldStopCountDown(game)) {
 			lobbyCountdown.stop();
 		}
+	}
+	
+	private void removeVillagers(String game) {
+		RemoveVillagers removeVillagers = new RemoveVillagersUseCase();
+		removeVillagers.setGameGateway(Context.gameGateway);
+		removeVillagers.execute(game);
 	}
 	
 	private void preparePlayersForGame(Game game) {

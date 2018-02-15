@@ -1,11 +1,9 @@
 package game.UseCases.RemoveVillagers;
 
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Villager;
 
 import game.Game;
@@ -20,8 +18,7 @@ public class RemoveVillagersUseCase implements RemoveVillagers {
 		Game gameObject = gameGateway.findGameByName(game);
 		Location location = gameObject.getVillagerSpawner().getVillagerSpawnLocation();
 		World world = Bukkit.getServer().getWorld(location.getWorld().getName());
-		List<LivingEntity> entities = world.getLivingEntities();
-		for (LivingEntity entity : entities) {
+		for (Entity entity : world.getEntities()) {
 			if (entity instanceof Villager) {
 				entity.remove();
 			}

@@ -2,14 +2,11 @@ package game.States;
 
 import java.util.UUID;
 
-import context.Context;
 import game.Game;
 import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Game.GameCountDownController;
-import game.UseCases.RemoveVillagers.RemoveVillagers;
-import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
 import main.MainPlugin;
 import usecases.TeleportPlayersToLobby.TeleportPlayersToLobbyController;
 
@@ -24,19 +21,12 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 		gameCountDown.setCountDownListener(controller);
 	}
 
-	private void removeVillagers(String game) {
-		RemoveVillagers removeVillagers = new RemoveVillagersUseCase();
-		removeVillagers.setGameGateway(Context.gameGateway);
-		removeVillagers.execute(game);
-	}
-
 	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
 		if (gameCountDown != null) {
 			gameCountDown.resume();
 		} else {
-//			removeVillagers(game.getName());
 			initializeCountDown(game);
 			startCountDown();
 		}
@@ -45,7 +35,6 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void leaveGameState(Game game) {
 		if (gameCountDown != null && gameCountDown.isFinished()) {
-			game.getVillagerSpawner().removeVillager();
 			new TeleportPlayersToLobbyController().onTeleportPlayersToLobby(game.getName());
 		} else if (gameCountDown != null && !gameCountDown.isFinished()) {
 			gameCountDown.pause();
