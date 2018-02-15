@@ -11,8 +11,6 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
-import context.Context;
-import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import view.impl.HockeySticksViewImpl;
@@ -23,7 +21,6 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	public void execute(UUID uniquePlayerId) {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
 		PlayerInventory inventory = (PlayerInventory) player.getInventory();
-		saveAndClearInventory(player);
 		savePlayerData(player);
 		setPlayerLobbyData(player);
 //		addHockeySticks(player.getUniqueId());
@@ -59,14 +56,7 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	private void addHockeySticks(UUID uniquePlayerId) {
 		new HockeySticksViewImpl().displayHockeySticks(uniquePlayerId);
 	}
-	
-	private void saveAndClearInventory(Player player) {
-		UUID uniquePlayerId = player.getUniqueId();
-		InventoryGateway inventoryGateway = Context.inventoryGateway;
-		inventoryGateway.save(uniquePlayerId);
-		inventoryGateway.clearInventoryOfPlayer(uniquePlayerId);		
-	}
-	
+		
 	private void savePlayerData(Player player) {
 		PlayerDataGateway gateway = new PlayerDataGatewayYaml();
 		gateway.save(player.getUniqueId());

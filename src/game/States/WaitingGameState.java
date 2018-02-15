@@ -20,6 +20,7 @@ import game.UseCases.RemoveVillagers.RemoveVillagers;
 import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
 import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
 import main.MainPlugin;
+import usecases.SaveInventory.SaveInventoryController;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
 
@@ -49,6 +50,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void onPlayerJoin(Game game, UUID player) {
+		new SaveInventoryController().onSaveInventory(player, true);
 		preparePlayerForLobby(player);
 		teleportPlayerToLobby(player);
 		if (getPlayersToStart(game) <= 0) {
@@ -82,7 +84,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		}
 	}
 
-	private void preparePlayerForLobby(UUID player) {
+	private void preparePlayerForLobby(UUID player) {		
 		PreparePlayerForLobby useCase = new PreparePlayerForLobbyUseCase();
 		useCase.execute(player);
 	}
