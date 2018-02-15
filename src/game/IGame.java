@@ -1,5 +1,7 @@
 package game;
 
+import java.util.UUID;
+
 import entities.JoinSigns;
 import entities.Location;
 import game.Event.GameStateChangeListener;
@@ -38,5 +40,7 @@ public interface IGame {
 	void setGameState(GameState gameState);
 	
 	boolean isMaximumAmountOfPlayersReached();
+	
+	boolean canPlayerJoin(UUID player);
 	
 }

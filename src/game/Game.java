@@ -41,12 +41,13 @@ public class Game extends AbstractGame {
 		gameState.transitionToGameState(this, new WaitingGameState());
 	}
 
-	public boolean canJoin(UUID player) {
+	@Override
+	public boolean canPlayerJoin(UUID player) {
 		return gameState.canPlayerJoin(this, player);
 	}
 
 	public void join(UUID player) {
-		if (!canJoin(player))
+		if (!canPlayerJoin(player))
 			return;
 
 		if (addPlayer(player)) {

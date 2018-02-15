@@ -82,7 +82,7 @@ public class JoinGameUseCase implements JoinGame {
 	
 	private boolean gameNotAllowsJoin(UUID player) {
 		Game game = gameGateway.findGameByName(request.getGame());
-		return !game.canJoin(player);
+		return !game.canPlayerJoin(player);
 	}
 	
 	private String getPlayerName(UUID uniquePlayerId) {
