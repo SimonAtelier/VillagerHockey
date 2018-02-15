@@ -120,10 +120,6 @@ public class Game extends AbstractGame {
 		return players;
 	}
 
-	public void resetTeamScores() {
-		teams.resetTeamScores();
-	}
-
 	private void restoreInventory(UUID uniquePlayerId) {
 		InventoryGateway inventoryGateway = Context.inventoryGateway;
 		inventoryGateway.clearInventoryOfPlayer(uniquePlayerId);
@@ -167,17 +163,19 @@ public class Game extends AbstractGame {
 		this.canPlayersMove = canMove;
 	}
 	
-	@Override
-	public int getMaximumAmountOfPlayers() {
-		return getTeams().getMaximumAmountOfPlayers();
-	}
-
 	public VillagerSpawner getVillagerSpawner() {
 		return villagerSpawner;
 	}
 
 	public void setVillagerSpawnLocation(Location location) {
 		villagerSpawner.setVillagerSpawnLocation(location);
+	}
+	
+	// -------------------------------------------------------------------------------
+	
+	@Override
+	public int getMaximumAmountOfPlayers() {
+		return getTeams().getMaximumAmountOfPlayers();
 	}
 	
 	// -------------------------------------------------------------------------------
