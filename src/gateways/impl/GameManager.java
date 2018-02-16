@@ -106,6 +106,12 @@ public class GameManager implements GameGateway {
 			return true;
 		}
 	}
+	
+	private void removeGame(Game game) {
+		synchronized (GAMES_MAP_LOCK) {
+			games.remove(game.getName());
+		}
+	}
 
 	@Override
 	public Game findGameByName(String name) {
@@ -154,6 +160,7 @@ public class GameManager implements GameGateway {
 
 	@Override
 	public void deleteGame(String game) {
+		removeGame(findGameByName(game));
 		new GamePersistanceYaml().deleteGame(findGameByName(game));
 	}
 
