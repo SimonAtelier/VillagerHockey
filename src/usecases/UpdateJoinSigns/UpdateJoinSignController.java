@@ -16,6 +16,7 @@ public class UpdateJoinSignController implements JoinListener, LeaveListener, Ga
 	public UpdateJoinSignController(Game game) {
 		this.game = game;
 		enable();
+		updateJoinSigns(game);
 	}
 	
 	private void enable() {

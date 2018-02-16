@@ -93,7 +93,8 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void loadConfiguration() {
-		File file = new File("plugins/VillagerHockey/config.yml");
+//		File file = new File("plugins/VillagerHockey/config.yml");
+		File file = new File(getClass().getResource("/resources/config.yml").toString());
 		YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
 		configuration = new ConfigurationYaml(yamlConfiguration);
 		chatPrefix = configuration.getPrefix();

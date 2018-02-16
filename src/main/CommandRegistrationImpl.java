@@ -17,6 +17,7 @@ import usecases.SetPlayingTime.SetPlayingTimeCommand;
 import usecases.SetVillagerSpawn.SetVillagerSpawnCommand;
 import usecases.ShowHelp.ShowHelpCommand;
 import usecases.StartGame.StartGameCommand;
+import usecases.StopGame.StopGameCommand;
 
 public class CommandRegistrationImpl implements CommandRegistration {
 
@@ -38,6 +39,7 @@ public class CommandRegistrationImpl implements CommandRegistration {
 		commandGateway.registerCommand(new AddTeamCommand());
 		commandGateway.registerCommand(new RemoveGameCommand());
 		commandGateway.registerCommand(new StartGameCommand());
+		commandGateway.registerCommand(new StopGameCommand());
 	}
 
 }

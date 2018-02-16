@@ -38,4 +38,6 @@ public interface Permissions {
 	
 	static final String START_GAME = "setup";
 	
+	static final String STOP_GAME = "setup";
+	
 }
