@@ -1,9 +1,7 @@
-package main;
+package command;
 
-import gateways.CommandGateway;
+public interface CommandProvider {
 
-public interface CommandRegistration {
-
-	void registerCommands(CommandGateway commandGateway);
+	void registerCommands(CommandRegistration commandRegistration);
 	
 }

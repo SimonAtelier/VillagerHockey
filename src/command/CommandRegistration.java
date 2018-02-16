@@ -1,6 +1,4 @@
-package main;
-
-import command.Command;
+package command;
 
 public interface CommandRegistration {
 	

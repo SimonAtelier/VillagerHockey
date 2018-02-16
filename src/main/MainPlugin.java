@@ -107,7 +107,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void registerCommands() {
 		CommandGateway commandGateway = Context.commandGateway;
-		new CommandRegistrationImpl().registerCommands(commandGateway);
+		new CommandProviderImpl().registerCommands(commandGateway);
 		getCommand("vh").setExecutor(this);
 	}
 	
