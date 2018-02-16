@@ -42,6 +42,8 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void onCountDownFinished(Game game) {
+		if (game.getGameState().getClass() != RespawnGameState.class)
+			return;
 		transitionToGameState(game, gameState);
 	}
 
