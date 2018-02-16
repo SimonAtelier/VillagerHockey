@@ -1,6 +1,10 @@
 package main;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.util.UUID;
 
 import org.bukkit.command.Command;
@@ -49,7 +53,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	private static MainPlugin instance;
 	private GameManager gameManager;
 	private Configuration configuration;
-	
+
 	@Override
 	public void onLoad() {
 		sendConsoleMessage(PREFIX + "loading...");
@@ -75,29 +79,33 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		unloadGames();
 		sendConsoleMessage(PREFIX + "disabled.");
 	}
-	
+
 	private void createContext() {
 		Context.gameGateway = getGameManager();
 	}
-	
+
 	private void sendConsoleMessage(String message) {
 		System.out.println(message);
 	}
-	
+
 	private void loadGames() {
 		gameManager.loadGames();
 	}
-	
+
 	private void unloadGames() {
 		gameManager.unloadGames();
 	}
 
 	private void loadConfiguration() {
-//		File file = new File("plugins/VillagerHockey/config.yml");
-		File file = new File(getClass().getResource("/resources/config.yml").toString());
-		YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
-		configuration = new ConfigurationYaml(yamlConfiguration);
-		chatPrefix = configuration.getPrefix();
+		try {
+			InputStream inputStream = getClass().getResource("/resources/config.yml").openStream();
+			YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(new InputStreamReader(inputStream));
+			configuration = new ConfigurationYaml(yamlConfiguration);
+			chatPrefix = configuration.getPrefix();
+		} catch (IOException e) {
+			configuration = new ConfigurationYaml(new YamlConfiguration());
+			e.printStackTrace();
+		}
 	}
 
 	private void initializePlugin() {
@@ -110,7 +118,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		new CommandProviderImpl().registerCommands(commandGateway);
 		getCommand("vh").setExecutor(this);
 	}
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (!(sender instanceof Player))
@@ -119,10 +127,10 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 		ArgumentsWithLabel argumentsWithLabel = new ArgumentsWithLabel();
 		handlePlayerCommand(player.getUniqueId(), argumentsWithLabel.create(label, args));
-		
+
 		return true;
 	}
-	
+
 	public void handlePlayerCommand(UUID player, String[] arguments) {
 		ExecuteCommand useCase = new ExecuteCommandUseCase();
 		ExecuteCommandView view = new ExecuteCommandViewImpl(player);
@@ -150,7 +158,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		registerEventListener(new ShootPuckEventListener());
 		registerEventListener(new ReceiveDamageEventListener());
 	}
-	
+
 	private void registerEventListener(Listener listener) {
 		getServer().getPluginManager().registerEvents(listener, this);
 	}

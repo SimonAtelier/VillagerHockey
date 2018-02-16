@@ -25,15 +25,15 @@ public class ConfigurationYaml implements Configuration {
 
 	@Override
 	public int getLobbyTime() {
-		if (config.contains("lobbytime"))
-			return config.getInt("lobbytime");
-		return 5;
+		if (config.contains("lobby.time"))
+			return config.getInt("lobby.time");
+		return 60;
 	}
 
 	@Override
 	public int getLobbyGameMode() {
-		if (config.contains("lobbygamemode"))
-			return config.getInt("lobbygamemode");
+		if (config.contains("lobby.gamemode"))
+			return config.getInt("lobby.gamemode");
 		return 0;
 	}
 	
