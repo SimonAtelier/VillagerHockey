@@ -13,9 +13,12 @@ import game.Event.LeaveListener;
 import game.Event.TeamScoreListener;
 import game.Event.TeamSelectListener;
 import game.States.GameState;
+import game.States.StoppedGameState;
+import game.States.WaitingGameState;
 
 public abstract class AbstractGame implements Game {
 
+	private boolean started;
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
 	private String name;
@@ -32,6 +35,24 @@ public abstract class AbstractGame implements Game {
 		gameChangeSupport = new GameChangeSupport(this);
 	}
 	
+	@Override
+	public void start() {
+		if (started) {
+			return;
+		}
+		started = true;
+		getGameState().transitionToGameState(this, new WaitingGameState());
+	}
+
+	@Override
+	public void stop() {
+		if (!started) {
+			return;
+		}
+		getGameState().transitionToGameState(this, new StoppedGameState());
+		started = false;
+	}
+
 	@Override
 	public void addGameStateChangeListener(GameStateChangeListener listener) {
 		gameChangeSupport.addGameStateChangeListener(listener);
@@ -144,6 +165,9 @@ public abstract class AbstractGame implements Game {
 
 	@Override
 	public void setGameState(GameState gameState) {
+		if (!started) {
+			return;
+		}
 		GameState oldGameState = this.gameState;
 		this.gameState = gameState;
 		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);

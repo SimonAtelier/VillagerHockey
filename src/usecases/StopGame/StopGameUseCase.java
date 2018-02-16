@@ -55,7 +55,7 @@ public class StopGameUseCase implements StopGame {
 	
 	private void stop() {
 		Game game = gameGateway.findGameByName(request.getGame());
-		game.getGameState().transitionToGameState(game, new StoppedGameState());
+		game.stop();
 	}
 	
 	private boolean alreadyStopped() {

@@ -2,7 +2,6 @@ package usecases.StartGame;
 
 import game.Game;
 import game.States.StoppedGameState;
-import game.States.WaitingGameState;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -38,7 +37,7 @@ public class StartGameUseCase implements StartGame {
 	
 	private void start() {
 		Game game = gameGateway.findGameByName(request.getGame());
-		game.getGameState().transitionToGameState(game, new WaitingGameState());
+		game.start();
 	}
 	
 	private boolean noPermission() {

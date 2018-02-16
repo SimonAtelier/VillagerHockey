@@ -13,7 +13,11 @@ import game.Event.TeamSelectListener;
 import game.States.GameStateContext;
 
 public interface Game extends GameStateContext {
-
+	
+	void start();
+	
+	void stop();
+	
 	void join(UUID player);
 	
 	void leave(UUID player);
