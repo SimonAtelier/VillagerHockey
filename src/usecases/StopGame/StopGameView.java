@@ -1,5 +1,8 @@
 package usecases.StopGame;
 
+import java.util.List;
+import java.util.UUID;
+
 public interface StopGameView {
 
 	void displayNoPermission();
@@ -9,5 +12,7 @@ public interface StopGameView {
 	void displayAlreadyStopped(String game);
 	
 	void displaySuccessfullyStopped(String game);
+	
+	void displayStopping(List<UUID> viewers, String game);
 	
 }

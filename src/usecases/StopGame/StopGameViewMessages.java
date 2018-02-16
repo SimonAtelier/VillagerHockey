@@ -10,4 +10,6 @@ public interface StopGameViewMessages {
 	
 	static final String STOP_GAME_SUCCESSFULLY_STOPPED = "Das Spiel '$game$' wurde erfolgreich gestoppt.";
 	
+	static final String STOP_GAME_STOPPING = "Das Spiel '$game$' wurde durch einen Administrator gestoppt.";
+	
 }

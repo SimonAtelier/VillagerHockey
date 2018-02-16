@@ -1,5 +1,8 @@
 package usecases.StopGame;
 
+import java.util.List;
+import java.util.UUID;
+
 import usecases.StopGame.StopGame.StopGameResponse;
 
 public class StopGamePresenter implements StopGameResponse {
@@ -28,6 +31,11 @@ public class StopGamePresenter implements StopGameResponse {
 	@Override
 	public void onSuccessfullyStopped(String game) {
 		view.displaySuccessfullyStopped(game);
+	}
+
+	@Override
+	public void presentStopping(List<UUID> viewers, String game) {
+		view.displayStopping(viewers, game);
 	}
 
 }

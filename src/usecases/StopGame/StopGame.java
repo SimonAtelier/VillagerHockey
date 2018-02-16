@@ -1,5 +1,6 @@
 package usecases.StopGame;
 
+import java.util.List;
 import java.util.UUID;
 
 import gateways.GameGateway;
@@ -30,6 +31,8 @@ public interface StopGame {
 		void onAlreadyStopped(String game);
 		
 		void onSuccessfullyStopped(String game);
+		
+		void presentStopping(List<UUID> viewers, String game);
 		
 	}
 	
