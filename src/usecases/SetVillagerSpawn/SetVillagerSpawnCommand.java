@@ -3,10 +3,10 @@ package usecases.SetVillagerSpawn;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractCommand;
+import command.AbstractVillagerHockeyCommand;
 import usecases.SetVillagerSpawn.SetVillagerSpawn.SetVillagerSpawnResponse;
 
-public class SetVillagerSpawnCommand extends AbstractCommand {
+public class SetVillagerSpawnCommand extends AbstractVillagerHockeyCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

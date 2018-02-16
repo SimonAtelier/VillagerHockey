@@ -1,6 +1,6 @@
 package command;
 
-public abstract class AbstractCommand implements Command {
+public abstract class AbstractVillagerHockeyCommand implements Command {
 
 	@Override
 	public String getSyntax() {

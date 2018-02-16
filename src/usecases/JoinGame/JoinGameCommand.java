@@ -3,12 +3,12 @@ package usecases.JoinGame;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractCommand;
+import command.AbstractVillagerHockeyCommand;
 import context.Context;
 import usecases.JoinGame.JoinGame.JoinGameRequest;
 import usecases.JoinGame.JoinGame.JoinGameResponse;
 
-public class JoinGameCommand extends AbstractCommand {
+public class JoinGameCommand extends AbstractVillagerHockeyCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

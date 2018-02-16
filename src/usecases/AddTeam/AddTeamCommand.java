@@ -3,12 +3,12 @@ package usecases.AddTeam;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractCommand;
+import command.AbstractVillagerHockeyCommand;
 import context.Context;
 import usecases.AddTeam.AddTeam.AddTeamRequest;
 import usecases.AddTeam.AddTeam.AddTeamResponse;
 
-public class AddTeamCommand extends AbstractCommand {
+public class AddTeamCommand extends AbstractVillagerHockeyCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

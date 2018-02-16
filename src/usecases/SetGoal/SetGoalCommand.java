@@ -3,14 +3,14 @@ package usecases.SetGoal;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractCommand;
+import command.AbstractVillagerHockeyCommand;
 import context.Context;
 import entities.Location;
 import gateways.PlayerGateway;
 import usecases.SetGoal.SetGoal.SetGoalRequest;
 import usecases.SetGoal.SetGoal.SetGoalResponse;
 
-public class SetGoalCommand extends AbstractCommand {
+public class SetGoalCommand extends AbstractVillagerHockeyCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

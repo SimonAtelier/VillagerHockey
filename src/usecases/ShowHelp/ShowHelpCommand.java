@@ -3,11 +3,11 @@ package usecases.ShowHelp;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractCommand;
+import command.AbstractVillagerHockeyCommand;
 import context.Context;
 import usecases.ShowHelp.ShowHelp.ShowHelpResponse;
 
-public class ShowHelpCommand extends AbstractCommand {
+public class ShowHelpCommand extends AbstractVillagerHockeyCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

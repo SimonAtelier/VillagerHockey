@@ -3,11 +3,11 @@ package usecases.SetMinPlayers;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractCommand;
+import command.AbstractVillagerHockeyCommand;
 import context.Context;
 import usecases.SetMinPlayers.SetMinPlayers.SetMinPlayersResponse;
 
-public class SetMinPlayersCommand extends AbstractCommand {
+public class SetMinPlayersCommand extends AbstractVillagerHockeyCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {
