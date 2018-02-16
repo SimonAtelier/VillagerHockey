@@ -38,6 +38,7 @@ public class GameManager implements GameGateway {
 			Game game = repository.loadGame(name);
 			setupFromPluginConfiguration(game, MainPlugin.getInstance().getConfiguration());
 			addGame(game);
+			game.start();
 		}
 	}
 
