@@ -1,8 +1,8 @@
-package game.UseCases.PreparePlayerForGame;
+package usecases.PreparePlayerForGame;
 
 import java.util.UUID;
 
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
+import usecases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
 
 public class PreparePlayerForGamePresenter implements PreparePlayerForGameResponse {
 

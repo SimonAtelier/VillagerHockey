@@ -1,4 +1,4 @@
-package game.UseCases.PreparePlayerForGame;
+package usecases.PreparePlayerForGame;
 
 import java.util.UUID;
 

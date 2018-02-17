@@ -9,18 +9,18 @@ import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Lobby.LobbyCountDownController;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGame;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGamePresenter;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameUseCase;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameView;
-import game.UseCases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobby;
 import game.UseCases.PreparePlayerForLobby.PreparePlayerForLobbyUseCase;
 import game.UseCases.RemoveVillagers.RemoveVillagers;
 import game.UseCases.RemoveVillagers.RemoveVillagersUseCase;
 import game.UseCases.TeleportPlayerToLobby.TeleportPlayerToLobbyController;
 import main.MainPlugin;
+import usecases.PreparePlayerForGame.PreparePlayerForGame;
+import usecases.PreparePlayerForGame.PreparePlayerForGamePresenter;
+import usecases.PreparePlayerForGame.PreparePlayerForGameUseCase;
+import usecases.PreparePlayerForGame.PreparePlayerForGameView;
+import usecases.PreparePlayerForGame.PreparePlayerForGameViewImpl;
+import usecases.PreparePlayerForGame.PreparePlayerForGame.PreparePlayerForGameResponse;
 import usecases.SaveInventory.SaveInventoryController;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
