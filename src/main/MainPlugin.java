@@ -61,10 +61,10 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	@Override
 	public void onEnable() {
-		initializePlugin();
-		createOrUpdatePluginFolders();
 		loadConfiguration();
+		initializePlugin();
 		createContext();
+		createOrUpdatePluginFolders();
 		loadGames();
 		registerCommands();
 		createAndRegisterEventListeners();
@@ -76,9 +76,10 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void createContext() {
+		this.gameGateway = new GameGatewayImpl();
 		Context.permissionGateway = new PermissionGatewayAlwaysTrueMock();
 		Context.inventoryGateway = new InventoryGatewayYaml();
-		Context.gameGateway = new GameGatewayImpl();
+		Context.gameGateway = this.gameGateway;
 		Context.playerGateway = new PlayerGatewayImpl();
 		Context.messageView = new MessageViewImpl();
 		Context.commandGateway = new CommandGatewayImpl();
