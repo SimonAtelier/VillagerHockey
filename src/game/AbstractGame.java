@@ -18,6 +18,8 @@ import game.States.WaitingGameState;
 
 public abstract class AbstractGame implements Game {
 
+	protected final Object PLAYERS_LOCK = new Object();
+	
 	private boolean started;
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
@@ -186,6 +188,17 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public boolean canPlayerJoin(UUID player) {
 		return getGameState().canPlayerJoin(this, player);
+	}
+	
+	@Override
+	public List<UUID> getUniquePlayerIds() {
+		List<UUID> players = new ArrayList<UUID>();
+		synchronized (PLAYERS_LOCK) {
+			for (UUID player : this.players) {
+				players.add(player);
+			}
+		}
+		return players;
 	}
 
 }

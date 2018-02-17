@@ -16,7 +16,7 @@ import view.impl.ScoreView;
 
 public class BaseGame extends AbstractGame {
 
-	private final Object PLAYERS_LOCK = new Object();
+
 
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
@@ -94,17 +94,6 @@ public class BaseGame extends AbstractGame {
 		}
 	}
 	
-	@Override
-	public List<UUID> getUniquePlayerIds() {
-		List<UUID> players = new ArrayList<UUID>();
-		synchronized (PLAYERS_LOCK) {
-			for (UUID player : this.players) {
-				players.add(player);
-			}
-		}
-		return players;
-	}
-
 	private void restoreInventory(UUID player) {
 		new LoadInventoryController().onLoadInventory(player);
 	}
