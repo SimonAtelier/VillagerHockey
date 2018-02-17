@@ -3,10 +3,10 @@ package usecases.ExecuteCommand;
 import java.util.List;
 import java.util.UUID;
 
-import command.Command;
+import entities.Command.Command;
 import gateways.CommandGateway;
 
-public class ExecuteCommandUseCase implements ExecuteCommand {
+public class ExecuteCommandUseCase implements ExecuteCommand, RootCommandLabel {
 
 	private CommandGateway commandGateway;
 	
@@ -20,16 +20,20 @@ public class ExecuteCommandUseCase implements ExecuteCommand {
 		}
 		
 		if (command.getArgumentLabels().length < arguments.size()) {
-			response.onToManyArguments(name, command.getSyntax());
+			response.onToManyArguments(name, createSyntax(command));
 			return;
 		}
 		
 		if (command.getArgumentLabels().length > arguments.size()) {
-			response.onMissingArguments(name, command.getSyntax());
+			response.onMissingArguments(name, createSyntax(command));
 			return;
 		}
 		
 		command.execute(player, arguments);
+	}
+	
+	private String createSyntax(Command command) {
+		return "/" + ROOT_COMMAND_LABEL + " " + command.getSyntax();
 	}
 
 	@Override

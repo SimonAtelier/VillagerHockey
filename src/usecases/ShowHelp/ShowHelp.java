@@ -3,7 +3,7 @@ package usecases.ShowHelp;
 import java.util.List;
 import java.util.UUID;
 
-import command.Command;
+import entities.Command.Command;
 import gateways.CommandGateway;
 import gateways.PermissionGateway;
 

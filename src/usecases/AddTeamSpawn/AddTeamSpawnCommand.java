@@ -3,13 +3,13 @@ package usecases.AddTeamSpawn;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
 import entities.Location;
+import entities.Command.AbstractCommand;
 import usecases.AddTeamSpawn.AddTeamSpawn.AddTeamSpawnRequest;
 import usecases.AddTeamSpawn.AddTeamSpawn.AddTeamSpawnResponse;
 
-public class AddTeamSpawnCommand extends AbstractVillagerHockeyCommand {
+public class AddTeamSpawnCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

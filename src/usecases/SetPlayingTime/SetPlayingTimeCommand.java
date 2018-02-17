@@ -3,12 +3,12 @@ package usecases.SetPlayingTime;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
+import entities.Command.AbstractCommand;
 import usecases.SetPlayingTime.SetPlayingTime.SetPlayingTimeRequest;
 import usecases.SetPlayingTime.SetPlayingTime.SetPlayingTimeResponse;
 
-public class SetPlayingTimeCommand extends AbstractVillagerHockeyCommand {
+public class SetPlayingTimeCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

@@ -3,11 +3,11 @@ package usecases.LeaveGame;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
+import entities.Command.AbstractCommand;
 import usecases.LeaveGame.LeaveGame.LeaveGameResponse;
 
-public class LeaveGameCommand extends AbstractVillagerHockeyCommand {
+public class LeaveGameCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

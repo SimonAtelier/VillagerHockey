@@ -1,11 +1,10 @@
-package command;
+package entities.Command;
 
-public abstract class AbstractVillagerHockeyCommand implements Command {
+public abstract class AbstractCommand implements Command {
 
 	@Override
 	public String getSyntax() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("/vh ");
 		buffer.append(getName());
 		for (String arg : getArgumentLabels()) {
 			buffer.append(" {");

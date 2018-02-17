@@ -1,4 +1,4 @@
-package command;
+package entities.Command;
 
 public interface CommandRegistration {
 	

@@ -14,8 +14,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import command.ArgumentsWithLabel;
 import context.Context;
+import entities.Command.ArgumentsWithLabel;
 import gateways.CommandGateway;
 import gateways.Configuration;
 import gateways.impl.ConfigurationYaml;

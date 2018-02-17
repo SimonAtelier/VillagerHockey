@@ -2,8 +2,8 @@ package gateways;
 
 import java.util.List;
 
-import command.Command;
-import command.CommandRegistration;
+import entities.Command.Command;
+import entities.Command.CommandRegistration;
 
 public interface CommandGateway extends CommandRegistration {
 

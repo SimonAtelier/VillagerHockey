@@ -3,12 +3,12 @@ package usecases.KickPlayer;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
+import entities.Command.AbstractCommand;
 import usecases.KickPlayer.KickPlayer.KickPlayerRequest;
 import usecases.KickPlayer.KickPlayer.KickPlayerResponse;
 
-public class KickPlayerCommand extends AbstractVillagerHockeyCommand {
+public class KickPlayerCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

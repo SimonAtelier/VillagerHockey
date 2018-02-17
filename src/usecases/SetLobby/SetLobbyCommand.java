@@ -3,11 +3,11 @@ package usecases.SetLobby;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
+import entities.Command.AbstractCommand;
 import usecases.SetLobby.SetLobby.SetLobbyResponse;
 
-public class SetLobbyCommand extends AbstractVillagerHockeyCommand {
+public class SetLobbyCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

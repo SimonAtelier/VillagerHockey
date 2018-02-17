@@ -1,7 +1,7 @@
 package main;
 
-import command.CommandProvider;
-import command.CommandRegistration;
+import entities.Command.CommandProvider;
+import entities.Command.CommandRegistration;
 import usecases.AddGame.AddGameCommand;
 import usecases.AddTeam.AddTeamCommand;
 import usecases.AddTeamSpawn.AddTeamSpawnCommand;

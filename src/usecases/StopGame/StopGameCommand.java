@@ -3,12 +3,12 @@ package usecases.StopGame;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
+import entities.Command.AbstractCommand;
 import usecases.StopGame.StopGame.StopGameRequest;
 import usecases.StopGame.StopGame.StopGameResponse;
 
-public class StopGameCommand extends AbstractVillagerHockeyCommand {
+public class StopGameCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {

@@ -2,7 +2,7 @@ package usecases.ShowHelp;
 
 import java.util.List;
 
-import command.Command;
+import entities.Command.Command;
 import usecases.ShowHelp.ShowHelp.ShowHelpResponse;
 
 public class ShowHelpPresenter implements ShowHelpResponse {

@@ -3,11 +3,11 @@ package usecases.SaveGame;
 import java.util.List;
 import java.util.UUID;
 
-import command.AbstractVillagerHockeyCommand;
 import context.Context;
+import entities.Command.AbstractCommand;
 import usecases.SaveGame.SaveGame.SaveGameResponse;
 
-public class SaveGameCommand extends AbstractVillagerHockeyCommand {
+public class SaveGameCommand extends AbstractCommand {
 
 	@Override
 	public void execute(UUID player, List<String> arguments) {
