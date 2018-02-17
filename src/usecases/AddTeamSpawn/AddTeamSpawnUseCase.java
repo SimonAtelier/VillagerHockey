@@ -13,48 +13,48 @@ public class AddTeamSpawnUseCase implements AddTeamSpawn {
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
 	private TeamSpawnsGateway teamSpawnsGateway;
-	
+
 	@Override
 	public void execute(AddTeamSpawnRequest request, AddTeamSpawnResponse response) {
 		setRequest(request);
-		
-		if (noPermission()){
+
+		if (noPermission()) {
 			response.onNoPermission();
 			return;
 		}
-		
+
 		if (noSuchGame()) {
 			response.onNoSuchGame();
 			return;
 		}
-		
+
 		if (noSuchTeam()) {
 			response.onNoSuchTeam();
 			return;
 		}
-				
+
 		addTeamSpawn();
 		response.onTeamSpawnSuccessfullyAdd(request.getTeam());
 	}
-	
+
 	private boolean noSuchTeam() {
 		Game game = gameGateway.findGameByName(request.getGame());
 		return !game.getTeams().containsTeamWithName(request.getTeam());
 	}
-	
+
 	private boolean noSuchGame() {
 		return !gameGateway.containsGame(request.getGame());
 	}
-	
+
 	private boolean noPermission() {
 		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.ADD_TEAM_SPAWN);
 	}
-	
+
 	private void addTeamSpawn() {
 		Location location = createLocationFromRequest(request);
 		teamSpawnsGateway.addTeamSpawn(request.getGame(), request.getTeam(), location);
 	}
-	
+
 	private Location createLocationFromRequest(AddTeamSpawnRequest request) {
 		Location location = new Location();
 		location.setX(request.getX());
@@ -65,7 +65,7 @@ public class AddTeamSpawnUseCase implements AddTeamSpawn {
 		location.setWorld(request.getWorld());
 		return location;
 	}
-	
+
 	private void setRequest(AddTeamSpawnRequest request) {
 		this.request = request;
 	}
@@ -84,5 +84,5 @@ public class AddTeamSpawnUseCase implements AddTeamSpawn {
 	public void setTeamSpawnsGateway(TeamSpawnsGateway teamSpawnsGateway) {
 		this.teamSpawnsGateway = teamSpawnsGateway;
 	}
-	
+
 }
