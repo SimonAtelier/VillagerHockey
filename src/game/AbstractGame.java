@@ -18,7 +18,7 @@ import game.States.WaitingGameState;
 
 public abstract class AbstractGame implements Game {
 
-	protected final Object PLAYERS_LOCK = new Object();
+	private final Object PLAYERS_LOCK = new Object();
 	
 	private boolean started;
 	private int minimumPlayersToStart;
@@ -37,6 +37,28 @@ public abstract class AbstractGame implements Game {
 		gameChangeSupport = new GameChangeSupport(this);
 	}
 	
+	protected boolean addPlayer(UUID player) {
+		synchronized (PLAYERS_LOCK) {
+			if (player == null)
+				return false;
+			if (players.contains(player))
+				return false;
+			players.add(player);
+			return true;
+		}
+	}
+
+	protected boolean removePlayer(UUID player) {
+		synchronized (PLAYERS_LOCK) {
+			if (player == null)
+				return false;
+			if (!players.contains(player))
+				return false;
+			players.remove(player);
+			return true;
+		}
+	}
+	
 	@Override
 	public void start() {
 		if (started) {
@@ -53,6 +75,13 @@ public abstract class AbstractGame implements Game {
 		}
 		getGameState().transitionToGameState(this, new StoppedGameState());
 		started = false;
+	}
+	
+	@Override
+	public void leaveAll() {
+		for (UUID player : getUniquePlayerIds()) {
+			leave(player);
+		}
 	}
 
 	@Override

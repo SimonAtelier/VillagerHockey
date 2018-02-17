@@ -16,12 +16,10 @@ import view.impl.ScoreView;
 
 public class BaseGame extends AbstractGame {
 
-
-
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
 	private List<Goal> goals;
-	
+
 	public BaseGame(String name) {
 		super(name);
 		villagerSpawner = new VillagerSpawner();
@@ -39,41 +37,22 @@ public class BaseGame extends AbstractGame {
 			gameChangeSupport.firePlayerJoin(player);
 		}
 	}
-	
+
 	@Override
 	public void leave(UUID player) {
 		removePlayer(player);
+		removePlayerFromTeam(player);
+		restoreInventory(player);
+		restorePlayerData(player);
+		new ScoreView().hide(player);
 		gameState.onPlayerLeave(this, player);
 		gameChangeSupport.firePlayerLeave(player);
 	}
 
-	private boolean addPlayer(UUID player) {
-		synchronized (PLAYERS_LOCK) {
-			if (player == null)
-				return false;
-			if (players.contains(player))
-				return false;
-			players.add(player);
-			return true;
-		}
-	}
-
-	private boolean removePlayer(UUID player) {
-		synchronized (PLAYERS_LOCK) {
-			if (player == null)
-				return false;
-			players.remove(player);
-			Team team = teams.findTeamOfPlayer(player);
-			if (team != null)
-				team.removePlayer(player);
-
-			restoreInventory(player);
-			restorePlayerData(player);
-
-			new ScoreView().hide(player);
-
-			return true;
-		}
+	private void removePlayerFromTeam(UUID player) {
+		Team team = teams.findTeamOfPlayer(player);
+		if (team != null)
+			team.removePlayer(player);
 	}
 
 	public void selectLowestTeam(UUID player) {
@@ -88,12 +67,6 @@ public class BaseGame extends AbstractGame {
 		warmUp();
 	}
 
-	public void removePlayers() {
-		for (UUID player : getUniquePlayerIds()) {
-			removePlayer(player);
-		}
-	}
-	
 	private void restoreInventory(UUID player) {
 		new LoadInventoryController().onLoadInventory(player);
 	}
@@ -126,7 +99,7 @@ public class BaseGame extends AbstractGame {
 	public Teams getTeams() {
 		return teams;
 	}
-	
+
 	public VillagerSpawner getVillagerSpawner() {
 		return villagerSpawner;
 	}

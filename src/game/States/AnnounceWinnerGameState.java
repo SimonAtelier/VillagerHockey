@@ -26,7 +26,7 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
-		game.removePlayers();
+		game.leaveAll();
 		game.getTeams().resetTeamScores();
 	}
 

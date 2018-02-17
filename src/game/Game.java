@@ -21,6 +21,8 @@ public interface Game extends GameStateContext {
 	void join(UUID player);
 	
 	void leave(UUID player);
+	
+	void leaveAll();
 		
 	void addJoinListener(JoinListener listener);
 	
@@ -65,11 +67,11 @@ public interface Game extends GameStateContext {
 	boolean isMaximumAmountOfPlayersReached();
 	
 	boolean canPlayerJoin(UUID player);
-	
-	
-	
-	
+		
 	List<UUID> getUniquePlayerIds();
+	
+	
+	
 	
 	Teams getTeams();
 	
@@ -84,7 +86,5 @@ public interface Game extends GameStateContext {
 	void setVillagerSpawnLocation(Location location);
 	
 	void onTeamScored(String team);
-	
-	void removePlayers();
 	
 }
