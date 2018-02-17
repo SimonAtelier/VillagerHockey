@@ -18,8 +18,14 @@ import context.Context;
 import entities.Command.ArgumentsWithLabel;
 import gateways.CommandGateway;
 import gateways.Configuration;
+import gateways.impl.CommandGatewayImpl;
 import gateways.impl.ConfigurationYaml;
 import gateways.impl.GameGatewayImpl;
+import gateways.impl.InventoryGatewayYaml;
+import gateways.impl.PermissionGatewayAlwaysTrueMock;
+import gateways.impl.PlayerGatewayImpl;
+import gateways.impl.SignGatewayImpl;
+import gateways.impl.TeamSpawnGatewayImpl;
 import usecases.ExecuteCommand.ExecuteCommand;
 import usecases.ExecuteCommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.ExecuteCommand.ExecuteCommandController;
@@ -43,6 +49,7 @@ import usecases.PerformAction.Quit.QuitEventListener;
 import usecases.PerformAction.ReceiveDamage.ReceiveDamageEventListener;
 import usecases.PerformAction.ShootPuck.ShootPuckEventListener;
 import usecases.SelectTeam.ShowTeamsEventListener;
+import view.impl.MessageViewImpl;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
@@ -69,7 +76,14 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void createContext() {
-		Context.gameGateway = getGameGateway();
+		Context.permissionGateway = new PermissionGatewayAlwaysTrueMock();
+		Context.inventoryGateway = new InventoryGatewayYaml();
+		Context.gameGateway = new GameGatewayImpl();
+		Context.playerGateway = new PlayerGatewayImpl();
+		Context.messageView = new MessageViewImpl();
+		Context.commandGateway = new CommandGatewayImpl();
+		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
+		Context.signGateway = new SignGatewayImpl();
 	}
 
 	private void loadGames() {

@@ -7,31 +7,24 @@ import gateways.PermissionGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
 import gateways.TeamSpawnsGateway;
-import gateways.impl.CommandGatewayImpl;
-import gateways.impl.InventoryGatewayYaml;
-import gateways.impl.PermissionGatewayAlwaysTrueMock;
-import gateways.impl.PlayerGatewayImpl;
-import gateways.impl.SignGatewayImpl;
-import gateways.impl.TeamSpawnGatewayImpl;
 import view.MessageView;
-import view.impl.MessageViewImpl;
 
 public class Context {
 
-	public static PermissionGateway permissionGateway = new PermissionGatewayAlwaysTrueMock();
+	public static PermissionGateway permissionGateway;
 	
-	public static InventoryGateway inventoryGateway = new InventoryGatewayYaml();
+	public static InventoryGateway inventoryGateway;
 	
 	public static GameGateway gameGateway;
 	
-	public static PlayerGateway playerGateway = new PlayerGatewayImpl();
+	public static PlayerGateway playerGateway;
 	
-	public static MessageView messageView = new MessageViewImpl();
+	public static MessageView messageView;
 	
-	public static CommandGateway commandGateway = new CommandGatewayImpl();
+	public static CommandGateway commandGateway;
 	
-	public static TeamSpawnsGateway teamSpawnsGateway = new TeamSpawnGatewayImpl();
+	public static TeamSpawnsGateway teamSpawnsGateway;
 	
-	public static SignGateway signGateway = new SignGatewayImpl();
+	public static SignGateway signGateway;
 	
 }
