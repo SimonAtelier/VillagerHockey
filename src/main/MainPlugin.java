@@ -46,7 +46,6 @@ import usecases.SelectTeam.ShowTeamsEventListener;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
-	private static final String PREFIX = "[VillagerHockey] ";
 	public static String chatPrefix = "";
 
 	private static MainPlugin instance;
@@ -54,14 +53,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	private Configuration configuration;
 
 	@Override
-	public void onLoad() {
-		sendConsoleMessage(PREFIX + "loading...");
-		sendConsoleMessage(PREFIX + "loaded.");
-	}
-
-	@Override
 	public void onEnable() {
-		sendConsoleMessage(PREFIX + "enabling...");
 		initializePlugin();
 		createOrUpdatePluginFolders();
 		loadConfiguration();
@@ -69,22 +61,15 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		loadGames();
 		registerCommands();
 		createAndRegisterEventListeners();
-		sendConsoleMessage(PREFIX + "enabled.");
 	}
 
 	@Override
 	public void onDisable() {
-		sendConsoleMessage(PREFIX + "disabling...");
 		unloadGames();
-		sendConsoleMessage(PREFIX + "disabled.");
 	}
 
 	private void createContext() {
 		Context.gameGateway = getGameGateway();
-	}
-
-	private void sendConsoleMessage(String message) {
-		System.out.println(message);
 	}
 
 	private void loadGames() {
