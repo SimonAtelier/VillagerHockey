@@ -33,11 +33,7 @@ public class LobbyCountDownController implements CountDownListener {
 	public void onStop(String game, int timeLeftInSeconds) {
 		Game game1 = Context.gameGateway.findGameByName(game);
 		List<UUID> players = getPlayers(game);
-
-//		game1.setGameState(new RunningGameState());
-		onCountDownFinished.onCountDownFinished(game1);
-//		game1.warmUp();
-		
+		onCountDownFinished.onCountDownFinished(game1);		
 		view.displayGameStarts(players);
 		view.displayCountDownTimeInSeconds(players, 0);
 	}
@@ -48,10 +44,6 @@ public class LobbyCountDownController implements CountDownListener {
 
 		if (shouldDisplayMapTitle(timeLeftInSeconds)) {
 			view.displayMapTitle(players, "VillagerHockey", game, 2);
-		}
-
-		if (timeLeftInSeconds == 2) {
-			Game game1 = Context.gameGateway.findGameByName(game);
 		}
 
 		if (shouldDisplayGameStartsInGivenSeconds(timeLeftInSeconds)) {
