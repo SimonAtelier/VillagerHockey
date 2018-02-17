@@ -12,6 +12,8 @@ import gateways.PlayerGateway;
 
 public class JoinTeamUseCase implements JoinTeam {
 
+	private Game game;
+	private Team team;
 	private JoinTeamRequest request;
 	private PermissionGateway permissionGateway;
 	private PlayerGateway playerGateway;
@@ -31,10 +33,14 @@ public class JoinTeamUseCase implements JoinTeam {
 			return;
 		}
 		
+		initializeGame();
+		
 		if (noSuchTeam()) {
 			response.onNoSuchTeam(request.getTeam());
 			return;
 		}
+		
+		initializeTeam();
 		
 		if (playerAlreadyJoinedATeam()) {
 			response.onAlreadyJoinedATeam();
@@ -52,14 +58,19 @@ public class JoinTeamUseCase implements JoinTeam {
 		response.presentTeamJoined(getPlayers(), getNameOfPlayer(), request.getTeam());
 	}
 	
+	private void initializeGame() {
+		game = gameGateway.findGameByName(request.getGame());
+	}
+	
+	private void initializeTeam() {
+		team = game.getTeams().findTeamByName(request.getTeam());
+	}
+	
 	private boolean playerAlreadyJoinedATeam() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		return game.getTeams().findTeamOfPlayer(request.getPlayer()) != null;
 	}
 	
 	private boolean teamIsAlreadyFull() {
-		Game game = gameGateway.findGameByName(request.getGame());
-		Team team = game.getTeams().findTeamByName(request.getTeam());
 		return team.getMaximumSize() == team.size();
 	}
 	
@@ -68,14 +79,10 @@ public class JoinTeamUseCase implements JoinTeam {
 	}
 	
 	private int getTeamColor() {
-		Game game = gameGateway.findGameByName(request.getGame());
-		Team team = game.getTeams().findTeamByName(request.getTeam());
 		return team.getColor().getRGB();
 	}
 	
 	private void joinTeam() {
-		Game game = gameGateway.findGameByName(request.getGame());
-		Team team = game.getTeams().findTeamByName(request.getTeam());
 		team.addPlayer(request.getPlayer());
 	}
 	
@@ -84,7 +91,6 @@ public class JoinTeamUseCase implements JoinTeam {
 	}
 	
 	private boolean noSuchTeam() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		return !game.getTeams().containsTeamWithName(request.getTeam());
 	}
 	
@@ -93,7 +99,6 @@ public class JoinTeamUseCase implements JoinTeam {
 	}
 	
 	private List<UUID> getPlayers() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		return game.getUniquePlayerIds();
 	}
 	
