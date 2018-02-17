@@ -102,6 +102,11 @@ public abstract class AbstractGame implements Game {
 	public void removeTeamScoreListener(TeamScoreListener listener) {
 		gameChangeSupport.removeTeamScoreListener(listener);
 	}
+	
+	@Override
+	public boolean isStarted() {
+		return started;
+	}
 
 	@Override
 	public int getMinimumPlayersToStart() {

@@ -3,7 +3,6 @@ package usecases.StopGame;
 import java.util.UUID;
 
 import game.Game;
-import game.States.StoppedGameState;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -60,7 +59,7 @@ public class StopGameUseCase implements StopGame {
 	
 	private boolean alreadyStopped() {
 		Game game = gameGateway.findGameByName(request.getGame());
-		return game.getGameState().getClass() == StoppedGameState.class;
+		return !game.isStarted();
 	}
 	
 	private boolean noSuchGame() {

@@ -38,6 +38,8 @@ public interface Game extends GameStateContext {
 	
 	void removeTeamScoreListener(TeamScoreListener listener);
 	
+	boolean isStarted();
+	
 	int getPlayersCount();
 	
 	String getName();
