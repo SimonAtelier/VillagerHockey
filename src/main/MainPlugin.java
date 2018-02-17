@@ -19,7 +19,7 @@ import context.Context;
 import gateways.CommandGateway;
 import gateways.Configuration;
 import gateways.impl.ConfigurationYaml;
-import gateways.impl.GameManager;
+import gateways.impl.GameGatewayImpl;
 import usecases.ExecuteCommand.ExecuteCommand;
 import usecases.ExecuteCommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.ExecuteCommand.ExecuteCommandController;
@@ -50,7 +50,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	public static String chatPrefix = "";
 
 	private static MainPlugin instance;
-	private GameManager gameManager;
+	private GameGatewayImpl gameGateway;
 	private Configuration configuration;
 
 	@Override
@@ -80,7 +80,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void createContext() {
-		Context.gameGateway = getGameManager();
+		Context.gameGateway = getGameGateway();
 	}
 
 	private void sendConsoleMessage(String message) {
@@ -88,11 +88,11 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void loadGames() {
-		gameManager.loadGames(configuration);
+		gameGateway.loadGames(configuration);
 	}
 
 	private void unloadGames() {
-		gameManager.unloadGames();
+		gameGateway.unloadGames();
 	}
 
 	private void loadConfiguration() {
@@ -109,7 +109,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void initializePlugin() {
 		instance = this;
-		gameManager = new GameManager();
+		gameGateway = new GameGatewayImpl();
 	}
 
 	private void registerCommands() {
@@ -173,8 +173,8 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		}
 	}
 
-	public GameManager getGameManager() {
-		return gameManager;
+	public GameGatewayImpl getGameGateway() {
+		return gameGateway;
 	}
 	
 	public Configuration getConfiguration() {

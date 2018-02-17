@@ -15,13 +15,13 @@ import usecases.DisplayTeamScored.ScoreEventListener;
 import usecases.JoinTeam.JoinTeamController;
 import usecases.UpdateJoinSigns.UpdateJoinSignController;
 
-public class GameManager implements GameGateway {
+public class GameGatewayImpl implements GameGateway {
 
 	private final Object GAMES_MAP_LOCK = new Object();
 
 	private HashMap<String, Game> games;
 
-	public GameManager() {
+	public GameGatewayImpl() {
 		games = new HashMap<String, Game>();
 	}
 
