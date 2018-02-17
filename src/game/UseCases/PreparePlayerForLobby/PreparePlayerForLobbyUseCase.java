@@ -13,7 +13,6 @@ import org.bukkit.potion.PotionEffect;
 
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
-import view.impl.HockeySticksViewImpl;
 
 public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 
@@ -23,9 +22,8 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 		PlayerInventory inventory = (PlayerInventory) player.getInventory();
 		savePlayerData(player);
 		setPlayerLobbyData(player);
-//		addHockeySticks(player.getUniqueId());
 		addTeamSelectItem(inventory);
-//		addAchievementsItem(inventory);
+		addAchievementsItem(inventory);
 	}
 	
 	private void addTeamSelectItem(PlayerInventory inventory) {
@@ -53,10 +51,6 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 		removeAllPotionEffects(player);
 	}
 	
-	private void addHockeySticks(UUID uniquePlayerId) {
-		new HockeySticksViewImpl().displayHockeySticks(uniquePlayerId);
-	}
-		
 	private void savePlayerData(Player player) {
 		PlayerDataGateway gateway = new PlayerDataGatewayYaml();
 		gateway.save(player.getUniqueId());
