@@ -9,6 +9,7 @@ import gateways.Permissions;
 
 public class StopGameUseCase implements StopGame {
 
+	private Game game;
 	private StopGameRequest request;
 	private StopGameResponse response;
 	private GameGateway gameGateway;
@@ -29,6 +30,8 @@ public class StopGameUseCase implements StopGame {
 			return;
 		}
 		
+		initializeGame();
+		
 		if (alreadyStopped()) {
 			response.onAlreadyStopped(request.getGame());
 			return;
@@ -40,25 +43,25 @@ public class StopGameUseCase implements StopGame {
 		response.onSuccessfullyStopped(request.getGame());
 	}
 	
+	private void initializeGame() {
+		game = gameGateway.findGameByName(request.getGame());
+	}
+	
 	private void notifyPlayers() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		response.presentStopping(game.getUniquePlayerIds(), request.getGame());
 	}
 	
 	private void leaveAll() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		for (UUID player : game.getUniquePlayerIds()) {
 			game.leave(player);
 		}
 	}
 	
 	private void stop() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		game.stop();
 	}
 	
 	private boolean alreadyStopped() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		return !game.isStarted();
 	}
 	
