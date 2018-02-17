@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import context.Context;
 import entities.Location;
 import entities.Team;
 import entities.Teams;
 import game.States.RespawnGameState;
 import game.States.StoppedGameState;
-import gateways.InventoryGateway;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import main.MainPlugin;
+import usecases.LoadInventory.LoadInventoryController;
 import view.impl.ScoreView;
 
 public class BaseGame extends AbstractGame {
@@ -30,7 +29,6 @@ public class BaseGame extends AbstractGame {
 		goals = new ArrayList<Goal>();
 		teams = new Teams();
 		gameState = new StoppedGameState();
-//		gameState.transitionToGameState(this, new WaitingGameState());
 	}
 
 	@Override
@@ -110,10 +108,8 @@ public class BaseGame extends AbstractGame {
 		return players;
 	}
 
-	private void restoreInventory(UUID uniquePlayerId) {
-		InventoryGateway inventoryGateway = Context.inventoryGateway;
-		inventoryGateway.clearInventoryOfPlayer(uniquePlayerId);
-		inventoryGateway.load(uniquePlayerId);
+	private void restoreInventory(UUID player) {
+		new LoadInventoryController().onLoadInventory(player);
 	}
 
 	private void restorePlayerData(UUID player) {
