@@ -79,6 +79,23 @@ public abstract class AbstractGame implements Game {
 	}
 	
 	@Override
+	public void join(UUID player) {
+		if (!canPlayerJoin(player))
+			return;
+		if (addPlayer(player)) {
+			getGameState().onPlayerJoin(this, player);
+			gameChangeSupport.firePlayerJoin(player);
+		}
+	}
+
+	@Override
+	public void leave(UUID player) {
+		removePlayer(player);
+		getGameState().onPlayerLeave(this, player);
+		gameChangeSupport.firePlayerLeave(player);
+	}
+	
+	@Override
 	public void leaveAll() {
 		for (UUID player : getUniquePlayerIds()) {
 			leave(player);

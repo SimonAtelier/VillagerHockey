@@ -7,13 +7,14 @@ import java.util.UUID;
 import entities.Location;
 import entities.Team;
 import entities.Teams;
+import game.Event.LeaveListener;
 import game.States.RespawnGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.LoadInventory.LoadInventoryController;
 import view.impl.ScoreView;
 
-public class BaseGame extends AbstractGame {
+public class BaseGame extends AbstractGame implements LeaveListener {
 
 	private VillagerSpawner villagerSpawner;
 	private Teams teams;
@@ -24,27 +25,15 @@ public class BaseGame extends AbstractGame {
 		villagerSpawner = new VillagerSpawner();
 		teams = new Teams();
 		goals = new ArrayList<Goal>();
+		addLeaveListener(this);
 	}
-
+	
 	@Override
-	public void join(UUID player) {
-		if (!canPlayerJoin(player))
-			return;
-		if (addPlayer(player)) {
-			getGameState().onPlayerJoin(this, player);
-			gameChangeSupport.firePlayerJoin(player);
-		}
-	}
-
-	@Override
-	public void leave(UUID player) {
-		removePlayer(player);
+	public void onPlayerLeave(Game game, UUID player) {
 		removePlayerFromTeam(player);
 		restoreInventory(player);
 		restorePlayerData(player);
 		new ScoreView().hide(player);
-		getGameState().onPlayerLeave(this, player);
-		gameChangeSupport.firePlayerLeave(player);
 	}
 
 	private void removePlayerFromTeam(UUID player) {
@@ -75,7 +64,6 @@ public class BaseGame extends AbstractGame {
 		gameChangeSupport.fireTeamScored(teamName);
 		warmUp();
 	}
-
 
 	public void addGoal(Goal goal) {
 		if (goal == null)
