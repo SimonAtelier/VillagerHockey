@@ -15,6 +15,8 @@ public class AddTeamUseCase implements AddTeam {
 
 	private static final int MAXIMUM_AMOUNT_OF_TEAMS = 2;
 	
+	private Game game;
+	private Teams teams;
 	private AddTeamRequest request;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
@@ -27,11 +29,14 @@ public class AddTeamUseCase implements AddTeam {
 			response.onNoPermission();
 			return;
 		}
-
+		
 		if (noSuchGame()) {
 			response.onNoSuchGame(request.getGame());
 			return;
 		}
+		
+		initializeGame();
+		initializeTeams();
 		
 		if (teamNameIsInvalid()) {
 			response.onInvalidTeamName(request.getName());
@@ -62,8 +67,15 @@ public class AddTeamUseCase implements AddTeam {
 		response.onTeamSuccessfullyAdded(request.getGame(), request.getName());
 	}
 	
+	private void initializeGame() {
+		game = gameGateway.findGameByName(request.getGame());
+	}
+	
+	private void initializeTeams() {
+		teams = game.getTeams();
+	}
+	
 	private boolean maximumAmountReached() {
-		Game game = gameGateway.findGameByName(request.getGame());
 		return game.getTeams().getNumberOfTeams() == MAXIMUM_AMOUNT_OF_TEAMS;
 	}
 	
@@ -76,8 +88,6 @@ public class AddTeamUseCase implements AddTeam {
 	}
 	
 	private void addTeamToGame() {
-		Game game = gameGateway.findGameByName(request.getGame());
-		Teams teams = game.getTeams();
 		teams.add(new Team(request.getName(), parseTeamColor()));
 	}
 	
@@ -94,14 +104,10 @@ public class AddTeamUseCase implements AddTeam {
 	}
 
 	private boolean teamWithNameExists() {
-		Game game = gameGateway.findGameByName(request.getGame());
-		Teams teams = game.getTeams();
 		return teams.containsTeamWithName(request.getName());
 	}
 	
 	private boolean teamWithColorExists() {
-		Game game = gameGateway.findGameByName(request.getGame());
-		Teams teams = game.getTeams();
 		return teams.containsTeamWithColor(parseTeamColor());
 	}
 
