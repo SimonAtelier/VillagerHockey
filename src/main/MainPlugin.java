@@ -88,7 +88,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void loadGames() {
-		gameManager.loadGames();
+		gameManager.loadGames(configuration);
 	}
 
 	private void unloadGames() {
@@ -176,7 +176,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	public GameManager getGameManager() {
 		return gameManager;
 	}
-
+	
 	public Configuration getConfiguration() {
 		return configuration;
 	}

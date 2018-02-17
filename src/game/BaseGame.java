@@ -11,7 +11,6 @@ import game.States.RespawnGameState;
 import game.States.StoppedGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
-import main.MainPlugin;
 import usecases.LoadInventory.LoadInventoryController;
 import view.impl.ScoreView;
 
@@ -55,7 +54,6 @@ public class BaseGame extends AbstractGame {
 			if (players.contains(player))
 				return false;
 			players.add(player);
-			MainPlugin.getInstance().getGameManager().addPlayer(player, this);
 			return true;
 		}
 	}
@@ -65,7 +63,6 @@ public class BaseGame extends AbstractGame {
 			if (player == null)
 				return false;
 			players.remove(player);
-			MainPlugin.getInstance().getGameManager().removePlayer(player);
 			Team team = teams.findTeamOfPlayer(player);
 			if (team != null)
 				team.removePlayer(player);

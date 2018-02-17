@@ -31,11 +31,11 @@ public class LeaveGameUseCase implements LeaveGame {
 	}
 	
 	private void findPlayers() {
-		players = gameGateway.getGameOfPlayer(uniquePlayerId).getUniquePlayerIds();
+		players = gameGateway.findGameOfPlayer(uniquePlayerId).getUniquePlayerIds();
 	}
 	
 	private void leave() {
-		Game game = gameGateway.getGameOfPlayer(uniquePlayerId);
+		Game game = gameGateway.findGameOfPlayer(uniquePlayerId);
 		game.leave(uniquePlayerId);
 	}
 	

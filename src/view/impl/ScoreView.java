@@ -27,7 +27,7 @@ public class ScoreView {
 
 	public void display(UUID viewer) {
 		GameGateway gameGateway = Context.gameGateway;
-		Game game = gameGateway.getGameOfPlayer(viewer);
+		Game game = gameGateway.findGameOfPlayer(viewer);
 		List<Team> teams = game.getTeams().findAllTeams();
 
 		Player player = Bukkit.getPlayer(viewer);

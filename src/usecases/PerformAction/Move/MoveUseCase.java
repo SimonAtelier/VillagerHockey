@@ -22,7 +22,7 @@ public class MoveUseCase implements Move {
 	}
 	
 	private boolean gameOfPlayerAllowsMove() {
-		Game game = gameGateway.getGameOfPlayer(player);
+		Game game = gameGateway.findGameOfPlayer(player);
 		return game.getGameState().getClass() != RespawnGameState.class;
 	}
 

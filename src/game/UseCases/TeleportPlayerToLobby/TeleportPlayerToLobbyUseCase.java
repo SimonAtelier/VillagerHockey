@@ -16,7 +16,7 @@ public class TeleportPlayerToLobbyUseCase implements TeleportPlayerToLobby {
 	
 	@Override
 	public void execute(UUID uniquePlayerId) {
-		Game game = gameGateway.getGameOfPlayer(uniquePlayerId);
+		Game game = gameGateway.findGameOfPlayer(uniquePlayerId);
 		Location lobby = game.getLobby();
 		Player player = Bukkit.getPlayer(uniquePlayerId);
 		player.teleport(LocationConvert.toBukkitLocation(lobby));

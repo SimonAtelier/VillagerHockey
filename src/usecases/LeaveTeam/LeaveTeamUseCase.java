@@ -44,11 +44,11 @@ public class LeaveTeamUseCase implements LeaveTeam {
 	}
 	
 	private void findGameOfPlayer() {
-		game = gameGateway.getGameOfPlayer(request.getPlayer());
+		game = gameGateway.findGameOfPlayer(request.getPlayer());
 	}
 	
 	private void findTeamOfPlayer() {
-		Game game = gameGateway.getGameOfPlayer(request.getPlayer());
+		Game game = gameGateway.findGameOfPlayer(request.getPlayer());
 		team = game.getTeams().findTeamOfPlayer(request.getPlayer());
 	}
 	

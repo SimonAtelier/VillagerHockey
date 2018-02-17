@@ -18,7 +18,7 @@ public interface GameGateway {
 	
 	Game findGameByName(String name);
 	
-	Game getGameOfPlayer(UUID uniquePlayerId);
+	Game findGameOfPlayer(UUID uniquePlayerId);
 	
 	Game loadGame(String name) throws GatewayException;
 	

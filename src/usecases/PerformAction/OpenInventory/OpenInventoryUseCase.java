@@ -26,7 +26,7 @@ public class OpenInventoryUseCase implements OpenInventory {
 	}
 	
 	private void findGameOfPlayer() {
-		game = gameGateway.getGameOfPlayer(uniquePlayerId);
+		game = gameGateway.findGameOfPlayer(uniquePlayerId);
 	}
 	
 	private boolean playerIsNotIngame() {

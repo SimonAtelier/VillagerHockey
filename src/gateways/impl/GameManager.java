@@ -11,7 +11,6 @@ import game.Game;
 import game.VillagerSpawner;
 import gateways.Configuration;
 import gateways.GameGateway;
-import main.MainPlugin;
 import usecases.DisplayTeamScored.ScoreEventListener;
 import usecases.JoinTeam.JoinTeamController;
 import usecases.UpdateJoinSigns.UpdateJoinSignController;
@@ -19,24 +18,21 @@ import usecases.UpdateJoinSigns.UpdateJoinSignController;
 public class GameManager implements GameGateway {
 
 	private final Object GAMES_MAP_LOCK = new Object();
-	private final Object PLAYERS_MAP_LOCK = new Object();
 
 	private HashMap<String, Game> games;
-	private HashMap<UUID, String> players;
 
 	public GameManager() {
 		games = new HashMap<String, Game>();
-		players = new HashMap<UUID, String>();
 	}
 
-	public void loadGames() {
+	public void loadGames(Configuration configuration) {
 		GamePersistanceYaml repository = new GamePersistanceYaml();
 		File file = new File("plugins/VillagerHockey/games/");
 		File[] files = file.listFiles();
 		for (File f : files) {
 			String name = f.getName().replace(".yml", "");
 			Game game = repository.loadGame(name);
-			setupFromPluginConfiguration(game, MainPlugin.getInstance().getConfiguration());
+			setupFromPluginConfiguration(game, 	configuration);
 			addGame(game);
 			game.start();
 		}
@@ -61,29 +57,18 @@ public class GameManager implements GameGateway {
 
 	@Override
 	public boolean isIngame(UUID uniquePlayerId) {
-		synchronized (PLAYERS_MAP_LOCK) {
-			return players.containsKey(uniquePlayerId);
-		}
-	}
-
-	public void addPlayer(UUID uniquePlayerId, Game game) {
-		synchronized (PLAYERS_MAP_LOCK) {
-			players.put(uniquePlayerId, game.getName());
-		}
-	}
-
-	public void removePlayer(UUID uniquePlayerId) {
-		synchronized (PLAYERS_MAP_LOCK) {
-			players.remove(uniquePlayerId);
-		}
+		return findGameOfPlayer(uniquePlayerId) != null;
 	}
 
 	@Override
-	public Game getGameOfPlayer(UUID uniquePlayerId) {
-		synchronized (PLAYERS_MAP_LOCK) {
-			String name = players.get(uniquePlayerId);
-			return findGameByName(name);
+	public Game findGameOfPlayer(UUID uniquePlayerId) {
+		synchronized (GAMES_MAP_LOCK) {
+			for (Game game : games.values()) {
+				if (game.getUniquePlayerIds().contains(uniquePlayerId))
+					return game;
+			}
 		}
+		return null;
 	}
 
 	@Override

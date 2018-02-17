@@ -54,7 +54,7 @@ public class KickPlayerUseCase implements KickPlayer {
 	}
 
 	private void findGameOfPlayerToKick() {
-		gameOfPlayerToKick = gameGateway.getGameOfPlayer(playerToKick);
+		gameOfPlayerToKick = gameGateway.findGameOfPlayer(playerToKick);
 	}
 
 	private void notifyPlayers() {
@@ -63,7 +63,7 @@ public class KickPlayerUseCase implements KickPlayer {
 	}
 
 	private void kickPlayer() {;
-		Game game = gameGateway.getGameOfPlayer(playerToKick);
+		Game game = gameGateway.findGameOfPlayer(playerToKick);
 		game.leave(playerToKick);
 	}
 

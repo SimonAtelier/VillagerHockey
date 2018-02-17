@@ -29,7 +29,7 @@ public class ShowTeamsUseCase implements ShowTeams {
 	}
 	
 	private void findGameOfPlayer() {
-		game = gameGateway.getGameOfPlayer(request.getPlayer());
+		game = gameGateway.findGameOfPlayer(request.getPlayer());
 	}
 	
 	private List<Team> findTeams() {
