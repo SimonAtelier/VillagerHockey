@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import entities.JoinSigns;
 import entities.Location;
+import entities.Teams;
 import game.Event.GameChangeSupport;
 import game.Event.GameStateChangeListener;
 import game.Event.JoinListener;
@@ -19,7 +20,7 @@ import game.States.WaitingGameState;
 public abstract class AbstractGame implements Game {
 
 	private final Object PLAYERS_LOCK = new Object();
-	
+
 	private boolean started;
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
@@ -27,6 +28,7 @@ public abstract class AbstractGame implements Game {
 	private GameState gameState;
 	private Location lobby;
 	private JoinSigns joinSigns;
+	private Teams teams;
 	protected List<UUID> players;
 	protected GameChangeSupport gameChangeSupport;
 
@@ -34,10 +36,11 @@ public abstract class AbstractGame implements Game {
 		this.name = name;
 		gameState = new StoppedGameState();
 		joinSigns = new JoinSigns();
+		teams = new Teams();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);
 	}
-	
+
 	protected boolean addPlayer(UUID player) {
 		synchronized (PLAYERS_LOCK) {
 			if (player == null)
@@ -59,7 +62,7 @@ public abstract class AbstractGame implements Game {
 			return true;
 		}
 	}
-	
+
 	@Override
 	public void start() {
 		if (started) {
@@ -77,7 +80,7 @@ public abstract class AbstractGame implements Game {
 		getGameState().transitionToGameState(this, new StoppedGameState());
 		started = false;
 	}
-	
+
 	@Override
 	public void join(UUID player) {
 		if (!canPlayerJoin(player))
@@ -94,7 +97,7 @@ public abstract class AbstractGame implements Game {
 		getGameState().onPlayerLeave(this, player);
 		gameChangeSupport.firePlayerLeave(player);
 	}
-	
+
 	@Override
 	public void leaveAll() {
 		for (UUID player : getUniquePlayerIds()) {
@@ -111,7 +114,7 @@ public abstract class AbstractGame implements Game {
 	public void removeGameStateChangeListener(GameStateChangeListener listener) {
 		gameChangeSupport.removeGameStateChangeListener(listener);
 	}
-	
+
 	@Override
 	public void addJoinListener(JoinListener listener) {
 		gameChangeSupport.addJoinListener(listener);
@@ -131,7 +134,7 @@ public abstract class AbstractGame implements Game {
 	public void removeLeaveListener(LeaveListener listener) {
 		gameChangeSupport.removeLeaveListener(listener);
 	}
-	
+
 	@Override
 	public void addTeamSelectListener(TeamSelectListener listener) {
 		gameChangeSupport.addTeamSelectListener(listener);
@@ -141,7 +144,7 @@ public abstract class AbstractGame implements Game {
 	public void removeTeamSelectListener(TeamSelectListener listener) {
 		gameChangeSupport.removeTeamSelectListener(listener);
 	}
-	
+
 	@Override
 	public void addTeamScoreListener(TeamScoreListener listener) {
 		gameChangeSupport.addTeamScoreListener(listener);
@@ -151,7 +154,7 @@ public abstract class AbstractGame implements Game {
 	public void removeTeamScoreListener(TeamScoreListener listener) {
 		gameChangeSupport.removeTeamScoreListener(listener);
 	}
-	
+
 	@Override
 	public boolean isStarted() {
 		return started;
@@ -166,7 +169,7 @@ public abstract class AbstractGame implements Game {
 	public void setMinimumPlayersToStart(int minimumPlayersToStart) {
 		this.minimumPlayersToStart = minimumPlayersToStart;
 	}
-	
+
 	@Override
 	public int getMaximumAmountOfPlayers() {
 		return getTeams().getMaximumAmountOfPlayers();
@@ -211,7 +214,7 @@ public abstract class AbstractGame implements Game {
 	public int getPlayersCount() {
 		return players.size();
 	}
-	
+
 	@Override
 	public GameState getGameState() {
 		return gameState;
@@ -226,17 +229,17 @@ public abstract class AbstractGame implements Game {
 		this.gameState = gameState;
 		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);
 	}
-	
+
 	@Override
 	public boolean isMaximumAmountOfPlayersReached() {
 		return getMaximumAmountOfPlayers() == getPlayersCount();
 	}
-	
+
 	@Override
 	public boolean canPlayerJoin(UUID player) {
 		return getGameState().canPlayerJoin(this, player);
 	}
-	
+
 	@Override
 	public List<UUID> getUniquePlayerIds() {
 		List<UUID> players = new ArrayList<UUID>();
@@ -246,6 +249,11 @@ public abstract class AbstractGame implements Game {
 			}
 		}
 		return players;
+	}
+
+	@Override
+	public Teams getTeams() {
+		return teams;
 	}
 
 }

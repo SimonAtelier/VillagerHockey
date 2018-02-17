@@ -70,10 +70,11 @@ public interface Game extends GameStateContext {
 		
 	List<UUID> getUniquePlayerIds();
 	
-	
-	
-	
 	Teams getTeams();
+	
+	
+	
+	
 	
 	VillagerSpawner getVillagerSpawner();
 	

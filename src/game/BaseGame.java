@@ -6,7 +6,6 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Team;
-import entities.Teams;
 import game.Event.LeaveListener;
 import game.States.RespawnGameState;
 import gateways.PlayerDataGateway;
@@ -17,13 +16,11 @@ import view.impl.ScoreView;
 public class BaseGame extends AbstractGame implements LeaveListener {
 
 	private VillagerSpawner villagerSpawner;
-	private Teams teams;
 	private List<Goal> goals;
 
 	public BaseGame(String name) {
 		super(name);
 		villagerSpawner = new VillagerSpawner();
-		teams = new Teams();
 		goals = new ArrayList<Goal>();
 		addLeaveListener(this);
 	}
@@ -54,12 +51,12 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	}
 
 	public void selectLowestTeam(UUID player) {
-		Team team = teams.findLowestTeam();
+		Team team = getTeams().findLowestTeam();
 		gameChangeSupport.fireTeamSelected(player, team.getName());
 	}
 
 	public void onTeamScored(String teamName) {
-		Team team = teams.findTeamByName(teamName);
+		Team team = getTeams().findTeamByName(teamName);
 		team.setScore(team.getScore() + 1);
 		gameChangeSupport.fireTeamScored(teamName);
 		warmUp();
@@ -79,10 +76,6 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 			}
 		}
 		return null;
-	}
-
-	public Teams getTeams() {
-		return teams;
 	}
 
 	public VillagerSpawner getVillagerSpawner() {
