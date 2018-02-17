@@ -50,11 +50,13 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		getGameState().transitionToGameState(this, new RespawnGameState(getGameState()));
 	}
 
+	@Override
 	public void selectLowestTeam(UUID player) {
 		Team team = getTeams().findLowestTeam();
 		gameChangeSupport.fireTeamSelected(player, team.getName());
 	}
 
+	@Override
 	public void onTeamScored(String teamName) {
 		Team team = getTeams().findTeamByName(teamName);
 		team.setScore(team.getScore() + 1);
@@ -62,12 +64,14 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		warmUp();
 	}
 
+	@Override
 	public void addGoal(Goal goal) {
 		if (goal == null)
 			return;
 		goals.add(goal);
 	}
 
+	@Override
 	public Goal findGoalOfTeam(String team) {
 		for (int i = 0; i < goals.size(); i++) {
 			Goal goal = goals.get(i);
@@ -78,10 +82,12 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		return null;
 	}
 
+	@Override
 	public VillagerSpawner getVillagerSpawner() {
 		return villagerSpawner;
 	}
 
+	@Override
 	public void setVillagerSpawnLocation(Location location) {
 		villagerSpawner.setVillagerSpawnLocation(location);
 	}
