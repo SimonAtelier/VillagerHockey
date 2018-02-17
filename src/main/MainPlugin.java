@@ -108,7 +108,6 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void initializePlugin() {
 		instance = this;
-		gameGateway = new GameGatewayImpl();
 	}
 
 	private void registerCommands() {
