@@ -1,7 +1,6 @@
 package usecases.StartGame;
 
 import game.Game;
-import game.States.StoppedGameState;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -55,7 +54,7 @@ public class StartGameUseCase implements StartGame {
 	}
 
 	private boolean isAlreadyStarted() {
-		return game.getGameState().getClass() != StoppedGameState.class;
+		return game.isStarted();
 	}
 
 	private void setRequest(StartGameRequest request) {
