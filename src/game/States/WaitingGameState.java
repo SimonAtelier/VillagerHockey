@@ -3,6 +3,7 @@ package game.States;
 import java.util.UUID;
 
 import context.Context;
+import entities.Team;
 import game.Game;
 import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
@@ -83,7 +84,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 			}
 		}
 	}
-
+	
 	private void preparePlayerForLobby(UUID player) {		
 		PreparePlayerForLobby useCase = new PreparePlayerForLobbyUseCase();
 		useCase.execute(player);

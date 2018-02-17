@@ -19,6 +19,12 @@ public class Teams {
 			teams.add(team);
 		}
 	}
+	
+	public void removePlayer(UUID player) {
+		Team team = findTeamOfPlayer(player);
+		if (team != null)
+			team.removePlayer(player);
+	}
 
 	public void resetTeamScores() {
 		synchronized (LIST_LOCK) {

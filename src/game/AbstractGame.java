@@ -24,7 +24,7 @@ public abstract class AbstractGame implements Game {
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
 	private String name;
-	protected GameState gameState;
+	private GameState gameState;
 	private Location lobby;
 	private JoinSigns joinSigns;
 	protected List<UUID> players;
@@ -32,6 +32,7 @@ public abstract class AbstractGame implements Game {
 
 	public AbstractGame(String name) {
 		this.name = name;
+		gameState = new StoppedGameState();
 		joinSigns = new JoinSigns();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);

@@ -8,7 +8,6 @@ import entities.Location;
 import entities.Team;
 import entities.Teams;
 import game.States.RespawnGameState;
-import game.States.StoppedGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.LoadInventory.LoadInventoryController;
@@ -23,9 +22,8 @@ public class BaseGame extends AbstractGame {
 	public BaseGame(String name) {
 		super(name);
 		villagerSpawner = new VillagerSpawner();
-		goals = new ArrayList<Goal>();
 		teams = new Teams();
-		gameState = new StoppedGameState();
+		goals = new ArrayList<Goal>();
 	}
 
 	@Override
@@ -33,7 +31,7 @@ public class BaseGame extends AbstractGame {
 		if (!canPlayerJoin(player))
 			return;
 		if (addPlayer(player)) {
-			gameState.onPlayerJoin(this, player);
+			getGameState().onPlayerJoin(this, player);
 			gameChangeSupport.firePlayerJoin(player);
 		}
 	}
@@ -45,14 +43,25 @@ public class BaseGame extends AbstractGame {
 		restoreInventory(player);
 		restorePlayerData(player);
 		new ScoreView().hide(player);
-		gameState.onPlayerLeave(this, player);
+		getGameState().onPlayerLeave(this, player);
 		gameChangeSupport.firePlayerLeave(player);
 	}
 
 	private void removePlayerFromTeam(UUID player) {
-		Team team = teams.findTeamOfPlayer(player);
-		if (team != null)
-			team.removePlayer(player);
+		getTeams().removePlayer(player);
+	}
+	
+	private void restoreInventory(UUID player) {
+		new LoadInventoryController().onLoadInventory(player);
+	}
+
+	private void restorePlayerData(UUID player) {
+		PlayerDataGateway playerDataGateway = new PlayerDataGatewayYaml();
+		playerDataGateway.load(player);
+	}
+
+	private void warmUp() {
+		getGameState().transitionToGameState(this, new RespawnGameState(getGameState()));
 	}
 
 	public void selectLowestTeam(UUID player) {
@@ -67,18 +76,6 @@ public class BaseGame extends AbstractGame {
 		warmUp();
 	}
 
-	private void restoreInventory(UUID player) {
-		new LoadInventoryController().onLoadInventory(player);
-	}
-
-	private void restorePlayerData(UUID player) {
-		PlayerDataGateway repository = new PlayerDataGatewayYaml();
-		repository.load(player);
-	}
-
-	private void warmUp() {
-		gameState.transitionToGameState(this, new RespawnGameState(gameState));
-	}
 
 	public void addGoal(Goal goal) {
 		if (goal == null)
