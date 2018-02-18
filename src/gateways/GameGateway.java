@@ -8,7 +8,7 @@ import gateways.impl.GatewayException;
 
 public interface GameGateway {
 
-	boolean addGame(String name);
+	void addGame(String name);
 	
 	boolean isIngame(UUID uniquePlayerId);
 

@@ -8,8 +8,6 @@ public interface AddGameViewMessages {
 	
 	static final String ADD_GAME_INVALID_NAME = "Der angegebene Name ist ungültig.";
 	
-	static final String ADD_GAME_ERROR = "Es ist ein Fehler aufgetreten. Das Spiel konnte nicht erstellt werden.";
-	
 	static final String ADD_GAME_NO_PERMISSION = "Du hast keine Berechtigung ein Spiel hinzuzufügen.";
 	
 }

@@ -8,8 +8,6 @@ public interface AddGameView {
 	
 	void displayInvalidName();
 	
-	void displayError();
-	
 	void displayNoPermission();
 	
 }

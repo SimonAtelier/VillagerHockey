@@ -38,11 +38,6 @@ public class AddGameViewImpl implements AddGameView {
 	}
 
 	@Override
-	public void displayError() {
-		displayMessage(AddGameViewMessages.ADD_GAME_ERROR);
-	}
-
-	@Override
 	public void displayNoPermission() {
 		displayMessage(AddGameViewMessages.ADD_GAME_NO_PERMISSION);
 	}

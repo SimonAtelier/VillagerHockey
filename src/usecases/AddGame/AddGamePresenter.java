@@ -26,11 +26,6 @@ public class AddGamePresenter implements AddGameResponse {
 	}
 
 	@Override
-	public void onError() {
-		view.displayError();
-	}
-
-	@Override
 	public void onNoPermission() {
 		view.displayNoPermission();
 	}

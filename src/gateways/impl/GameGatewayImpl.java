@@ -72,9 +72,8 @@ public class GameGatewayImpl implements GameGateway {
 	}
 
 	@Override
-	public boolean addGame(String name) {
-		Game game = new BaseGame(name);
-		return addGame(game);
+	public void addGame(String name) {
+		addGame(new BaseGame(name));
 	}
 
 	private boolean addGame(Game game) {

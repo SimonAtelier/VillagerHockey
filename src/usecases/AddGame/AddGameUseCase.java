@@ -12,7 +12,7 @@ public class AddGameUseCase implements AddGame {
 	private UUID player;
 	private PermissionGateway permissionGateway;
 	private GameGateway gameGateway;
-	
+
 	@Override
 	public void execute(UUID player, String name, AddGameResponse response) {
 		setRequest(player, name);
@@ -32,12 +32,8 @@ public class AddGameUseCase implements AddGame {
 			return;
 		}
 
-		if (addGame()) {
-			response.onGameSuccessfullyAdded(name);
-			return;
-		}
-
-		response.onError();
+		addGame();
+		response.onGameSuccessfullyAdded(name);
 	}
 
 	private boolean playerHasNoPermission() {
@@ -52,8 +48,8 @@ public class AddGameUseCase implements AddGame {
 		return gameGateway.containsGame(name);
 	}
 
-	private boolean addGame() {
-		return gameGateway.addGame(name);
+	private void addGame() {
+		gameGateway.addGame(name);
 	}
 
 	private void setRequest(UUID player, String name) {

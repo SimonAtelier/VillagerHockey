@@ -21,8 +21,6 @@ public interface AddGame {
 		
 		void onInvalidName();
 		
-		void onError();
-		
 		void onNoPermission();
 		
 	}
