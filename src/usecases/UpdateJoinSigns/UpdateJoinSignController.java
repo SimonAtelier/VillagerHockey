@@ -50,6 +50,7 @@ public class UpdateJoinSignController implements JoinListener, LeaveListener, Ga
 		UpdateJoinSigns useCase = new UpdateJoinSignsUseCase();
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setSignGateway(Context.signGateway);
+		useCase.setJoinSignGateway(Context.joinSignGateway);
 		useCase.execute(requestModel, new UpdateJoinSignsResponseImpl());
 	}
 

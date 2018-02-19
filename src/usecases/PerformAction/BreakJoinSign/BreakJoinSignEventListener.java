@@ -23,6 +23,7 @@ public class BreakJoinSignEventListener implements Listener {
 		BreakJoinSignResponse presenter = new BreakJoinSignPresenter(view);
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
+		useCase.setJoinSignGateway(Context.joinSignGateway);
 		useCase.execute(request, presenter);
 	}
 	

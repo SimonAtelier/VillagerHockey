@@ -1,6 +1,7 @@
 package usecases.UpdateJoinSigns;
 
 import gateways.GameGateway;
+import gateways.JoinSignGateway;
 import gateways.SignGateway;
 
 public interface UpdateJoinSigns {
@@ -10,6 +11,8 @@ public interface UpdateJoinSigns {
 	void setGameGateway(GameGateway gameGateway);
 	
 	void setSignGateway(SignGateway signGateway);
+	
+	void setJoinSignGateway(JoinSignGateway joinSignGateway);
 	
 	public interface UpdateJoinSignsRequest {
 		

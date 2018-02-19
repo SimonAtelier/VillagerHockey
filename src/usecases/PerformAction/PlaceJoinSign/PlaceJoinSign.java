@@ -3,6 +3,7 @@ package usecases.PerformAction.PlaceJoinSign;
 import java.util.UUID;
 
 import gateways.GameGateway;
+import gateways.JoinSignGateway;
 import gateways.PermissionGateway;
 
 public interface PlaceJoinSign {
@@ -12,6 +13,8 @@ public interface PlaceJoinSign {
 	void setGameGateway(GameGateway gameGateway);
 	
 	void setPermissionGateway(PermissionGateway permissionGateway);
+	
+	void setJoinSignGateway(JoinSignGateway joinSignGateway);
 	
 	public interface PlaceJoinSignRequest {
 		

@@ -7,6 +7,7 @@ import entities.Sign;
 import entities.SignImpl;
 import game.Game;
 import gateways.GameGateway;
+import gateways.JoinSignGateway;
 import gateways.SignGateway;
 
 public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
@@ -15,6 +16,7 @@ public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
 	private UpdateJoinSignsRequest request;
 	private GameGateway gameGateway;
 	private SignGateway signGateway;
+	private JoinSignGateway joinSignGateway;
 	
 	@Override
 	public void execute(UpdateJoinSignsRequest request, UpdateJoinSignsResponse response) {
@@ -30,8 +32,7 @@ public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
 	}
 	
 	private void updateJoinSignsOfGame() {
-		List<Location> locations = game.getJoinSigns().getLocations();
-		for (Location location : locations) {
+		for (Location location : findJoinSignLocations()) {
 			Sign sign = new SignImpl(location);
 			sign.setFirstLine("[vh]");
 			sign.setSecondLine(request.getGame());
@@ -39,6 +40,10 @@ public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
 			sign.setFourthLine(request.getPlayersCount() + "/" + request.getMaximumAmountOfPlayers());
 			signGateway.update(sign);
 		}
+	}
+	
+	private List<Location> findJoinSignLocations() {
+		return joinSignGateway.findJoinSignLocations(request.getGame());
 	}
 	
 	private void findGame() {
@@ -61,6 +66,11 @@ public class UpdateJoinSignsUseCase implements UpdateJoinSigns {
 	@Override
 	public void setSignGateway(SignGateway signGateway) {
 		this.signGateway = signGateway;
+	}
+
+	@Override
+	public void setJoinSignGateway(JoinSignGateway joinSignGateway) {
+		this.joinSignGateway = joinSignGateway;
 	}
 	
 }

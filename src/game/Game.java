@@ -3,7 +3,6 @@ package game;
 import java.util.List;
 import java.util.UUID;
 
-import entities.JoinSigns;
 import entities.Location;
 import entities.Teams;
 import game.Event.JoinListener;
@@ -61,8 +60,6 @@ public interface Game extends GameStateContext {
 	Location getLobby();
 
 	void setLobby(Location lobby);
-
-	JoinSigns getJoinSigns();
 		
 	boolean isMaximumAmountOfPlayersReached();
 	

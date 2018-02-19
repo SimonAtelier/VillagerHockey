@@ -24,6 +24,7 @@ public class PlaceJoinSignEventListener implements Listener {
 		PlaceJoinSignResponse presenter = new PlaceJoinSignPresenter(view);
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
+		useCase.setJoinSignGateway(Context.joinSignGateway);
 		useCase.execute(request, presenter);
 	}
 	

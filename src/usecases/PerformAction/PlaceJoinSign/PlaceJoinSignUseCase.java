@@ -3,14 +3,17 @@ package usecases.PerformAction.PlaceJoinSign;
 import entities.Location;
 import game.Game;
 import gateways.GameGateway;
+import gateways.JoinSignGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
 
 public class PlaceJoinSignUseCase implements PlaceJoinSign {
 
+	private Game game;
+	private PlaceJoinSignRequest request;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
-	private PlaceJoinSignRequest request;
+	private JoinSignGateway joinSignGateway;
 
 	@Override
 	public void execute(PlaceJoinSignRequest request, PlaceJoinSignResponse response) {
@@ -25,10 +28,19 @@ public class PlaceJoinSignUseCase implements PlaceJoinSign {
 			response.onNoSuchGame(request.getGame());
 			return;
 		}
-
-		Game game = gameGateway.findGameByName(request.getGame());
-		game.getJoinSigns().addLocation(createLocationFromRequest());
+		
+		findGame();
+		addJoinSign();
+		
 		response.onJoinSignSuccessfullySet(request.getGame(), createResponseModel(game));
+	}
+	
+	private void findGame() {
+		game = gameGateway.findGameByName(request.getGame());
+	}
+	
+	private void addJoinSign() {
+		joinSignGateway.addLocation(request.getGame(), createLocationFromRequest());
 	}
 
 	private ResponseModel createResponseModel(Game game) {
@@ -65,6 +77,11 @@ public class PlaceJoinSignUseCase implements PlaceJoinSign {
 	@Override
 	public void setPermissionGateway(PermissionGateway permissionGateway) {
 		this.permissionGateway = permissionGateway;
+	}
+
+	@Override
+	public void setJoinSignGateway(JoinSignGateway joinSignGateway) {
+		this.joinSignGateway = joinSignGateway;
 	}
 
 }

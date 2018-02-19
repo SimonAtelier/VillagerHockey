@@ -3,6 +3,7 @@ package context;
 import gateways.CommandGateway;
 import gateways.GameGateway;
 import gateways.InventoryGateway;
+import gateways.JoinSignGateway;
 import gateways.PermissionGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
@@ -26,5 +27,7 @@ public class Context {
 	public static TeamSpawnsGateway teamSpawnsGateway;
 	
 	public static SignGateway signGateway;
+	
+	public static JoinSignGateway joinSignGateway;
 	
 }

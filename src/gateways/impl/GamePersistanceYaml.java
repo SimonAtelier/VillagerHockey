@@ -8,6 +8,7 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import context.Context;
 import entities.Team;
 import entities.TeamColor;
 import game.BaseGame;
@@ -66,10 +67,8 @@ public class GamePersistanceYaml {
 				yml.set("team." + team.getName() + ".spawns", bukkitTeamSpawnLocations);
 			}
 			
-
-			
 			List<Location> bukkitLocations = new ArrayList<Location>();
-			for (entities.Location loc : game.getJoinSigns().getLocations()) {
+			for (entities.Location loc : Context.joinSignGateway.findJoinSignLocations(game.getName())) {
 				bukkitLocations.add(LocationConvert.toBukkitLocation(loc));
 			}
 			
@@ -124,7 +123,7 @@ public class GamePersistanceYaml {
 			}
 
 			for (Object o : yml.getList("signs")) {
-				game.getJoinSigns().addLocation(LocationConvert.toEntityLocation((Location) o));
+				Context.joinSignGateway.addLocation(game.getName(), LocationConvert.toEntityLocation((Location) o));
 			}
 
 		} catch (IOException e) {

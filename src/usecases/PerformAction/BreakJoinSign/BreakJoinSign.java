@@ -3,6 +3,7 @@ package usecases.PerformAction.BreakJoinSign;
 import java.util.UUID;
 
 import gateways.GameGateway;
+import gateways.JoinSignGateway;
 import gateways.PermissionGateway;
 
 public interface BreakJoinSign {
@@ -12,6 +13,8 @@ public interface BreakJoinSign {
 	void setGameGateway(GameGateway gameGateway);
 	
 	void setPermissionGateway(PermissionGateway permissionGateway);
+	
+	void setJoinSignGateway(JoinSignGateway joinSignGateway);
 	
 	public interface BreakJoinSignRequest {
 		

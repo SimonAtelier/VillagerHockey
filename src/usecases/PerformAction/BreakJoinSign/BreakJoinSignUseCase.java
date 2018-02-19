@@ -1,8 +1,8 @@
 package usecases.PerformAction.BreakJoinSign;
 
 import entities.Location;
-import game.Game;
 import gateways.GameGateway;
+import gateways.JoinSignGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
 
@@ -11,6 +11,7 @@ public class BreakJoinSignUseCase implements BreakJoinSign {
 	private BreakJoinSignRequest request;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionsGateway;
+	private JoinSignGateway joinSignGateway;
 	
 	@Override
 	public void execute(BreakJoinSignRequest request, BreakJoinSignResponse response) {
@@ -37,8 +38,7 @@ public class BreakJoinSignUseCase implements BreakJoinSign {
 	
 	private void removeJoinSign() {
 		Location location = createLocationFromRequest();
-		Game game = gameGateway.findGameByName(request.getSecondLine().trim());
-		game.getJoinSigns().removeLocation(location);
+		joinSignGateway.removeLocation(request.getSecondLine().trim(), location);
 	}
 	
 	private Location createLocationFromRequest() {
@@ -74,6 +74,11 @@ public class BreakJoinSignUseCase implements BreakJoinSign {
 	@Override
 	public void setPermissionGateway(PermissionGateway permissionGateway) {
 		this.permissionsGateway = permissionGateway;
+	}
+
+	@Override
+	public void setJoinSignGateway(JoinSignGateway joinSignGateway) {
+		this.joinSignGateway = joinSignGateway;
 	}
 	
 }

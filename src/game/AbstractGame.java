@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import entities.JoinSigns;
 import entities.Location;
 import entities.Teams;
 import game.Event.GameChangeSupport;
@@ -27,7 +26,6 @@ public abstract class AbstractGame implements Game {
 	private String name;
 	private GameState gameState;
 	private Location lobby;
-	private JoinSigns joinSigns;
 	private Teams teams;
 	protected List<UUID> players;
 	protected GameChangeSupport gameChangeSupport;
@@ -35,7 +33,6 @@ public abstract class AbstractGame implements Game {
 	public AbstractGame(String name) {
 		this.name = name;
 		gameState = new StoppedGameState();
-		joinSigns = new JoinSigns();
 		teams = new Teams();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);
@@ -203,11 +200,6 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public void setLobby(Location lobby) {
 		this.lobby = lobby;
-	}
-
-	@Override
-	public JoinSigns getJoinSigns() {
-		return joinSigns;
 	}
 
 	@Override
