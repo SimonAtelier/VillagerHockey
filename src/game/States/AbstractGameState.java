@@ -7,6 +7,12 @@ import game.Game;
 public abstract class AbstractGameState implements GameState {
 
 	@Override
+	public void onTick(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public boolean canPlayerJoin(Game game, UUID player) {
 		return false;
 	}

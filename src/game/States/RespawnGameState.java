@@ -22,8 +22,13 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	private void initializeCountDown(Game game) {
 		RespawnCountDownController controller = new RespawnCountDownController();
 		controller.setOnCountDownFinished(this);
-		respawnCountDown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, respawnTimeInSeconds);
+		respawnCountDown = new SecondsBasedCountDown(game, respawnTimeInSeconds);
 		respawnCountDown.setCountDownListener(controller);
+	}
+	
+	@Override
+	public void onTick(Game game) {
+		respawnCountDown.tick();
 	}
 	
 	@Override

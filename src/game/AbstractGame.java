@@ -25,6 +25,7 @@ public abstract class AbstractGame implements Game {
 	private int playingTimeInSeconds;
 	private String name;
 	private GameState gameState;
+	private GameLoop gameLoop;
 	private Location lobby;
 	private Teams teams;
 	protected List<UUID> players;
@@ -33,6 +34,7 @@ public abstract class AbstractGame implements Game {
 	public AbstractGame(String name) {
 		this.name = name;
 		gameState = new StoppedGameState();
+		gameLoop = new GameLoop(this);
 		teams = new Teams();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);
@@ -62,6 +64,7 @@ public abstract class AbstractGame implements Game {
 	
 	@Override
 	public void tick() {
+		gameState.onTick(this);
 	}
 
 	@Override
@@ -70,6 +73,7 @@ public abstract class AbstractGame implements Game {
 			return;
 		}
 		started = true;
+		gameLoop.start();
 		getGameState().transitionToGameState(this, new WaitingGameState());
 	}
 
@@ -78,6 +82,7 @@ public abstract class AbstractGame implements Game {
 		if (!started) {
 			return;
 		}
+		gameLoop.stop();
 		getGameState().transitionToGameState(this, new StoppedGameState());
 		started = false;
 	}

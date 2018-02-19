@@ -7,7 +7,6 @@ import game.CountDown.CountDown;
 import game.CountDown.OnCountDownFinished;
 import game.CountDown.SecondsBasedCountDown;
 import game.CountDown.Game.GameCountDownController;
-import main.MainPlugin;
 import usecases.TeleportPlayersToLobby.TeleportPlayersToLobbyController;
 
 public class RunningGameState extends AbstractGameState implements OnCountDownFinished {
@@ -17,8 +16,13 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	private void initializeCountDown(Game game) {
 		GameCountDownController controller = new GameCountDownController();
 		controller.setOnCountDownFinished(this);
-		gameCountDown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, game.getPlayingTimeInSeconds());
+		gameCountDown = new SecondsBasedCountDown(game, game.getPlayingTimeInSeconds());
 		gameCountDown.setCountDownListener(controller);
+	}
+	
+	@Override
+	public void onTick(Game game) {
+		gameCountDown.tick();
 	}
 
 	@Override

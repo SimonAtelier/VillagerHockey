@@ -2,6 +2,8 @@ package game.CountDown;
 
 public interface CountDown {
 
+	void tick();
+	
 	void start();
 	
 	void stop();

@@ -5,7 +5,9 @@ import java.util.UUID;
 import game.Game;
 
 public interface GameState {
-		
+
+	void onTick(Game game);
+	
 	void enterGameState(Game game);
 	
 	void leaveGameState(Game game);

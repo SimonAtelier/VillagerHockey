@@ -14,11 +14,16 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 	private CountDown winnerCountdown;
 	
 	@Override
+	public void onTick(Game game) {
+		winnerCountdown.tick();
+	}
+	
+	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
 		WinnerCountDownController controller = new WinnerCountDownController();
 		controller.setOnCountDownFinished(this);
-		winnerCountdown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, 5);
+		winnerCountdown = new SecondsBasedCountDown(game, 5);
 		winnerCountdown.setCountDownListener(controller);
 		winnerCountdown.start();
 	}

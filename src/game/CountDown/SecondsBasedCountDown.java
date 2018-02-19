@@ -1,25 +1,20 @@
 package game.CountDown;
 
-import org.bukkit.Bukkit;
-
 import game.Game;
-import main.MainPlugin;
 
 public class SecondsBasedCountDown implements CountDown {
 
-	private int taskId;
+	private int tickCount;
 	private int timeToCountDownInSeconds;
 	private int timeLeftInSeconds;
 	private boolean running;
 	private boolean paused;
-	private MainPlugin plugin;
 	private Game game;
 	private CountDownListener listener;
 	
-	public SecondsBasedCountDown(MainPlugin plugin, Game game, int timeToCountDownInSeconds) {
+	public SecondsBasedCountDown(Game game, int timeToCountDownInSeconds) {
 		this.timeToCountDownInSeconds = timeToCountDownInSeconds;
 		this.timeLeftInSeconds = timeToCountDownInSeconds;
-		this.plugin = plugin;
 		this.game = game;
 	}
 	
@@ -40,38 +35,43 @@ public class SecondsBasedCountDown implements CountDown {
 	}
 	
 	@Override
+	public void tick() {
+		tickCount++;
+		
+		if (timeLeftInSeconds == 0) {
+			stop();
+		}
+		
+		if (tickCount == 20) {
+			tickCount = 0;
+			countDownOneSecond();
+		}
+		
+		fireUpdateIgnoringPause();
+	}
+	
+	private void countDownOneSecond() {
+		if (running && !paused) {
+			fireCountDownOneSecond();
+			timeLeftInSeconds--;
+		}
+	}
+	
+	@Override
 	public void start() {
 		if (running)
 			return;
 		running = true;
 		timeLeftInSeconds = timeToCountDownInSeconds;
 		fireCountDownStart();
-		taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
-
-			@Override
-			public void run() {
-				if (timeLeftInSeconds == 0) {
-					stop();
-				}
-
-				if (running && !paused) {
-					fireCountDownOneSecond();
-					timeLeftInSeconds--;
-				}
-				
-				fireUpdateIgnoringPause();
-			}
-
-		}, 0, 20 * 1);
 	}
-
+	
 	@Override
 	public void stop() {
 		if (!running)
 			return;
 		fireCountDownStop();
 		running = false;
-		Bukkit.getScheduler().cancelTask(taskId);
 	}
 
 	@Override

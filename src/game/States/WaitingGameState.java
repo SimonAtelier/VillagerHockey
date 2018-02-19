@@ -24,16 +24,21 @@ import usecases.SaveInventory.SaveInventoryController;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
 
-	private CountDown lobbyCountdown;
+	private CountDown lobbyCountDown;
 
+	@Override
+	public void onTick(Game game) {
+		lobbyCountDown.tick();
+	}
+	
 	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
 		int lobbyTimeInSeconds = MainPlugin.getInstance().getConfiguration().getLobbyTime();
 		LobbyCountDownController controller = new LobbyCountDownController();
 		controller.setOnCountDownFinished(this);
-		lobbyCountdown = new SecondsBasedCountDown(MainPlugin.getInstance(), game, lobbyTimeInSeconds);
-		lobbyCountdown.setCountDownListener(controller);
+		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);
+		lobbyCountDown.setCountDownListener(controller);
 	}
 
 	@Override
@@ -54,14 +59,14 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		preparePlayerForLobby(player);
 		teleportPlayerToLobby(player);
 		if (getPlayersToStart(game) <= 0) {
-			lobbyCountdown.start();
+			lobbyCountDown.start();
 		}
 	}
 
 	@Override
 	public void onPlayerLeave(Game game, UUID player) {
 		if (shouldStopCountDown(game)) {
-			lobbyCountdown.stop();
+			lobbyCountDown.stop();
 		}
 	}
 	
