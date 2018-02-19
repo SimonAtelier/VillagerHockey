@@ -13,6 +13,8 @@ import game.States.GameStateContext;
 
 public interface Game extends GameStateContext {
 	
+	void tick();
+	
 	void start();
 	
 	void stop();

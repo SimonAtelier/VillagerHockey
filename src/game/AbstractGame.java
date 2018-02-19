@@ -59,6 +59,10 @@ public abstract class AbstractGame implements Game {
 			return true;
 		}
 	}
+	
+	@Override
+	public void tick() {
+	}
 
 	@Override
 	public void start() {
