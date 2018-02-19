@@ -24,8 +24,8 @@ public abstract class AbstractGameState implements GameState {
 	@Override
 	public void transitionToGameState(Game game, GameState gameState) {
 		leaveGameState(game);
-		game.setGameState(gameState);
 		gameState.enterGameState(game);
+		game.setGameState(gameState);
 	}
 
 	@Override
