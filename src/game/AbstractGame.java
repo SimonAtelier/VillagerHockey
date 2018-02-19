@@ -61,7 +61,7 @@ public abstract class AbstractGame implements Game {
 			return true;
 		}
 	}
-	
+
 	@Override
 	public void tick() {
 		gameState.onTick(this);
@@ -73,15 +73,13 @@ public abstract class AbstractGame implements Game {
 			return;
 		}
 		started = true;
-		gameLoop.start();
 		getGameState().transitionToGameState(this, new WaitingGameState());
 	}
 
 	@Override
 	public void stop() {
-		if (!started) {
+		if (!started)
 			return;
-		}
 		gameLoop.stop();
 		getGameState().transitionToGameState(this, new StoppedGameState());
 		started = false;
@@ -91,10 +89,14 @@ public abstract class AbstractGame implements Game {
 	public void join(UUID player) {
 		if (!canPlayerJoin(player))
 			return;
+
 		if (addPlayer(player)) {
 			getGameState().onPlayerJoin(this, player);
 			gameChangeSupport.firePlayerJoin(player);
 		}
+		
+		if (getPlayersCount() == 1)
+			gameLoop.start();
 	}
 
 	@Override
@@ -102,6 +104,9 @@ public abstract class AbstractGame implements Game {
 		removePlayer(player);
 		getGameState().onPlayerLeave(this, player);
 		gameChangeSupport.firePlayerLeave(player);
+		if (getPlayersCount() == 0) {
+			gameLoop.stop();
+		}
 	}
 
 	@Override
