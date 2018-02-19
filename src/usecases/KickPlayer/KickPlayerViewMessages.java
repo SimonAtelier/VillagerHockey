@@ -2,7 +2,7 @@ package usecases.KickPlayer;
 
 public interface KickPlayerViewMessages {
 
-	static final String KICK_PLAYER_PLAYER_WITH_SUCH_NAME_NOT_FOUND = "Es konnte kein Spieler mit diesem Namen gefunden werden.";
+	static final String KICK_PLAYER_PLAYER_WITH_SUCH_NAME_NOT_FOUND = "Es konnte kein Spieler mit dem Namen '$player$' gefunden werden.";
 	
 	static final String KICK_PLAYER_PLAYER_IS_NOT_INGAME = "Der Spieler ist keinem Spiel beigetreten.";
 	

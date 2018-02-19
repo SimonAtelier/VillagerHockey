@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public interface KickPlayerView {
 
-	void displayPlayerWithSuchNameNotFound();
+	void displayPlayerWithSuchNameNotFound(String name);
 	
 	void displayPlayerIsNotIngame();
 	

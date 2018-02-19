@@ -29,7 +29,7 @@ public interface KickPlayer {
 	
 	public interface KickPlayerResponse {
 	
-		void onPlayerWithSuchNameNotFound();
+		void onPlayerWithSuchNameNotFound(String name);
 		
 		void onPlayerIsNotIngame();
 		

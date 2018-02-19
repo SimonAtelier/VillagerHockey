@@ -14,8 +14,8 @@ public class KickPlayerPresenter implements KickPlayerResponse {
 	}
 	
 	@Override
-	public void onPlayerWithSuchNameNotFound() {
-		view.displayPlayerWithSuchNameNotFound();
+	public void onPlayerWithSuchNameNotFound(String name) {
+		view.displayPlayerWithSuchNameNotFound(name);
 	}
 
 	@Override

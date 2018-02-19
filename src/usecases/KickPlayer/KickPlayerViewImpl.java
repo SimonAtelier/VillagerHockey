@@ -20,8 +20,10 @@ public class KickPlayerViewImpl implements KickPlayerView {
 	}
 	
 	@Override
-	public void displayPlayerWithSuchNameNotFound() {
-		displayMessage(viewer, KickPlayerViewMessages.KICK_PLAYER_PLAYER_WITH_SUCH_NAME_NOT_FOUND);
+	public void displayPlayerWithSuchNameNotFound(String name) {
+		String message = KickPlayerViewMessages.KICK_PLAYER_PLAYER_WITH_SUCH_NAME_NOT_FOUND;
+		message = message.replace("$player$", name);
+		displayMessage(viewer, message);
 	}
 
 	@Override

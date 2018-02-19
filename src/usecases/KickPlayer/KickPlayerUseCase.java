@@ -32,7 +32,7 @@ public class KickPlayerUseCase implements KickPlayer {
 		findPlayerToKick();
 
 		if (noSuchPlayer()) {
-			response.onPlayerWithSuchNameNotFound();
+			response.onPlayerWithSuchNameNotFound(request.getPlayerToKick());
 			return;
 		}
 
