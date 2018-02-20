@@ -62,7 +62,7 @@ public class KickPlayerUseCase implements KickPlayer {
 		response.presentPlayerKicked(players, request.getPlayerToKick());
 	}
 
-	private void kickPlayer() {;
+	private void kickPlayer() {
 		Game game = gameGateway.findGameOfPlayer(playerToKick);
 		game.leave(playerToKick);
 	}
