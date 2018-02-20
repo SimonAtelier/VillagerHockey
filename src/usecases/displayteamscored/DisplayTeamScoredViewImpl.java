@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import view.MessageView;
 import view.impl.ScoreView;
+import view.messageview.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;

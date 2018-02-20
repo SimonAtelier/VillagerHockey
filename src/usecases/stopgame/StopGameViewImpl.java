@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import view.MessageView;
+import view.messageview.MessageView;
 
 public class StopGameViewImpl implements StopGameView {
 

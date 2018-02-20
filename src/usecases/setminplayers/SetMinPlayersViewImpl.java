@@ -3,7 +3,7 @@ package usecases.setminplayers;
 import java.util.UUID;
 
 import context.Context;
-import view.MessageView;
+import view.messageview.MessageView;
 
 public class SetMinPlayersViewImpl implements SetMinPlayersView {
 

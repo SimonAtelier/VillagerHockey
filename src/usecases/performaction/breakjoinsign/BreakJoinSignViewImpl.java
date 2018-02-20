@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import context.Context;
-import view.MessageView;
+import view.messageview.MessageView;
 
 public class BreakJoinSignViewImpl implements BreakJoinSignView {
 

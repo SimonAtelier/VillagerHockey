@@ -21,7 +21,7 @@ import context.Context;
 import game.event.TeamSelectListener;
 import main.MainPlugin;
 import usecases.showteams.ShowTeamsResponseItem;
-import view.MessageView;
+import view.messageview.MessageView;
 
 public class SelectTeamViewImpl implements SelectTeamView, Listener {
 

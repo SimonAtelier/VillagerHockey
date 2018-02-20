@@ -3,7 +3,7 @@ package usecases.showhelp;
 import java.util.UUID;
 
 import context.Context;
-import view.MessageView;
+import view.messageview.MessageView;
 
 public class ShowHelpViewImpl implements ShowHelpView {
 	

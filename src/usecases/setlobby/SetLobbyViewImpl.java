@@ -3,7 +3,7 @@ package usecases.setlobby;
 import java.util.UUID;
 
 import context.Context;
-import view.MessageView;
+import view.messageview.MessageView;
 
 public class SetLobbyViewImpl implements SetLobbyView {
 

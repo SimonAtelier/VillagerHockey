@@ -1,4 +1,4 @@
-package view;
+package view.messageview;
 
 import java.util.UUID;
 
