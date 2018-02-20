@@ -17,23 +17,23 @@ public class ConfigurationYaml implements Configuration {
 	
 	@Override
 	public String getPrefix() {
-		if (config.contains("prefix")) {
-			return config.getString("prefix");
+		if (config.contains("chat-prefix")) {
+			return config.getString("chat-prefix");
 		}
 		return "[VillagerHockey]";
 	}
 
 	@Override
 	public int getLobbyTime() {
-		if (config.contains("lobby.time"))
-			return config.getInt("lobby.time");
+		if (config.contains("lobby-time"))
+			return config.getInt("lobby-time");
 		return 5;
 	}
 
 	@Override
 	public int getLobbyGameMode() {
-		if (config.contains("lobby.gamemode"))
-			return config.getInt("lobby.gamemode");
+		if (config.contains("lobby-gamemode"))
+			return config.getInt("lobby-gamemode");
 		return 0;
 	}
 	
@@ -60,29 +60,29 @@ public class ConfigurationYaml implements Configuration {
 
 	@Override
 	public String getVillagerName() {
-		if (config.contains("villager.name"))
-			return config.getString("villager.name");
+		if (config.contains("villager-default-name"))
+			return config.getString("villager-default-name");
 		return "";
 	}
 
 	@Override
 	public boolean isVillagerAIEnabled() {
-		if (config.contains("villager.ai"))
-			return config.getBoolean("villager.ai");
+		if (config.contains("villager-ai-enabled"))
+			return config.getBoolean("villager-ai-enabled");
 		return false;
 	}
 
 	@Override
 	public boolean isUseRandomVillagerNamesEnabled() {
-		if (config.contains("villager.names.enabled"))
-			return config.getBoolean("villager.names.enabled");
+		if (config.contains("villager-random-names-enabled"))
+			return config.getBoolean("villager-random-names-enabled");
 		return false;
 	}
 
 	@Override
 	public List<String> getRandomVillagerNames() {
-		if (config.contains("villager.names.list"))
-			return config.getStringList("villager.names.list");
+		if (config.contains("villager-random-names"))
+			return config.getStringList("villager-random-names");
 		return new ArrayList<String>();
 	}
 	
