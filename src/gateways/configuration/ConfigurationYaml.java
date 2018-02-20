@@ -1,11 +1,9 @@
-package gateways.impl;
+package gateways.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
-
-import gateways.configuration.Configuration;
 
 public class ConfigurationYaml implements Configuration {
 
