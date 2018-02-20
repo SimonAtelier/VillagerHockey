@@ -10,10 +10,19 @@ import view.MessageView;
 
 public class MessageViewImpl implements MessageView {
 
+	private String prefix;
+	
+	@Override
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+
 	@Override
 	public void displayMessage(UUID uniquePlayerId, String message) {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
-		player.sendMessage(ChatColor.WHITE + "[VillagerHockey] " + ChatColor.GRAY +  message);
+		String translatedMessage = ChatColor.translateAlternateColorCodes('&', message);
+		String translatedPrefix = ChatColor.translateAlternateColorCodes('&', prefix);
+		player.sendMessage(translatedPrefix + " " +  translatedMessage);
 	}
-
+	
 }
