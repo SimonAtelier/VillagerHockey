@@ -13,6 +13,10 @@ import net.minecraft.server.v1_10_R1.PacketPlayOutTitle.EnumTitleAction;
 public class TitleViewImpl implements TitleView {
 
 	private TitleViewModel titleViewModel;
+	
+	public TitleViewImpl() {
+		titleViewModel = new TitleViewModelImpl();
+	}
 
 	@Override
 	public void display(UUID viewer) {
