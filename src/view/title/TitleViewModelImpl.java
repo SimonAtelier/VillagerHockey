@@ -2,7 +2,6 @@ package view.title;
 
 public class TitleViewModelImpl implements TitleViewModel {
 	
-	private boolean enabled;
 	private int titleFadeInTimeInSeconds;
 	private int titleStayTimeInSeconds;
 	private int titleFadeOutTimeInSeconds;
@@ -12,16 +11,6 @@ public class TitleViewModelImpl implements TitleViewModel {
 	private String title;
 	private String subtitle;
 	
-	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
-	
-	@Override
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
 	@Override
 	public int getTitleFadeInTimeInSeconds() {
 		return titleFadeInTimeInSeconds;

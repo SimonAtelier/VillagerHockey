@@ -34,8 +34,4 @@ public interface TitleViewModel {
 	
 	void setSubtitleFadeOutTimeInSeconds(int subtitleFadeOutTimeInSeconds);
 	
-	boolean isEnabled();
-	
-	void setEnabled(boolean enabled);
-	
 }
