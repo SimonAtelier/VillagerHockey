@@ -1,7 +1,5 @@
 package usecases.performaction.shootpuck;
 
-import java.util.UUID;
-
 import usecases.performaction.shootpuck.ShootPuck.ShootPuckResponse;
 
 public class ShootPuckPresenter implements ShootPuckResponse {
@@ -13,7 +11,7 @@ public class ShootPuckPresenter implements ShootPuckResponse {
 	}
 	
 	@Override
-	public void presentShootPuck(UUID player) {
+	public void presentShootPuck() {
 		view.displayShootPuck();
 	}
 
