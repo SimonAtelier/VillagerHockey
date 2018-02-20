@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import gateways.Configuration;
+import gateways.configuration.Configuration;
 
 public class ConfigurationYaml implements Configuration {
 
