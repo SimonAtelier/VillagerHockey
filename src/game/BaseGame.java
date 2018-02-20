@@ -11,7 +11,7 @@ import game.states.RespawnGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.loadinventory.LoadInventoryController;
-import view.impl.ScoreView;
+import view.score.ScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {
 

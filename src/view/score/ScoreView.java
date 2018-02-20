@@ -1,4 +1,4 @@
-package view.impl;
+package view.score;
 
 import java.util.List;
 import java.util.UUID;
