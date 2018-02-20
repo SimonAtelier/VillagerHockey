@@ -10,6 +10,7 @@ import context.Context;
 import view.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
+import view.title.TitleViewModel;
 
 public class LobbyCountDownViewImpl implements LobbyCountDownView {
 
@@ -50,14 +51,18 @@ public class LobbyCountDownViewImpl implements LobbyCountDownView {
 
 	@Override
 	public void displayMapTitle(List<UUID> viewers, String title, String subtitle, int time) {
-		titleView.setTitle(title);
-		titleView.setSubtitle(subtitle);
-		titleView.setFadeInTimeInSeconds(1);
-		titleView.setStayTimeInSeconds(time);
-		titleView.setFadeOutTimeInSeconds(1);
+		TitleViewModel model = titleView.getTitleViewModel();
+		model.setTitle(title);
+		model.setSubtitle(subtitle);
+		model.setTitleFadeInTimeInSeconds(1);
+		model.setTitleFadeOutTimeInSeconds(1);
+		model.setTitleStayTimeInSeconds(time);
+		model.setSubtitleFadeInTimeInSeconds(1);
+		model.setSubtitleFadeOutTimeInSeconds(1);
+		model.setSubtitleStayTimeInSeconds(time);
+
 		for (UUID viewer : viewers) {
-			titleView.setViewer(viewer);
-			titleView.display();
+			titleView.display(viewer);
 		}
 	}
 

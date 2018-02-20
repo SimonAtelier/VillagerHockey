@@ -12,58 +12,45 @@ import net.minecraft.server.v1_10_R1.PacketPlayOutTitle.EnumTitleAction;
 
 public class TitleViewImpl implements TitleView {
 
-	private int fadeInTimeInSeconds;
-	private int fadeOutTimeInSeconds;
-	private int stayTimeInSeconds;
-	private UUID viewer;
-	private String title;
-	private String subtitle;
+	private TitleViewModel titleViewModel;
 
 	@Override
-	public void display() {
-		displayTitle();
+	public void display(UUID viewer) {
+		displayTitle(viewer);
 	}
 
 	@Override
-	public void setViewer(UUID viewer) {
-		this.viewer = viewer;
+	public TitleViewModel getTitleViewModel() {
+		return titleViewModel;
 	}
 
 	@Override
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitleViewModel(TitleViewModel titleViewModel) {
+		this.titleViewModel = titleViewModel;
 	}
 
-	@Override
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
+	private PacketPlayOutTitle createPacketPlayOutTitleForTitle() {
+		int fadeInTicks = getTitleViewModel().getTitleFadeInTimeInSeconds() * 20;
+		int stayTicks = getTitleViewModel().getTitleStayTimeInSeconds() * 20;
+		int fadeOutTicks = getTitleViewModel().getTitleFadeOutTimeInSeconds() * 20;
+		String title = getTitleViewModel().getTitle();
+		return new PacketPlayOutTitle(EnumTitleAction.TITLE, ChatSerializer.a("{\"text\":\"" + title + "\"}"),
+				fadeInTicks, stayTicks, fadeOutTicks);
 	}
 
-	@Override
-	public void setFadeInTimeInSeconds(int fadeInTimeInSeconds) {
-		this.fadeInTimeInSeconds = fadeInTimeInSeconds;
+	private PacketPlayOutTitle createPacketPlayOutTitleForSubtitle() {
+		int fadeInTicks = getTitleViewModel().getSubtitleFadeInTimeInSeconds() * 20;
+		int stayTicks = getTitleViewModel().getSubtitleStayTimeInSeconds() * 20;
+		int fadeOutTicks = getTitleViewModel().getSubtitleFadeOutTimeInSeconds() * 20;
+		String title = getTitleViewModel().getTitle();
+		return new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, ChatSerializer.a("{\"text\":\"" + title + "\"}"),
+				fadeInTicks, stayTicks, fadeOutTicks);
 	}
 
-	@Override
-	public void setFadeOutTimeInSeconds(int fadeOutTimeInSeconds) {
-		this.fadeInTimeInSeconds = fadeOutTimeInSeconds;
-	}
-
-	@Override
-	public void setStayTimeInSeconds(int stayTimeInSeconds) {
-		this.stayTimeInSeconds = stayTimeInSeconds;
-	}
-
-	private void displayTitle() {
+	private void displayTitle(UUID viewer) {
 		Player player = Bukkit.getPlayer(viewer);
-		PacketPlayOutTitle titles = new PacketPlayOutTitle(EnumTitleAction.TITLE,
-				ChatSerializer.a("{\"text\":\"" + title + "\"}"), fadeInTimeInSeconds * 20, stayTimeInSeconds * 20,
-				fadeOutTimeInSeconds * 20);
-		((CraftPlayer) player).getHandle().playerConnection.sendPacket(titles);
-		PacketPlayOutTitle subtitles = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE,
-				ChatSerializer.a("{\"text\":\"" + subtitle + "\"}"), fadeInTimeInSeconds * 20, stayTimeInSeconds * 20,
-				fadeOutTimeInSeconds * 20);
-		((CraftPlayer) player).getHandle().playerConnection.sendPacket(subtitles);
+		((CraftPlayer) player).getHandle().playerConnection.sendPacket(createPacketPlayOutTitleForTitle());
+		((CraftPlayer) player).getHandle().playerConnection.sendPacket(createPacketPlayOutTitleForSubtitle());
 	}
 
 }

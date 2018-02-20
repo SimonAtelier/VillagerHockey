@@ -7,6 +7,7 @@ import view.ActionBarView;
 import view.impl.ActionBarViewImpl;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
+import view.title.TitleViewModel;
 
 public class GameCountDownViewImpl implements GameCountDownView {
 
@@ -27,14 +28,17 @@ public class GameCountDownViewImpl implements GameCountDownView {
 
 	@Override
 	public void displayMinutesTillEnd(List<UUID> viewers, int minutes) {
-		titleView.setFadeInTimeInSeconds(1);
-		titleView.setStayTimeInSeconds(2);
-		titleView.setFadeOutTimeInSeconds(1);
-		titleView.setTitle(minutes + " Minuten");
-		titleView.setSubtitle("bis Spielende");
+		TitleViewModel model = titleView.getTitleViewModel();
+		model.setTitle(minutes + " Minuten");
+		model.setSubtitle("bis Spielende");
+		model.setTitleFadeInTimeInSeconds(1);
+		model.setTitleFadeOutTimeInSeconds(1);
+		model.setTitleStayTimeInSeconds(2);
+		model.setSubtitleFadeInTimeInSeconds(1);
+		model.setSubtitleFadeOutTimeInSeconds(1);
+		model.setSubtitleStayTimeInSeconds(2);
 		for (UUID viewer : viewers) {
-			titleView.setViewer(viewer);
-			titleView.display();
+			titleView.display(viewer);
 		}
 	}
 	

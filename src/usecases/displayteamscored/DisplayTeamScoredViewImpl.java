@@ -8,6 +8,7 @@ import view.MessageView;
 import view.impl.ScoreView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
+import view.title.TitleViewModel;
 
 public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 
@@ -30,15 +31,20 @@ public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 		String title = DisplayTeamScoredMessages.DISPLAY_TEAM_SCORED_GOAL_TITLE;
 		String subtitle = DisplayTeamScoredMessages.DISPLAY_TEAM_SCORED_GOAL_SUBTITLE;
 		subtitle = subtitle.replace("$team$", team);
+
 		TitleView titleView = new TitleViewImpl();
-		titleView.setTitle(title);
-		titleView.setSubtitle(subtitle);
-		titleView.setFadeInTimeInSeconds(1);
-		titleView.setStayTimeInSeconds(2);
-		titleView.setFadeOutTimeInSeconds(1);
+		TitleViewModel model = titleView.getTitleViewModel();
+		model.setTitle(title);
+		model.setSubtitle(subtitle);
+		model.setTitleFadeInTimeInSeconds(1);
+		model.setTitleFadeOutTimeInSeconds(1);
+		model.setTitleStayTimeInSeconds(2);
+		model.setSubtitleFadeInTimeInSeconds(1);
+		model.setSubtitleFadeOutTimeInSeconds(1);
+		model.setSubtitleStayTimeInSeconds(2);
+		
 		for (UUID viewer : viewers) {
-			titleView.setViewer(viewer);
-			titleView.display();
+			titleView.display(viewer);
 		}
 	}
 

@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import view.title.TitleView;
 import view.title.TitleViewImpl;
+import view.title.TitleViewModel;
 
 public class DisplayWinnerViewImpl implements DisplayWinnerView {
 
@@ -13,30 +14,41 @@ public class DisplayWinnerViewImpl implements DisplayWinnerView {
 		String subtitle = DisplayWinnerViewMessages.DISPLAY_WINNER_TEAM_WON_SUBTITLE;
 		String title = DisplayWinnerViewMessages.DISPLAY_WINNER_TEAM_WON_TITLE;
 		title = title.replace("$team$", team);
-		TitleView view = new TitleViewImpl();
-		view.setTitle(title);
-		view.setSubtitle(subtitle);
-		view.setFadeInTimeInSeconds(1);
-		view.setStayTimeInSeconds(15);
-		view.setFadeOutTimeInSeconds(1);
+		
+		TitleView titleView = new TitleViewImpl();
+		TitleViewModel model = titleView.getTitleViewModel();
+		model.setTitle(title);
+		model.setSubtitle(subtitle);
+		model.setTitleFadeInTimeInSeconds(1);
+		model.setTitleFadeOutTimeInSeconds(1);
+		model.setTitleStayTimeInSeconds(15);
+		model.setSubtitleFadeInTimeInSeconds(1);
+		model.setSubtitleFadeOutTimeInSeconds(1);
+		model.setSubtitleStayTimeInSeconds(15);
+		
 		for (UUID viewer : viewers) {
-			view.setViewer(viewer);
-			view.display();
+			titleView.display(viewer);
 		}
 	}
 
 	@Override
 	public void displayDraw(List<UUID> viewers) {
+		String subtitle = "";
 		String title = DisplayWinnerViewMessages.DISPLAY_WINNER_DRAW_TITLE;
+		
 		TitleView titleView = new TitleViewImpl();
-		titleView.setTitle(title);
-		titleView.setSubtitle("");
-		titleView.setFadeInTimeInSeconds(1);
-		titleView.setStayTimeInSeconds(15);
-		titleView.setFadeOutTimeInSeconds(1);
+		TitleViewModel model = titleView.getTitleViewModel();
+		model.setTitle(title);
+		model.setSubtitle(subtitle);
+		model.setTitleFadeInTimeInSeconds(1);
+		model.setTitleFadeOutTimeInSeconds(1);
+		model.setTitleStayTimeInSeconds(15);
+		model.setSubtitleFadeInTimeInSeconds(1);
+		model.setSubtitleFadeOutTimeInSeconds(1);
+		model.setSubtitleStayTimeInSeconds(15);
+		
 		for (UUID viewer : viewers) {
-			titleView.setViewer(viewer);
-			titleView.display();
+			titleView.display(viewer);
 		}
 	}
 	
