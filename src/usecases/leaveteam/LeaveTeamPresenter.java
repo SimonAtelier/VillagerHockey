@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import usecases.leaveteam.LeaveTeam.LeaveTeamResponse;
-import view.ColoredTeamArmourView;
+import view.teamarmour.ColoredTeamArmourView;
 
 public class LeaveTeamPresenter implements LeaveTeamResponse {
 

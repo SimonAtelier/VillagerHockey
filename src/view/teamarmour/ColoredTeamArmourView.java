@@ -1,4 +1,4 @@
-package view;
+package view.teamarmour;
 
 import java.util.UUID;
 

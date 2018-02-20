@@ -1,4 +1,4 @@
-package view.impl;
+package view.teamarmour;
 
 import java.util.UUID;
 
@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
-import view.ColoredTeamArmourView;
 
 public class ColoredTeamArmourViewImpl implements ColoredTeamArmourView {
 

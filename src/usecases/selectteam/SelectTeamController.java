@@ -12,8 +12,8 @@ import usecases.leaveteam.LeaveTeamUseCase;
 import usecases.leaveteam.LeaveTeamView;
 import usecases.leaveteam.LeaveTeamViewImpl;
 import usecases.leaveteam.LeaveTeam.LeaveTeamResponse;
-import view.ColoredTeamArmourView;
-import view.impl.ColoredTeamArmourViewImpl;
+import view.teamarmour.ColoredTeamArmourView;
+import view.teamarmour.ColoredTeamArmourViewImpl;
 
 public class SelectTeamController implements TeamSelectListener {
 

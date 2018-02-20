@@ -5,8 +5,8 @@ import java.util.UUID;
 import context.Context;
 import game.event.TeamSelectListener;
 import usecases.jointeam.JoinTeam.JoinTeamResponse;
-import view.ColoredTeamArmourView;
-import view.impl.ColoredTeamArmourViewImpl;
+import view.teamarmour.ColoredTeamArmourView;
+import view.teamarmour.ColoredTeamArmourViewImpl;
 
 public class JoinTeamController implements TeamSelectListener {
 	

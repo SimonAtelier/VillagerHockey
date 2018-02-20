@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import usecases.jointeam.JoinTeam.JoinTeamResponse;
-import view.ColoredTeamArmourView;
+import view.teamarmour.ColoredTeamArmourView;
 
 public class JoinTeamPresenter implements JoinTeamResponse {
 
