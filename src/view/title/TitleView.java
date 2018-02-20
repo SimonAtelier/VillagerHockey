@@ -2,7 +2,7 @@ package view.title;
 
 import java.util.UUID;
 
-public interface TitleBarView {
+public interface TitleView {
 
 	void display();
 	

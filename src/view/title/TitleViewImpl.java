@@ -10,7 +10,7 @@ import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_10_R1.PacketPlayOutTitle;
 import net.minecraft.server.v1_10_R1.PacketPlayOutTitle.EnumTitleAction;
 
-public class TitleBarViewImpl implements TitleBarView {
+public class TitleViewImpl implements TitleView {
 
 	private int fadeInTimeInSeconds;
 	private int fadeOutTimeInSeconds;

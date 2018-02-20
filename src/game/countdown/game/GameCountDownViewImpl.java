@@ -5,16 +5,16 @@ import java.util.UUID;
 
 import view.ActionBarView;
 import view.impl.ActionBarViewImpl;
-import view.title.TitleBarView;
-import view.title.TitleBarViewImpl;
+import view.title.TitleView;
+import view.title.TitleViewImpl;
 
 public class GameCountDownViewImpl implements GameCountDownView {
 
-	private TitleBarView titleBarView;
+	private TitleView titleView;
 	private ActionBarView actionBarView;
 	
 	public GameCountDownViewImpl() {
-		titleBarView = new TitleBarViewImpl();
+		titleView = new TitleViewImpl();
 		actionBarView = new ActionBarViewImpl();
 	}
 	
@@ -27,14 +27,14 @@ public class GameCountDownViewImpl implements GameCountDownView {
 
 	@Override
 	public void displayMinutesTillEnd(List<UUID> viewers, int minutes) {
-		titleBarView.setFadeInTimeInSeconds(1);
-		titleBarView.setStayTimeInSeconds(2);
-		titleBarView.setFadeOutTimeInSeconds(1);
-		titleBarView.setTitle(minutes + " Minuten");
-		titleBarView.setSubtitle("bis Spielende");
+		titleView.setFadeInTimeInSeconds(1);
+		titleView.setStayTimeInSeconds(2);
+		titleView.setFadeOutTimeInSeconds(1);
+		titleView.setTitle(minutes + " Minuten");
+		titleView.setSubtitle("bis Spielende");
 		for (UUID viewer : viewers) {
-			titleBarView.setViewer(viewer);
-			titleBarView.display();
+			titleView.setViewer(viewer);
+			titleView.display();
 		}
 	}
 	

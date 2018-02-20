@@ -6,8 +6,8 @@ import java.util.UUID;
 import context.Context;
 import view.MessageView;
 import view.impl.ScoreView;
-import view.title.TitleBarView;
-import view.title.TitleBarViewImpl;
+import view.title.TitleView;
+import view.title.TitleViewImpl;
 
 public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 
@@ -30,15 +30,15 @@ public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 		String title = DisplayTeamScoredMessages.DISPLAY_TEAM_SCORED_GOAL_TITLE;
 		String subtitle = DisplayTeamScoredMessages.DISPLAY_TEAM_SCORED_GOAL_SUBTITLE;
 		subtitle = subtitle.replace("$team$", team);
-		TitleBarView view = new TitleBarViewImpl();
-		view.setTitle(title);
-		view.setSubtitle(subtitle);
-		view.setFadeInTimeInSeconds(1);
-		view.setStayTimeInSeconds(2);
-		view.setFadeOutTimeInSeconds(1);
+		TitleView titleView = new TitleViewImpl();
+		titleView.setTitle(title);
+		titleView.setSubtitle(subtitle);
+		titleView.setFadeInTimeInSeconds(1);
+		titleView.setStayTimeInSeconds(2);
+		titleView.setFadeOutTimeInSeconds(1);
 		for (UUID viewer : viewers) {
-			view.setViewer(viewer);
-			view.display();
+			titleView.setViewer(viewer);
+			titleView.display();
 		}
 	}
 

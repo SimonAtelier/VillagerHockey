@@ -8,15 +8,15 @@ import org.bukkit.entity.Player;
 
 import context.Context;
 import view.MessageView;
-import view.title.TitleBarView;
-import view.title.TitleBarViewImpl;
+import view.title.TitleView;
+import view.title.TitleViewImpl;
 
 public class LobbyCountDownViewImpl implements LobbyCountDownView {
 
-	private TitleBarView titleBarView;
+	private TitleView titleView;
 	
 	public LobbyCountDownViewImpl() {
-		titleBarView = new TitleBarViewImpl();
+		titleView = new TitleViewImpl();
 	}
 	
 	private void displayMessage(UUID viewer, String message) {
@@ -50,14 +50,14 @@ public class LobbyCountDownViewImpl implements LobbyCountDownView {
 
 	@Override
 	public void displayMapTitle(List<UUID> viewers, String title, String subtitle, int time) {
-		titleBarView.setTitle(title);
-		titleBarView.setSubtitle(subtitle);
-		titleBarView.setFadeInTimeInSeconds(1);
-		titleBarView.setStayTimeInSeconds(time);
-		titleBarView.setFadeOutTimeInSeconds(1);
+		titleView.setTitle(title);
+		titleView.setSubtitle(subtitle);
+		titleView.setFadeInTimeInSeconds(1);
+		titleView.setStayTimeInSeconds(time);
+		titleView.setFadeOutTimeInSeconds(1);
 		for (UUID viewer : viewers) {
-			titleBarView.setViewer(viewer);
-			titleBarView.display();
+			titleView.setViewer(viewer);
+			titleView.display();
 		}
 	}
 
