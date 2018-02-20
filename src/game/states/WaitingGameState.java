@@ -38,11 +38,11 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		controller.setOnCountDownFinished(this);
 		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);
 		lobbyCountDown.setCountDownListener(controller);
+		removeVillagers(game.getName());
 	}
 
 	@Override
 	public void onCountDownFinished(Game game) {
-		removeVillagers(game.getName());
 		transitionToGameState(game, new RespawnGameState(new RunningGameState()));		
 	}
 
