@@ -48,16 +48,16 @@ villager-random-names:
 
 # Title configuration
 titles:
-  map:
-    enabled: true
-    fade-in-time: 1
-    fade-out-time: 1
-    stay-time: 2
+  # Goal title
   goal:
     enabled: true
-    fade-in-time: 1
-    fade-out-time: 1
-    stay-time: 2
+    title-fade-in-time: 1
+    title-fade-out-time: 1
+    title-stay-time: 2
+    subtitle-fade-in-time: 1
+    subtitle-fade-out-time: 1
+    subtitle-stay-time: 2
+  # Map title
   map:
     enabled: true
     title-fade-in-time: 1
@@ -66,6 +66,7 @@ titles:
     subtitle-fade-in-time: 1
     subtitle-fade-out-time: 1
     subtitle-stay-time: 2
+  # Win title
   win:
     enabled: true
     title-fade-in-time: 1
