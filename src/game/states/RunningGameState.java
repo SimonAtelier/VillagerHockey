@@ -27,7 +27,6 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void enterGameState(Game game) {
-		super.enterGameState(game);
 		if (gameCountDown != null) {
 			gameCountDown.resume();
 		} else {

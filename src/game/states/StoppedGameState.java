@@ -16,4 +16,12 @@ public class StoppedGameState extends AbstractGameState {
 		return "Stopped";
 	}
 
+	@Override
+	public void enterGameState(Game game) {
+	}
+
+	@Override
+	public void leaveGameState(Game game) {
+	}
+
 }

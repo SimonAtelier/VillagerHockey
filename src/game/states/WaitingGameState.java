@@ -33,7 +33,6 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	
 	@Override
 	public void enterGameState(Game game) {
-		super.enterGameState(game);
 		int lobbyTimeInSeconds = MainPlugin.getInstance().getConfiguration().getLobbyTime();
 		LobbyCountDownController controller = new LobbyCountDownController();
 		controller.setOnCountDownFinished(this);
@@ -49,7 +48,6 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void leaveGameState(Game game) {
-		super.leaveGameState(game);
 		preparePlayersForGame(game);
 	}
 

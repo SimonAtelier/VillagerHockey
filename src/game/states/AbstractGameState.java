@@ -8,8 +8,14 @@ public abstract class AbstractGameState implements GameState {
 
 	@Override
 	public void onTick(Game game) {
-		// TODO Auto-generated method stub
-		
+	}
+	
+	@Override
+	public void onPlayerJoin(Game game, UUID player) {
+	}
+
+	@Override
+	public void onPlayerLeave(Game game, UUID player) {
 	}
 	
 	@Override
@@ -17,16 +23,6 @@ public abstract class AbstractGameState implements GameState {
 		return false;
 	}
 
-	@Override
-	public void enterGameState(Game game) {
-		System.out.println("Enter GameState " + getName());
-	}
-
-	@Override
-	public void leaveGameState(Game game) {
-		System.out.println("Leave GameState " + getName());
-	}
-	
 	@Override
 	public void transitionToGameState(Game game, GameState gameState) {
 		leaveGameState(game);
@@ -37,14 +33,6 @@ public abstract class AbstractGameState implements GameState {
 	@Override
 	public String getName() {
 		return "Unknown";
-	}
-
-	@Override
-	public void onPlayerJoin(Game game, UUID player) {
-	}
-
-	@Override
-	public void onPlayerLeave(Game game, UUID player) {
 	}
 
 	@Override
