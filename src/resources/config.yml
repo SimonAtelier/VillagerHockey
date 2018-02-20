@@ -63,9 +63,9 @@ titles:
     title-fade-in-time: 1
     title-fade-out-time: 1
     title-stay-time: 2
-    title-fade-in-time: 1
-    title-fade-out-time: 1
-    title-stay-time: 2
+    subtitle-fade-in-time: 1
+    subtitle-fade-out-time: 1
+    subtitle-stay-time: 2
   win:
     enabled: true
     title-fade-in-time: 1
