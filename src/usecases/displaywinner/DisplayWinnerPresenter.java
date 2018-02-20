@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import gateways.Configuration;
+import gateways.configuration.Configuration;
 import usecases.displaywinner.DisplayWinner.DisplayWinnerResponse;
 import view.title.TitleViewModel;
 

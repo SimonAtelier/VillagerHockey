@@ -42,7 +42,7 @@ public class LobbyCountDownController implements CountDownListener {
 		List<UUID> players = getPlayers(game);
 
 		if (shouldDisplayMapTitle(timeLeftInSeconds)) {
-			view.displayMapTitle(players, "VillagerHockey", game, 2);
+			view.displayMapTitle(players, "VillagerHockey", game);
 		}
 
 		if (shouldDisplayGameStartsInGivenSeconds(timeLeftInSeconds)) {

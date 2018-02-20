@@ -2,18 +2,18 @@ package gateways.configuration;
 
 public interface MapTitleConfiguration {
 
-public boolean isWinTitleEnabled();
+	boolean isMapTitleEnabled();
 	
-	public int getMapTitleFadeInTimeInSeconds();
+	int getMapTitleFadeInTimeInSeconds();
 	
-	public int getMapTitleFadeOutTimeInSeconds();
+	int getMapTitleFadeOutTimeInSeconds();
 	
-	public int getMapTitleStayTimeInSeconds();
+	int getMapTitleStayTimeInSeconds();
 	
-	public int getMapSubtitleFadeInTimeInSeconds();
+	int getMapSubtitleFadeInTimeInSeconds();
 	
-	public int getMapSubtitleFadeOutTimeInSeconds();
+	int getMapSubtitleFadeOutTimeInSeconds();
 	
-	public int getMapSubtitleStayTimeInSeconds();
+	int getMapSubtitleStayTimeInSeconds();
 	
 }

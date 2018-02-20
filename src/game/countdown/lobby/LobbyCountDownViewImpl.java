@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import context.Context;
+import gateways.configuration.Configuration;
 import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
@@ -50,16 +51,21 @@ public class LobbyCountDownViewImpl implements LobbyCountDownView {
 	}
 
 	@Override
-	public void displayMapTitle(List<UUID> viewers, String title, String subtitle, int time) {
+	public void displayMapTitle(List<UUID> viewers, String title, String subtitle) {
+		if (!Context.configuration.isMapTitleEnabled())
+			return;
+		
+		Configuration configuration = Context.configuration;
+		
 		TitleViewModel model = titleView.getTitleViewModel();
 		model.setTitle(title);
 		model.setSubtitle(subtitle);
-		model.setTitleFadeInTimeInSeconds(1);
-		model.setTitleFadeOutTimeInSeconds(1);
-		model.setTitleStayTimeInSeconds(time);
-		model.setSubtitleFadeInTimeInSeconds(1);
-		model.setSubtitleFadeOutTimeInSeconds(1);
-		model.setSubtitleStayTimeInSeconds(time);
+		model.setTitleFadeInTimeInSeconds(configuration.getMapTitleFadeInTimeInSeconds());
+		model.setTitleFadeOutTimeInSeconds(configuration.getMapTitleFadeOutTimeInSeconds());
+		model.setTitleStayTimeInSeconds(configuration.getMapTitleStayTimeInSeconds());
+		model.setSubtitleFadeInTimeInSeconds(configuration.getMapSubtitleFadeInTimeInSeconds());
+		model.setSubtitleFadeOutTimeInSeconds(configuration.getMapSubtitleFadeOutTimeInSeconds());
+		model.setSubtitleStayTimeInSeconds(configuration.getMapSubtitleStayTimeInSeconds());
 
 		for (UUID viewer : viewers) {
 			titleView.display(viewer);

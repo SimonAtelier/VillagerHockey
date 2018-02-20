@@ -34,13 +34,6 @@ public class ConfigurationYaml implements Configuration {
 			return config.getInt("lobby-gamemode");
 		return 0;
 	}
-	
-	@Override
-	public boolean isMapTitleEnabled() {
-		if (config.contains("titles.map.enabled"))
-			return config.getBoolean("titles.map.enabled");
-		return true;
-	}
 
 	@Override
 	public boolean isGoalTitleEnabled() {
@@ -131,6 +124,55 @@ public class ConfigurationYaml implements Configuration {
 		if (config.contains("titles.win.subtitle-stay-time"))
 			return config.getInt("titles.win.subtitle-stay-time");
 		return 15;
+	}
+	
+	@Override
+	public boolean isMapTitleEnabled() {
+		if (config.contains("titles.map.enabled"))
+			return config.getBoolean("titles.map.enabled");
+		return false;
+	}
+
+	@Override
+	public int getMapTitleFadeInTimeInSeconds() {
+		if (config.contains("titles.map.title-fade-in-time"))
+			return config.getInt("titles.map.title-fade-in-time");
+		return 1;
+	}
+
+	@Override
+	public int getMapTitleFadeOutTimeInSeconds() {
+		if (config.contains("titles.map.title-fade-out-time"))
+			return config.getInt("titles.map.title-fade-out-time");
+		return 1;
+	}
+
+	@Override
+	public int getMapTitleStayTimeInSeconds() {
+		if (config.contains("titles.map.title-stay-time"))
+			return config.getInt("titles.map.title-stay-time");
+		return 2;
+	}
+
+	@Override
+	public int getMapSubtitleFadeInTimeInSeconds() {
+		if (config.contains("titles.map.subtitle-fade-in-time"))
+			return config.getInt("titles.map.subtitle-fade-in-time");
+		return 1;
+	}
+
+	@Override
+	public int getMapSubtitleFadeOutTimeInSeconds() {
+		if (config.contains("titles.map.subtitle-fade-out-time"))
+			return config.getInt("titles.map.subtitle-fade-out-time");
+		return 1;
+	}
+
+	@Override
+	public int getMapSubtitleStayTimeInSeconds() {
+		if (config.contains("titles.map.subtitle-stay-time"))
+			return config.getInt("titles.map.subtitle-stay-time");
+		return 2;
 	}
 	
 }

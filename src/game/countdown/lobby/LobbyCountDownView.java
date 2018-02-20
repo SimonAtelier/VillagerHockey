@@ -11,6 +11,6 @@ public interface LobbyCountDownView {
 	
 	void displayGameStarts(List<UUID> viewers);
 	
-	void displayMapTitle(List<UUID> viewers, String title, String subtitle, int time);
+	void displayMapTitle(List<UUID> viewers, String title, String subtitle);
 	
 }

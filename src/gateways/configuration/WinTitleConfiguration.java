@@ -2,18 +2,18 @@ package gateways.configuration;
 
 public interface WinTitleConfiguration {
 
-	public boolean isWinTitleEnabled();
+	boolean isWinTitleEnabled();
 	
-	public int getWinTitleFadeInTimeInSeconds();
+	int getWinTitleFadeInTimeInSeconds();
 	
-	public int getWinTitleFadeOutTimeInSeconds();
+	int getWinTitleFadeOutTimeInSeconds();
 	
-	public int getWinTitleStayTimeInSeconds();
+	int getWinTitleStayTimeInSeconds();
 	
-	public int getWinSubtitleFadeInTimeInSeconds();
+	int getWinSubtitleFadeInTimeInSeconds();
 	
-	public int getWinSubtitleFadeOutTimeInSeconds();
+	int getWinSubtitleFadeOutTimeInSeconds();
 	
-	public int getWinSubtitleStayTimeInSeconds();
+	int getWinSubtitleStayTimeInSeconds();
 	
 }

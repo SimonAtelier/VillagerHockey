@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import context.Context;
 import entities.command.ArgumentsWithLabel;
 import gateways.CommandGateway;
-import gateways.Configuration;
+import gateways.configuration.Configuration;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
 import gateways.impl.InventoryGatewayYaml;
