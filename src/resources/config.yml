@@ -1,0 +1,46 @@
+#################################
+# VILLAGER HOCKEY CONFIGURATION #
+#################################
+
+# Chat prefix
+# type: String
+# The chat prefix used for plugin messages
+chat-prefix: "&7[&bVillagerHockey&7]&f"
+
+# Lobby time
+# type: int
+# The time to wait (in seconds) until the game starts (if enough players)
+lobby-time: 5
+
+# Lobby gamemode
+# type: int
+lobby-gamemode: 0
+
+# Villager AI
+# type: boolean
+# Determines if the villager should spawn with or without an ai
+villager-ai-enabled: false
+
+# Villager default name
+# type: String
+# The name used for villagers if 'villager-random-names-enabled' is false
+villager-default-name: "The Puck"
+
+# Villager random names enabled
+# type: boolean
+# Determines if random names are used for villagers
+villager-random-names-enabled: true
+
+# Villager random names
+# type: List
+# Random villager names used if 'villager-random-names-enabled' is true
+villager-random-names:
+- "Notch"
+- "Herobrine"
+- "Dinnerbone"
+- "Grumm"
+- "Steve"
+- "Alex"
+- "Jeb"
+- "Mercury Villager"
+- "Beta"
