@@ -32,6 +32,7 @@ public class HockeySticksViewImpl implements HockeySticksView {
 		PlayerInventory inventory = player.getInventory();
 		addRawFishWithKnockbackTwoEnchantment(inventory);
 		addStickWithKnockbackOneEnchantment(inventory);
+		add(inventory);
 	}
 	
 	@Override
@@ -58,6 +59,15 @@ public class HockeySticksViewImpl implements HockeySticksView {
 		itemMeta.setDisplayName(stickDisplayName);
 		itemStack.setItemMeta(itemMeta);
 		inventory.setItem(stickSlot, itemStack);
+	}
+	
+	private void add(PlayerInventory inventory) {
+		ItemStack itemStack = new ItemStack(Material.FISHING_ROD, 1);
+		ItemMeta itemMeta = itemStack.getItemMeta();
+//		itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
+		itemMeta.setDisplayName("Rute");
+		itemStack.setItemMeta(itemMeta);
+		inventory.setItem(2, itemStack);
 	}
 	
 }
