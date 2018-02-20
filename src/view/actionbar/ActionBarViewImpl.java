@@ -1,9 +1,8 @@
-package view.impl;
+package view.actionbar;
 
 import net.minecraft.server.v1_10_R1.IChatBaseComponent;
 import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_10_R1.PacketPlayOutChat;
-import view.ActionBarView;
 
 import java.util.UUID;
 

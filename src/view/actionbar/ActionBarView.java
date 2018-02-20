@@ -1,4 +1,4 @@
-package view;
+package view.actionbar;
 
 import java.util.UUID;
 

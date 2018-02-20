@@ -3,8 +3,8 @@ package game.countdown.respawn;
 import java.util.List;
 import java.util.UUID;
 
-import view.ActionBarView;
-import view.impl.ActionBarViewImpl;
+import view.actionbar.ActionBarView;
+import view.actionbar.ActionBarViewImpl;
 
 public class RespawnCountDownViewImpl implements RespawnCountDownView {
 

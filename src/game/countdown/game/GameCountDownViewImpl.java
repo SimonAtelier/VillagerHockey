@@ -3,8 +3,8 @@ package game.countdown.game;
 import java.util.List;
 import java.util.UUID;
 
-import view.ActionBarView;
-import view.impl.ActionBarViewImpl;
+import view.actionbar.ActionBarView;
+import view.actionbar.ActionBarViewImpl;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;
