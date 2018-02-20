@@ -54,8 +54,6 @@ import view.impl.MessageViewImpl;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
-	public static String chatPrefix = "";
-
 	private static MainPlugin instance;
 	private GameGatewayImpl gameGateway;
 	private Configuration configuration;
@@ -102,7 +100,6 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 			InputStream inputStream = getClass().getResource("/resources/config.yml").openStream();
 			YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(new InputStreamReader(inputStream));
 			configuration = new ConfigurationYaml(yamlConfiguration);
-			chatPrefix = configuration.getPrefix();
 		} catch (IOException e) {
 			configuration = new ConfigurationYaml(new YamlConfiguration());
 			e.printStackTrace();
