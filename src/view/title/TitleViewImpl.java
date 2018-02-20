@@ -46,7 +46,7 @@ public class TitleViewImpl implements TitleView {
 		int fadeInTicks = getTitleViewModel().getSubtitleFadeInTimeInSeconds() * 20;
 		int stayTicks = getTitleViewModel().getSubtitleStayTimeInSeconds() * 20;
 		int fadeOutTicks = getTitleViewModel().getSubtitleFadeOutTimeInSeconds() * 20;
-		String title = getTitleViewModel().getTitle();
+		String title = getTitleViewModel().getSubtitle();
 		return new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, ChatSerializer.a("{\"text\":\"" + title + "\"}"),
 				fadeInTicks, stayTicks, fadeOutTicks);
 	}
