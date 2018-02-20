@@ -24,4 +24,18 @@ public interface Configuration {
 	
 	public List<String> getRandomVillagerNames();
 	
+	public boolean isWinTitleEnabled();
+	
+	public int getWinTitleFadeInTimeInSeconds();
+	
+	public int getWinTitleFadeOutTimeInSeconds();
+	
+	public int getWinTitleStayTimeInSeconds();
+	
+	public int getWinSubtitleFadeInTimeInSeconds();
+	
+	public int getWinSubtitleFadeOutTimeInSeconds();
+	
+	public int getWinSubtitleStayTimeInSeconds();
+	
 }

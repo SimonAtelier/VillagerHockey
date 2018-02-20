@@ -1,6 +1,6 @@
-#################################
-# VILLAGER HOCKEY CONFIGURATION #
-#################################
+###################################
+## VILLAGER HOCKEY CONFIGURATION ##
+###################################
 
 # Chat prefix
 # type: String
@@ -45,3 +45,29 @@ villager-random-names:
 - "Mercury Villager"
 - "Beta"
 - "Villain"
+
+# Title configuration
+titles:
+  map:
+    enabled: true
+    fade-in-time: 1
+    fade-out-time: 1
+    stay-time: 2
+  goal:
+    enabled: true
+    fade-in-time: 1
+    fade-out-time: 1
+    stay-time: 2
+  map:
+    enabled: true
+    fade-in-time: 1
+    fade-out-time: 1
+    stay-time: 2
+  win:
+    enabled: true
+    title-fade-in-time: 1
+    title-fade-out-time: 1
+    title-stay-time: 15
+    subtitle-fade-in-time: 1
+    subtitle-fade-out-time: 1
+    subtitle-stay-time: 15
