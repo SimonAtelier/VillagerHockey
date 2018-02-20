@@ -6,8 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
-import view.HockeySticksView;
-import view.impl.HockeySticksViewImpl;
+import view.hockeysticks.HockeySticksView;
+import view.hockeysticks.HockeySticksViewImpl;
 import view.impl.ScoreView;
 
 public class PreparePlayerForGameViewImpl implements PreparePlayerForGameView {
