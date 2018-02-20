@@ -1,15 +1,11 @@
 package main;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.UUID;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,7 +15,6 @@ import entities.Command.ArgumentsWithLabel;
 import gateways.CommandGateway;
 import gateways.Configuration;
 import gateways.impl.CommandGatewayImpl;
-import gateways.impl.ConfigurationYaml;
 import gateways.impl.GameGatewayImpl;
 import gateways.impl.InventoryGatewayYaml;
 import gateways.impl.JoinSignsGatewayImpl;
@@ -60,10 +55,10 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	@Override
 	public void onEnable() {
+		createOrUpdatePluginFolders();
 		loadConfiguration();
 		initializePlugin();
 		createContext();
-		createOrUpdatePluginFolders();
 		loadGames();
 		registerCommands();
 		createAndRegisterEventListeners();
@@ -85,6 +80,8 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
 		Context.signGateway = new SignGatewayImpl();
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
+		
+		Context.messageView.setPrefix(configuration.getPrefix());
 	}
 
 	private void loadGames() {
@@ -96,14 +93,10 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void loadConfiguration() {
-		try {
-			InputStream inputStream = getClass().getResource("/resources/config.yml").openStream();
-			YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(new InputStreamReader(inputStream));
-			configuration = new ConfigurationYaml(yamlConfiguration);
-		} catch (IOException e) {
-			configuration = new ConfigurationYaml(new YamlConfiguration());
-			e.printStackTrace();
-		}
+		ConfigurationLoader configurationLoader = new ConfigurationLoader();
+		configurationLoader.setResourcePath("/resources/config.yml");
+		configurationLoader.setPluginFolderPath("plugins/VillagerHockey/config.yml");
+		configuration = configurationLoader.loadConfiguration();
 	}
 
 	private void initializePlugin() {
