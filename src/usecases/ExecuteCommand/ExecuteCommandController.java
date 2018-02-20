@@ -28,7 +28,7 @@ public class ExecuteCommandController {
 		if (arguments.length == 0)
 			return;
 		
-		if (!arguments[0].toLowerCase().equals("vh"))
+		if (!arguments[0].equalsIgnoreCase("vh"))
 			return;
 		
 		String name;
