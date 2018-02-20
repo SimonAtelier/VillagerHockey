@@ -1,6 +1,7 @@
 package context;
 
 import gateways.CommandGateway;
+import gateways.Configuration;
 import gateways.GameGateway;
 import gateways.InventoryGateway;
 import gateways.JoinSignGateway;
@@ -29,5 +30,7 @@ public class Context {
 	public static SignGateway signGateway;
 	
 	public static JoinSignGateway joinSignGateway;
+	
+	public static Configuration configuration;
 	
 }

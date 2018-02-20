@@ -80,6 +80,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
 		Context.signGateway = new SignGatewayImpl();
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
+		Context.configuration = configuration;
 		
 		Context.messageView.setPrefix(configuration.getPrefix());
 	}
@@ -166,10 +167,6 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	public GameGatewayImpl getGameGateway() {
 		return gameGateway;
-	}
-	
-	public Configuration getConfiguration() {
-		return configuration;
 	}
 
 	public static MainPlugin getInstance() {

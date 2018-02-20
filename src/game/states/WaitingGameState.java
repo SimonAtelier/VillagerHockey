@@ -13,13 +13,12 @@ import game.usecases.prepareplayerforlobby.PreparePlayerForLobbyUseCase;
 import game.usecases.removevillagers.RemoveVillagers;
 import game.usecases.removevillagers.RemoveVillagersUseCase;
 import game.usecases.teleportplayertolobby.TeleportPlayerToLobbyController;
-import main.MainPlugin;
 import usecases.prepareplayerforgame.PreparePlayerForGame;
+import usecases.prepareplayerforgame.PreparePlayerForGame.PreparePlayerForGameResponse;
 import usecases.prepareplayerforgame.PreparePlayerForGamePresenter;
 import usecases.prepareplayerforgame.PreparePlayerForGameUseCase;
 import usecases.prepareplayerforgame.PreparePlayerForGameView;
 import usecases.prepareplayerforgame.PreparePlayerForGameViewImpl;
-import usecases.prepareplayerforgame.PreparePlayerForGame.PreparePlayerForGameResponse;
 import usecases.saveinventory.SaveInventoryController;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
@@ -33,7 +32,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	
 	@Override
 	public void enterGameState(Game game) {
-		int lobbyTimeInSeconds = MainPlugin.getInstance().getConfiguration().getLobbyTime();
+		int lobbyTimeInSeconds = Context.configuration.getLobbyTime();
 		LobbyCountDownController controller = new LobbyCountDownController();
 		controller.setOnCountDownFinished(this);
 		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);

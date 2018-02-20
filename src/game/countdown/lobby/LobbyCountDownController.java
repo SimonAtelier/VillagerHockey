@@ -8,7 +8,6 @@ import game.Game;
 import game.countdown.CountDown;
 import game.countdown.CountDownListener;
 import game.countdown.OnCountDownFinished;
-import main.MainPlugin;
 
 public class LobbyCountDownController implements CountDownListener {
 
@@ -59,7 +58,7 @@ public class LobbyCountDownController implements CountDownListener {
 	}
 
 	private boolean shouldDisplayMapTitle(int timeLeftInSeconds) {
-		return timeLeftInSeconds == 1 && MainPlugin.getInstance().getConfiguration().isMapTitleEnabled();
+		return timeLeftInSeconds == 1 && Context.configuration.isMapTitleEnabled();
 	}
 
 	private boolean shouldDisplayGameStartsInGivenSeconds(int timeLeftInSeconds) {
