@@ -3,7 +3,7 @@ package usecases.executecommand;
 import java.util.UUID;
 
 import context.Context;
-import view.messageview.MessageView;
+import view.message.MessageView;
 
 public class ExecuteCommandViewImpl implements ExecuteCommandView {
 

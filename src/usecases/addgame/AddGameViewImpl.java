@@ -3,7 +3,7 @@ package usecases.addgame;
 import java.util.UUID;
 
 import context.Context;
-import view.messageview.MessageView;
+import view.message.MessageView;
 
 public class AddGameViewImpl implements AddGameView {
 

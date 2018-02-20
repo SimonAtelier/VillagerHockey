@@ -45,7 +45,7 @@ import usecases.performaction.quit.QuitEventListener;
 import usecases.performaction.receivedamage.ReceiveDamageEventListener;
 import usecases.performaction.shootpuck.ShootPuckEventListener;
 import usecases.selectteam.ShowTeamsEventListener;
-import view.messageview.MessageViewImpl;
+import view.message.MessageViewImpl;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 

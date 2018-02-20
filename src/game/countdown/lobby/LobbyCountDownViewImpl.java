@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import context.Context;
-import view.messageview.MessageView;
+import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;

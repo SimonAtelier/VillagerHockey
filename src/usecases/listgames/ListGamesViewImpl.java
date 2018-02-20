@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import view.messageview.MessageView;
+import view.message.MessageView;
 
 public class ListGamesViewImpl implements ListGamesView {
 

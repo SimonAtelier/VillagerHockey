@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.bukkit.event.block.SignChangeEvent;
 
 import context.Context;
-import view.messageview.MessageView;
+import view.message.MessageView;
 
 public class PlaceJoinSignViewImpl implements PlaceJoinSignView {
 	

@@ -9,7 +9,7 @@ import gateways.PermissionGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
 import gateways.TeamSpawnsGateway;
-import view.messageview.MessageView;
+import view.message.MessageView;
 
 public class Context {
 
