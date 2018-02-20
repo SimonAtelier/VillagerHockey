@@ -32,7 +32,7 @@ public class ShootPuckEventListener implements Listener {
 		requestModel.setPlayer(player.getUniqueId());
 
 		ShootPuck useCase = new ShootPuckUseCase();
-		ShootPuckView view = new ShootPuckViewImpl(player.getUniqueId());
+		ShootPuckView view = new ShootPuckViewImpl();
 		ShootPuckResponse presenter = new ShootPuckPresenter(view);
 		useCase.execute(requestModel, presenter);
 	}
