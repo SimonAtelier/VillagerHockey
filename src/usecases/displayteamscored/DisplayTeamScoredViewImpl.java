@@ -31,8 +31,14 @@ public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 		String subtitle = DisplayTeamScoredMessages.DISPLAY_TEAM_SCORED_GOAL_SUBTITLE;
 		subtitle = subtitle.replace("$team$", team);
 		TitleBarView view = new TitleBarViewImpl();
+		view.setTitle(title);
+		view.setSubtitle(subtitle);
+		view.setFadeInTimeInSeconds(1);
+		view.setStayTimeInSeconds(2);
+		view.setFadeOutTimeInSeconds(1);
 		for (UUID viewer : viewers) {
-			view.displayTitle(viewer, title, subtitle, 2);
+			view.setViewer(viewer);
+			view.display();
 		}
 	}
 

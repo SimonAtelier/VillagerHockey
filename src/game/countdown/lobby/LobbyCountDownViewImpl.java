@@ -50,8 +50,14 @@ public class LobbyCountDownViewImpl implements LobbyCountDownView {
 
 	@Override
 	public void displayMapTitle(List<UUID> viewers, String title, String subtitle, int time) {
+		titleBarView.setTitle(title);
+		titleBarView.setSubtitle(subtitle);
+		titleBarView.setFadeInTimeInSeconds(1);
+		titleBarView.setStayTimeInSeconds(time);
+		titleBarView.setFadeOutTimeInSeconds(1);
 		for (UUID viewer : viewers) {
-			titleBarView.displayTitle(viewer, title, subtitle, time);
+			titleBarView.setViewer(viewer);
+			titleBarView.display();
 		}
 	}
 

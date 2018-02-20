@@ -14,8 +14,14 @@ public class DisplayWinnerViewImpl implements DisplayWinnerView {
 		String title = DisplayWinnerViewMessages.DISPLAY_WINNER_TEAM_WON_TITLE;
 		title = title.replace("$team$", team);
 		TitleBarView view = new TitleBarViewImpl();
+		view.setTitle(title);
+		view.setSubtitle(subtitle);
+		view.setFadeInTimeInSeconds(1);
+		view.setStayTimeInSeconds(15);
+		view.setFadeOutTimeInSeconds(1);
 		for (UUID viewer : viewers) {
-			view.displayTitle(viewer, title, subtitle, 15);
+			view.setViewer(viewer);
+			view.display();
 		}
 	}
 
@@ -23,8 +29,14 @@ public class DisplayWinnerViewImpl implements DisplayWinnerView {
 	public void displayDraw(List<UUID> viewers) {
 		String title = DisplayWinnerViewMessages.DISPLAY_WINNER_DRAW_TITLE;
 		TitleBarView view = new TitleBarViewImpl();
+		view.setTitle(title);
+		view.setSubtitle("");
+		view.setFadeInTimeInSeconds(1);
+		view.setStayTimeInSeconds(15);
+		view.setFadeOutTimeInSeconds(1);
 		for (UUID viewer : viewers) {
-			view.displayTitle(viewer, title, "", 15);
+			view.setViewer(viewer);
+			view.display();
 		}
 	}
 	

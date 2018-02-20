@@ -27,8 +27,14 @@ public class GameCountDownViewImpl implements GameCountDownView {
 
 	@Override
 	public void displayMinutesTillEnd(List<UUID> viewers, int minutes) {
+		titleBarView.setFadeInTimeInSeconds(1);
+		titleBarView.setStayTimeInSeconds(2);
+		titleBarView.setFadeOutTimeInSeconds(1);
+		titleBarView.setTitle(minutes + " Minuten");
+		titleBarView.setSubtitle("bis Spielende");
 		for (UUID viewer : viewers) {
-			titleBarView.displayTitle(viewer, minutes + " Minuten", "bis Spielende", 2);
+			titleBarView.setViewer(viewer);
+			titleBarView.display();
 		}
 	}
 	
