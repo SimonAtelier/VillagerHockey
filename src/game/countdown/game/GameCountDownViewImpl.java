@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import view.ActionBarView;
-import view.TitleBarView;
 import view.impl.ActionBarViewImpl;
-import view.impl.TitleBarViewImpl;
+import view.title.TitleBarView;
+import view.title.TitleBarViewImpl;
 
 public class GameCountDownViewImpl implements GameCountDownView {
 

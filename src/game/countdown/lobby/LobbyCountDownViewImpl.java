@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 
 import context.Context;
 import view.MessageView;
-import view.TitleBarView;
-import view.impl.TitleBarViewImpl;
+import view.title.TitleBarView;
+import view.title.TitleBarViewImpl;
 
 public class LobbyCountDownViewImpl implements LobbyCountDownView {
 

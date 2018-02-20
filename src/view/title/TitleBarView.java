@@ -1,4 +1,4 @@
-package view;
+package view.title;
 
 import java.util.UUID;
 

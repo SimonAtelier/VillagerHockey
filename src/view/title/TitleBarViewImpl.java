@@ -1,4 +1,4 @@
-package view.impl;
+package view.title;
 
 import java.util.UUID;
 
@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_10_R1.PacketPlayOutTitle;
 import net.minecraft.server.v1_10_R1.PacketPlayOutTitle.EnumTitleAction;
-import view.TitleBarView;
 
 public class TitleBarViewImpl implements TitleBarView {
 
