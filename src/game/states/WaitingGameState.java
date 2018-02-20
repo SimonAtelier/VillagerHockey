@@ -28,7 +28,6 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void onTick(Game game) {
 		lobbyCountDown.tick();
-		removeVillagers(game.getName());
 	}
 	
 	@Override
@@ -48,6 +47,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void leaveGameState(Game game) {
 		preparePlayersForGame(game);
+		removeVillagers(game.getName());
 	}
 
 	@Override
