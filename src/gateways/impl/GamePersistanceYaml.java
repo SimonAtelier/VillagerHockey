@@ -115,8 +115,6 @@ public class GamePersistanceYaml {
 				goal.setLocationOne(LocationConvert.toEntityLocation(loc1));
 				goal.setLocationTwo(LocationConvert.toEntityLocation(loc2));
 				
-				goal.start();
-				
 				for (Object o1 : yml.getList(name1 + ".spawns")) {
 					team.addSpawnLocation(LocationConvert.toEntityLocation((Location) o1));
 				}

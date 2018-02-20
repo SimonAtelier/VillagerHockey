@@ -54,7 +54,6 @@ public class SetGoalUseCase implements SetGoal {
 		if (request.getLocationId().equals("loc2")) {
 			Goal goal = game.findGoalOfTeam(request.getTeam());
 			goal.setLocationTwo(createLocationFromRequest());
-			goal.start();
 		}
 
 		response.onGoalLocationSuccessfullySet(request.getLocationId());

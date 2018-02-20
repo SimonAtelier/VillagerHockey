@@ -23,6 +23,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void onTick(Game game) {
 		gameCountDown.tick();
+		game.checkGoal();
 	}
 
 	@Override

@@ -26,6 +26,14 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	}
 	
 	@Override
+	public void checkGoal() {
+		for (Team team : getTeams().findAllTeams()) {
+			Goal goal = findGoalOfTeam(team.getName());
+			goal.check();
+		}
+	}
+	
+	@Override
 	public void onPlayerLeave(Game game, UUID player) {
 		removePlayerFromTeam(player);
 		restoreInventory(player);

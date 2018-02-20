@@ -73,7 +73,7 @@ public interface Game extends GameStateContext {
 	
 	
 	
-	
+	void checkGoal();
 	
 	VillagerSpawner getVillagerSpawner();
 	
