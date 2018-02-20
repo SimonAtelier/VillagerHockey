@@ -20,15 +20,14 @@ public class VillagerSpawner {
 	private Location villagerSpawnLocation;
 	private Villager villager;
 	private List<String> randomNames;
-	
+
 	public VillagerSpawner() {
 		villagerName = " ";
 		randomNames = new ArrayList<String>();
 	}
 
 	public void refreshVillagerName() {
-		String villagerName = randomVillagerNamesEnabled ? getRandomName()
-				: this.villagerName;
+		String villagerName = randomVillagerNamesEnabled ? getRandomName() : this.villagerName;
 		this.villagerName = villagerName;
 	}
 
@@ -54,25 +53,23 @@ public class VillagerSpawner {
 		villager.setCustomNameVisible(true);
 	}
 
-	public void spawnParticleAtVillagerLocation(Particle particle, int amount,
-			int offsetY) {
+	public void spawnParticleAtVillagerLocation(Particle particle, int amount, int offsetY) {
 		if (villager == null)
 			return;
 		if (particle == null)
-			if (amount <= 0)
-				return;
+			return;
+		if (amount <= 0)
+			return;
 		World world = villager.getWorld();
 		Location location = villager.getLocation();
-		world.spawnParticle(particle, location.getX(), location.getY()
-				+ offsetY, location.getZ(), amount);
+		world.spawnParticle(particle, location.getX(), location.getY() + offsetY, location.getZ(), amount);
 	}
 
 	public void spawnVillagerAtLocation(Location location) {
 		if (location == null)
 			return;
 		World world = location.getWorld();
-		Villager villager = (Villager) world.spawnEntity(location,
-				EntityType.VILLAGER);
+		Villager villager = (Villager) world.spawnEntity(location, EntityType.VILLAGER);
 		refreshVillagerName();
 		villager.setAI(aiEnabled);
 		villager.setAdult();
@@ -82,7 +79,7 @@ public class VillagerSpawner {
 		villager.setCanPickupItems(false);
 		this.villager = villager;
 	}
-	
+
 	public boolean isAIEnabled() {
 		return aiEnabled;
 	}
@@ -110,7 +107,7 @@ public class VillagerSpawner {
 			return villager.getLocation();
 		return null;
 	}
-	
+
 	public Location getVillagerSpawnLocation() {
 		return villagerSpawnLocation;
 	}
