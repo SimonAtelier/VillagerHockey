@@ -11,9 +11,9 @@ import game.Game;
 import game.VillagerSpawner;
 import gateways.Configuration;
 import gateways.GameGateway;
-import usecases.DisplayTeamScored.ScoreEventListener;
-import usecases.JoinTeam.JoinTeamController;
-import usecases.UpdateJoinSigns.UpdateJoinSignController;
+import usecases.displayteamscored.ScoreEventListener;
+import usecases.jointeam.JoinTeamController;
+import usecases.updatejoinsigns.UpdateJoinSignController;
 
 public class GameGatewayImpl implements GameGateway {
 

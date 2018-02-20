@@ -14,7 +14,7 @@ import context.Context;
 import entities.Team;
 import game.Game;
 import gateways.GameGateway;
-import usecases.DisplayTeamScored.ScoreResponseItem;
+import usecases.displayteamscored.ScoreResponseItem;
 
 public class ScoreView {
 	

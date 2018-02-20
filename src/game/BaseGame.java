@@ -6,11 +6,11 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Team;
-import game.Event.LeaveListener;
-import game.States.RespawnGameState;
+import game.event.LeaveListener;
+import game.states.RespawnGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
-import usecases.LoadInventory.LoadInventoryController;
+import usecases.loadinventory.LoadInventoryController;
 import view.impl.ScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {

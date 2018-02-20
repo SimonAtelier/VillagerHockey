@@ -1,24 +1,24 @@
 package main;
 
-import entities.Command.CommandProvider;
-import entities.Command.CommandRegistration;
-import usecases.AddGame.AddGameCommand;
-import usecases.AddTeam.AddTeamCommand;
-import usecases.AddTeamSpawn.AddTeamSpawnCommand;
-import usecases.JoinGame.JoinGameCommand;
-import usecases.KickPlayer.KickPlayerCommand;
-import usecases.LeaveGame.LeaveGameCommand;
-import usecases.ListGames.ListGamesCommand;
-import usecases.RemoveGame.RemoveGameCommand;
-import usecases.SaveGame.SaveGameCommand;
-import usecases.SetGoal.SetGoalCommand;
-import usecases.SetLobby.SetLobbyCommand;
-import usecases.SetMinPlayers.SetMinPlayersCommand;
-import usecases.SetPlayingTime.SetPlayingTimeCommand;
-import usecases.SetVillagerSpawn.SetVillagerSpawnCommand;
-import usecases.ShowHelp.ShowHelpCommand;
-import usecases.StartGame.StartGameCommand;
-import usecases.StopGame.StopGameCommand;
+import entities.command.CommandProvider;
+import entities.command.CommandRegistration;
+import usecases.addgame.AddGameCommand;
+import usecases.addteam.AddTeamCommand;
+import usecases.addteamspawn.AddTeamSpawnCommand;
+import usecases.joingame.JoinGameCommand;
+import usecases.kickplayer.KickPlayerCommand;
+import usecases.leavegame.LeaveGameCommand;
+import usecases.listgames.ListGamesCommand;
+import usecases.removegame.RemoveGameCommand;
+import usecases.savegame.SaveGameCommand;
+import usecases.setgoal.SetGoalCommand;
+import usecases.setlobby.SetLobbyCommand;
+import usecases.setminplayers.SetMinPlayersCommand;
+import usecases.setplayingtime.SetPlayingTimeCommand;
+import usecases.setvillagerspawn.SetVillagerSpawnCommand;
+import usecases.showhelp.ShowHelpCommand;
+import usecases.startgame.StartGameCommand;
+import usecases.stopgame.StopGameCommand;
 
 public class CommandProviderImpl implements CommandProvider {
 

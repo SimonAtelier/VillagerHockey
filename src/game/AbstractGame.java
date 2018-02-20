@@ -6,15 +6,15 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Teams;
-import game.Event.GameChangeSupport;
-import game.Event.GameStateChangeListener;
-import game.Event.JoinListener;
-import game.Event.LeaveListener;
-import game.Event.TeamScoreListener;
-import game.Event.TeamSelectListener;
-import game.States.GameState;
-import game.States.StoppedGameState;
-import game.States.WaitingGameState;
+import game.event.GameChangeSupport;
+import game.event.GameStateChangeListener;
+import game.event.JoinListener;
+import game.event.LeaveListener;
+import game.event.TeamScoreListener;
+import game.event.TeamSelectListener;
+import game.states.GameState;
+import game.states.StoppedGameState;
+import game.states.WaitingGameState;
 
 public abstract class AbstractGame implements Game {
 

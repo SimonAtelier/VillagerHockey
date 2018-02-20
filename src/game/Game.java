@@ -5,11 +5,11 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Teams;
-import game.Event.JoinListener;
-import game.Event.LeaveListener;
-import game.Event.TeamScoreListener;
-import game.Event.TeamSelectListener;
-import game.States.GameStateContext;
+import game.event.JoinListener;
+import game.event.LeaveListener;
+import game.event.TeamScoreListener;
+import game.event.TeamSelectListener;
+import game.states.GameStateContext;
 
 public interface Game extends GameStateContext {
 	

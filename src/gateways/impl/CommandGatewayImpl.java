@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import entities.Command.Command;
+import entities.command.Command;
 import gateways.CommandGateway;
 
 public class CommandGatewayImpl implements CommandGateway {

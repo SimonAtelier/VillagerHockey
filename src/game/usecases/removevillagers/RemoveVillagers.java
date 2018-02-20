@@ -1,0 +1,11 @@
+package game.usecases.removevillagers;
+
+import gateways.GameGateway;
+
+public interface RemoveVillagers {
+
+	void execute(String game);
+	
+	void setGameGateway(GameGateway gameGateway);
+	
+}
