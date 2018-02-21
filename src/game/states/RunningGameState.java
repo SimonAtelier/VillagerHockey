@@ -28,6 +28,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void enterGameState(Game game) {
+		super.enterGameState(game);
 		if (gameCountDown != null) {
 			gameCountDown.resume();
 		} else {
@@ -38,6 +39,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	
 	@Override
 	public void leaveGameState(Game game) {
+		super.leaveGameState(game);
 		if (gameCountDown != null && gameCountDown.isFinished()) {
 			new TeleportPlayersToLobbyController().onTeleportPlayersToLobby(game.getName());
 		} else if (gameCountDown != null && !gameCountDown.isFinished()) {

@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Villager;
+import org.bukkit.entity.EntityType;
 
 import game.Game;
 import gateways.GameGateway;
@@ -20,7 +20,7 @@ public class RemoveVillagersUseCase implements RemoveVillagers {
 		Location location = gameObject.getVillagerSpawner().getVillagerSpawnLocation();
 		World world = Bukkit.getServer().getWorld(location.getWorld().getName());
 		for (Entity entity : world.getEntities()) {
-			if (entity instanceof Villager) {
+			if (entity.getType() == EntityType.VILLAGER) {
 				entity.remove();
 			}
 		}

@@ -32,22 +32,25 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	
 	@Override
 	public void enterGameState(Game game) {
+		super.enterGameState(game);
 		int lobbyTimeInSeconds = Context.configuration.getLobbyTime();
 		LobbyCountDownController controller = new LobbyCountDownController();
 		controller.setOnCountDownFinished(this);
 		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);
 		lobbyCountDown.setCountDownListener(controller);
+		removeVillagers(game.getName());
+	}
+	
+	@Override
+	public void leaveGameState(Game game) {
+		super.leaveGameState(game);
+		removeVillagers(game.getName());
+		preparePlayersForGame(game);
 	}
 
 	@Override
 	public void onCountDownFinished(Game game) {
 		transitionToGameState(game, new RespawnGameState(new RunningGameState()));		
-	}
-
-	@Override
-	public void leaveGameState(Game game) {
-		preparePlayersForGame(game);
-		removeVillagers(game.getName());
 	}
 
 	@Override

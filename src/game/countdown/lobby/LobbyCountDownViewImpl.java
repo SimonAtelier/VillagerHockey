@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import context.Context;
 import gateways.configuration.Configuration;
+import gateways.configuration.MapTitleConfiguration;
 import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
@@ -55,7 +56,7 @@ public class LobbyCountDownViewImpl implements LobbyCountDownView {
 		if (!Context.configuration.isMapTitleEnabled())
 			return;
 		
-		Configuration configuration = Context.configuration;
+		MapTitleConfiguration configuration = Context.configuration;
 		
 		TitleViewModel model = titleView.getTitleViewModel();
 		model.setTitle(title);

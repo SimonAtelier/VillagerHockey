@@ -22,6 +22,16 @@ public abstract class AbstractGameState implements GameState {
 	public boolean canPlayerJoin(Game game, UUID player) {
 		return false;
 	}
+	
+	@Override
+	public void enterGameState(Game game) {
+		System.out.println("Enter GameState: " + getName());
+	}
+
+	@Override
+	public void leaveGameState(Game game) {
+		System.out.println("Leave GameState: " + getName());
+	}
 
 	@Override
 	public void transitionToGameState(Game game, GameState gameState) {

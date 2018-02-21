@@ -19,6 +19,7 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 	
 	@Override
 	public void enterGameState(Game game) {
+		super.enterGameState(game);
 		WinnerCountDownController controller = new WinnerCountDownController();
 		controller.setOnCountDownFinished(this);
 		winnerCountdown = new SecondsBasedCountDown(game, 5);
@@ -28,6 +29,7 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 
 	@Override
 	public void leaveGameState(Game game) {
+		super.leaveGameState(game);
 		game.leaveAll();
 		game.getTeams().resetTeamScores();
 	}

@@ -18,10 +18,12 @@ public class StoppedGameState extends AbstractGameState {
 
 	@Override
 	public void enterGameState(Game game) {
+		super.enterGameState(game);
 	}
 
 	@Override
 	public void leaveGameState(Game game) {
+		super.leaveGameState(game);
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import gateways.configuration.Configuration;
+import gateways.configuration.WinTitleConfiguration;
 import usecases.displaywinner.DisplayWinner.DisplayWinnerResponse;
 import view.title.TitleViewModel;
 
@@ -35,7 +35,7 @@ public class DisplayWinnerPresenter implements DisplayWinnerResponse {
 	}
 	
 	private void setupTimes() {
-		Configuration configuration = Context.configuration;
+		WinTitleConfiguration configuration = Context.configuration;
 		TitleViewModel model = view.getTitleViewModel();
 		model.setTitleFadeInTimeInSeconds(configuration.getWinTitleFadeInTimeInSeconds());
 		model.setTitleFadeOutTimeInSeconds(configuration.getWinTitleFadeOutTimeInSeconds());
@@ -52,7 +52,6 @@ public class DisplayWinnerPresenter implements DisplayWinnerResponse {
 		TitleViewModel model = view.getTitleViewModel();
 		model.setTitle(title);
 		model.setSubtitle(subtitle);
-
 	}
 	
 	private void setupDrawTitle() {
