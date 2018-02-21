@@ -36,13 +36,6 @@ public class ConfigurationYaml implements Configuration {
 	}
 
 	@Override
-	public boolean isGoalTitleEnabled() {
-		if (config.contains("titles.goal.enabled"))
-			return config.getBoolean("titles.goal.enabled");
-		return true;
-	}
-
-	@Override
 	public String getGameListTitle() {
 		if (config.contains("gamelist.title"))
 			return config.getString("gamelist.title");
@@ -172,6 +165,55 @@ public class ConfigurationYaml implements Configuration {
 	public int getMapSubtitleStayTimeInSeconds() {
 		if (config.contains("titles.map.subtitle-stay-time"))
 			return config.getInt("titles.map.subtitle-stay-time");
+		return 2;
+	}
+
+	@Override
+	public boolean isGoalTitleEnabled() {
+		if (config.contains("titles.goal.enabled"))
+			return config.getBoolean("titles.goal.enabled");
+		return false;
+	}
+
+	@Override
+	public int getGoalTitleFadeInTimeInSeconds() {
+		if (config.contains("titles.goal.title-fade-in-time"))
+			return config.getInt("titles.goal.title-fade-in-time");
+		return 1;
+	}
+
+	@Override
+	public int getGoalTitleFadeOutTimeInSeconds() {
+		if (config.contains("titles.goal.title-fade-out-time"))
+			return config.getInt("titles.goal.title-fade-out-time");
+		return 1;
+	}
+
+	@Override
+	public int getGoalTitleStayTimeInSeconds() {
+		if (config.contains("titles.goal.title-stay-time"))
+			return config.getInt("titles.goal.title-stay-time");
+		return 2;
+	}
+
+	@Override
+	public int getGoalSubtitleFadeInTimeInSeconds() {
+		if (config.contains("titles.goal.subtitle-fade-in-time"))
+			return config.getInt("titles.goal.subtitle-fade-in-time");
+		return 1;
+	}
+
+	@Override
+	public int getGoalSubtitleFadeOutTimeInSeconds() {
+		if (config.contains("titles.goal.subtitle-fade-out-time"))
+			return config.getInt("titles.goal.subtitle-fade-out-time");
+		return 1;
+	}
+
+	@Override
+	public int getGoalSubtitleStayTimeInSeconds() {
+		if (config.contains("titles.goal.subtitle-stay-time"))
+			return config.getInt("titles.goal.subtitle-stay-time");
 		return 2;
 	}
 	

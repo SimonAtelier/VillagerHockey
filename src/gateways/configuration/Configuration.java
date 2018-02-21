@@ -2,16 +2,14 @@ package gateways.configuration;
 
 import java.util.List;
 
-public interface Configuration extends WinTitleConfiguration, MapTitleConfiguration {
+public interface Configuration extends WinTitleConfiguration, MapTitleConfiguration, GoalTitleConfiguration {
 
 	String getPrefix();
 	
 	int getLobbyTime();
 	
 	int getLobbyGameMode();
-	
-	boolean isGoalTitleEnabled();
-	
+		
 	String getGameListTitle();
 	
 	String getVillagerName();
