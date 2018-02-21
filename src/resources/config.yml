@@ -10,7 +10,7 @@ chat-prefix: "&7[&bVillagerHockey&7]&f"
 # Lobby time
 # type: int
 # The time to wait (in seconds) until the game starts (if enough players)
-lobby-time: 60
+lobby-time: 5
 
 # Lobby gamemode
 # type: int
