@@ -13,8 +13,8 @@ chat-prefix: "&7[&bVillagerHockey&7]&f"
 lobby-time: 60
 
 # Lobby gamemode
-# type: int
-lobby-gamemode: 0
+# type: String
+lobby-gamemode: "ADVENTURE"
 
 # Villager AI
 # type: boolean

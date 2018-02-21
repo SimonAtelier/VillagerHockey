@@ -29,10 +29,10 @@ public class ConfigurationYaml implements Configuration {
 	}
 
 	@Override
-	public int getLobbyGameMode() {
+	public String getLobbyGameMode() {
 		if (config.contains("lobby-gamemode"))
-			return config.getInt("lobby-gamemode");
-		return 0;
+			return config.getString("lobby-gamemode");
+		return "ADVENTURE";
 	}
 
 	@Override

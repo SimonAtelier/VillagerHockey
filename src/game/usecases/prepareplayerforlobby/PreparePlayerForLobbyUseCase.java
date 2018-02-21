@@ -11,6 +11,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
+import context.Context;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 
@@ -43,7 +44,7 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	}
 	
 	private void setPlayerLobbyData(Player player) {
-		player.setGameMode(GameMode.ADVENTURE);
+		player.setGameMode(GameMode.valueOf(Context.configuration.getLobbyGameMode()));
 		player.setExp(0);
 		player.setLevel(0);
 		player.setHealth(player.getMaxHealth());
