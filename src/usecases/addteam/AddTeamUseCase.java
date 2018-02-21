@@ -39,7 +39,7 @@ public class AddTeamUseCase implements AddTeam {
 		initializeTeams();
 		
 		if (teamNameIsInvalid()) {
-			response.onInvalidTeamName(request.getName());
+			response.onInvalidTeamName(request.getName() == null ? "null" : request.getName());
 			return;
 		}
 
