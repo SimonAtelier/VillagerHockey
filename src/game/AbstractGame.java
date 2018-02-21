@@ -34,10 +34,11 @@ public abstract class AbstractGame implements Game {
 	public AbstractGame(String name) {
 		this.name = name;
 		gameState = new StoppedGameState();
-		gameLoop = new GameLoop(this);
 		teams = new Teams();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);
+		gameLoop = new GameLoopImpl();
+		gameLoop.setGame(this);
 	}
 
 	protected boolean addPlayer(UUID player) {
