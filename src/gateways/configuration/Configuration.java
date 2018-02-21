@@ -9,8 +9,6 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	int getLobbyTime();
 	
 	int getLobbyGameMode();
-		
-	String getGameListTitle();
 	
 	String getVillagerName();
 	

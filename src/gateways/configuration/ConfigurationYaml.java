@@ -36,13 +36,6 @@ public class ConfigurationYaml implements Configuration {
 	}
 
 	@Override
-	public String getGameListTitle() {
-		if (config.contains("gamelist.title"))
-			return config.getString("gamelist.title");
-		return "====[ VillagerHockey Game List ]====";
-	}
-
-	@Override
 	public String getVillagerName() {
 		if (config.contains("villager-default-name"))
 			return config.getString("villager-default-name");
