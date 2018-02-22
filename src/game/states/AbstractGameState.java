@@ -8,29 +8,32 @@ public abstract class AbstractGameState implements GameState {
 
 	@Override
 	public void onTick(Game game) {
+		// Implementation is left to subclass
 	}
 	
 	@Override
 	public void onPlayerJoin(Game game, UUID player) {
+		// Implementation is left to subclass
 	}
 
 	@Override
 	public void onPlayerLeave(Game game, UUID player) {
+		// Implementation is left to subclass
+	}
+	
+	@Override
+	public void enterGameState(Game game) {
+		// Implementation is left to subclass
+	}
+
+	@Override
+	public void leaveGameState(Game game) {
+		// Implementation is left to subclass
 	}
 	
 	@Override
 	public boolean canPlayerJoin(Game game, UUID player) {
 		return false;
-	}
-	
-	@Override
-	public void enterGameState(Game game) {
-		System.out.println("Enter GameState: " + getName());
-	}
-
-	@Override
-	public void leaveGameState(Game game) {
-		System.out.println("Leave GameState: " + getName());
 	}
 
 	@Override
