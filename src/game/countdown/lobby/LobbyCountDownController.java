@@ -20,6 +20,7 @@ public class LobbyCountDownController implements CountDownListener {
 	
 	@Override
 	public void onUpdateIgnorePaused(CountDown countdown, String game, int timeLeftInSeconds) {
+		// Not used
 	}
 
 	@Override
