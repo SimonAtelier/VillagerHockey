@@ -19,7 +19,6 @@ import usecases.setvillagerspawn.SetVillagerSpawnCommand;
 import usecases.showhelp.ShowHelpCommand;
 import usecases.startgame.StartGameCommand;
 import usecases.stopgame.StopGameCommand;
-import view.menu.OpenMenuCommand;
 
 public class CommandProviderImpl implements CommandProvider {
 
@@ -42,7 +41,6 @@ public class CommandProviderImpl implements CommandProvider {
 		commandRegistration.registerCommand(new RemoveGameCommand());
 		commandRegistration.registerCommand(new StartGameCommand());
 		commandRegistration.registerCommand(new StopGameCommand());
-		commandRegistration.registerCommand(new OpenMenuCommand());
 	}
 
 }

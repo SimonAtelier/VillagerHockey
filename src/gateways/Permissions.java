@@ -40,4 +40,6 @@ public interface Permissions {
 	
 	static final String STOP_GAME = "setup";
 	
+	static final String FORCE_START = "vip.forcestart";
+	
 }

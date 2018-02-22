@@ -1,0 +1,32 @@
+package usecases.forcestart;
+
+import java.util.List;
+import java.util.UUID;
+
+import context.Context;
+import entities.command.AbstractCommand;
+import usecases.forcestart.ForceStart.ForceStartResponse;
+
+public class ForceStartCommand extends AbstractCommand {
+
+	@Override
+	public void execute(UUID player, List<String> arguments) {
+		ForceStartView view = new ForceStartViewImpl(player);
+		ForceStartResponse presenter = new ForceStartPresenter(view);
+		ForceStart useCase = new ForceStartUseCase();
+		useCase.setGameGateway(Context.gameGateway);
+		useCase.setPermissionGateway(Context.permissionGateway);
+		useCase.execute(player, presenter);
+	}
+
+	@Override
+	public String getName() {
+		return "forcestart";
+	}
+
+	@Override
+	public String[] getArgumentLabels() {
+		return new String[] {};
+	}
+
+}

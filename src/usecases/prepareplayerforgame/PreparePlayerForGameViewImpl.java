@@ -22,7 +22,7 @@ public class PreparePlayerForGameViewImpl implements PreparePlayerForGameView {
 	
 	@Override
 	public void displayHockeySticks(UUID uniquePlayerId) {
-		Player player = Bukkit.getPlayer(uniquePlayerId);
+		Player player = Bukkit.getPlayer(uniquePlayerId);		
 		PlayerInventory inventory = player.getInventory();
 		
 		for (int i = 0; i < 9; i++) {

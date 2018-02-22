@@ -14,6 +14,7 @@ import config.Configuration;
 import config.ConfigurationLoader;
 import context.Context;
 import entities.command.ArgumentsWithLabel;
+import game.usecases.prepareplayerforlobby.LobbyMenuListener;
 import gateways.CommandGateway;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
@@ -149,6 +150,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		registerEventListener(new ShowTeamsEventListener());
 		registerEventListener(new ShootPuckEventListener());
 		registerEventListener(new ReceiveDamageEventListener());
+		registerEventListener(new LobbyMenuListener());
 	}
 
 	private void registerEventListener(Listener listener) {
