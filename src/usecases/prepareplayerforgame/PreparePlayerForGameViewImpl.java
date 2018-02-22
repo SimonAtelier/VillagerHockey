@@ -26,6 +26,8 @@ public class PreparePlayerForGameViewImpl implements PreparePlayerForGameView {
 	@Override
 	public void displayHockeySticks(UUID uniquePlayerId) {
 		Player player = Bukkit.getPlayer(uniquePlayerId);		
+		player.setLevel(0);
+		
 		PlayerInventory inventory = player.getInventory();
 		
 		for (int i = 0; i < 9; i++) {
