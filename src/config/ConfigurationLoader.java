@@ -7,8 +7,8 @@ import java.io.InputStream;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import gateways.configuration.Configuration;
-import gateways.configuration.ConfigurationYaml;
+import config.Configuration;
+import config.ConfigurationYaml;
 
 public class ConfigurationLoader {
 

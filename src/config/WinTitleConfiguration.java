@@ -1,4 +1,4 @@
-package gateways.configuration;
+package config;
 
 public interface WinTitleConfiguration {
 

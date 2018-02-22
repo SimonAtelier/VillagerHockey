@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import config.Configuration;
 import context.Context;
 import entities.command.ArgumentsWithLabel;
 import gateways.CommandGateway;
-import gateways.configuration.Configuration;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
 import gateways.impl.InventoryGatewayYaml;
@@ -95,7 +95,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void loadConfiguration() {
 		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		configurationLoader.setResourcePath("/resources/config.yml");
+		configurationLoader.setResourcePath("/config/config.yml");
 		configurationLoader.setPluginFolderPath("plugins/VillagerHockey/config.yml");
 		configuration = configurationLoader.loadConfiguration();
 	}

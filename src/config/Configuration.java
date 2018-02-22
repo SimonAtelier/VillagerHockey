@@ -1,4 +1,4 @@
-package gateways.configuration;
+package config;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
 package context;
 
+import config.Configuration;
 import gateways.CommandGateway;
 import gateways.GameGateway;
 import gateways.InventoryGateway;
@@ -8,7 +9,6 @@ import gateways.PermissionGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
 import gateways.TeamSpawnsGateway;
-import gateways.configuration.Configuration;
 import view.message.MessageView;
 
 public class Context {

@@ -3,8 +3,8 @@ package usecases.displaywinner;
 import java.util.List;
 import java.util.UUID;
 
+import config.WinTitleConfiguration;
 import context.Context;
-import gateways.configuration.WinTitleConfiguration;
 import usecases.displaywinner.DisplayWinner.DisplayWinnerResponse;
 import view.title.TitleViewModel;
 

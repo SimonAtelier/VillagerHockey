@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import config.Configuration;
 import game.BaseGame;
 import game.Game;
 import game.VillagerSpawner;
 import gateways.GameGateway;
-import gateways.configuration.Configuration;
 import usecases.displayteamscored.ScoreEventListener;
 import usecases.jointeam.JoinTeamController;
 import usecases.updatejoinsigns.UpdateJoinSignController;
