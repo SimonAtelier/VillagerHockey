@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import config.Configuration;
 import config.MapTitleConfiguration;
 import context.Context;
 import view.message.MessageView;
