@@ -1,4 +1,4 @@
-package main;
+package config;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.bukkit.configuration.file.YamlConfiguration;
-
-import config.Configuration;
-import config.ConfigurationYaml;
 
 public class ConfigurationLoader {
 

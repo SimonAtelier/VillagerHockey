@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import config.Configuration;
+import config.ConfigurationLoader;
 import context.Context;
 import entities.command.ArgumentsWithLabel;
 import gateways.CommandGateway;
