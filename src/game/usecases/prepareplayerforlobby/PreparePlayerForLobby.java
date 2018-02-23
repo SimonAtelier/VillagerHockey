@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import config.Configuration;
 import gateways.PermissionGateway;
+import gateways.PlayerDataGateway;
 
 public interface PreparePlayerForLobby {
 
@@ -12,6 +13,8 @@ public interface PreparePlayerForLobby {
 	void setConfiguration(Configuration configuration);
 	
 	void setPermissionGateway(PermissionGateway permissionGateway);
+	
+	void setPlayerDataGateway(PlayerDataGateway playerDataGateway);
 	
 	public interface PreparePlayerForLobbyResponse {
 		

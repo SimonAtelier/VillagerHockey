@@ -6,6 +6,7 @@ import gateways.GameGateway;
 import gateways.InventoryGateway;
 import gateways.JoinSignGateway;
 import gateways.PermissionGateway;
+import gateways.PlayerDataGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
 import gateways.TeamSpawnsGateway;
@@ -32,5 +33,7 @@ public class Context {
 	public static JoinSignGateway joinSignGateway;
 	
 	public static Configuration configuration;
+	
+	public static PlayerDataGateway playerDataGateway;
 	
 }

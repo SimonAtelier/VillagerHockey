@@ -8,11 +8,12 @@ import game.usecases.prepareplayerforlobby.PreparePlayerForLobby.PreparePlayerFo
 public class PreparePlayerForLobbyCommand {
 
 	public void execute(UUID uniquePlayerId) {
-		LobbyMenuView view = new LobbyMenuViewImpl(uniquePlayerId);
+		LobbyView view = new LobbyViewImpl(uniquePlayerId);
 		PreparePlayerForLobbyResponse presenter = new PreparePlayerForLobbyPresenter(view);
 		PreparePlayerForLobby useCase = new PreparePlayerForLobbyUseCase();
 		useCase.setConfiguration(Context.configuration);
 		useCase.setPermissionGateway(Context.permissionGateway);
+		useCase.setPlayerDataGateway(Context.playerDataGateway);
 		useCase.execute(uniquePlayerId, presenter);
 	}
 	

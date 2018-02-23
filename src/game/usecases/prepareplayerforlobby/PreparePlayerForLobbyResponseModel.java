@@ -2,9 +2,39 @@ package game.usecases.prepareplayerforlobby;
 
 public class PreparePlayerForLobbyResponseModel {
 
+	private int experience;
+	private int level;
+	private int foodLevel;
 	private boolean canForceStart;
 	private boolean canSelectTeam;
+	private boolean canViewAchievements;
+	private boolean maxHealth;
+	private String gameMode;
 	
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getFoodLevel() {
+		return foodLevel;
+	}
+
+	public void setFoodLevel(int foodLevel) {
+		this.foodLevel = foodLevel;
+	}
+
 	public boolean isCanForceStart() {
 		return canForceStart;
 	}
@@ -19,6 +49,30 @@ public class PreparePlayerForLobbyResponseModel {
 	
 	public void setCanSelectTeam(boolean canSelectTeam) {
 		this.canSelectTeam = canSelectTeam;
+	}
+	
+	public boolean isCanViewAchievements() {
+		return canViewAchievements;
+	}
+
+	public void setCanViewAchievements(boolean canViewAchievements) {
+		this.canViewAchievements = canViewAchievements;
+	}
+
+	public boolean isMaxHealth() {
+		return maxHealth;
+	}
+
+	public void setMaxHealth(boolean maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+
+	public String getGameMode() {
+		return gameMode;
+	}
+
+	public void setGameMode(String gameMode) {
+		this.gameMode = gameMode;
 	}
 	
 }

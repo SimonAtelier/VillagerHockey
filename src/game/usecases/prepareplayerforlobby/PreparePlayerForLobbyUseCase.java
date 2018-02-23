@@ -3,12 +3,10 @@ package game.usecases.prepareplayerforlobby;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 
 import config.Configuration;
-import context.Context;
 import gateways.PermissionGateway;
 import gateways.Permissions;
 import gateways.PlayerDataGateway;
@@ -16,34 +14,34 @@ import gateways.impl.PlayerDataGatewayYaml;
 
 public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	
+	private UUID uniquePlayerId;
 	private Configuration configuration;
 	private PermissionGateway permissionGateway;
+	private PlayerDataGateway playerDataGateway;
 	
 	@Override
 	public void execute(UUID uniquePlayerId, PreparePlayerForLobbyResponse response) {
+		this.uniquePlayerId = uniquePlayerId;
+		savePlayerData();
+		
 		Player player = Bukkit.getPlayer(uniquePlayerId);
-		savePlayerData(player);
-		setPlayerLobbyData(player);
+		removeAllPotionEffects(player);
 	
 		PreparePlayerForLobbyResponseModel responseModel = new PreparePlayerForLobbyResponseModel();
 		responseModel.setCanForceStart(permissionGateway.hasPermission(uniquePlayerId, Permissions.FORCE_START));
 		responseModel.setCanSelectTeam(!configuration.isAutobalanceEnabled());
+		responseModel.setCanViewAchievements(configuration.isAchievementsEnabled());
+		responseModel.setGameMode(configuration.getLobbyGameMode());
+		responseModel.setFoodLevel(20);
+		responseModel.setLevel(0);
+		responseModel.setMaxHealth(true);
+		responseModel.setExperience(0);
 		
 		response.present(responseModel);
 	}
-		
-	private void setPlayerLobbyData(Player player) {
-		player.setGameMode(GameMode.valueOf(Context.configuration.getLobbyGameMode()));
-		player.setExp(0);
-		player.setLevel(0);
-		player.setHealth(player.getMaxHealth());
-		player.setFoodLevel(20);
-		removeAllPotionEffects(player);
-	}
 	
-	private void savePlayerData(Player player) {
-		PlayerDataGateway gateway = new PlayerDataGatewayYaml();
-		gateway.save(player.getUniqueId());
+	private void savePlayerData() {
+		playerDataGateway.save(uniquePlayerId);
 	}
 	
 	private void removeAllPotionEffects(Player player) {
@@ -61,6 +59,11 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	@Override
 	public void setPermissionGateway(PermissionGateway permissionGateway) {
 		this.permissionGateway = permissionGateway;
+	}
+
+	@Override
+	public void setPlayerDataGateway(PlayerDataGateway playerDataGateway) {
+		this.playerDataGateway = playerDataGateway;
 	}
 		
 }

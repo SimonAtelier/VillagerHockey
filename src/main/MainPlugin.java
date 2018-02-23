@@ -21,6 +21,7 @@ import gateways.impl.GameGatewayImpl;
 import gateways.impl.InventoryGatewayYaml;
 import gateways.impl.JoinSignsGatewayImpl;
 import gateways.impl.PermissionGatewayAlwaysTrueMock;
+import gateways.impl.PlayerDataGatewayYaml;
 import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
@@ -82,6 +83,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
 		Context.signGateway = new SignGatewayImpl();
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
+		Context.playerDataGateway = new PlayerDataGatewayYaml();
 		Context.configuration = configuration;
 		
 		Context.messageView.setPrefix(configuration.getPrefix());
