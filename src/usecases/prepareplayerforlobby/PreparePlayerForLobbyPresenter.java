@@ -32,6 +32,7 @@ public class PreparePlayerForLobbyPresenter implements PreparePlayerForLobbyResp
 		view.displayFoodLevel(responseModel.getFoodLevel());
 		view.displayGameMode(responseModel.getGameMode());
 		view.displayLevel(responseModel.getLevel());
+		view.displayExperience(responseModel.getExperience());
 	}
 
 }
