@@ -12,6 +12,8 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	
 	public boolean isAutobalanceEnabled();
 	
+	public boolean isAchievementsEnabled();
+	
 	String getVillagerName();
 	
 	boolean isVillagerAIEnabled();

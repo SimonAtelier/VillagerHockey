@@ -41,6 +41,13 @@ public class ConfigurationYaml implements Configuration {
 			return config.getBoolean("auto-balance-enabled");
 		return false;
 	}
+	
+	@Override
+	public boolean isAchievementsEnabled() {
+		if (config.contains("achievements-enabled"))
+			return config.getBoolean("achievements-enabled");
+		return false;
+	}
 
 	@Override
 	public String getVillagerName() {

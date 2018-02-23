@@ -17,10 +17,15 @@ lobby-time: 60
 # The game mode of the waiting lobby
 lobby-gamemode: "ADVENTURE"
 
-# Auto balance
+# Auto balance enabled
 # type: boolean
 # Determines if the players can select a team or not (if false players can select a team)
 auto-balance-enabled: false
+
+# Achievements enabled
+# type: boolean
+# Determines if the achievements features is used or not (used if true)
+achievements-enabled: false
 
 # Villager AI
 # type: boolean
