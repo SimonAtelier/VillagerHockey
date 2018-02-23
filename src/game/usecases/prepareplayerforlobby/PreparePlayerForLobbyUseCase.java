@@ -2,10 +2,6 @@ package game.usecases.prepareplayerforlobby;
 
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-
 import config.Configuration;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -22,10 +18,10 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	public void execute(UUID uniquePlayerId, PreparePlayerForLobbyResponse response) {
 		this.uniquePlayerId = uniquePlayerId;
 		savePlayerData();
-		
-		Player player = Bukkit.getPlayer(uniquePlayerId);
-		removeAllPotionEffects(player);
+		response.present(createResponseModel());
+	}
 	
+	private PreparePlayerForLobbyResponseModel createResponseModel() {
 		PreparePlayerForLobbyResponseModel responseModel = new PreparePlayerForLobbyResponseModel();
 		responseModel.setCanForceStart(permissionGateway.hasPermission(uniquePlayerId, Permissions.FORCE_START));
 		responseModel.setCanSelectTeam(!configuration.isAutobalanceEnabled());
@@ -35,21 +31,14 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 		responseModel.setLevel(0);
 		responseModel.setMaxHealth(true);
 		responseModel.setExperience(0);
-		
-		response.present(responseModel);
+		responseModel.setRemoveAllPotionEffects(true);
+		return responseModel;
 	}
 	
 	private void savePlayerData() {
 		playerDataGateway.save(uniquePlayerId);
 	}
 	
-	private void removeAllPotionEffects(Player player) {
-		for (PotionEffect effect : player.getActivePotionEffects()) {
-			if (player.hasPotionEffect(effect.getType()))
-				player.removePotionEffect(effect.getType());
-		}
-	}
-
 	@Override
 	public void setConfiguration(Configuration configuration) {
 		this.configuration = configuration;

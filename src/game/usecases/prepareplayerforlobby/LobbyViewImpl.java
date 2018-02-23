@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
 
 public class LobbyViewImpl implements LobbyView {
 	
@@ -58,6 +59,23 @@ public class LobbyViewImpl implements LobbyView {
 	@Override
 	public void displayMaxHealth() {
 		player.setHealth(player.getMaxHealth());
+	}
+	
+	@Override
+	public void displayExperience(int experience) {
+		player.setExp(experience);
+	}
+
+	@Override
+	public void displayClearAllPotionEffects() {
+		removeAllPotionEffects();
+	}
+
+	private void removeAllPotionEffects() {
+		for (PotionEffect effect : player.getActivePotionEffects()) {
+			if (player.hasPotionEffect(effect.getType()))
+				player.removePotionEffect(effect.getType());
+		}
 	}
 
 	private ItemStack createSelectTeamItem() {

@@ -18,4 +18,8 @@ public interface LobbyView {
 	
 	void displayMaxHealth();
 	
+	void displayClearAllPotionEffects();
+	
+	void displayExperience(int experience);
+	
 }

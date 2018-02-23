@@ -9,6 +9,7 @@ public class PreparePlayerForLobbyResponseModel {
 	private boolean canSelectTeam;
 	private boolean canViewAchievements;
 	private boolean maxHealth;
+	private boolean removeAllPotionEffects;
 	private String gameMode;
 	
 	public int getExperience() {
@@ -65,6 +66,14 @@ public class PreparePlayerForLobbyResponseModel {
 
 	public void setMaxHealth(boolean maxHealth) {
 		this.maxHealth = maxHealth;
+	}
+	
+	public boolean isRemoveAllPotionEffects() {
+		return removeAllPotionEffects;
+	}
+
+	public void setRemoveAllPotionEffects(boolean removeAllPotionEffects) {
+		this.removeAllPotionEffects = removeAllPotionEffects;
 	}
 
 	public String getGameMode() {
