@@ -10,7 +10,6 @@ import config.Configuration;
 import gateways.PermissionGateway;
 import gateways.Permissions;
 import gateways.PlayerDataGateway;
-import gateways.impl.PlayerDataGatewayYaml;
 
 public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 	
