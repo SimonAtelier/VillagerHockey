@@ -9,17 +9,38 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class LobbyMenu {
+public class LobbyMenuViewImpl implements LobbyMenuView {
 	
-	public void display(UUID viewer) {
-		Player player = Bukkit.getPlayer(viewer);
-		PlayerInventory inventory = player.getInventory();
-		inventory.setItem(0, createSelectTeamItem());
-		inventory.setItem(1, createAchievementsItem());
-		inventory.setItem(7, createForceStartItem());
-		inventory.setItem(8, createLeaveGameItem());
+	PlayerInventory inventory;
+	
+	public LobbyMenuViewImpl(UUID viewer) {
+		setInventoryOfPlayer(Bukkit.getPlayer(viewer));
 	}
 	
+	private void setInventoryOfPlayer(Player player) {
+		inventory = player.getInventory();
+	}
+	
+	@Override
+	public void displaySelectTeam() {
+		inventory.setItem(0, createSelectTeamItem());
+	}
+
+	@Override
+	public void displayForceStart() {
+		inventory.setItem(7, createForceStartItem());
+	}
+
+	@Override
+	public void displayLeaveGame() {
+		inventory.setItem(8, createLeaveGameItem());
+	}
+
+	@Override
+	public void displayAchievements() {
+		inventory.setItem(1, createAchievementsItem());
+	}
+
 	private ItemStack createSelectTeamItem() {
 		ItemStack itemStack = new ItemStack(Material.LEATHER_HELMET, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();

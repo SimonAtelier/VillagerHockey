@@ -34,6 +34,13 @@ public class ConfigurationYaml implements Configuration {
 			return config.getString("lobby-gamemode");
 		return "ADVENTURE";
 	}
+	
+	@Override
+	public boolean isAutobalanceEnabled() {
+		if (config.contains("auto-balance-enabled"))
+			return config.getBoolean("auto-balance-enabled");
+		return false;
+	}
 
 	@Override
 	public String getVillagerName() {

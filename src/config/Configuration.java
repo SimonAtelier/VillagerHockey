@@ -10,6 +10,8 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	
 	String getLobbyGameMode();
 	
+	public boolean isAutobalanceEnabled();
+	
 	String getVillagerName();
 	
 	boolean isVillagerAIEnabled();

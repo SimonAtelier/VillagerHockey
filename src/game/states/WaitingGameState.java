@@ -8,8 +8,7 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.lobby.LobbyCountDownController;
-import game.usecases.prepareplayerforlobby.PreparePlayerForLobby;
-import game.usecases.prepareplayerforlobby.PreparePlayerForLobbyUseCase;
+import game.usecases.prepareplayerforlobby.PreparePlayerForLobbyCommand;
 import game.usecases.removevillagers.RemoveVillagers;
 import game.usecases.removevillagers.RemoveVillagersUseCase;
 import game.usecases.teleportplayertolobby.TeleportPlayerToLobbyController;
@@ -90,8 +89,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	}
 	
 	private void preparePlayerForLobby(UUID player) {		
-		PreparePlayerForLobby useCase = new PreparePlayerForLobbyUseCase();
-		useCase.execute(player);
+		new PreparePlayerForLobbyCommand().execute(player);
 	}
 
 	private void teleportPlayerToLobby(UUID player) {

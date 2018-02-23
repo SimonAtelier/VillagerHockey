@@ -14,7 +14,13 @@ lobby-time: 60
 
 # Lobby gamemode
 # type: String
+# The game mode of the waiting lobby
 lobby-gamemode: "ADVENTURE"
+
+# Auto balance
+# type: boolean
+# Determines if the players can select a team or not (if false players can select a team)
+auto-balance-enabled: false
 
 # Villager AI
 # type: boolean
