@@ -14,14 +14,10 @@ public class HockeySticksViewImpl implements HockeySticksView {
 
 	private int fishSlot;
 	private int stickSlot;
-	private String fishDisplayName;
-	private String stickDisplayName;
 	
 	public HockeySticksViewImpl() {
 		fishSlot = 0;
 		stickSlot = 1;
-		fishDisplayName = "Vergammelter Fisch";
-		stickDisplayName = "Kaputter Zauberstab";
 	}
 	
 	@Override
@@ -41,19 +37,19 @@ public class HockeySticksViewImpl implements HockeySticksView {
 	}
 	
 	private void addRawFishWithKnockbackTwoEnchantment(PlayerInventory inventory) {
-		ItemStack itemStack = new ItemStack(Material.RAW_FISH, 1);
+		ItemStack itemStack = new ItemStack(Material.RAW_FISH);
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.addEnchant(Enchantment.KNOCKBACK, 2, true);
-		itemMeta.setDisplayName(fishDisplayName);
+		itemMeta.setDisplayName(HockeySticksViewMessages.HOCKEY_STICKS_FISH_DISPLAY_NAME);
 		itemStack.setItemMeta(itemMeta);
 		inventory.setItem(fishSlot, itemStack);
 	}
 
 	private void addStickWithKnockbackOneEnchantment(PlayerInventory inventory) {
-		ItemStack itemStack = new ItemStack(Material.STICK, 1);
+		ItemStack itemStack = new ItemStack(Material.STICK);
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.addEnchant(Enchantment.KNOCKBACK, 1, true);
-		itemMeta.setDisplayName(stickDisplayName);
+		itemMeta.setDisplayName(HockeySticksViewMessages.HOCKEY_STICKS_STICK_DISPLAY_NAME);
 		itemStack.setItemMeta(itemMeta);
 		inventory.setItem(stickSlot, itemStack);
 	}
