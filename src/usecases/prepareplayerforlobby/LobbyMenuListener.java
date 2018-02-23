@@ -1,4 +1,4 @@
-package game.usecases.prepareplayerforlobby;
+package usecases.prepareplayerforlobby;
 
 import java.util.ArrayList;
 import java.util.UUID;

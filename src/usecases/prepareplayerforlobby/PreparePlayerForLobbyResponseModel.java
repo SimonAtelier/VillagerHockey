@@ -1,4 +1,4 @@
-package game.usecases.prepareplayerforlobby;
+package usecases.prepareplayerforlobby;
 
 public class PreparePlayerForLobbyResponseModel {
 

@@ -14,7 +14,6 @@ import config.Configuration;
 import config.ConfigurationLoader;
 import context.Context;
 import entities.command.ArgumentsWithLabel;
-import game.usecases.prepareplayerforlobby.LobbyMenuListener;
 import gateways.CommandGateway;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
@@ -47,6 +46,7 @@ import usecases.performaction.placejoinsign.PlaceJoinSignEventListener;
 import usecases.performaction.quit.QuitEventListener;
 import usecases.performaction.receivedamage.ReceiveDamageEventListener;
 import usecases.performaction.shootpuck.ShootPuckEventListener;
+import usecases.prepareplayerforlobby.LobbyMenuListener;
 import usecases.selectteam.ShowTeamsEventListener;
 import view.message.MessageViewImpl;
 

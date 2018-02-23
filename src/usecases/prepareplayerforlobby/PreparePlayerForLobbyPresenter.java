@@ -1,6 +1,6 @@
-package game.usecases.prepareplayerforlobby;
+package usecases.prepareplayerforlobby;
 
-import game.usecases.prepareplayerforlobby.PreparePlayerForLobby.PreparePlayerForLobbyResponse;
+import usecases.prepareplayerforlobby.PreparePlayerForLobby.PreparePlayerForLobbyResponse;
 
 public class PreparePlayerForLobbyPresenter implements PreparePlayerForLobbyResponse {
 
