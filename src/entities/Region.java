@@ -6,39 +6,35 @@ public class Region {
 	private Location locationTwo;
 
 	public boolean contains(Location location) {
-		if (!location.getWorld().equals(locationOne.getWorld()))
-			return false;
-		if (!location.getWorld().equals(locationTwo.getWorld()))
-			return false;
 		double x = location.getX();
 		double y = location.getY();
 		double z = location.getZ();
-		return x >= getMinX() && x <= getMaxX() && y >= getMinY() && y <= getMaxY() && z >= getMinZ() && z <= getMaxZ();
+		return equalWorlds(location) && x >= getMinX() && x <= getMaxX() && y >= getMinY() && y <= getMaxY()
+				&& z >= getMinZ() && z <= getMaxZ();
 	}
 
 	public boolean containsIgnoreBorder(Location location) {
-		if (!location.getWorld().equals(locationOne.getWorld()))
-			return false;
-		if (!location.getWorld().equals(locationTwo.getWorld()))
-			return false;
 		double x = location.getX();
 		double y = location.getY();
 		double z = location.getZ();
-		return x > getMinX() && x < getMaxX() && y > getMinY() && y < getMaxY() && z > getMinZ() && z < getMaxZ();
+		return equalWorlds(location) && x > getMinX() && x < getMaxX() && y > getMinY() && y < getMaxY()
+				&& z > getMinZ() && z < getMaxZ();
+	}
+
+	private boolean equalWorlds(Location location) {
+		return location.getWorld().equals(locationOne.getWorld()) && location.getWorld().equals(locationTwo.getWorld());
 	}
 
 	public boolean isValid() {
-		if (locationOne == null)
-			return false;
-		if (locationTwo == null)
-			return false;
-		if (locationOne.getWorld() == null)
-			return false;
-		if (locationTwo.getWorld() == null)
-			return false;
-		if (!locationOne.getWorld().equals(locationTwo.getWorld()))
-			return false;
-		return true;
+		boolean valid = true;
+		
+		valid |= locationOne == null;
+		valid |= locationTwo == null;
+		valid |= locationOne.getWorld() == null;
+		valid |= locationTwo.getWorld() == null;
+		valid |= !locationOne.getWorld().equals(locationTwo.getWorld());
+
+		return valid;
 	}
 
 	@Override
