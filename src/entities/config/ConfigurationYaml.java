@@ -15,10 +15,16 @@ public class ConfigurationYaml implements Configuration {
 	
 	@Override
 	public String getPrefix() {
-		if (config.contains("chat-prefix")) {
+		if (config.contains("chat-prefix"))
 			return config.getString("chat-prefix");
-		}
 		return "[VillagerHockey]";
+	}
+
+	@Override
+	public String getChatWithAllLabel() {
+		if (config.contains("chat-with-all-label"))
+			return config.getString("chat-with-all-label");
+		return "@all";
 	}
 
 	@Override

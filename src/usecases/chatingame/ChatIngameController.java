@@ -18,6 +18,7 @@ public class ChatIngameController {
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.setPlayerGateway(Context.playerGateway);
+		useCase.setConfiguration(Context.configuration);
 		useCase.execute(createRequest(player, message), presenter);
 		
 		return true;

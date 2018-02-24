@@ -3,6 +3,7 @@ package usecases.chatingame;
 import java.util.List;
 import java.util.UUID;
 
+import entities.config.Configuration;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.PlayerGateway;
@@ -10,6 +11,8 @@ import gateways.PlayerGateway;
 public interface ChatIngame {
 
 	void execute(ChatIngameRequest request, ChatIngameResponse response);
+	
+	void setConfiguration(Configuration configuration);
 	
 	void setGameGateway(GameGateway gameGateway);
 	

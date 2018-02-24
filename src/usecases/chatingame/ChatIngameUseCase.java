@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import entities.Team;
 import entities.Teams;
+import entities.config.Configuration;
 import game.Game;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
@@ -13,17 +14,18 @@ import gateways.PlayerGateway;
 
 public class ChatIngameUseCase implements ChatIngame {
 	
-	private static final String CHAT_WITH_ALL_PREFIX = "!";
-	
+	private String chatWithAllLabel;
 	private Team team;
 	private Game game;
 	private ChatIngameRequest request;
+	private Configuration configuration;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
 	private PlayerGateway playerGateway;
 	
 	@Override
 	public void execute(ChatIngameRequest request, ChatIngameResponse response) {
+		setChatWithAllLabelFromConfiguration();
 		setRequest(request);
 		
 		if (noPermission()) {
@@ -49,12 +51,12 @@ public class ChatIngameUseCase implements ChatIngame {
 	
 	private String getMessageWithoutChatWithAllPrefix() {
 		String message = request.getMessage();
-		message = message.replaceFirst(CHAT_WITH_ALL_PREFIX, "");
+		message = message.replaceFirst(chatWithAllLabel, "");
 		return message;
 	}
 	
 	private boolean shouldChatWithAll() {
-		return request.getMessage().startsWith(CHAT_WITH_ALL_PREFIX);
+		return request.getMessage().startsWith(chatWithAllLabel);
 	}
 	
 	private String getNameOfPlayer() {
@@ -86,8 +88,17 @@ public class ChatIngameUseCase implements ChatIngame {
 		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.CHAT_INGAME);
 	}
 	
+	private void setChatWithAllLabelFromConfiguration() {
+		chatWithAllLabel = configuration.getChatWithAllLabel();
+	}
+	
 	private void setRequest(ChatIngameRequest request) {
 		this.request = request;
+	}
+	
+	@Override
+	public void setConfiguration(Configuration configuration) {
+		this.configuration = configuration;
 	}
 
 	@Override

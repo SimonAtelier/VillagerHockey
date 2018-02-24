@@ -58,6 +58,11 @@ villager-random-names:
 - "Villain"
 - "Wayne"
 
+# Chat with all
+# type: String
+# The label messages to all players should start with
+chat-with-all-label: "@all"
+
 # Title configuration
 titles:
   # Goal title

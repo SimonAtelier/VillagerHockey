@@ -6,6 +6,8 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 
 	String getPrefix();
 	
+	String getChatWithAllLabel();
+	
 	int getLobbyTime();
 	
 	String getLobbyGameMode();
