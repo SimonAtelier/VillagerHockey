@@ -31,7 +31,9 @@ public class ChatIngameViewImpl implements ChatIngameView {
 
 	@Override
 	public void displayNoTeam() {
-		displayMessage(viewer, ChatIngameViewMessages.CHAT_INGAME_NO_TEAM);
+		String message = ChatIngameViewMessages.CHAT_INGAME_NO_TEAM;
+		message = message.replace("$label$", Context.configuration.getChatWithAllLabel());
+		displayMessage(viewer, message);
 	}
 
 	@Override
