@@ -12,7 +12,9 @@ import gateways.Permissions;
 import gateways.PlayerGateway;
 
 public class ChatIngameUseCase implements ChatIngame {
-
+	
+	private static final String CHAT_WITH_ALL_PREFIX = "!";
+	
 	private Team team;
 	private Game game;
 	private ChatIngameRequest request;
@@ -32,10 +34,8 @@ public class ChatIngameUseCase implements ChatIngame {
 		findGame();
 		findTeam();
 		
-		if (request.getMessage().startsWith("!")) {
-			String message = request.getMessage();
-			message = message.replaceFirst("!", "");
-			response.onChatWithAll(findAllPlayers(), message, getNameOfPlayer());
+		if (shouldChatWithAll()) {
+			response.onChatWithAll(findAllPlayers(), getMessageWithoutChatWithAllPrefix(), getNameOfPlayer());
 			return;
 		}
 		
@@ -45,6 +45,16 @@ public class ChatIngameUseCase implements ChatIngame {
 		}
 		
 		response.onChatWithTeam(findPlayersOfTeam(), request.getMessage(), getNameOfPlayer());
+	}
+	
+	private String getMessageWithoutChatWithAllPrefix() {
+		String message = request.getMessage();
+		message = message.replaceFirst(CHAT_WITH_ALL_PREFIX, "");
+		return message;
+	}
+	
+	private boolean shouldChatWithAll() {
+		return request.getMessage().startsWith(CHAT_WITH_ALL_PREFIX);
 	}
 	
 	private String getNameOfPlayer() {
