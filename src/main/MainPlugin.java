@@ -24,6 +24,7 @@ import gateways.impl.PlayerDataGatewayYaml;
 import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
+import usecases.chatwithteam.ChatEventListener;
 import usecases.executecommand.ExecuteCommand;
 import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.executecommand.ExecuteCommandController;
@@ -153,6 +154,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		registerEventListener(new ShootPuckEventListener());
 		registerEventListener(new ReceiveDamageEventListener());
 		registerEventListener(new LobbyMenuListener());
+		registerEventListener(new ChatEventListener());
 	}
 
 	private void registerEventListener(Listener listener) {
