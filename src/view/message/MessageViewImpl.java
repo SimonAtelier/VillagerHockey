@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class MessageViewImpl implements MessageView {
@@ -15,12 +16,22 @@ public class MessageViewImpl implements MessageView {
 		this.prefix = prefix;
 	}
 
+	private String createTranslatedMessageWithPrefix(String message) {
+		String translatedMessage = ChatColor.translateAlternateColorCodes('&', message);
+		String translatedPrefix = ChatColor.translateAlternateColorCodes('&', prefix);
+		return translatedPrefix + " " + translatedMessage;
+	}
+	
 	@Override
 	public void displayMessage(UUID uniquePlayerId, String message) {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
-		String translatedMessage = ChatColor.translateAlternateColorCodes('&', message);
-		String translatedPrefix = ChatColor.translateAlternateColorCodes('&', prefix);
-		player.sendMessage(translatedPrefix + " " +  translatedMessage);
+		player.sendMessage(createTranslatedMessageWithPrefix(message));
+	}
+
+	@Override
+	public void displayConsoleMessage(String message) {
+		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+		console.sendMessage(createTranslatedMessageWithPrefix(message));
 	}
 	
 }

@@ -8,4 +8,6 @@ public interface MessageView {
 
 	void displayMessage(UUID uniquePlayerId, String message);
 	
+	void displayConsoleMessage(String message);
+	
 }
