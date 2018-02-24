@@ -24,7 +24,7 @@ public class ConfigurationYaml implements Configuration {
 	public String getChatWithAllLabel() {
 		if (config.contains("chat-with-all-label"))
 			return config.getString("chat-with-all-label");
-		return "@all";
+		return "!";
 	}
 
 	@Override

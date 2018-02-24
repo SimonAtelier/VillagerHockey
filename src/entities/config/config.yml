@@ -61,7 +61,7 @@ villager-random-names:
 # Chat with all
 # type: String
 # The label messages to all players should start with
-chat-with-all-label: "@all"
+chat-with-all-label: "!"
 
 # Title configuration
 titles:
