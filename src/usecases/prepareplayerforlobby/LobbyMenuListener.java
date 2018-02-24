@@ -54,6 +54,7 @@ public class LobbyMenuListener implements Listener {
 			break;
 		case DIAMOND:
 			onForceStart(player);
+			break;
 		default:
 			break;
 		}
