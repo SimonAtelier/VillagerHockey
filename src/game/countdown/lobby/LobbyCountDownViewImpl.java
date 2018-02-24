@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import config.MapTitleConfiguration;
 import context.Context;
+import entities.config.MapTitleConfiguration;
 import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;

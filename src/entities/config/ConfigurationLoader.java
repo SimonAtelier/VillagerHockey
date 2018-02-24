@@ -1,4 +1,4 @@
-package config;
+package entities.config;
 
 import java.io.File;
 import java.io.FileOutputStream;

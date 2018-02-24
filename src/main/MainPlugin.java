@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import config.Configuration;
-import config.ConfigurationLoader;
 import context.Context;
 import entities.command.ArgumentsWithLabel;
+import entities.config.Configuration;
+import entities.config.ConfigurationLoader;
 import gateways.CommandGateway;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;

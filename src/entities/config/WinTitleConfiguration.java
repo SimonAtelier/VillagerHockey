@@ -1,4 +1,4 @@
-package config;
+package entities.config;
 
 public interface WinTitleConfiguration {
 

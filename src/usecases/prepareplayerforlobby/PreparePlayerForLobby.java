@@ -2,7 +2,7 @@ package usecases.prepareplayerforlobby;
 
 import java.util.UUID;
 
-import config.Configuration;
+import entities.config.Configuration;
 import gateways.PermissionGateway;
 import gateways.PlayerDataGateway;
 

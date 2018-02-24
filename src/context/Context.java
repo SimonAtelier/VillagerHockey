@@ -1,6 +1,6 @@
 package context;
 
-import config.Configuration;
+import entities.config.Configuration;
 import gateways.CommandGateway;
 import gateways.GameGateway;
 import gateways.InventoryGateway;
