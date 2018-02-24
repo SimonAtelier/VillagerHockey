@@ -100,7 +100,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void loadConfiguration() {
 		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		configurationLoader.setResourcePath("/config/config.yml");
+		configurationLoader.setResourcePath("entities/config/config.yml");
 		configurationLoader.setPluginFolderPath("plugins/VillagerHockey/config.yml");
 		configuration = configurationLoader.loadConfiguration();
 	}
