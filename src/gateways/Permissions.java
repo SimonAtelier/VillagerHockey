@@ -42,4 +42,6 @@ public interface Permissions {
 	
 	static final String FORCE_START = "vh.vip.forcestart";
 	
+	static final String CHAT_INGAME = "vh.base";
+	
 }
