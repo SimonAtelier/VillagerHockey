@@ -12,10 +12,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
 public class LobbyViewImpl implements LobbyView {
-	
-	Player player;
-	PlayerInventory inventory;
-	
+
+	private Player player;
+	private PlayerInventory inventory;
+
 	public LobbyViewImpl(UUID viewer) {
 		player = Bukkit.getPlayer(viewer);
 		inventory = player.getInventory();
@@ -40,7 +40,7 @@ public class LobbyViewImpl implements LobbyView {
 	public void displayAchievements() {
 		inventory.setItem(1, createAchievementsItem());
 	}
-	
+
 	@Override
 	public void displayGameMode(String gameMode) {
 		player.setGameMode(GameMode.valueOf(gameMode));
@@ -55,12 +55,12 @@ public class LobbyViewImpl implements LobbyView {
 	public void displayFoodLevel(int foodLevel) {
 		player.setFoodLevel(foodLevel);
 	}
-	
+
 	@Override
 	public void displayMaxHealth() {
 		player.setHealth(player.getMaxHealth());
 	}
-	
+
 	@Override
 	public void displayExperience(int experience) {
 		player.setExp(experience);
@@ -82,10 +82,10 @@ public class LobbyViewImpl implements LobbyView {
 		ItemStack itemStack = new ItemStack(Material.LEATHER_HELMET);
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.setDisplayName(LobbyViewMessages.LOBBY_SELECT_TEAM_DISPLAY_NAME);
-		itemStack.setItemMeta(itemMeta);	
+		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
-	
+
 	private ItemStack createAchievementsItem() {
 		ItemStack itemStack = new ItemStack(Material.NETHER_STAR);
 		ItemMeta itemMeta = itemStack.getItemMeta();
@@ -93,7 +93,7 @@ public class LobbyViewImpl implements LobbyView {
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
-	
+
 	private ItemStack createForceStartItem() {
 		ItemStack itemStack = new ItemStack(Material.DIAMOND);
 		ItemMeta itemMeta = itemStack.getItemMeta();
@@ -101,7 +101,7 @@ public class LobbyViewImpl implements LobbyView {
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
-	
+
 	private ItemStack createLeaveGameItem() {
 		ItemStack itemStack = new ItemStack(Material.SLIME_BALL);
 		ItemMeta itemMeta = itemStack.getItemMeta();
@@ -109,5 +109,5 @@ public class LobbyViewImpl implements LobbyView {
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
-	
+
 }
