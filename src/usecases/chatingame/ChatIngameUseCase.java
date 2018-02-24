@@ -1,4 +1,4 @@
-package usecases.chatwithteam;
+package usecases.chatingame;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,17 +11,17 @@ import gateways.PermissionGateway;
 import gateways.Permissions;
 import gateways.PlayerGateway;
 
-public class ChatWithTeamUseCase implements ChatWithTeam {
+public class ChatIngameUseCase implements ChatIngame {
 
 	private Team team;
 	private Game game;
-	private ChatWithTeamRequest request;
+	private ChatIngameRequest request;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
 	private PlayerGateway playerGateway;
 	
 	@Override
-	public void execute(ChatWithTeamRequest request, ChatWithTeamResponse response) {
+	public void execute(ChatIngameRequest request, ChatIngameResponse response) {
 		setRequest(request);
 		
 		if (noPermission()) {
@@ -32,11 +32,18 @@ public class ChatWithTeamUseCase implements ChatWithTeam {
 		findGame();
 		findTeam();
 		
+		if (request.getMessage().startsWith("!")) {
+			String message = request.getMessage();
+			message = message.replaceFirst("!", "");
+			response.onChatWithAll(findAllPlayers(), message, getNameOfPlayer());
+			return;
+		}
+		
 		if (playerIsNotInATeam()) {
 			response.onPlayerHasNoTeam();
 			return;
 		}
-	
+		
 		response.onChatWithTeam(findPlayersOfTeam(), request.getMessage(), getNameOfPlayer());
 	}
 	
@@ -57,6 +64,10 @@ public class ChatWithTeamUseCase implements ChatWithTeam {
 		return team.getPlayers();
 	}
 	
+	private List<UUID> findAllPlayers() {
+		return game.getUniquePlayerIds();
+	}
+	
 	private boolean playerIsNotInATeam() {
 		return team == null;
 	}
@@ -65,7 +76,7 @@ public class ChatWithTeamUseCase implements ChatWithTeam {
 		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.CHAT_INGAME);
 	}
 	
-	private void setRequest(ChatWithTeamRequest request) {
+	private void setRequest(ChatIngameRequest request) {
 		this.request = request;
 	}
 

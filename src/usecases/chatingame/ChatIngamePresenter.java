@@ -1,15 +1,15 @@
-package usecases.chatwithteam;
+package usecases.chatingame;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.chatwithteam.ChatWithTeam.ChatWithTeamResponse;
+import usecases.chatingame.ChatIngame.ChatIngameResponse;
 
-public class ChatWithTeamPresenter implements ChatWithTeamResponse {
+public class ChatIngamePresenter implements ChatIngameResponse {
 
-	private ChatWithTeamView view;
+	private ChatIngameView view;
 	
-	public ChatWithTeamPresenter(ChatWithTeamView view) {
+	public ChatIngamePresenter(ChatIngameView view) {
 		this.view = view;
 	}
 
@@ -26,6 +26,11 @@ public class ChatWithTeamPresenter implements ChatWithTeamResponse {
 	@Override
 	public void onChatWithTeam(List<UUID> viewers, String message, String player) {
 		view.displayChatWithTeam(viewers, message, player);
+	}
+
+	@Override
+	public void onChatWithAll(List<UUID> viewers, String message, String player) {
+		view.displayChatWithAll(viewers, message, player);
 	}
 
 }

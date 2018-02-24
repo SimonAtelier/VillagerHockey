@@ -1,10 +1,10 @@
-package usecases.chatwithteam;
+package usecases.chatingame;
 
 import java.util.UUID;
 
-import usecases.chatwithteam.ChatWithTeam.ChatWithTeamRequest;
+import usecases.chatingame.ChatIngame.ChatIngameRequest;
 
-public class ChatWithTeamRequestModel implements ChatWithTeamRequest {
+public class ChatIngameRequestModel implements ChatIngameRequest {
 	
 	private UUID player;
 	private String message;

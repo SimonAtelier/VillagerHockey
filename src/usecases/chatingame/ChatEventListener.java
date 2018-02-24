@@ -1,4 +1,4 @@
-package usecases.chatwithteam;
+package usecases.chatingame;
 
 import java.util.UUID;
 
@@ -12,7 +12,7 @@ public class ChatEventListener implements Listener {
 	public void onPlayerChatEvent(AsyncPlayerChatEvent e) {
 		UUID player = e.getPlayer().getUniqueId();
 		String message = e.getMessage();
-		e.setCancelled(new ChatWithTeamController().handleChatWithTeam(player, message));
+		e.setCancelled(new ChatIngameController().handleChatIngame(player, message));
 	}
 
 }

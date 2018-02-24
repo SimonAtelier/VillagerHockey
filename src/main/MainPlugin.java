@@ -24,7 +24,7 @@ import gateways.impl.PlayerDataGatewayYaml;
 import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
-import usecases.chatwithteam.ChatEventListener;
+import usecases.chatingame.ChatEventListener;
 import usecases.executecommand.ExecuteCommand;
 import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.executecommand.ExecuteCommandController;
