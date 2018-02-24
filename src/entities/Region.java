@@ -27,11 +27,11 @@ public class Region {
 
 	public boolean isValid() {
 		boolean valid = true;
-		valid |= locationOne != null;
-		valid |= locationTwo != null;
-		valid |= locationOne.getWorld() != null;
-		valid |= locationTwo.getWorld() != null;
-		valid |= locationOne.getWorld().equals(locationTwo.getWorld());
+		valid &= locationOne != null;
+		valid &= locationTwo != null;
+		valid &= locationOne.getWorld() != null;
+		valid &= locationTwo.getWorld() != null;
+		valid &= locationOne.getWorld().equals(locationTwo.getWorld());
 		return valid;
 	}
 
