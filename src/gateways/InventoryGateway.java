@@ -6,9 +6,9 @@ import gateways.impl.GatewayException;
 
 public interface InventoryGateway {
 	
-	void save(UUID uniquePlayerId) throws GatewayException;
+	void saveInventoryOfPlayer(UUID uniquePlayerId) throws GatewayException;
 	
-	void load(UUID uniquePlayerId) throws GatewayException;
+	void loadIventoryOfPlayer(UUID uniquePlayerId) throws GatewayException;
 	
 	void clearInventoryOfPlayer(UUID uniquePlayerId);
 
