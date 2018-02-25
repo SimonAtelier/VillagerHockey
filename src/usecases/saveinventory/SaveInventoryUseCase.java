@@ -16,7 +16,7 @@ public class SaveInventoryUseCase implements SaveInventory {
 	}
 
 	private void saveInventory() {
-		inventoryGateway.save(request.getPlayer());
+		inventoryGateway.saveInventoryOfPlayer(request.getPlayer());
 	}
 
 	private void clearInventory() {

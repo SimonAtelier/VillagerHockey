@@ -33,7 +33,7 @@ public class InventoryGatewayYaml implements InventoryGateway {
 	}
 
 	@Override
-	public void save(UUID uniquePlayerId) throws GatewayException {
+	public void saveInventoryOfPlayer(UUID uniquePlayerId) throws GatewayException {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
 		Inventory inventory = player.getInventory();
 		ItemStack[] itemStacks = new ItemStack[inventory.getSize()];
@@ -57,7 +57,7 @@ public class InventoryGatewayYaml implements InventoryGateway {
 	}
 
 	@Override
-	public void load(UUID uniquePlayerId) throws GatewayException {
+	public void loadInventoryOfPlayer(UUID uniquePlayerId) throws GatewayException {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
 		File file = getFile(player);
 		

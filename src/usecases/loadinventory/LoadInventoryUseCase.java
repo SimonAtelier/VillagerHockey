@@ -16,7 +16,7 @@ public class LoadInventoryUseCase implements LoadInventory {
 	}
 	
 	private void load() {
-		inventoryGateway.load(player);
+		inventoryGateway.loadInventoryOfPlayer(player);
 	}
 	
 	private void setPlayer(UUID player) {
