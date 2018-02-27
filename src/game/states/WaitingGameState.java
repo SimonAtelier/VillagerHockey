@@ -8,16 +8,14 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.lobby.LobbyCountDownController;
-import game.usecases.removevillagers.RemoveVillagers;
-import game.usecases.removevillagers.RemoveVillagersUseCase;
 import game.usecases.teleportplayertolobby.TeleportPlayerToLobbyController;
 import usecases.prepareplayerforgame.PreparePlayerForGame;
 import usecases.prepareplayerforgame.PreparePlayerForGame.PreparePlayerForGameResponse;
-import usecases.prepareplayerforlobby.PreparePlayerForLobbyCommand;
 import usecases.prepareplayerforgame.PreparePlayerForGamePresenter;
 import usecases.prepareplayerforgame.PreparePlayerForGameUseCase;
 import usecases.prepareplayerforgame.PreparePlayerForGameView;
 import usecases.prepareplayerforgame.PreparePlayerForGameViewImpl;
+import usecases.prepareplayerforlobby.PreparePlayerForLobbyCommand;
 import usecases.saveinventory.SaveInventoryController;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
@@ -37,13 +35,11 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		controller.setOnCountDownFinished(this);
 		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);
 		lobbyCountDown.setCountDownListener(controller);
-		removeVillagers(game.getName());
 	}
 	
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
-		removeVillagers(game.getName());
 		preparePlayersForGame(game);
 	}
 
@@ -68,13 +64,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 			lobbyCountDown.stop();
 		}
 	}
-	
-	private void removeVillagers(String game) {
-		RemoveVillagers removeVillagers = new RemoveVillagersUseCase();
-		removeVillagers.setGameGateway(Context.gameGateway);
-		removeVillagers.execute(game);
-	}
-	
+		
 	private void preparePlayersForGame(Game game) {
 		PreparePlayerForGameView view = new PreparePlayerForGameViewImpl();
 		PreparePlayerForGameResponse presenter = new PreparePlayerForGamePresenter(view);

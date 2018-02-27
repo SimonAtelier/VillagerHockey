@@ -31,7 +31,7 @@ public class StatisticsImpl implements Statistics {
 	}
 
 	public int getGamesLost() {
-		return gamesPlayed - gamesWon - gamesDraw;
+		return gamesPlayed - (gamesWon + gamesDraw);
 	}
 	
 }

@@ -42,6 +42,7 @@ public class VillagerSpawner {
 	public void removeVillager() {
 		if (villager == null)
 			return;
+		System.out.println("remove villager");
 		villager.remove();
 		villager = null;
 	}
