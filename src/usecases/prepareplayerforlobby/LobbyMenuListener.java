@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import achievement.display.DisplayAchievementsCommand;
 import context.Context;
 import usecases.forcestart.ForceStartCommand;
 import usecases.leavegame.LeaveGameCommand;
@@ -55,9 +56,17 @@ public class LobbyMenuListener implements Listener {
 		case DIAMOND:
 			onForceStart(player);
 			break;
+		case NETHER_STAR:
+			onDisplayAchievements(player);
+			break;
 		default:
 			break;
 		}
+	}
+	
+	private void onDisplayAchievements(UUID player) {
+		DisplayAchievementsCommand command = new DisplayAchievementsCommand();
+		command.execute(player, new ArrayList<String>());
 	}
 	
 	private void onLeaveGame(UUID player) {
