@@ -44,4 +44,6 @@ public interface Permissions {
 	
 	static final String CHAT_INGAME = "vh.base";
 	
+	static final String SHOW_STATS = "vh.base";
+	
 }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import achievement.properties.PropertiesController;
 import entities.config.Configuration;
 import game.BaseGame;
 import game.Game;
@@ -87,6 +88,7 @@ public class GameGatewayImpl implements GameGateway {
 			game.addTeamSelectListener(new JoinTeamController());
 			game.addTeamScoreListener(new ScoreEventListener());
 			new UpdateJoinSignController(game);
+			game.addGameStateChangeListener(new PropertiesController());
 			return true;
 		}
 	}

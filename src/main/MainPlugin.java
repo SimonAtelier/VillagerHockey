@@ -23,6 +23,7 @@ import gateways.impl.PermissionGatewayAlwaysTrueMock;
 import gateways.impl.PlayerDataGatewayYaml;
 import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
+import gateways.impl.StatisticsGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
 import usecases.chatingame.ChatEventListener;
 import usecases.executecommand.ExecuteCommand;
@@ -85,6 +86,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		Context.signGateway = new SignGatewayImpl();
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
 		Context.playerDataGateway = new PlayerDataGatewayYaml();
+		Context.statisticsGateway = new StatisticsGatewayImpl();
 		Context.configuration = configuration;
 		
 		Context.messageView.setPrefix(configuration.getPrefix());
