@@ -19,7 +19,7 @@ public class InventoryGatewayYaml implements InventoryGateway {
 	private String ymlPath = "inventory";
 	
 	private File getFile(Player player) throws GatewayException {
-		File file = new File("plugins/VillagerHockey/inventories/"
+		File file = new File("plugins/VillagerHockey/playerdata/"
 				+ player.getUniqueId() + ".yml");
 		if (!file.exists()) {
 			try {
