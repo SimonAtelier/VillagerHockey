@@ -17,6 +17,7 @@ import usecases.setminplayers.SetMinPlayersCommand;
 import usecases.setplayingtime.SetPlayingTimeCommand;
 import usecases.setvillagerspawn.SetVillagerSpawnCommand;
 import usecases.showhelp.ShowHelpCommand;
+import usecases.showstatistics.ShowStatisticsCommand;
 import usecases.startgame.StartGameCommand;
 import usecases.stopgame.StopGameCommand;
 
@@ -41,6 +42,7 @@ public class CommandProviderImpl implements CommandProvider {
 		commandRegistration.registerCommand(new RemoveGameCommand());
 		commandRegistration.registerCommand(new StartGameCommand());
 		commandRegistration.registerCommand(new StopGameCommand());
+		commandRegistration.registerCommand(new ShowStatisticsCommand());
 	}
 
 }
