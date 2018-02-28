@@ -31,6 +31,7 @@ import usecases.executecommand.ExecuteCommandPresenter;
 import usecases.executecommand.ExecuteCommandUseCase;
 import usecases.executecommand.ExecuteCommandView;
 import usecases.executecommand.ExecuteCommandViewImpl;
+import usecases.executecommand.RootCommandLabel;
 import view.message.MessageViewImpl;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
@@ -94,7 +95,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	private void registerCommands() {
 		CommandGateway commandGateway = Context.commandGateway;
 		new CommandProviderImpl().registerCommands(commandGateway);
-		getCommand("vh").setExecutor(this);
+		getCommand(RootCommandLabel.ROOT_COMMAND_LABEL).setExecutor(this);
 	}
 
 	@Override
