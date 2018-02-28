@@ -47,7 +47,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		createContext();
 		loadGames();
 		registerCommands();
-		createAndRegisterEventListeners();
+		registerListeners();
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		controller.handleRequest(player, arguments);
 	}
 
-	private void createAndRegisterEventListeners() {
+	private void registerListeners() {
 		new ListenerRegistration().registerListeners(this);
 	}
 
