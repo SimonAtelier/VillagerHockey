@@ -12,8 +12,8 @@ chat-prefix: "&7[&bVillagerHockey&7]&f"
 # The time to wait (in seconds) until the game starts (if enough players)
 lobby-time: 60
 
-# Lobby gamemode
-# type: String
+# Lobby gamemode 
+# type: String (possible values: "ADVENTURE", "CREATIVE", "SPECTATOR", "SURVIVAL")
 # The game mode of the waiting lobby
 lobby-gamemode: "ADVENTURE"
 
