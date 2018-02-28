@@ -38,7 +38,7 @@ public class PlayerDataGatewayYaml implements PlayerDataGateway {
 		config.set("foodlevel", player.getFoodLevel());
 		config.set("health", player.getHealth());
 		config.set("exp", player.getExp());
-		config.set("gamemode", player.getGameMode().getValue());
+		config.set("gamemode", player.getGameMode().toString());
 		config.set("location", player.getLocation());
 
 		try {
@@ -63,7 +63,7 @@ public class PlayerDataGatewayYaml implements PlayerDataGateway {
 		player.setFoodLevel(config.getInt("foodlevel"));
 		player.setHealth(config.getDouble("health"));
 		player.setExp((float) config.getDouble("exp"));
-		player.setGameMode(GameMode.getByValue(config.getInt("gamemode")));
+		player.setGameMode(GameMode.valueOf(config.getString("gamemode")));
 		player.teleport((Location) config.get("location"));
 	}
 
