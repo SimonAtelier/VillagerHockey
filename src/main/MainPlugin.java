@@ -132,10 +132,6 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		}
 	}
 
-	public GameGatewayImpl getGameGateway() {
-		return gameGateway;
-	}
-
 	public static MainPlugin getInstance() {
 		return instance;
 	}
