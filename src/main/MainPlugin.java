@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import context.Context;
@@ -25,7 +24,6 @@ import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
 import gateways.impl.StatisticsGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
-import usecases.chatingame.ChatEventListener;
 import usecases.executecommand.ExecuteCommand;
 import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.executecommand.ExecuteCommandController;
@@ -33,23 +31,6 @@ import usecases.executecommand.ExecuteCommandPresenter;
 import usecases.executecommand.ExecuteCommandUseCase;
 import usecases.executecommand.ExecuteCommandView;
 import usecases.executecommand.ExecuteCommandViewImpl;
-import usecases.performaction.breakblock.BreakBlockEventListener;
-import usecases.performaction.breakjoinsign.BreakJoinSignEventListener;
-import usecases.performaction.changefoodlevel.ChangeFoodLevelEventListener;
-import usecases.performaction.clickinventory.ClickInventoryEventListener;
-import usecases.performaction.clickjoinsign.ClickJoinSignEventListener;
-import usecases.performaction.consumeitem.ConsumeItemEventListener;
-import usecases.performaction.damageitem.DamageItemEventListener;
-import usecases.performaction.dropitem.DropItemEventListener;
-import usecases.performaction.move.MoveEventListener;
-import usecases.performaction.openinventory.OpenInventoryEventListener;
-import usecases.performaction.pickupitem.PickupItemEventListener;
-import usecases.performaction.placejoinsign.PlaceJoinSignEventListener;
-import usecases.performaction.quit.QuitEventListener;
-import usecases.performaction.receivedamage.ReceiveDamageEventListener;
-import usecases.performaction.shootpuck.ShootPuckEventListener;
-import usecases.prepareplayerforlobby.LobbyMenuListener;
-import usecases.selectteam.ShowTeamsEventListener;
 import view.message.MessageViewImpl;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
@@ -88,7 +69,6 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		Context.playerDataGateway = new PlayerDataGatewayYaml();
 		Context.statisticsGateway = new StatisticsGatewayImpl();
 		Context.configuration = configuration;
-		
 		Context.messageView.setPrefix(configuration.getPrefix());
 	}
 
@@ -139,33 +119,11 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void createAndRegisterEventListeners() {
-		registerEventListener(new BreakBlockEventListener());
-		registerEventListener(new ChangeFoodLevelEventListener());
-		registerEventListener(new ConsumeItemEventListener());
-		registerEventListener(new DamageItemEventListener());
-		registerEventListener(new DropItemEventListener());
-		registerEventListener(new MoveEventListener());
-		registerEventListener(new PickupItemEventListener());
-		registerEventListener(new QuitEventListener());
-		registerEventListener(new OpenInventoryEventListener());
-		registerEventListener(new ClickInventoryEventListener());
-		registerEventListener(new ClickJoinSignEventListener());
-		registerEventListener(new PlaceJoinSignEventListener());
-		registerEventListener(new BreakJoinSignEventListener());
-		registerEventListener(new ShowTeamsEventListener());
-		registerEventListener(new ShootPuckEventListener());
-		registerEventListener(new ReceiveDamageEventListener());
-		registerEventListener(new LobbyMenuListener());
-		registerEventListener(new ChatEventListener());
-	}
-
-	private void registerEventListener(Listener listener) {
-		getServer().getPluginManager().registerEvents(listener, this);
+		new ListenerRegistration().registerListeners(this);
 	}
 
 	private void createOrUpdatePluginFolders() {
-		String[] paths = {"plugins/VillagerHockey/games/",
-				"plugins/VillagerHockey/playerdata/" };
+		String[] paths = { "plugins/VillagerHockey/games/", "plugins/VillagerHockey/playerdata/" };
 		for (String path : paths) {
 			File file = new File(path);
 			if (!file.exists()) {
