@@ -9,10 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import achievement.display.DisplayAchievementsCommand;
 import context.Context;
 import usecases.forcestart.ForceStartCommand;
 import usecases.leavegame.LeaveGameCommand;
+import usecases.showachievements.ShowAchievementsCommand;
 
 public class LobbyMenuListener implements Listener {
 	
@@ -65,7 +65,7 @@ public class LobbyMenuListener implements Listener {
 	}
 	
 	private void onDisplayAchievements(UUID player) {
-		DisplayAchievementsCommand command = new DisplayAchievementsCommand();
+		ShowAchievementsCommand command = new ShowAchievementsCommand();
 		command.execute(player, new ArrayList<String>());
 	}
 	
