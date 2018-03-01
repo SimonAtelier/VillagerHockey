@@ -10,20 +10,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import context.Context;
+import context.ContextCreatorImpl;
 import entities.command.ArgumentsWithLabel;
-import entities.config.Configuration;
-import entities.config.ConfigurationLoader;
 import gateways.CommandGateway;
-import gateways.impl.CommandGatewayImpl;
-import gateways.impl.GameGatewayImpl;
-import gateways.impl.InventoryGatewayYaml;
-import gateways.impl.JoinSignsGatewayImpl;
-import gateways.impl.PermissionGatewayAlwaysTrueMock;
-import gateways.impl.PlayerDataGatewayYaml;
-import gateways.impl.PlayerGatewayImpl;
-import gateways.impl.SignGatewayImpl;
-import gateways.impl.StatisticsGatewayImpl;
-import gateways.impl.TeamSpawnGatewayImpl;
 import usecases.executecommand.ExecuteCommand;
 import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
 import usecases.executecommand.ExecuteCommandController;
@@ -32,19 +21,15 @@ import usecases.executecommand.ExecuteCommandUseCase;
 import usecases.executecommand.ExecuteCommandView;
 import usecases.executecommand.ExecuteCommandViewImpl;
 import usecases.executecommand.RootCommandLabel;
-import view.message.MessageViewImpl;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private static MainPlugin instance;
-	private GameGatewayImpl gameGateway;
-	private Configuration configuration;
 
 	@Override
 	public void onEnable() {
-		createOrUpdatePluginFolders();
-		loadConfiguration();
 		initializePlugin();
+		createOrUpdatePluginFolders();
 		createContext();
 		loadGames();
 		registerCommands();
@@ -57,35 +42,15 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void createContext() {
-		this.gameGateway = new GameGatewayImpl();
-		Context.permissionGateway = new PermissionGatewayAlwaysTrueMock();
-		Context.inventoryGateway = new InventoryGatewayYaml();
-		Context.gameGateway = this.gameGateway;
-		Context.playerGateway = new PlayerGatewayImpl();
-		Context.messageView = new MessageViewImpl();
-		Context.commandGateway = new CommandGatewayImpl();
-		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
-		Context.signGateway = new SignGatewayImpl();
-		Context.joinSignGateway = new JoinSignsGatewayImpl();
-		Context.playerDataGateway = new PlayerDataGatewayYaml();
-		Context.statisticsGateway = new StatisticsGatewayImpl();
-		Context.configuration = configuration;
-		Context.messageView.setPrefix(configuration.getPrefix());
+		new ContextCreatorImpl().createContext();
 	}
 
 	private void loadGames() {
-		gameGateway.loadGames(configuration);
+		Context.gameGateway.loadGames();
 	}
 
 	private void unloadGames() {
-		gameGateway.unloadGames();
-	}
-
-	private void loadConfiguration() {
-		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		configurationLoader.setResourcePath("/entities/config/config.yml");
-		configurationLoader.setPluginFolderPath("plugins/VillagerHockey/config.yml");
-		configuration = configurationLoader.loadConfiguration();
+		Context.gameGateway.unloadGames();
 	}
 
 	private void initializePlugin() {

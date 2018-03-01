@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import achievement.properties.PropertiesController;
+import context.Context;
 import entities.config.Configuration;
 import game.BaseGame;
 import game.Game;
@@ -26,19 +27,21 @@ public class GameGatewayImpl implements GameGateway {
 		games = new HashMap<String, Game>();
 	}
 
-	public void loadGames(Configuration configuration) {
+	@Override
+	public void loadGames() {
 		GamePersistanceYaml repository = new GamePersistanceYaml();
 		File file = new File("plugins/VillagerHockey/games/");
 		File[] files = file.listFiles();
 		for (File f : files) {
 			String name = f.getName().replace(".yml", "");
 			Game game = repository.loadGame(name);
-			setupFromPluginConfiguration(game, 	configuration);
+			setupFromPluginConfiguration(game, Context.configuration);
 			addGame(game);
 			game.start();
 		}
 	}
 
+	@Override
 	public void unloadGames() {
 		for (Game game : findAllGames()) {
 			game.getVillagerSpawner().removeVillager();
@@ -92,7 +95,7 @@ public class GameGatewayImpl implements GameGateway {
 			return true;
 		}
 	}
-	
+
 	private void removeGame(Game game) {
 		synchronized (GAMES_MAP_LOCK) {
 			games.remove(game.getName());

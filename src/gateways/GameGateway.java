@@ -26,4 +26,8 @@ public interface GameGateway {
 	
 	void deleteGame(String game);
 	
+	void loadGames();
+	
+	void unloadGames();
+	
 }
