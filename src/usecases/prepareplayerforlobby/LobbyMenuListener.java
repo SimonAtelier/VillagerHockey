@@ -12,7 +12,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import context.Context;
 import usecases.forcestart.ForceStartCommand;
 import usecases.leavegame.LeaveGameCommand;
-import usecases.showachievements.ShowAchievementsCommand;
 
 public class LobbyMenuListener implements Listener {
 	
@@ -65,8 +64,7 @@ public class LobbyMenuListener implements Listener {
 	}
 	
 	private void onDisplayAchievements(UUID player) {
-		ShowAchievementsCommand command = new ShowAchievementsCommand();
-		command.execute(player, new ArrayList<String>());
+		// TODO
 	}
 	
 	private void onLeaveGame(UUID player) {

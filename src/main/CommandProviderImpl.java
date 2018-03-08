@@ -9,7 +9,6 @@ import usecases.joingame.JoinGameCommand;
 import usecases.kickplayer.KickPlayerCommand;
 import usecases.leavegame.LeaveGameCommand;
 import usecases.listgames.ListGamesCommand;
-import usecases.removegame.RemoveGameCommand;
 import usecases.savegame.SaveGameCommand;
 import usecases.setgoal.SetGoalCommand;
 import usecases.setlobby.SetLobbyCommand;
@@ -39,7 +38,6 @@ public class CommandProviderImpl implements CommandProvider {
 		commandRegistration.registerCommand(new SetMinPlayersCommand());
 		commandRegistration.registerCommand(new SetPlayingTimeCommand());
 		commandRegistration.registerCommand(new AddTeamCommand());
-		commandRegistration.registerCommand(new RemoveGameCommand());
 		commandRegistration.registerCommand(new StartGameCommand());
 		commandRegistration.registerCommand(new StopGameCommand());
 		commandRegistration.registerCommand(new ShowStatisticsCommand());

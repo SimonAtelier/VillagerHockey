@@ -22,7 +22,7 @@ public class ShootPuckEventListener implements Listener {
 
 		if (!(damager instanceof Player))
 			return;
-
+		
 		Player player = (Player) damager;
 
 		if (Context.gameGateway.isIngame(player.getUniqueId()))
