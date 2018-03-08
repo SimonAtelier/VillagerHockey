@@ -1,15 +1,16 @@
 package view.actionbar;
 
-import net.minecraft.server.v1_10_R1.IChatBaseComponent;
-import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_10_R1.PacketPlayOutChat;
-
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+
+import net.minecraft.server.v1_12_R1.ChatMessageType;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
 
 public class ActionBarViewImpl implements ActionBarView {
 	
@@ -23,7 +24,7 @@ public class ActionBarViewImpl implements ActionBarView {
 		final String newMessage = message.replace("_", " ");
 		String s = ChatColor.translateAlternateColorCodes('&', newMessage);
 		IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + s + "\"}");
-		PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte) 2);
+		PacketPlayOutChat bar = new PacketPlayOutChat(icbc, ChatMessageType.GAME_INFO);
 		((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
 	}
 

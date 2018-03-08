@@ -72,7 +72,9 @@ public class VillagerSpawner {
 		World world = location.getWorld();
 		Villager villager = (Villager) world.spawnEntity(location, EntityType.VILLAGER);
 		refreshVillagerName();
-		villager.setAI(aiEnabled);
+//		villager.setAI(aiEnabled);
+		villager.setAI(true);
+		villager.setRemoveWhenFarAway(false);	
 		villager.setAdult();
 		villager.setProfession(Profession.LIBRARIAN);
 		villager.setCustomName(villagerName);
