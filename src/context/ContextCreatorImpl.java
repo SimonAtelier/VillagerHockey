@@ -6,7 +6,7 @@ import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
 import gateways.impl.InventoryGatewayYaml;
 import gateways.impl.JoinSignsGatewayImpl;
-import gateways.impl.PermissionGatewayAlwaysTrueMock;
+import gateways.impl.PermissionGatewayImpl;
 import gateways.impl.PlayerDataGatewayYaml;
 import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
@@ -20,7 +20,7 @@ public class ContextCreatorImpl implements ContextCreator {
 	public void createContext() {
 		Context.configuration = loadConfiguration();
 		Context.gameGateway = new GameGatewayImpl();
-		Context.permissionGateway = new PermissionGatewayAlwaysTrueMock();
+		Context.permissionGateway = new PermissionGatewayImpl();
 		Context.inventoryGateway = new InventoryGatewayYaml();
 		Context.playerGateway = new PlayerGatewayImpl();
 		Context.messageView = new MessageViewImpl();
