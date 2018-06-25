@@ -26,7 +26,7 @@ public class SaveGameCommand extends AbstractCommand {
 
 	@Override
 	public String[] getArgumentLabels() {
-		return new String[] {"name"};
+		return new String[] {"game"};
 	}
 	
 }
