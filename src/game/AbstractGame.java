@@ -224,9 +224,6 @@ public abstract class AbstractGame implements Game {
 
 	@Override
 	public void setGameState(GameState gameState) {
-		if (!started) {
-			return;
-		}
 		GameState oldGameState = this.gameState;
 		this.gameState = gameState;
 		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);
