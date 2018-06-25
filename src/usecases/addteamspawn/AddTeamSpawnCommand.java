@@ -34,6 +34,7 @@ public class AddTeamSpawnCommand extends AbstractCommand {
 		requestModel.setPitch(location.getPitch());
 		requestModel.setYaw(location.getYaw());
 		requestModel.setWorld(location.getWorld());
+		requestModel.setPlayer(player);
 		return requestModel;
 	}
 
