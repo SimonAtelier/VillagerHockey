@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import context.Context;
 
-public class PlayerCommandPreprocessListener implements Listener{
+public class PlayerCommandPreprocessListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onCommand(PlayerCommandPreprocessEvent e) {
@@ -20,8 +20,12 @@ public class PlayerCommandPreprocessListener implements Listener{
 
 		String message = e.getMessage();
 
-		if (!message.startsWith("vh"))
-			e.setCancelled(true);
+		if (message.startsWith("/" + RootCommandLabel.ROOT_COMMAND_LABEL + " "))
+			return;
+
+		e.setCancelled(true);
+		Context.messageView.displayMessage(uniquePlayerId,
+				ExecuteCommandViewMessages.EXECUTE_COMMAND_CANNOT_EXECUTE_WHILE_INGAME);
 	}
 
 }
