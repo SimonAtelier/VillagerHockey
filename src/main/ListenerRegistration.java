@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import usecases.chatingame.ChatEventListener;
+import usecases.executecommand.PlayerCommandPreprocessListener;
 import usecases.performaction.breakblock.BreakBlockEventListener;
 import usecases.performaction.breakjoinsign.BreakJoinSignEventListener;
 import usecases.performaction.changefoodlevel.ChangeFoodLevelEventListener;
@@ -53,6 +54,7 @@ public class ListenerRegistration {
 		registerEventListener(new LobbyMenuListener());
 		registerEventListener(new ChatEventListener());
 		registerEventListener(new SwapHandItemsEventListener());
+		registerEventListener(new PlayerCommandPreprocessListener());
 	}
 
 	private void registerEventListener(Listener listener) {

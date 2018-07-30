@@ -71,7 +71,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 		ArgumentsWithLabel argumentsWithLabel = new ArgumentsWithLabel();
 		handlePlayerCommand(player.getUniqueId(), argumentsWithLabel.create(label, args));
-
+		
 		return true;
 	}
 
