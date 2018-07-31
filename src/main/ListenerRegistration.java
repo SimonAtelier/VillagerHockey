@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import usecases.chatingame.ChatEventListener;
-import usecases.executecommand.PlayerCommandPreprocessListener;
+import usecases.executenonegamecommand.PlayerCommandPreprocessListener;
 import usecases.performaction.breakblock.BreakBlockEventListener;
 import usecases.performaction.breakjoinsign.BreakJoinSignEventListener;
 import usecases.performaction.changefoodlevel.ChangeFoodLevelEventListener;

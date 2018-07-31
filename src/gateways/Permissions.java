@@ -46,4 +46,6 @@ public interface Permissions {
 	
 	static final String SHOW_STATS = "vh.base";
 	
+	static final String EXECUTE_NONE_GAME_COMMANDS = "vh.admin.nonegamecommands";
+	
 }
