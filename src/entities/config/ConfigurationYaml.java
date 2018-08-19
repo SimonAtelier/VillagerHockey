@@ -14,6 +14,20 @@ public class ConfigurationYaml implements Configuration {
 	}
 	
 	@Override
+	public boolean isSpectatorMessagesEnabled() {
+		if (config.contains("spectator-messages-enabled"))
+			return config.getBoolean("spectator-messages-enabled");
+		return false;
+	}
+
+	@Override
+	public int getSpectatorMessagesRadius() {
+		if (config.contains("spectator-messages-radius"))
+			return config.getInt("spectator-messages-radius");
+		return 0;
+	}
+
+	@Override
 	public String getPrefix() {
 		if (config.contains("chat-prefix"))
 			return config.getString("chat-prefix");

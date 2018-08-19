@@ -7,6 +7,14 @@
 # The chat prefix used for plugin messages
 chat-prefix: "&7[&bVillagerHockey&7]&f"
 
+# Spectator messages enabled
+# type: boolean
+spectator-messages-enabled: true
+
+# Spectator messages radius
+# type: int
+spectator-messages-radius: 100
+
 # Lobby time
 # type: int
 # The time to wait (in seconds) until the game starts (if enough players)

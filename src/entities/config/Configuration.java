@@ -4,6 +4,10 @@ import java.util.List;
 
 public interface Configuration extends WinTitleConfiguration, MapTitleConfiguration, GoalTitleConfiguration {
 
+	boolean isSpectatorMessagesEnabled();
+	
+	int getSpectatorMessagesRadius();
+	
 	String getPrefix();
 	
 	String getChatWithAllLabel();
@@ -12,9 +16,9 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	
 	String getLobbyGameMode();
 	
-	public boolean isAutobalanceEnabled();
+	boolean isAutobalanceEnabled();
 	
-	public boolean isAchievementsEnabled();
+	boolean isAchievementsEnabled();
 	
 	String getVillagerName();
 	
@@ -22,6 +26,6 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	
 	boolean isUseRandomVillagerNamesEnabled();
 	
-	public List<String> getRandomVillagerNames();
+	List<String> getRandomVillagerNames();
 		
 }
