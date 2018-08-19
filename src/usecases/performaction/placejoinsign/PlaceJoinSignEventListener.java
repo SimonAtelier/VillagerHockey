@@ -15,7 +15,7 @@ public class PlaceJoinSignEventListener implements Listener {
 	public void onSignChange(SignChangeEvent e) {
 		String firstLine = e.getLine(0);
 		
-		if (!firstLine.trim().equals("vh"))
+		if (!firstLine.trim().equals("[vh]"))
 			return;
 		
 		PlaceJoinSignRequest request = createRequest(e);

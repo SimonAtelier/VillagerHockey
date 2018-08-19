@@ -38,6 +38,7 @@ public class PlaceJoinSignViewImpl implements PlaceJoinSignView {
 	@Override
 	public void displayNoPermission() {
 		displayMessage(viewer, PlaceJoinSignViewMessages.PLACE_JOIN_SIGN_NO_PERMISSION);
+		event.setCancelled(true);
 	}
 
 	@Override

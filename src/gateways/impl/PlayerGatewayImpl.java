@@ -1,5 +1,7 @@
 package gateways.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -27,4 +29,13 @@ public class PlayerGatewayImpl implements PlayerGateway {
 		return LocationConvert.toEntityLocation(player.getLocation());
 	}
 
+	@Override
+	public List<UUID> findAllOnlinePlayers() {
+		List<UUID> uniquePlayerIds = new ArrayList<UUID>();
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			uniquePlayerIds.add(player.getUniqueId());
+		}
+		return uniquePlayerIds;
+	}
+	
 }
