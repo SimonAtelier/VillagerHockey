@@ -9,6 +9,8 @@ import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import util.LocationConvert;
 
@@ -72,14 +74,20 @@ public class VillagerSpawner {
 		World world = location.getWorld();
 		Villager villager = (Villager) world.spawnEntity(location, EntityType.VILLAGER);
 		refreshVillagerName();
-//		villager.setAI(aiEnabled);
+		
+		// Work around
 		villager.setAI(true);
+		if (!aiEnabled)
+		villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 255));
+		villager.setVillagerLevel(5);
+		
+		
 		villager.setRemoveWhenFarAway(false);	
 		villager.setAdult();
 		villager.setProfession(Profession.LIBRARIAN);
 		villager.setCustomName(villagerName);
 		villager.setCustomNameVisible(true);
-		villager.setCanPickupItems(false);
+		villager.setCanPickupItems(false);		
 		this.villager = villager;
 	}
 
