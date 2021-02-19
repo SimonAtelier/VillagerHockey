@@ -37,7 +37,8 @@ public class HockeySticksViewImpl implements HockeySticksView {
 	}
 	
 	private void addRawFishWithKnockbackTwoEnchantment(PlayerInventory inventory) {
-		ItemStack itemStack = new ItemStack(Material.RAW_FISH);
+//		ItemStack itemStack = new ItemStack(Material.RAW_FISH);
+		ItemStack itemStack = new ItemStack(Material.SALMON);
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.addEnchant(Enchantment.KNOCKBACK, 2, true);
 		itemMeta.setDisplayName(HockeySticksViewMessages.HOCKEY_STICKS_FISH_DISPLAY_NAME);
