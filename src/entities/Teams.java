@@ -80,6 +80,19 @@ public class Teams {
 		}
 		return teamWithHighestScore;
 	}
+	
+	public Team findTeamWithLowestScore() {
+		int lowestScore = teams.get(0).getScore();
+		Team teamWithLowestScore = teams.get(0);
+		for (Team team : teams) {
+			int score = team.getScore();
+			if (score <= lowestScore) {
+				lowestScore = score;
+				teamWithLowestScore = team;
+			}
+		}
+		return teamWithLowestScore;
+	}
 
 	public List<Team> findAllTeams() {
 		return new ArrayList<Team>(teams);

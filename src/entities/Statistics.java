@@ -2,6 +2,10 @@ package entities;
 
 public interface Statistics {
 
+	long getTotalTimePlayedInSeconds();
+	
+	void setTotalTimePlayedInSeconds(long totalTimePlayedInSeconds);
+	
 	int getGamesPlayed();
 	
 	int getGamesWon();
@@ -9,5 +13,13 @@ public interface Statistics {
 	int getGamesDraw();
 	
 	int getGamesLost();
+	
+	void setGamesPlayed(int gamesPlayed);
+	
+	void setGamesWon(int gamesWon);
+	
+	void setGamesDraw(int gamesDraw);
+	
+	void setGamesLost(int gamesLost);
 	
 }

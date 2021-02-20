@@ -79,9 +79,8 @@ public class VillagerSpawner {
 		villager.setAI(true);
 		if (!aiEnabled)
 		villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 255));
+		
 		villager.setVillagerLevel(5);
-		
-		
 		villager.setRemoveWhenFarAway(false);	
 		villager.setAdult();
 		villager.setProfession(Profession.LIBRARIAN);

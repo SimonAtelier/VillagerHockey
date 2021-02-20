@@ -22,6 +22,7 @@ import usecases.performaction.quit.QuitEventListener;
 import usecases.performaction.receivedamage.ReceiveDamageEventListener;
 import usecases.performaction.shootpuck.ShootPuckEventListener;
 import usecases.performaction.swaphanditems.SwapHandItemsEventListener;
+import usecases.performaction.trade.TradeEventListener;
 import usecases.prepareplayerforlobby.LobbyMenuListener;
 import usecases.selectteam.ShowTeamsEventListener;
 
@@ -55,6 +56,7 @@ public class ListenerRegistration {
 		registerEventListener(new ChatEventListener());
 		registerEventListener(new SwapHandItemsEventListener());
 		registerEventListener(new PlayerCommandPreprocessListener());
+		registerEventListener(new TradeEventListener());
 	}
 
 	private void registerEventListener(Listener listener) {
