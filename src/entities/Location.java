@@ -57,7 +57,7 @@ public class Location {
 		this.world = world;
 	}
 	
-	public double distanceSquared(double x, double y, double z) {
+	private double distanceSquared(double x, double y, double z) {
 		double dx = this.x - x;
 		double dy = this.y - y;
 		double dz = this.z - z;

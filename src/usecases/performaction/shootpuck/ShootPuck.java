@@ -9,6 +9,7 @@ public interface ShootPuck {
 	public interface ShootPuckRequest {
 		
 		UUID getPlayer();
+		String getPuckName();
 		
 	}
 	

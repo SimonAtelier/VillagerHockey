@@ -18,6 +18,7 @@ public class ShowStatisticsPresenter implements ShowStatisticsResponse {
 	@Override
 	public void onPresentStatistics(ShowStatisticsResponseModel statistics) {
 		view.displayStatistics(statistics);
+		view.displayAchievements();
 	}
 
 }

@@ -1,5 +1,8 @@
 package context;
 
+import achievements.AchievementProvider;
+import achievements.AchievementSystem;
+import achievements.AchievementSystemImpl;
 import entities.config.Configuration;
 import entities.config.ConfigurationLoader;
 import gateways.impl.CommandGatewayImpl;
@@ -31,6 +34,13 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.playerDataGateway = new PlayerDataGatewayYaml();
 		Context.statisticsGateway = new StatisticsGatewayImpl();
 		Context.messageView.setPrefix(Context.configuration.getPrefix());
+		Context.achievementSystem = createAchievementSystem();
+	}
+	
+	private AchievementSystem createAchievementSystem() {
+		AchievementSystem achievementSystem = new AchievementSystemImpl();
+		achievementSystem.applyProvider(new AchievementProvider());
+		return achievementSystem;
 	}
 	
 	private Configuration loadConfiguration() {

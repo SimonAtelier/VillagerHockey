@@ -25,11 +25,14 @@ public class ShootPuckEventListener implements Listener {
 		
 		Player player = (Player) damager;
 
-		if (Context.gameGateway.isIngame(player.getUniqueId()))
-			e.setDamage(0);
+		if (!Context.gameGateway.isIngame(player.getUniqueId()))
+			return;
+		
+		e.setDamage(0);
 
 		ShootPuckRequestModel requestModel = new ShootPuckRequestModel();
 		requestModel.setPlayer(player.getUniqueId());
+		requestModel.setPuckName(entity.getCustomName());
 
 		ShootPuck useCase = new ShootPuckUseCase();
 		ShootPuckView view = new ShootPuckViewImpl();
