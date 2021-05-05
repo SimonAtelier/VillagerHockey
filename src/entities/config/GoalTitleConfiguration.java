@@ -10,10 +10,4 @@ public interface GoalTitleConfiguration {
 	
 	int getGoalTitleStayTimeInSeconds();
 	
-	int getGoalSubtitleFadeInTimeInSeconds();
-	
-	int getGoalSubtitleFadeOutTimeInSeconds();
-	
-	int getGoalSubtitleStayTimeInSeconds();
-	
 }

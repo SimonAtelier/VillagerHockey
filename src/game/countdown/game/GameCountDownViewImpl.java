@@ -34,9 +34,6 @@ public class GameCountDownViewImpl implements GameCountDownView {
 		model.setTitleFadeInTimeInSeconds(1);
 		model.setTitleFadeOutTimeInSeconds(1);
 		model.setTitleStayTimeInSeconds(2);
-		model.setSubtitleFadeInTimeInSeconds(1);
-		model.setSubtitleFadeOutTimeInSeconds(1);
-		model.setSubtitleStayTimeInSeconds(2);
 		for (UUID viewer : viewers) {
 			titleView.display(viewer);
 		}

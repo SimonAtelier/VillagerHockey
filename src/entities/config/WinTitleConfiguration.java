@@ -10,10 +10,4 @@ public interface WinTitleConfiguration {
 	
 	int getWinTitleStayTimeInSeconds();
 	
-	int getWinSubtitleFadeInTimeInSeconds();
-	
-	int getWinSubtitleFadeOutTimeInSeconds();
-	
-	int getWinSubtitleStayTimeInSeconds();
-	
 }

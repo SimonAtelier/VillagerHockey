@@ -63,9 +63,6 @@ public class LobbyCountDownViewImpl implements LobbyCountDownView {
 		model.setTitleFadeInTimeInSeconds(configuration.getMapTitleFadeInTimeInSeconds());
 		model.setTitleFadeOutTimeInSeconds(configuration.getMapTitleFadeOutTimeInSeconds());
 		model.setTitleStayTimeInSeconds(configuration.getMapTitleStayTimeInSeconds());
-		model.setSubtitleFadeInTimeInSeconds(configuration.getMapSubtitleFadeInTimeInSeconds());
-		model.setSubtitleFadeOutTimeInSeconds(configuration.getMapSubtitleFadeOutTimeInSeconds());
-		model.setSubtitleStayTimeInSeconds(configuration.getMapSubtitleStayTimeInSeconds());
 
 		for (UUID viewer : viewers) {
 			titleView.display(viewer);

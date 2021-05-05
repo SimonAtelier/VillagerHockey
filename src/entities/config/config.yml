@@ -100,21 +100,6 @@ titles:
     # The time how long the title will stay (in seconds)
     title-stay-time: 2
 
-    # Subtitle Fade-In time
-    # type: int
-    # The time how long the subtitle fade-in should take (in seconds)
-    subtitle-fade-in-time: 1
-
-    # Subtitle Fade-Out time
-    # type: int
-    # The time how long the subtitle fade-out should take (in seconds)
-    subtitle-fade-out-time: 1
-
-    # Subtitle Stay time
-    # type: int
-    # The time how long the subtitle will stay (in seconds)
-    subtitle-stay-time: 2
-
   # Map title
   map:
     # Enable map title
@@ -137,21 +122,6 @@ titles:
     # The time how long the title will stay (in seconds)
     title-stay-time: 2
 
-    # Subtitle Fade-In time
-    # type: int
-    # The time how long the subtitle fade-in should take (in seconds)
-    subtitle-fade-in-time: 1
-
-    # Subtitle Fade-Out time
-    # type: int
-    # The time how long the subtitle fade-out should take (in seconds)
-    subtitle-fade-out-time: 1
-
-    # Subtitle Stay time
-    # type: int
-    # The time how long the subtitle will stay (in seconds)
-    subtitle-stay-time: 2
-
   # Map title
   win:
     # Enable win title
@@ -173,18 +143,3 @@ titles:
     # type: int
     # The time how long the title will stay (in seconds)
     title-stay-time: 15
-
-    # Subtitle Fade-In time
-    # type: int
-    # The time how long the subtitle fade-in should take (in seconds)
-    subtitle-fade-in-time: 1
-
-    # Subtitle Fade-Out time
-    # type: int
-    # The time how long the subtitle fade-out should take (in seconds)
-    subtitle-fade-out-time: 1
-
-    # Subtitle Stay time
-    # type: int
-    # The time how long the subtitle will stay (in seconds)
-    subtitle-stay-time: 15

@@ -5,6 +5,7 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.respawn.RespawnCountDownController;
+import usecases.spawnvillager.SpawnVillagerController;
 import usecases.teleportplayerstoteamspawns.TeleportPlayersToTeamSpawnsController;
 
 public class RespawnGameState extends AbstractGameState implements OnCountDownFinished {
@@ -41,7 +42,7 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
-		game.getVillagerSpawner().spawnVillager();
+		new SpawnVillagerController().onSpawnVillager(game.getName());
 	}
 
 	@Override

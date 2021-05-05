@@ -5,9 +5,6 @@ public class TitleViewModelImpl implements TitleViewModel {
 	private int titleFadeInTimeInSeconds;
 	private int titleStayTimeInSeconds;
 	private int titleFadeOutTimeInSeconds;
-	private int subtitleFadeInTimeInSeconds;
-	private int subtitleStayTimeInSeconds;
-	private int subtitleFadeOutTimeInSeconds;
 	private String title;
 	private String subtitle;
 	
@@ -39,36 +36,6 @@ public class TitleViewModelImpl implements TitleViewModel {
 	@Override
 	public void setTitleFadeOutTimeInSeconds(int titleFadeOutTimeInSeconds) {
 		this.titleFadeOutTimeInSeconds = titleFadeOutTimeInSeconds;
-	}
-	
-	@Override
-	public int getSubtitleFadeInTimeInSeconds() {
-		return subtitleFadeInTimeInSeconds;
-	}
-	
-	@Override
-	public void setSubtitleFadeInTimeInSeconds(int subtitleFadeInTimeInSeconds) {
-		this.subtitleFadeInTimeInSeconds = subtitleFadeInTimeInSeconds;
-	}
-	
-	@Override
-	public int getSubtitleStayTimeInSeconds() {
-		return subtitleStayTimeInSeconds;
-	}
-	
-	@Override
-	public void setSubtitleStayTimeInSeconds(int subtitleStayTimeInSeconds) {
-		this.subtitleStayTimeInSeconds = subtitleStayTimeInSeconds;
-	}
-	
-	@Override
-	public int getSubtitleFadeOutTimeInSeconds() {
-		return subtitleFadeOutTimeInSeconds;
-	}
-	
-	@Override
-	public void setSubtitleFadeOutTimeInSeconds(int subtitleFadeOutTimeInSeconds) {
-		this.subtitleFadeOutTimeInSeconds = subtitleFadeOutTimeInSeconds;
 	}
 	
 	@Override

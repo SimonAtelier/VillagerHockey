@@ -22,16 +22,4 @@ public interface TitleViewModel {
 	
 	void setTitleFadeOutTimeInSeconds(int titleFadeOutTimeInSeconds);
 	
-	int getSubtitleFadeInTimeInSeconds();
-	
-	void setSubtitleFadeInTimeInSeconds(int subTitleFadeInTimeInSeconds);
-	
-	int getSubtitleStayTimeInSeconds();
-	
-	void setSubtitleStayTimeInSeconds(int subTitleStayTimeInSeconds);
-	
-	int getSubtitleFadeOutTimeInSeconds();
-	
-	void setSubtitleFadeOutTimeInSeconds(int subtitleFadeOutTimeInSeconds);
-	
 }

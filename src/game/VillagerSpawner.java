@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
@@ -16,13 +17,15 @@ import util.LocationConvert;
 
 public class VillagerSpawner {
 
+	private boolean passenger;
 	private boolean aiEnabled;
 	private boolean randomVillagerNamesEnabled;
 	private String villagerName;
 	private Location villagerSpawnLocation;
 	private Villager villager;
 	private List<String> randomNames;
-
+	private Entity passengerEntity;
+	
 	public VillagerSpawner() {
 		villagerName = " ";
 		randomNames = new ArrayList<String>();
@@ -42,10 +45,18 @@ public class VillagerSpawner {
 	}
 
 	public void removeVillager() {
+		removePassenger();
 		if (villager == null)
 			return;
 		villager.remove();
 		villager = null;
+	}
+	
+	private void removePassenger() {
+		if (passengerEntity == null)
+			return;
+		passengerEntity.remove();
+		passengerEntity = null;
 	}
 
 	public void setCustomVillagerName(String name) {
@@ -86,6 +97,16 @@ public class VillagerSpawner {
 		villager.setCustomNameVisible(true);
 		villager.setCanPickupItems(false);		
 		this.villager = villager;
+		
+		if (passenger)
+			spawnPassenger(location);
+	}
+	
+	private void spawnPassenger(Location location) {
+		World world = location.getWorld();
+		Entity entity = world.spawnEntity(location, EntityType.PIG);
+		passengerEntity = entity;
+		villager.setPassenger(passengerEntity);
 	}
 
 	public boolean isAIEnabled() {
@@ -149,6 +170,14 @@ public class VillagerSpawner {
 	public void setRandomNames(List<String> randomNames) {
 		this.randomNames.clear();
 		this.randomNames.addAll(randomNames);
+	}
+
+	public boolean isPassenger() {
+		return passenger;
+	}
+
+	public void setPassenger(boolean passenger) {
+		this.passenger = passenger;
 	}
 
 }

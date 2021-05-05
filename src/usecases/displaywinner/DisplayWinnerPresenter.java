@@ -40,9 +40,6 @@ public class DisplayWinnerPresenter implements DisplayWinnerResponse {
 		model.setTitleFadeInTimeInSeconds(configuration.getWinTitleFadeInTimeInSeconds());
 		model.setTitleFadeOutTimeInSeconds(configuration.getWinTitleFadeOutTimeInSeconds());
 		model.setTitleStayTimeInSeconds(configuration.getWinTitleStayTimeInSeconds());
-		model.setSubtitleFadeInTimeInSeconds(configuration.getWinSubtitleFadeInTimeInSeconds());
-		model.setSubtitleFadeOutTimeInSeconds(configuration.getWinSubtitleFadeOutTimeInSeconds());
-		model.setSubtitleStayTimeInSeconds(configuration.getWinSubtitleStayTimeInSeconds());
 	}
 	
 	private void setupWinnerTitle(String team) {

@@ -10,10 +10,4 @@ public interface MapTitleConfiguration {
 	
 	int getMapTitleStayTimeInSeconds();
 	
-	int getMapSubtitleFadeInTimeInSeconds();
-	
-	int getMapSubtitleFadeOutTimeInSeconds();
-	
-	int getMapSubtitleStayTimeInSeconds();
-	
 }

@@ -131,27 +131,6 @@ public class ConfigurationYaml implements Configuration {
 			return config.getInt("titles.win.title-stay-time");
 		return 15;
 	}
-
-	@Override
-	public int getWinSubtitleFadeInTimeInSeconds() {
-		if (config.contains("titles.win.subtitle-fade-in-time"))
-			return config.getInt("titles.win.subtitle-fade-in-time");
-		return 1;
-	}
-
-	@Override
-	public int getWinSubtitleFadeOutTimeInSeconds() {
-		if (config.contains("titles.win.subtitle-fade-out-time"))
-			return config.getInt("titles.win.subtitle-fade-out-time");
-		return 1;
-	}
-
-	@Override
-	public int getWinSubtitleStayTimeInSeconds() {
-		if (config.contains("titles.win.subtitle-stay-time"))
-			return config.getInt("titles.win.subtitle-stay-time");
-		return 15;
-	}
 	
 	@Override
 	public boolean isMapTitleEnabled() {
@@ -182,27 +161,6 @@ public class ConfigurationYaml implements Configuration {
 	}
 
 	@Override
-	public int getMapSubtitleFadeInTimeInSeconds() {
-		if (config.contains("titles.map.subtitle-fade-in-time"))
-			return config.getInt("titles.map.subtitle-fade-in-time");
-		return 1;
-	}
-
-	@Override
-	public int getMapSubtitleFadeOutTimeInSeconds() {
-		if (config.contains("titles.map.subtitle-fade-out-time"))
-			return config.getInt("titles.map.subtitle-fade-out-time");
-		return 1;
-	}
-
-	@Override
-	public int getMapSubtitleStayTimeInSeconds() {
-		if (config.contains("titles.map.subtitle-stay-time"))
-			return config.getInt("titles.map.subtitle-stay-time");
-		return 2;
-	}
-
-	@Override
 	public boolean isGoalTitleEnabled() {
 		if (config.contains("titles.goal.enabled"))
 			return config.getBoolean("titles.goal.enabled");
@@ -227,27 +185,6 @@ public class ConfigurationYaml implements Configuration {
 	public int getGoalTitleStayTimeInSeconds() {
 		if (config.contains("titles.goal.title-stay-time"))
 			return config.getInt("titles.goal.title-stay-time");
-		return 2;
-	}
-
-	@Override
-	public int getGoalSubtitleFadeInTimeInSeconds() {
-		if (config.contains("titles.goal.subtitle-fade-in-time"))
-			return config.getInt("titles.goal.subtitle-fade-in-time");
-		return 1;
-	}
-
-	@Override
-	public int getGoalSubtitleFadeOutTimeInSeconds() {
-		if (config.contains("titles.goal.subtitle-fade-out-time"))
-			return config.getInt("titles.goal.subtitle-fade-out-time");
-		return 1;
-	}
-
-	@Override
-	public int getGoalSubtitleStayTimeInSeconds() {
-		if (config.contains("titles.goal.subtitle-stay-time"))
-			return config.getInt("titles.goal.subtitle-stay-time");
 		return 2;
 	}
 	
