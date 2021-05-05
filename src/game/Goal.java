@@ -17,6 +17,9 @@ public class Goal extends Region {
 	}
 	
 	public void check() {
+		if (!game.isGoalsEnabled())
+			return;
+		
 		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
 		Villager villager = villagerSpawner.getVillager();
 
@@ -26,7 +29,7 @@ public class Goal extends Region {
 		Location location = villager.getLocation();
 		if (contains(LocationConvert.toEntityLocation(location))) {
 			game.getVillagerSpawner().removeVillager();
-			game.onTeamScored(team);
+			game.onTeamScored(team, 1);
 		}
 	}
 

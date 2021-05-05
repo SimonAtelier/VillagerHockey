@@ -78,7 +78,7 @@ public class VillagerSpawner {
 		world.spawnParticle(particle, location.getX(), location.getY() + offsetY, location.getZ(), amount);
 	}
 
-	public void spawnVillagerAtLocation(Location location) {
+	private void spawnVillagerAtLocation(Location location) {
 		if (location == null)
 			return;
 		World world = location.getWorld();

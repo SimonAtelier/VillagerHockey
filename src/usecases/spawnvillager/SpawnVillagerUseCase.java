@@ -22,16 +22,18 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 			return;
 		
 		if (isSpecialRound()) {
+			game.setGoalsEnabled(false);
 			spawnPinata();
 			sendSpecialRoundReponse();
 			return;
 		}
 		
+		game.setGoalsEnabled(true);
 		spawnRegular();
 	}
-	
+		
 	private boolean isSpecialRound() {
-		return (int) (Math.random() * 6) == 5;
+		return (int) (Math.random() * 20) == 0;
 	}
 	
 	private void sendSpecialRoundReponse() {
@@ -49,7 +51,7 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 		villagerSpawner.setAIEnabled(true);
 		villagerSpawner.spawnVillager();
 		villagerSpawner.setCustomName("Dinnerbone");
-		villagerSpawner.setCustomPassengerName("Pinata");
+		villagerSpawner.setCustomPassengerName("Arriba");
 	}
 	
 	private void spawnRegular() {

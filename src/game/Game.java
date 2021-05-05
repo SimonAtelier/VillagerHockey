@@ -71,7 +71,9 @@ public interface Game extends GameStateContext {
 	
 	Teams getTeams();
 	
+	void setGoalsEnabled(boolean goalsEnabled);
 	
+	boolean isGoalsEnabled();
 	
 	void checkGoal();
 	
@@ -85,6 +87,6 @@ public interface Game extends GameStateContext {
 	
 	void setVillagerSpawnLocation(Location location);
 	
-	void onTeamScored(String team);
+	void onTeamScored(String team, int points);
 	
 }

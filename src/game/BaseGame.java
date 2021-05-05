@@ -15,11 +15,13 @@ import view.score.ScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {
 
+	private boolean goalsEnabled;
 	private VillagerSpawner villagerSpawner;
 	private List<Goal> goals;
 
 	public BaseGame(String name) {
 		super(name);
+		goalsEnabled = true;
 		villagerSpawner = new VillagerSpawner();
 		goals = new ArrayList<Goal>();
 		addLeaveListener(this);
@@ -65,9 +67,9 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	}
 
 	@Override
-	public void onTeamScored(String teamName) {
+	public void onTeamScored(String teamName, int score) {
 		Team team = getTeams().findTeamByName(teamName);
-		team.setScore(team.getScore() + 1);
+		team.setScore(team.getScore() + score);
 		gameChangeSupport.fireTeamScored(teamName);
 		warmUp();
 	}
@@ -98,6 +100,16 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	@Override
 	public void setVillagerSpawnLocation(Location location) {
 		villagerSpawner.setVillagerSpawnLocation(location);
+	}
+
+	@Override
+	public void setGoalsEnabled(boolean goalsEnabled) {
+		this.goalsEnabled = goalsEnabled;
+	}
+
+	@Override
+	public boolean isGoalsEnabled() {
+		return goalsEnabled;
 	}
 
 }
