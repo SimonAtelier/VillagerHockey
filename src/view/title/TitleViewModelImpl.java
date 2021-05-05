@@ -9,32 +9,32 @@ public class TitleViewModelImpl implements TitleViewModel {
 	private String subtitle;
 	
 	@Override
-	public int getTitleFadeInTimeInSeconds() {
+	public int getFadeInTimeInSeconds() {
 		return titleFadeInTimeInSeconds;
 	}
 	
 	@Override
-	public void setTitleFadeInTimeInSeconds(int titleFadeInTimeInSeconds) {
+	public void setFadeInTimeInSeconds(int titleFadeInTimeInSeconds) {
 		this.titleFadeInTimeInSeconds = titleFadeInTimeInSeconds;
 	}
 	
 	@Override
-	public int getTitleStayTimeInSeconds() {
+	public int getStayTimeInSeconds() {
 		return titleStayTimeInSeconds;
 	}
 	
 	@Override
-	public void setTitleStayTimeInSeconds(int titleStayTimeInSeconds) {
+	public void setStayTimeInSeconds(int titleStayTimeInSeconds) {
 		this.titleStayTimeInSeconds = titleStayTimeInSeconds;
 	}
 	
 	@Override
-	public int getTitleFadeOutTimeInSeconds() {
+	public int getFadeOutTimeInSeconds() {
 		return titleFadeOutTimeInSeconds;
 	}
 	
 	@Override
-	public void setTitleFadeOutTimeInSeconds(int titleFadeOutTimeInSeconds) {
+	public void setFadeOutTimeInSeconds(int titleFadeOutTimeInSeconds) {
 		this.titleFadeOutTimeInSeconds = titleFadeOutTimeInSeconds;
 	}
 	

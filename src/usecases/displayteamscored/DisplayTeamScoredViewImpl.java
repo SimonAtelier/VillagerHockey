@@ -36,9 +36,9 @@ public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 		TitleViewModel model = titleView.getTitleViewModel();
 		model.setTitle(title);
 		model.setSubtitle(subtitle);
-		model.setTitleFadeInTimeInSeconds(1);
-		model.setTitleFadeOutTimeInSeconds(1);
-		model.setTitleStayTimeInSeconds(2);
+		model.setFadeInTimeInSeconds(1);
+		model.setFadeOutTimeInSeconds(1);
+		model.setStayTimeInSeconds(2);
 		
 		for (UUID viewer : viewers) {
 			titleView.display(viewer);

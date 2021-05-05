@@ -31,9 +31,9 @@ public class SpawnVillagerPresenter implements SpawnVillagerResponse {
 		TitleViewModel titleViewModel = new TitleViewModelImpl();
 		titleViewModel.setTitle("SPECIAL ROUND!");
 		titleViewModel.setSubtitle("Funny Pig Pinata!");
-		titleViewModel.setTitleFadeInTimeInSeconds(1);
-		titleViewModel.setTitleFadeOutTimeInSeconds(1);
-		titleViewModel.setTitleStayTimeInSeconds(2);
+		titleViewModel.setFadeInTimeInSeconds(1);
+		titleViewModel.setFadeOutTimeInSeconds(1);
+		titleViewModel.setStayTimeInSeconds(2);
 		return titleViewModel;
 	}
 

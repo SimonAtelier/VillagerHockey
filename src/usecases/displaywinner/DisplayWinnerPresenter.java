@@ -37,9 +37,9 @@ public class DisplayWinnerPresenter implements DisplayWinnerResponse {
 	private void setupTimes() {
 		WinTitleConfiguration configuration = Context.configuration;
 		TitleViewModel model = view.getTitleViewModel();
-		model.setTitleFadeInTimeInSeconds(configuration.getWinTitleFadeInTimeInSeconds());
-		model.setTitleFadeOutTimeInSeconds(configuration.getWinTitleFadeOutTimeInSeconds());
-		model.setTitleStayTimeInSeconds(configuration.getWinTitleStayTimeInSeconds());
+		model.setFadeInTimeInSeconds(configuration.getWinTitleFadeInTimeInSeconds());
+		model.setFadeOutTimeInSeconds(configuration.getWinTitleFadeOutTimeInSeconds());
+		model.setStayTimeInSeconds(configuration.getWinTitleStayTimeInSeconds());
 	}
 	
 	private void setupWinnerTitle(String team) {

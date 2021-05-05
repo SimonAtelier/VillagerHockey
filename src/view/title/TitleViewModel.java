@@ -10,16 +10,16 @@ public interface TitleViewModel {
 	
 	void setSubtitle(String subtitle);
 	
-	int getTitleFadeInTimeInSeconds();
+	int getFadeInTimeInSeconds();
 	
-	void setTitleFadeInTimeInSeconds(int titleFadeInTimeInSeconds);
+	void setFadeInTimeInSeconds(int fadeInTimeInSeconds);
 	
-	int getTitleStayTimeInSeconds();
+	int getStayTimeInSeconds();
 	
-	void setTitleStayTimeInSeconds(int titleStayTimeInSeconds);
+	void setStayTimeInSeconds(int stayTimeInSeconds);
 	
-	int getTitleFadeOutTimeInSeconds();
+	int getFadeOutTimeInSeconds();
 	
-	void setTitleFadeOutTimeInSeconds(int titleFadeOutTimeInSeconds);
+	void setFadeOutTimeInSeconds(int fadeOutTimeInSeconds);
 	
 }
