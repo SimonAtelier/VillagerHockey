@@ -43,6 +43,11 @@ public class LobbyViewImpl implements LobbyView {
 	}
 
 	@Override
+	public void displayCosmetics() {
+		inventory.setItem(2, createCosmeticsItem());
+	}
+
+	@Override
 	public void displayGameMode(String gameMode) {
 		player.setGameMode(GameMode.valueOf(gameMode));
 	}
@@ -107,6 +112,14 @@ public class LobbyViewImpl implements LobbyView {
 		ItemStack itemStack = new ItemStack(Material.SLIME_BALL);
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.setDisplayName(LobbyViewMessages.LOBBY_LEAVE_GAME_DISPLAY_NAME);
+		itemStack.setItemMeta(itemMeta);
+		return itemStack;
+	}
+	
+	private ItemStack createCosmeticsItem() {
+		ItemStack itemStack = new ItemStack(Material.CHEST);
+		ItemMeta itemMeta = itemStack.getItemMeta();
+		itemMeta.setDisplayName(LobbyViewMessages.LOBBY_COSMETICS_DISPLAY_NAME);
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}

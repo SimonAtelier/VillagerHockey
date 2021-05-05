@@ -8,6 +8,7 @@ public class PreparePlayerForLobbyResponseModel {
 	private boolean canForceStart;
 	private boolean canSelectTeam;
 	private boolean canViewAchievements;
+	private boolean canViewCosmetics;
 	private boolean maxHealth;
 	private boolean removeAllPotionEffects;
 	private String gameMode;
@@ -58,6 +59,14 @@ public class PreparePlayerForLobbyResponseModel {
 
 	public void setCanViewAchievements(boolean canViewAchievements) {
 		this.canViewAchievements = canViewAchievements;
+	}
+
+	public boolean isCanViewCosmetics() {
+		return canViewCosmetics;
+	}
+
+	public void setCanViewCosmetics(boolean canViewCosmetics) {
+		this.canViewCosmetics = canViewCosmetics;
 	}
 
 	public boolean isMaxHealth() {

@@ -20,6 +20,8 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	
 	boolean isAchievementsEnabled();
 	
+	boolean isCosmeticsEnabled();
+	
 	String getVillagerName();
 	
 	boolean isVillagerAIEnabled();

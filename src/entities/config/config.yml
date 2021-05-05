@@ -32,8 +32,13 @@ auto-balance-enabled: false
 
 # Achievements enabled
 # type: boolean
-# Determines if the achievements features is used or not (used if true)
+# Determines if the achievements features is used or not (used if true; false otherwise)
 achievements-enabled: false
+
+# Cosmetics enabled
+# type: boolean
+# Determines if the cosmetics feature is used or not (used if true; false otherwise)
+cosmetics-enabled: false
 
 # Villager AI
 # type: boolean

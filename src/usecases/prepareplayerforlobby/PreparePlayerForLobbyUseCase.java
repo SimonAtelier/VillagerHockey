@@ -26,6 +26,7 @@ public class PreparePlayerForLobbyUseCase implements PreparePlayerForLobby {
 		responseModel.setCanForceStart(permissionGateway.hasPermission(uniquePlayerId, Permissions.FORCE_START));
 		responseModel.setCanSelectTeam(!configuration.isAutobalanceEnabled());
 		responseModel.setCanViewAchievements(configuration.isAchievementsEnabled());
+		responseModel.setCanViewCosmetics(configuration.isCosmeticsEnabled());
 		responseModel.setGameMode(configuration.getLobbyGameMode());
 		responseModel.setFoodLevel(20);
 		responseModel.setLevel(0);

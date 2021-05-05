@@ -22,4 +22,6 @@ public interface LobbyView {
 	
 	void displayExperience(int experience);
 	
+	void displayCosmetics();
+	
 }

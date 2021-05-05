@@ -28,6 +28,9 @@ public class PreparePlayerForLobbyPresenter implements PreparePlayerForLobbyResp
 		
 		if (responseModel.isRemoveAllPotionEffects())
 			view.displayClearAllPotionEffects();
+		
+		if (responseModel.isCanViewCosmetics())
+			view.displayCosmetics();
 
 		view.displayFoodLevel(responseModel.getFoodLevel());
 		view.displayGameMode(responseModel.getGameMode());

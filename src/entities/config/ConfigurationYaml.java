@@ -70,6 +70,13 @@ public class ConfigurationYaml implements Configuration {
 	}
 
 	@Override
+	public boolean isCosmeticsEnabled() {
+		if (config.contains("cosmetics-enabled"))
+			return config.getBoolean("cosmetics-enabled");
+		return false;
+	}
+
+	@Override
 	public String getVillagerName() {
 		if (config.contains("villager-default-name"))
 			return config.getString("villager-default-name");

@@ -10,4 +10,6 @@ public interface LobbyViewMessages {
 	
 	static final String LOBBY_FORCE_START_DISPLAY_NAME =  "Start erzwingen (Rechtsklick)";
 	
+	static final String LOBBY_COSMETICS_DISPLAY_NAME = "Cosmetics (Rechtsklick)";
+	
 }
