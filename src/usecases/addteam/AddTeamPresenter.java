@@ -12,44 +12,74 @@ public class AddTeamPresenter implements AddTeamResponse {
 		this.view = view;
 	}
 	
+	private void displayMessage(String message) {
+		view.displayMessage(message);
+	}
+	
 	@Override
-	public void onNoPermission() {
-		view.displayNoPermission();
+	public void onNoSuchGame(String name) {
+		String message = AddTeamViewMessages.ADD_TEAM_NO_SUCH_GAME;
+		message = message.replace("$game$", name);
+		displayMessage(message);
 	}
 
 	@Override
-	public void onNoSuchGame(String name) {
-		view.displayNoSuchGame(name);	
+	public void onNoPermission() {
+		displayMessage(AddTeamViewMessages.ADD_TEAM_NO_PERMISSION);
 	}
 
 	@Override
 	public void onTeamWithNameAlreadyExists(String name) {
-		view.displayTeamWithNameAlreadyExists(name);
+		String message = AddTeamViewMessages.ADD_TEAM_NAME_ALREADY_EXISTS;
+		message = message.replace("$team$", name);
+		displayMessage(message);
 	}
 	
 	@Override
 	public void onTeamWithColorAlreadyExists(String color) {
-		view.displayTeamWithColorAlreadyExists(color);
+		String message = AddTeamViewMessages.ADD_TEAM_COLOR_ALREADY_EXITS;
+		message = message.replace("$color$", color);
+		displayMessage(message);
 	}
 
 	@Override
 	public void onInvalidTeamName(String name) {
-		view.displayInvalidTeamName(name);
+		String message = AddTeamViewMessages.ADD_TEAM_NAME_IS_INVALID;
+		message = message.replace("$team$", name);
+		displayMessage(message);
 	}
 
 	@Override
 	public void onTeamSuccessfullyAdded(String game, String team) {
-		view.displayTeamSuccessfullyAdded(game, team);
+		String message = AddTeamViewMessages.ADD_TEAM_SUCCESS;
+		message = message.replace("$game$", game);
+		message = message.replace("$team$", team);
+		displayMessage(message);
 	}
 
 	@Override
 	public void onTeamColorIsNotValid(String color, List<String> possibleValues) {
-		view.displayTeamColorIsNotValid(color, possibleValues);
+		String message = AddTeamViewMessages.ADD_TEAM_COLOR_IS_NOT_VALID;
+		message = message.replace("$color$", color);
+		message = message.replace("$values$", createPossibleTeamColorValuesView(possibleValues));
+		displayMessage(message);
 	}
-
+	
 	@Override
 	public void onMaximumAmountOfTeamsAlreadyReached(int maximum) {
-		view.displayMaximumAmountOfTeamsAlreadyReached(maximum + "");
+		String message = AddTeamViewMessages.ADD_TEAM_MAXIMUM_AMOUNT_ALREADY_REACHED;
+		message = message.replace("$maximum$", maximum + "");
+		displayMessage(message);
+	}
+
+	private String createPossibleTeamColorValuesView(List<String> values) {
+		StringBuffer buffer = new StringBuffer();
+		for (String value : values) {
+			buffer.append(" {");
+			buffer.append(value);
+			buffer.append("}");
+		}
+		return buffer.toString();
 	}
 	
 }
