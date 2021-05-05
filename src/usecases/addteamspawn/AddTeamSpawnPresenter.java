@@ -10,24 +10,30 @@ public class AddTeamSpawnPresenter implements AddTeamSpawnResponse {
 		this.view = view;
 	}
 	
+	private void displayMessage(String message) {
+		view.displayMessage(message);
+	}
+	
 	@Override
 	public void onNoSuchGame() {
-		view.displayNoSuchGame();
+		displayMessage(AddTeamSpawnViewMessages.ADD_TEAM_SPAWN_NO_SUCH_GAME);
 	}
 
 	@Override
 	public void onNoSuchTeam() {
-		view.displayNoSuchTeam();
+		displayMessage(AddTeamSpawnViewMessages.ADD_TEAM_SPAWN_NO_SUCH_TEAM);
 	}
 
 	@Override
 	public void onTeamSpawnSuccessfullyAdd(String team) {
-		view.displayTeamSpawnSuccessfullyAdd(team);
+		String message = AddTeamSpawnViewMessages.ADD_TEAM_SPAWN_SUCCESSFULLY_ADD;
+		message = message.replace("$team$", team);
+		displayMessage(message);
 	}
 
 	@Override
 	public void onNoPermission() {
-		view.displayNoPermission();
+		displayMessage(AddTeamSpawnViewMessages.ADD_TEAM_SPAWN_NO_PERMISSION);
 	}
 	
 }
