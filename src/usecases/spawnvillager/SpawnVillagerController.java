@@ -10,6 +10,7 @@ public class SpawnVillagerController {
 		SpawnVillagerRequestModel requestModel = new SpawnVillagerRequestModel();
 		requestModel.setGame(game);
 		useCase.setGameGateway(Context.gameGateway);
+		useCase.setConfiguration(Context.configuration);
 		useCase.execute(requestModel, presenter);
 	}
 	

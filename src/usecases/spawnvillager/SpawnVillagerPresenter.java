@@ -3,9 +3,7 @@ package usecases.spawnvillager;
 import java.util.List;
 import java.util.UUID;
 
-import context.Context;
 import usecases.spawnvillager.SpawnVillager.SpawnVillagerResponse;
-import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;
@@ -29,8 +27,8 @@ public class SpawnVillagerPresenter implements SpawnVillagerResponse {
 	
 	private TitleViewModel createSpecialRoundTitleViewModel() {
 		TitleViewModel titleViewModel = new TitleViewModelImpl();
-		titleViewModel.setTitle("SPECIAL ROUND!");
-		titleViewModel.setSubtitle("Funny Pig Pinata!");
+		titleViewModel.setTitle(SpawnVillagerViewMessages.SPAWN_VILLAGER_SPECIAL_ROUND_TITLE);
+		titleViewModel.setSubtitle(SpawnVillagerViewMessages.SPAWN_VILLAGER_SPECIAL_ROUND_SUBTITLE);
 		titleViewModel.setFadeInTimeInSeconds(1);
 		titleViewModel.setFadeOutTimeInSeconds(1);
 		titleViewModel.setStayTimeInSeconds(2);

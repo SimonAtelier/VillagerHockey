@@ -1,5 +1,6 @@
 package usecases.spawnvillager;
 
+import entities.config.Configuration;
 import game.Game;
 import game.VillagerSpawner;
 import gateways.GameGateway;
@@ -10,7 +11,8 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 	private SpawnVillagerRequest request;
 	private SpawnVillagerResponse response;
 	private GameGateway gameGateway;
-
+	private Configuration configuration;
+	
 	@Override
 	public void execute(SpawnVillagerRequest request, SpawnVillagerResponse response) {
 		setRequest(request);
@@ -19,8 +21,17 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 		if (!findGame())
 			return;
 		
-		spawn();
-		sendSpecialRoundReponse();
+		if (isSpecialRound()) {
+			spawnPinata();
+			sendSpecialRoundReponse();
+			return;
+		}
+		
+		spawnRegular();
+	}
+	
+	private boolean isSpecialRound() {
+		return (int) (Math.random() * 6) == 5;
 	}
 	
 	private void sendSpecialRoundReponse() {
@@ -32,10 +43,19 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 		return game != null;
 	}
 	
-	private void spawn() {
+	private void spawnPinata() {
 		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
 		villagerSpawner.setPassenger(true);
 		villagerSpawner.setAIEnabled(true);
+		villagerSpawner.spawnVillager();
+		villagerSpawner.setCustomName("Dinnerbone");
+		villagerSpawner.setCustomPassengerName("Pinata");
+	}
+	
+	private void spawnRegular() {
+		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
+		villagerSpawner.setPassenger(false);
+		villagerSpawner.setAIEnabled(getConfiguration().isVillagerAIEnabled());
 		villagerSpawner.spawnVillager();
 	}
 
@@ -62,6 +82,15 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 	@Override
 	public void setGameGateway(GameGateway gameGateway) {
 		this.gameGateway = gameGateway;
+	}
+	
+	private Configuration getConfiguration() {
+		return configuration;
+	}
+
+	@Override
+	public void setConfiguration(Configuration configuration) {
+		this.configuration = configuration;
 	}
 
 }

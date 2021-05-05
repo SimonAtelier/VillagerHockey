@@ -146,6 +146,18 @@ public class VillagerSpawner {
 			return;
 		this.villagerSpawnLocation = LocationConvert.toBukkitLocation(villagerSpawnLocation);
 	}
+	
+	public void setCustomName(String customName) {
+		if (villager == null)
+			return;
+		villager.setCustomName(customName);
+	}
+	
+	public void setCustomPassengerName(String customName) {
+		if (passengerEntity == null)
+			return;
+		passengerEntity.setCustomName(customName);
+	}
 
 	public Villager getVillager() {
 		return villager;
