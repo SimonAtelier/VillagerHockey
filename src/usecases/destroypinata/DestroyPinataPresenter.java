@@ -30,16 +30,20 @@ public class DestroyPinataPresenter implements DestroyPinataResponse {
 	
 	private void broadcastPinataDestroyedTitle(DestroyPinataResponseModel responseModel) {
 		TitleView titleView = new TitleViewImpl();
+		titleView.setTitleViewModel(createTitleViewModel(responseModel));
+		
+		for (UUID player : responseModel.getPlayers())
+			titleView.display(player);
+	}
+	
+	private TitleViewModel createTitleViewModel(DestroyPinataResponseModel responseModel) {
 		TitleViewModel titleViewModel = new TitleViewModelImpl();
 		titleViewModel.setTitle("§cPINATA ZERSCHLAGEN!");
 		titleViewModel.setSubtitle(responseModel.getPoints() + " Punkte für Team " + responseModel.getDestroyerTeamName() + "!");
 		titleViewModel.setFadeInTimeInSeconds(1);
 		titleViewModel.setFadeOutTimeInSeconds(1);
 		titleViewModel.setStayTimeInSeconds(2);
-		titleView.setTitleViewModel(titleViewModel);
-		
-		for (UUID player : responseModel.getPlayers())
-			titleView.display(player);
+		return titleViewModel;
 	}
 
 }
