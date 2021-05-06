@@ -8,7 +8,6 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.lobby.LobbyCountDownController;
-import game.usecases.teleportplayertolobby.TeleportPlayerToLobbyController;
 import usecases.prepareplayerforgame.PreparePlayerForGame;
 import usecases.prepareplayerforgame.PreparePlayerForGame.PreparePlayerForGameResponse;
 import usecases.prepareplayerforgame.PreparePlayerForGamePresenter;
@@ -17,6 +16,7 @@ import usecases.prepareplayerforgame.PreparePlayerForGameView;
 import usecases.prepareplayerforgame.PreparePlayerForGameViewImpl;
 import usecases.prepareplayerforlobby.PreparePlayerForLobbyCommand;
 import usecases.saveinventory.SaveInventoryController;
+import usecases.teleportplayertolobby.TeleportPlayerToLobbyController;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
 
