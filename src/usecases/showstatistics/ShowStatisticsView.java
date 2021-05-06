@@ -6,6 +6,4 @@ public interface ShowStatisticsView {
 	
 	void displayStatistics(ShowStatisticsResponseModel statistics);
 	
-	void displayAchievements();
-	
 }

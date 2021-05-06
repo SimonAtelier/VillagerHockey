@@ -43,9 +43,4 @@ public class ShowStatisticsViewImpl implements ShowStatisticsView {
 		displayMessage(viewer, buffer.toString());
 	}
 
-	@Override
-	public void displayAchievements() {
-//		new AchievementsViewImpl(viewer).display();	
-	}
-
 }
