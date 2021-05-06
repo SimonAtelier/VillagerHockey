@@ -3,7 +3,10 @@ package usecases.displayteamscored;
 import java.util.List;
 import java.util.UUID;
 
+import entities.ColorUtil;
+import entities.TeamColor;
 import usecases.displayteamscored.DisplayTeamScored.DisplayTeamScoredResponse;
+import view.message.MessageCodes;
 
 public class DisplayTeamScoredPresenter implements DisplayTeamScoredResponse {
 
@@ -14,9 +17,9 @@ public class DisplayTeamScoredPresenter implements DisplayTeamScoredResponse {
 	}
 
 	@Override
-	public void presentTeamScored(List<UUID> viewers, String team) {
-		view.displayTeamScored(viewers, team);
-		view.displayTeamScoredTitle(viewers, team);
+	public void presentTeamScored(List<UUID> viewers, String team, TeamColor color) {
+		view.displayTeamScored(viewers, ColorUtil.toMessageCode(color) + team + MessageCodes.RESET);
+		view.displayTeamScoredTitle(viewers, ColorUtil.toMessageCode(color) + team + MessageCodes.RESET);
 	}
 
 	@Override

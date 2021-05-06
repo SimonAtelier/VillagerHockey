@@ -3,6 +3,7 @@ package usecases.displayteamscored;
 import java.util.List;
 import java.util.UUID;
 
+import entities.TeamColor;
 import gateways.GameGateway;
 
 public interface DisplayTeamScored {
@@ -21,7 +22,7 @@ public interface DisplayTeamScored {
 	
 	public interface DisplayTeamScoredResponse {
 		
-		void presentTeamScored(List<UUID> viewers, String team);
+		void presentTeamScored(List<UUID> viewers, String team, TeamColor color);
 		
 		void presentScore(List<UUID> viewers, List<ScoreResponseItem> scores);
 		

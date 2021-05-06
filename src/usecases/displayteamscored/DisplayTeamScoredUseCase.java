@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import entities.Team;
+import entities.TeamColor;
 import game.Game;
 import gateways.GameGateway;
 
@@ -25,7 +26,7 @@ public class DisplayTeamScoredUseCase implements DisplayTeamScored {
 	
 	private void sendResponse() {
 		List<UUID> viewers = game.getUniquePlayerIds();
-		response.presentTeamScored(viewers, request.getTeam());
+		response.presentTeamScored(viewers, request.getTeam(), findTeamColor(request.getTeam()));
 		response.presentScore(viewers, createResponseItems());		
 	}
 	
@@ -38,6 +39,10 @@ public class DisplayTeamScoredUseCase implements DisplayTeamScored {
 			responseItems.add(responseItem);
 		}
 		return responseItems;
+	}
+	
+	private TeamColor findTeamColor(String teamName) {
+		return game.getTeams().findTeamByName(teamName).getColor();
 	}
 	
 	private List<Team> findAllTeamsOfGame() {
