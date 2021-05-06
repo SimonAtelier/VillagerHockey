@@ -6,6 +6,6 @@ public interface DisplayTeamScoredMessages {
 	
 	static final String DISPLAY_TEAM_SCORED_GOAL_TITLE = "§cTOR!";
 	
-	static final String DISPLAY_TEAM_SCORED_GOAL_SUBTITLE = "Punkt für Team $team$!";
+	static final String DISPLAY_TEAM_SCORED_GOAL_SUBTITLE = "Punkt für Team $team$.";
 	
 }
