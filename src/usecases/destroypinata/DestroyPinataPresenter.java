@@ -12,38 +12,61 @@ import view.title.TitleViewModelImpl;
 
 public class DestroyPinataPresenter implements DestroyPinataResponse {
 
+	private DestroyPinataResponseModel responseModel;
+	
 	@Override
 	public void onDestroyedPinata(DestroyPinataResponseModel responseModel) {
-		broadcastPinataDestroyedMessage(responseModel);
-		broadcastPinataDestroyedTitle(responseModel);
+		setResponseModel(responseModel);
+		broadcastPinataDestroyedMessage();
+		broadcastPinataDestroyedTitle();
 	}
 	
-	private void broadcastPinataDestroyedMessage(DestroyPinataResponseModel responseModel) {
+	private void broadcastPinataDestroyedMessage() {
 		MessageView messageView = Context.messageView;
-		String message = DestroyPinataMessages.DETROY_PINATA_PLAYER_DESTROYED_PINATA;
-		message = message.replace("$name$", responseModel.getDestroyerName());
-		message = message.replace("$team$", responseModel.getDestroyerTeamName());
+		String message = createPinataDestroyedMessage();
 		
 		for (UUID player : responseModel.getPlayers())
 			messageView.displayMessage(player, message);
 	}
 	
-	private void broadcastPinataDestroyedTitle(DestroyPinataResponseModel responseModel) {
+	private void broadcastPinataDestroyedTitle() {
 		TitleView titleView = new TitleViewImpl();
-		titleView.setTitleViewModel(createTitleViewModel(responseModel));
+		titleView.setTitleViewModel(createTitleViewModel());
 		
-		for (UUID player : responseModel.getPlayers())
+		for (UUID player : getResponseModel().getPlayers())
 			titleView.display(player);
 	}
 	
-	private TitleViewModel createTitleViewModel(DestroyPinataResponseModel responseModel) {
+	private TitleViewModel createTitleViewModel() {
 		TitleViewModel titleViewModel = new TitleViewModelImpl();
-		titleViewModel.setTitle("§cPINATA ZERSCHLAGEN!");
-		titleViewModel.setSubtitle(responseModel.getPoints() + " Punkte für Team " + responseModel.getDestroyerTeamName() + "!");
+		titleViewModel.setTitle(DestroyPinataMessages.DESTROY_PINATA_TITLE);
+		titleViewModel.setSubtitle(createSubtitle());
 		titleViewModel.setFadeInTimeInSeconds(1);
-		titleViewModel.setFadeOutTimeInSeconds(1);
 		titleViewModel.setStayTimeInSeconds(2);
+		titleViewModel.setFadeOutTimeInSeconds(1);
 		return titleViewModel;
+	}
+	
+	private String createPinataDestroyedMessage() {
+		String message = DestroyPinataMessages.DETROY_PINATA_PLAYER_DESTROYED_PINATA;
+		message = message.replace("$name$", getResponseModel().getDestroyerName());
+		message = message.replace("$team$", getResponseModel().getDestroyerTeamName());
+		return message;
+	}
+	
+	private String createSubtitle() {
+		String subtitle = DestroyPinataMessages.DESTROY_PINATA_SUBTITLE;
+		subtitle = subtitle.replace("$points$", getResponseModel().getPoints() + "");
+		subtitle = subtitle.replace("$team$", getResponseModel().getDestroyerTeamName());
+		return subtitle;
+	}
+	
+	private DestroyPinataResponseModel getResponseModel() {
+		return responseModel;
+	}
+	
+	private void setResponseModel(DestroyPinataResponseModel responseModel) {
+		this.responseModel = responseModel;
 	}
 
 }
