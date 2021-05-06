@@ -41,17 +41,20 @@ public class UpdateJoinSignController implements JoinListener, LeaveListener, Ga
 	}
 
 	private void updateJoinSigns(Game game) {
+		UpdateJoinSigns useCase = new UpdateJoinSignsUseCase();
+		useCase.setGameGateway(Context.gameGateway);
+		useCase.setSignGateway(Context.signGateway);
+		useCase.setJoinSignGateway(Context.joinSignGateway);
+		useCase.execute(createRequestModel(game), new UpdateJoinSignsResponseImpl());
+	}
+	
+	private UpdateJoinSignsRequestModel createRequestModel(Game game) {
 		UpdateJoinSignsRequestModel requestModel = new UpdateJoinSignsRequestModel();
 		requestModel.setGame(game.getName());
 		requestModel.setGameState(game.getGameState().toString());
 		requestModel.setPlayersCount(game.getPlayersCount());
 		requestModel.setMaximumAmountOfPlayers(game.getMaximumAmountOfPlayers());
-		
-		UpdateJoinSigns useCase = new UpdateJoinSignsUseCase();
-		useCase.setGameGateway(Context.gameGateway);
-		useCase.setSignGateway(Context.signGateway);
-		useCase.setJoinSignGateway(Context.joinSignGateway);
-		useCase.execute(requestModel, new UpdateJoinSignsResponseImpl());
+		return requestModel;
 	}
 
 }
