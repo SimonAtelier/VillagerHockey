@@ -9,6 +9,7 @@ import gateways.Permissions;
 public class AddGameUseCase implements AddGame {
 
 	private String name;
+	private AddGameResponse response;
 	private UUID player;
 	private PermissionGateway permissionGateway;
 	private GameGateway gameGateway;
@@ -16,6 +17,7 @@ public class AddGameUseCase implements AddGame {
 	@Override
 	public void execute(UUID player, String name, AddGameResponse response) {
 		setRequest(player, name);
+		setResponse(response);
 
 		if (playerHasNoPermission()) {
 			response.onNoPermission();
@@ -33,7 +35,11 @@ public class AddGameUseCase implements AddGame {
 		}
 
 		addGame();
-		response.onGameSuccessfullyAdded(name);
+		sendSuccessResponse();
+	}
+	
+	private void sendSuccessResponse() {
+		getResponse().onGameSuccessfullyAdded(name);
 	}
 
 	private boolean playerHasNoPermission() {
@@ -55,6 +61,14 @@ public class AddGameUseCase implements AddGame {
 	private void setRequest(UUID player, String name) {
 		this.player = player;
 		this.name = name;
+	}
+	
+	private AddGameResponse getResponse() {
+		return response;
+	}
+	
+	private void setResponse(AddGameResponse response) {
+		this.response = response;
 	}
 
 	@Override
