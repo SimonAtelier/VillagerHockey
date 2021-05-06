@@ -22,18 +22,19 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 			return;
 		
 		if (isSpecialRound()) {
-			game.setGoalsEnabled(false);
-			spawnPinata();
-			sendSpecialRoundReponse();
-			return;
+//			game.setGoalsEnabled(false);
+//			spawnPinata();
+//			sendSpecialRoundReponse();
+//			return;
 		}
-		
+				
 		game.setGoalsEnabled(true);
 		spawnRegular();
 	}
 		
 	private boolean isSpecialRound() {
-		return (int) (Math.random() * 20) == 0;
+//		return (int) (Math.random() * 20) == 0;
+		return true;
 	}
 	
 	private void sendSpecialRoundReponse() {

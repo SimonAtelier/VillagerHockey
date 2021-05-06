@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import context.Context;
 import entities.Location;
 import entities.Team;
+import game.Goal.GoalResponse;
 import game.event.LeaveListener;
-import game.states.RespawnGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.loadinventory.LoadInventoryController;
@@ -15,6 +16,7 @@ import view.score.ScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {
 
+	private boolean canMove;
 	private boolean goalsEnabled;
 	private VillagerSpawner villagerSpawner;
 	private List<Goal> goals;
@@ -28,19 +30,27 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	}
 	
 	@Override
-	public void checkGoal() {
+	public GoalResponse checkGoal() {
 		for (Team team : getTeams().findAllTeams()) {
 			Goal goal = findGoalOfTeam(team.getName());
-			goal.check();
+			GoalResponse response = goal.check();
+			if (response.isSored())
+				return response;
 		}
+		return null;
 	}
 	
 	@Override
 	public void onPlayerLeave(Game game, UUID player) {
+		removeVehicle(player);
 		removePlayerFromTeam(player);
 		restoreInventory(player);
 		restorePlayerData(player);
 		new ScoreView().hide(player);
+	}
+	
+	private void removeVehicle(UUID player) {
+		Context.playerGateway.removeVehicle(player);
 	}
 
 	private void removePlayerFromTeam(UUID player) {
@@ -56,10 +66,6 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		playerDataGateway.load(player);
 	}
 
-	private void warmUp() {
-		getGameState().transitionToGameState(this, new RespawnGameState(getGameState()));
-	}
-
 	@Override
 	public void selectLowestTeam(UUID player) {
 		Team team = getTeams().findLowestTeam();
@@ -71,7 +77,6 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		Team team = getTeams().findTeamByName(teamName);
 		team.setScore(team.getScore() + score);
 		gameChangeSupport.fireTeamScored(teamName);
-		warmUp();
 	}
 
 	@Override
@@ -111,5 +116,5 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	public boolean isGoalsEnabled() {
 		return goalsEnabled;
 	}
-
+	
 }

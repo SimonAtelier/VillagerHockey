@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import entities.Location;
@@ -36,6 +37,16 @@ public class PlayerGatewayImpl implements PlayerGateway {
 			uniquePlayerIds.add(player.getUniqueId());
 		}
 		return uniquePlayerIds;
+	}
+
+	@Override
+	public void removeVehicle(UUID uniquePlayerId) {
+		Player player = Bukkit.getPlayer(uniquePlayerId);
+		Entity entity = player.getVehicle();
+		if (entity == null)
+			return;
+		entity.removePassenger(player);
+		entity.remove();
 	}
 	
 }

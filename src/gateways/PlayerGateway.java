@@ -15,4 +15,6 @@ public interface PlayerGateway {
 	
 	List<UUID> findAllOnlinePlayers();
 	
+	void removeVehicle(UUID uniquePlayerId);
+	
 }

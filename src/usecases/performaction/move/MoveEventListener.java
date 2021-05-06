@@ -16,4 +16,5 @@ public class MoveEventListener implements Listener {
 		useCase.setGameGateway(Context.gameGateway);
 		e.setCancelled(!useCase.canMove(player.getUniqueId()));
 	}
+	
 }

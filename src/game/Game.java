@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Teams;
+import game.Goal.GoalResponse;
 import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
@@ -75,7 +76,7 @@ public interface Game extends GameStateContext {
 	
 	boolean isGoalsEnabled();
 	
-	void checkGoal();
+	GoalResponse checkGoal();
 	
 	VillagerSpawner getVillagerSpawner();
 	

@@ -2,7 +2,6 @@ package usecases.performaction.move;
 
 import java.util.UUID;
 
-import game.Game;
 import game.states.RespawnGameState;
 import gateways.GameGateway;
 
@@ -22,8 +21,7 @@ public class MoveUseCase implements Move {
 	}
 	
 	private boolean gameOfPlayerAllowsMove() {
-		Game game = gameGateway.findGameOfPlayer(player);
-		return game.getGameState().getClass() != RespawnGameState.class;
+		return gameGateway.findGameOfPlayer(player).getGameState().getClass() != RespawnGameState.class;
 	}
 
 	private boolean playerIsNotIngame() {
