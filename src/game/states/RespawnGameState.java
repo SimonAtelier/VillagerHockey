@@ -50,15 +50,26 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 		if (game.getGameState().getClass() != RespawnGameState.class)
 			return;
 		if (specialRound()) {
-			transitionToGameState(game, new BoatBoogieState(gameState));
+			transitionToGameState(game, createRandomSpecialRound());
 		} else {
 			transitionToGameState(game, gameState);
 		}
 	}
 	
 	private boolean specialRound() {
-		return ((int) (Math.random() * 6)) < 2;
-//		return false;
+		return ((int) (Math.random() * 6)) == 5;
+	}
+	
+	private GameState createRandomSpecialRound() {
+		int random = (int) (Math.random() * 2);
+		switch (random) {
+		case 0:
+			return new PoloState(gameState);
+		case 1:
+			return new BoatBoogieState(gameState);
+		default:
+			return new PoloState(gameState);
+		}
 	}
 
 	@Override
