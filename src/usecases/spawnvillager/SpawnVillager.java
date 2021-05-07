@@ -26,7 +26,7 @@ public interface SpawnVillager {
 	
 	public interface SpawnVillagerResponse {
 		
-		void onSpecialRound(List<UUID> players);
+		void onPresent(List<UUID> players);
 		
 	}
 
