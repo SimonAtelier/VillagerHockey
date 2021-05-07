@@ -23,7 +23,7 @@ public class BoatBoogiePresenter implements BoatBoogieResponse {
 	
 	@Override
 	public void onPresentBoats(BoatBoogieResponseModel responseModel) {
-		this.responseModel = responseModel;
+		setResponseModel(responseModel);
 		
 		World world = Bukkit.getWorld(responseModel.getWorldName());
 		List<UUID> players = responseModel.getPlayers();
@@ -43,9 +43,8 @@ public class BoatBoogiePresenter implements BoatBoogieResponse {
 		TitleView titleView = new TitleViewImpl();
 		titleView.setTitleViewModel(createTitleViewModel());
 		
-		for (UUID player : responseModel.getPlayers()) {
+		for (UUID player : responseModel.getPlayers())
 			titleView.display(player);
-		}
 	}
 	
 	private TitleViewModel createTitleViewModel() {
@@ -56,6 +55,10 @@ public class BoatBoogiePresenter implements BoatBoogieResponse {
 		titleViewModel.setStayTimeInSeconds(2);
 		titleViewModel.setFadeOutTimeInSeconds(1);
 		return titleViewModel;
+	}
+	
+	private void setResponseModel(BoatBoogieResponseModel responseModel) {
+		this.responseModel = responseModel;
 	}
 
 }
