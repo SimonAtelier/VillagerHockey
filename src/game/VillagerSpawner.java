@@ -97,14 +97,13 @@ public class VillagerSpawner {
 		villager.setCustomNameVisible(true);
 		villager.setCanPickupItems(false);		
 		this.villager = villager;
-		
-		if (passenger)
-			spawnPassenger(location);
 	}
 	
-	private void spawnPassenger(Location location) {
-		World world = location.getWorld();
-		Entity entity = world.spawnEntity(location, EntityType.PIG);
+	public void spawnPassenger() {
+		if (villager == null)
+			return;
+		Location location = villager.getLocation();
+		Entity entity = location.getWorld().spawnEntity(location, EntityType.PIG);
 		passengerEntity = entity;
 		villager.setPassenger(passengerEntity);
 	}
@@ -190,6 +189,12 @@ public class VillagerSpawner {
 
 	public void setPassenger(boolean passenger) {
 		this.passenger = passenger;
+	}
+	
+	public boolean isPassengerAlive() {
+		if (passengerEntity == null)
+			return false;
+		return !passengerEntity.isDead();
 	}
 
 }

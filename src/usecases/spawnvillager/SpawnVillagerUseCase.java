@@ -21,7 +21,7 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 		if (!findGame())
 			return;
 		
-		spawnRegular();
+		spawn();
 	}
 	
 	private boolean findGame() {
@@ -29,16 +29,7 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 		return game != null;
 	}
 	
-	private void spawnPinata() {
-		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
-		villagerSpawner.setPassenger(true);
-		villagerSpawner.setAIEnabled(getConfiguration().isVillagerAIEnabled());
-		villagerSpawner.spawnVillager();
-		villagerSpawner.setCustomName("Dinnerbone");
-		villagerSpawner.setCustomPassengerName("Arriba");
-	}
-	
-	private void spawnRegular() {
+	private void spawn() {
 		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
 		villagerSpawner.setPassenger(getRequest().isPassenger());
 		villagerSpawner.setAIEnabled(getConfiguration().isVillagerAIEnabled());

@@ -1,7 +1,6 @@
 package game.states;
 
 import game.Game;
-import game.Goal.GoalResponse;
 import usecases.pinata.PinataController;
 
 public class PinataState extends AbstractGameState {
@@ -15,19 +14,19 @@ public class PinataState extends AbstractGameState {
 	@Override
 	public void enterGameState(Game game) {
 		game.setGoalsEnabled(false);
+		game.getVillagerSpawner().spawnPassenger();
 		new PinataController().onPinata(game.getName());
 	}
 	
 	@Override
 	public void onTick(Game game) {
-		GoalResponse goalResponse = game.checkGoal();
 		
-		if (goalResponse == null)
+		if (game.getVillagerSpawner().isPassengerAlive())
 			return;
 		
 		game.getVillagerSpawner().removeVillager();
 		game.setGoalsEnabled(true);
-		transitionToGameState(game, gameState);
+		transitionToGameState(game, new RespawnGameState(gameState));
 	}
 	
 	@Override
