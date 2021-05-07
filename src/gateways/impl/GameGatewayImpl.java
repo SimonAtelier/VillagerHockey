@@ -11,6 +11,7 @@ import entities.config.Configuration;
 import game.BaseGame;
 import game.Game;
 import game.VillagerSpawner;
+import gamestats.GameStatisticsController;
 import gateways.GameGateway;
 import usecases.displayteamscored.ScoreEventListener;
 import usecases.jointeam.JoinTeamController;
@@ -90,6 +91,7 @@ public class GameGatewayImpl implements GameGateway {
 			game.addTeamSelectListener(new JoinTeamController());
 			game.addTeamScoreListener(new ScoreEventListener());
 			new UpdateJoinSignController(game);
+			new GameStatisticsController(game);
 			return true;
 		}
 	}

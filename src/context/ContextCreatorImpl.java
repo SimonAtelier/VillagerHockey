@@ -5,6 +5,7 @@ import achievements.AchievementSystem;
 import achievements.AchievementSystemImpl;
 import entities.config.Configuration;
 import entities.config.ConfigurationLoader;
+import gamestats.InMemoryGameStatisticsGateway;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
 import gateways.impl.InventoryGatewayYaml;
@@ -35,6 +36,7 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.statisticsGateway = new StatisticsGatewayImpl();
 		Context.messageView.setPrefix(Context.configuration.getPrefix());
 		Context.achievementSystem = createAchievementSystem();
+		Context.gameStatisticGateway = new InMemoryGameStatisticsGateway();
 	}
 	
 	private AchievementSystem createAchievementSystem() {

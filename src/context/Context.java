@@ -2,6 +2,7 @@ package context;
 
 import achievements.AchievementSystem;
 import entities.config.Configuration;
+import gamestats.GameStatisticGateway;
 import gateways.CommandGateway;
 import gateways.GameGateway;
 import gateways.InventoryGateway;
@@ -41,5 +42,7 @@ public class Context {
 	public static StatisticsGateway statisticsGateway;
 	
 	public static AchievementSystem achievementSystem;
+	
+	public static GameStatisticGateway gameStatisticGateway;
 	
 }

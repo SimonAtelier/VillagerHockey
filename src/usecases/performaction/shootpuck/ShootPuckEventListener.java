@@ -37,6 +37,8 @@ public class ShootPuckEventListener implements Listener {
 		ShootPuck useCase = new ShootPuckUseCase();
 		ShootPuckView view = new ShootPuckViewImpl();
 		ShootPuckResponse presenter = new ShootPuckPresenter(view);
+		useCase.setGameGateway(Context.gameGateway);
+		useCase.setGameStatisticsGateway(Context.gameStatisticGateway);
 		useCase.execute(requestModel, presenter);
 	}
 
