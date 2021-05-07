@@ -17,9 +17,8 @@ public class PinataController implements Listener {
 		if (!Context.gameGateway.isIngame(player.getUniqueId()))
 			return;
 		
-		new DestroyPinataController().onDestroyPinata(player.getUniqueId());
-		
 		if (e.getEntityType() == EntityType.PIG) {
+			new DestroyPinataController().onDestroyPinata(player.getUniqueId());
 			e.setDroppedExp(0);
 			e.getDrops().clear();
 		}

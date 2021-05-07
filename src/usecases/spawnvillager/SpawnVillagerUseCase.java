@@ -49,7 +49,7 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 	private void spawnPinata() {
 		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
 		villagerSpawner.setPassenger(true);
-		villagerSpawner.setAIEnabled(true);
+		villagerSpawner.setAIEnabled(getConfiguration().isVillagerAIEnabled());
 		villagerSpawner.spawnVillager();
 		villagerSpawner.setCustomName("Dinnerbone");
 		villagerSpawner.setCustomPassengerName("Arriba");

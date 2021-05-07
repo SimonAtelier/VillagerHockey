@@ -42,11 +42,21 @@ public class PlayerGatewayImpl implements PlayerGateway {
 	@Override
 	public void removeVehicle(UUID uniquePlayerId) {
 		Player player = Bukkit.getPlayer(uniquePlayerId);
-		Entity entity = player.getVehicle();
-		if (entity == null)
+		Entity vehicle = player.getVehicle();
+		
+		if (vehicle == null)
 			return;
-		entity.removePassenger(player);
-		entity.remove();
+		
+		vehicle.eject();
+		
+		List<Entity> passengers = new ArrayList<Entity>(vehicle.getPassengers());
+		
+		for (Entity passenger : passengers) {
+			vehicle.removePassenger(passenger);
+		}
+			
+		
+		vehicle.remove();
 	}
 	
 }

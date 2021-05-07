@@ -90,4 +90,8 @@ public interface Game extends GameStateContext {
 	
 	void onTeamScored(String team, int points);
 	
+	boolean isCanLeaveVehicle();
+	
+	void setCanLeaveVehicle(boolean canLeaveVehilce);
+	
 }

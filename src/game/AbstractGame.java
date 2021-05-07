@@ -102,10 +102,10 @@ public abstract class AbstractGame implements Game {
 	public void leave(UUID player) {
 		removePlayer(player);
 		getGameState().onPlayerLeave(this, player);
+		gameChangeSupport.firePlayerLeave(player);
 		if (getPlayersCount() == 0) {
 			getGameState().transitionToGameState(this, new WaitingGameState());
 		}
-		gameChangeSupport.firePlayerLeave(player);
 	}
 
 	@Override

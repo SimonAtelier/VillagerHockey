@@ -15,7 +15,7 @@ import usecases.performaction.clickjoinsign.ClickJoinSignEventListener;
 import usecases.performaction.consumeitem.ConsumeItemEventListener;
 import usecases.performaction.damageitem.DamageItemEventListener;
 import usecases.performaction.dropitem.DropItemEventListener;
-import usecases.performaction.leaveboot.LeaveBoatEventListener;
+import usecases.performaction.exitvehicle.ExitVehicleEventListener;
 import usecases.performaction.move.MoveEventListener;
 import usecases.performaction.openinventory.OpenInventoryEventListener;
 import usecases.performaction.pickupitem.PickupItemEventListener;
@@ -60,7 +60,7 @@ public class ListenerRegistration {
 		registerEventListener(new PlayerCommandPreprocessListener());
 		registerEventListener(new TradeEventListener());
 		registerEventListener(new PinataController());
-		registerEventListener(new LeaveBoatEventListener());
+		registerEventListener(new ExitVehicleEventListener());
 	}
 
 	private void registerEventListener(Listener listener) {

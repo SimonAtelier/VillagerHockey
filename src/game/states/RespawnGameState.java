@@ -29,7 +29,7 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void onTick(Game game) {
 		respawnCountDown.tick();
-		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(game.getName());	
+		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(game.getName());
 	}
 	
 	@Override
@@ -57,7 +57,8 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	}
 	
 	private boolean specialRound() {
-		return true;
+		return ((int) (Math.random() * 6)) < 2;
+//		return false;
 	}
 
 	@Override

@@ -30,6 +30,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
+		game.getVillagerSpawner().removeVillager();
 		int lobbyTimeInSeconds = Context.configuration.getLobbyTime();
 		LobbyCountDownController controller = new LobbyCountDownController();
 		controller.setOnCountDownFinished(this);

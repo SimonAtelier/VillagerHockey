@@ -16,7 +16,7 @@ import view.score.ScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {
 
-	private boolean canMove;
+	private boolean canLeaveVehicle;
 	private boolean goalsEnabled;
 	private VillagerSpawner villagerSpawner;
 	private List<Goal> goals;
@@ -115,6 +115,16 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	@Override
 	public boolean isGoalsEnabled() {
 		return goalsEnabled;
+	}
+
+	@Override
+	public boolean isCanLeaveVehicle() {
+		return canLeaveVehicle;
+	}
+
+	@Override
+	public void setCanLeaveVehicle(boolean canLeaveVehicle) {
+		this.canLeaveVehicle = canLeaveVehicle;
 	}
 	
 }

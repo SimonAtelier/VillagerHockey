@@ -8,7 +8,10 @@ public class ExitVehicleUseCase implements ExitVehicle {
 
 	@Override
 	public boolean canExitVehicle(UUID uniquePlayerId) {
-		return !Context.gameGateway.isIngame(uniquePlayerId);
+		if (!Context.gameGateway.isIngame(uniquePlayerId))
+			return true;
+			
+		return (Context.gameGateway.findGameOfPlayer(uniquePlayerId).isCanLeaveVehicle());
 	}
 
 }
