@@ -32,17 +32,15 @@ public class DisplayTeamScoredToSpectatorsViewImpl implements DisplayTeamScoredT
 		String message = DisplayTeamScoredToSpectatorsViewMessages.DISPLAY_TEAM_SCORED_TO_SPECTATORS_GOAL_FOR_TEAM;
 		message = message.replace("$team$", team);
 		
-		for (UUID viewer : viewers) {
+		for (UUID viewer : viewers)
 			displayMessage(viewer, message);
-		}
 	}
 
 	@Override
 	public void displayTeamScores(List<UUID> viewers, List<ScoreResponseItem> scores) {
 		String message = createScoreMessage(scores);
-		for (UUID viewer : viewers) {
+		for (UUID viewer : viewers)
 			displayMessage(viewer, message);
-		}
 	}
 
 }
