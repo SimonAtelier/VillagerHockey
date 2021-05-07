@@ -16,7 +16,11 @@ public interface SpawnVillager {
 	
 	public interface SpawnVillagerRequest {
 		
+		boolean isPassenger();
+		
 		String getGame();
+		
+		String getPassengerName();
 		
 	}
 	

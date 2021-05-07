@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 
 import context.Context;
 
-public class PinataController implements Listener {
+public class PinataListener implements Listener {
 	
 	@EventHandler
 	public void on(EntityDeathEvent e) {

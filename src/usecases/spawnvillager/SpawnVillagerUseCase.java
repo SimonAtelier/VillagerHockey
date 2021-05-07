@@ -21,24 +21,7 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 		if (!findGame())
 			return;
 		
-		if (isSpecialRound()) {
-//			game.setGoalsEnabled(false);
-//			spawnPinata();
-//			sendSpecialRoundReponse();
-//			return;
-		}
-				
-		game.setGoalsEnabled(true);
 		spawnRegular();
-	}
-		
-	private boolean isSpecialRound() {
-//		return (int) (Math.random() * 20) == 0;
-		return true;
-	}
-	
-	private void sendSpecialRoundReponse() {
-		getResponse().onSpecialRound(game.getUniquePlayerIds());
 	}
 	
 	private boolean findGame() {
@@ -57,9 +40,11 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 	
 	private void spawnRegular() {
 		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
-		villagerSpawner.setPassenger(false);
+		villagerSpawner.setPassenger(getRequest().isPassenger());
 		villagerSpawner.setAIEnabled(getConfiguration().isVillagerAIEnabled());
 		villagerSpawner.spawnVillager();
+		if (request.isPassenger())
+			villagerSpawner.setCustomPassengerName(getRequest().getPassengerName());
 	}
 
 	private SpawnVillagerRequest getRequest() {
