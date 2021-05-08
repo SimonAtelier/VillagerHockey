@@ -18,20 +18,22 @@ public class AddTeamUseCase implements AddTeam {
 	private Game game;
 	private Teams teams;
 	private AddTeamRequest request;
+	private AddTeamResponse response;
 	private GameGateway gameGateway;
 	private PermissionGateway permissionGateway;
 
 	@Override
 	public void execute(AddTeamRequest request, AddTeamResponse response) {
 		setRequest(request);
+		setResponse(response);
 
 		if (noPermission()) {
-			response.onNoPermission();
+			sendNoPermissionResponse();
 			return;
 		}
 		
 		if (noSuchGame()) {
-			response.onNoSuchGame(request.getGame());
+			sendNoSuchGameResponse();
 			return;
 		}
 		
@@ -39,36 +41,68 @@ public class AddTeamUseCase implements AddTeam {
 		initializeTeams();
 		
 		if (teamNameIsInvalid()) {
-			response.onInvalidTeamName(request.getName() == null ? "null" : request.getName());
+			sendTeamNameIsInvalidResponse();
 			return;
 		}
 
 		if (teamWithNameExists()) {
-			response.onTeamWithNameAlreadyExists(request.getName());
+			sendTeamWithNameAlreadyExistsResponse();
 			return;
 		}
 		
 		if (parseTeamColor() == null) {
-			response.onTeamColorIsNotValid(request.getColor(), getPossibleTeamColorValues());
+			sendInvalidTeamColorResponse();
 			return;
 		}
 		
 		if (teamWithColorExists()) {
-			response.onTeamWithColorAlreadyExists(request.getColor());
+			sendTeamWithColorAlreadyExistsResponse();
 			return;
 		}
 		
 		if (maximumAmountReached()) {
-			response.onMaximumAmountOfTeamsAlreadyReached(MAXIMUM_AMOUNT_OF_TEAMS);
+			sendMaximumAmountOfTeamsAlreadyReachedResponse();
 			return;
 		}
 		
 		addTeamToGame();
-		response.onTeamSuccessfullyAdded(request.getGame(), request.getName());
+		sendTeamSuccessfullyAddedResponse();
+	}
+	
+	private void sendTeamNameIsInvalidResponse() {
+		getResponse().onInvalidTeamName(request.getName() == null ? "null" : request.getName());
+	}
+	
+	private void sendMaximumAmountOfTeamsAlreadyReachedResponse() {
+		getResponse().onMaximumAmountOfTeamsAlreadyReached(MAXIMUM_AMOUNT_OF_TEAMS);
+	}
+	
+	private void sendTeamSuccessfullyAddedResponse() {
+		getResponse().onTeamSuccessfullyAdded(getRequest().getGame(), getRequest().getName());
+	}
+	
+	private void sendTeamWithColorAlreadyExistsResponse() {
+		getResponse().onTeamWithColorAlreadyExists(getRequest().getColor());
+	}
+	
+	private void sendInvalidTeamColorResponse() {
+		getResponse().onTeamColorIsNotValid(getRequest().getColor(), getPossibleTeamColorValues());
+	}
+	
+	private void sendTeamWithNameAlreadyExistsResponse() {
+		getResponse().onTeamWithNameAlreadyExists(getRequest().getName());
+	}
+
+	private void sendNoPermissionResponse() {
+		getResponse().onNoPermission();
+	}
+	
+	private void sendNoSuchGameResponse() {
+		getResponse().onNoSuchGame(getRequest().getGame());
 	}
 	
 	private void initializeGame() {
-		game = gameGateway.findGameByName(request.getGame());
+		game = gameGateway.findGameByName(getRequest().getGame());
 	}
 	
 	private void initializeTeams() {
@@ -100,11 +134,11 @@ public class AddTeamUseCase implements AddTeam {
 	}
 	
 	private boolean teamNameIsInvalid() {
-		return request.getName() == null || request.getName().trim().isEmpty();
+		return getRequest().getName() == null || getRequest().getName().trim().isEmpty();
 	}
 
 	private boolean teamWithNameExists() {
-		return teams.containsTeamWithName(request.getName());
+		return teams.containsTeamWithName(getRequest().getName());
 	}
 	
 	private boolean teamWithColorExists() {
@@ -112,11 +146,23 @@ public class AddTeamUseCase implements AddTeam {
 	}
 
 	private boolean noSuchGame() {
-		return !gameGateway.containsGame(request.getGame());
+		return !gameGateway.containsGame(getRequest().getGame());
 	}
 
 	private boolean noPermission() {
-		return !permissionGateway.hasPermission(request.getPlayer(), Permissions.ADD_TEAM);
+		return !permissionGateway.hasPermission(getRequest().getPlayer(), Permissions.ADD_TEAM);
+	}
+	
+	private AddTeamResponse getResponse() {
+		return response;
+	}
+	
+	private void setResponse(AddTeamResponse response) {
+		this.response = response;
+	}
+	
+	private AddTeamRequest getRequest() {
+		return request;
 	}
 
 	private void setRequest(AddTeamRequest request) {
