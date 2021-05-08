@@ -9,8 +9,8 @@ import gateways.Permissions;
 public class AddGameUseCase implements AddGame {
 
 	private String name;
-	private AddGameResponse response;
 	private UUID player;
+	private AddGameResponse response;
 	private PermissionGateway permissionGateway;
 	private GameGateway gameGateway;
 
@@ -20,22 +20,34 @@ public class AddGameUseCase implements AddGame {
 		setResponse(response);
 
 		if (playerHasNoPermission()) {
-			response.onNoPermission();
+			sendNoPermissionResponse();
 			return;
 		}
 
 		if (isNameInvalid()) {
-			response.onInvalidName();
+			sendInvalidGameNameResponse();
 			return;
 		}
 
 		if (gameAlreadyExists()) {
-			response.onGameWithNameAlreadyExists(name);
+			sendGameWithNameAlreadyExistsResponse();
 			return;
 		}
 
 		addGame();
 		sendSuccessResponse();
+	}
+	
+	private void sendGameWithNameAlreadyExistsResponse() {
+		getResponse().onGameWithNameAlreadyExists(name);
+	}
+	
+	private void sendInvalidGameNameResponse() {
+		getResponse().onInvalidName();
+	}
+	
+	private void sendNoPermissionResponse() {
+		getResponse().onNoPermission();
 	}
 	
 	private void sendSuccessResponse() {
