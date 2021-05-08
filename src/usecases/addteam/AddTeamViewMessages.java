@@ -2,7 +2,7 @@ package usecases.addteam;
 
 public interface AddTeamViewMessages {
 	
-	static final String ADD_TEAM_NO_PERMISSION = "Du hast keine Berechtigung ein Team hinzuzufügen";
+	static final String ADD_TEAM_NO_PERMISSION = "Du hast keine Berechtigung ein Team hinzuzufügen.";
 	
 	static final String ADD_TEAM_NO_SUCH_GAME = "Ein Spiel mit dem Namen '$game$' existiert nicht.";
 	
