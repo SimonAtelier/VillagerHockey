@@ -8,6 +8,8 @@ import entities.Statistics;
 import entities.Team;
 import entities.Teams;
 import game.Game;
+import gamestats.GameStatisticGateway;
+import gamestats.StatisticKeys;
 import gateways.GameGateway;
 import gateways.StatisticsGateway;
 
@@ -17,6 +19,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 	private HashMap<UUID, Statistics> statistics;
 	private GameGateway gameGateway;
 	private StatisticsGateway statisticsGateway;
+	private GameStatisticGateway gameStatisticGateway;
 
 	@Override
 	public void execute(UpdateStatisticsRequest request) {
@@ -69,6 +72,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		for (UUID player : team.getPlayers()) {
 			Statistics statistics = this.statistics.get(player);
 			statistics.setGamesWon(statistics.getGamesWon() + 1);
+			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.GAMES_WON, 1);
 		}
 	}
 	
@@ -78,6 +82,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		for (UUID player : team.getPlayers()) {
 			Statistics statistics = this.statistics.get(player);
 			statistics.setGamesLost(statistics.getGamesLost() + 1);
+			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.GAMES_LOST, 1);
 		}
 	}
 	
@@ -85,6 +90,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		for (UUID uuid : statistics.keySet()) {
 			Statistics statistics = this.statistics.get(uuid);
 			statistics.setGamesDraw(statistics.getGamesDraw() + 1);
+			gameStatisticGateway.findByPlayerId(uuid).add(StatisticKeys.GAMES_DRAW, 1);
 		}
 	}
 
@@ -92,6 +98,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		for (UUID uuid : statistics.keySet()) {
 			Statistics statistics = this.statistics.get(uuid);
 			statistics.setGamesPlayed(statistics.getGamesPlayed() + 1);
+			gameStatisticGateway.findByPlayerId(uuid).add(StatisticKeys.GAMES_PLAYED, 1);
 		}
 	}
 	
@@ -110,6 +117,15 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 	@Override
 	public void setStatisticsGateway(StatisticsGateway statisticsGateway) {
 		this.statisticsGateway = statisticsGateway;
+	}
+
+	private GameStatisticGateway getGameStatisticGateway() {
+		return gameStatisticGateway;
+	}
+	
+	@Override
+	public void setGameStatisticGateway(GameStatisticGateway gameStatisticGateway) {
+		this.gameStatisticGateway = gameStatisticGateway;
 	}
 
 }

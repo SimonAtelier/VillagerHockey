@@ -1,5 +1,6 @@
 package usecases.updatestatistics;
 
+import gamestats.GameStatisticGateway;
 import gateways.GameGateway;
 import gateways.StatisticsGateway;
 
@@ -10,6 +11,8 @@ public interface UpdateStatistics {
 	void setGameGateway(GameGateway gameGateway);
 	
 	void setStatisticsGateway(StatisticsGateway statisticsGateway);
+	
+	void setGameStatisticGateway(GameStatisticGateway gameStatisticGateway);
 	
 	public interface UpdateStatisticsRequest {
 		
