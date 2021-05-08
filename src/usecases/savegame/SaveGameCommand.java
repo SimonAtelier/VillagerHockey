@@ -14,9 +14,12 @@ public class SaveGameCommand extends AbstractCommand {
 		SaveGame useCase = new SaveGameUseCase();
 		SaveGameView view = new SaveGameViewImpl(player);
 		SaveGameResponse presenter = new SaveGamePresenter(view);
+		SaveGameRequestModel requestModel = new SaveGameRequestModel();
+		requestModel.setUniquePlayerId(player);
+		requestModel.setGameName(arguments.get(0));
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
-		useCase.execute(player, arguments.get(0), presenter);
+		useCase.execute(requestModel, presenter);
 	}
 
 	@Override

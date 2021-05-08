@@ -7,11 +7,19 @@ import gateways.PermissionGateway;
 
 public interface SaveGame {
 
-	void execute(UUID player, String game, SaveGameResponse response);
+	void execute(SaveGameRequest request, SaveGameResponse response);
 	
 	void setGameGateway(GameGateway gameGateway);
 	
 	void setPermissionGateway(PermissionGateway permissionGateway);
+	
+	public interface SaveGameRequest {
+		
+		UUID getUniquePlayerId();
+		
+		String getGameName();
+		
+	}
 	
 	public interface SaveGameResponse {
 		
