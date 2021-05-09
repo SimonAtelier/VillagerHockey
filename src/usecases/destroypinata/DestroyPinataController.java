@@ -13,6 +13,7 @@ public class DestroyPinataController {
 		requestModel.setDestroyer(uniquePlayerId);
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPlayerGateway(Context.playerGateway);
+		useCase.setGameStatisticGateway(Context.gameStatisticGateway);
 		useCase.execute(requestModel, presenter);
 	}
 	

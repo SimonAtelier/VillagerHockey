@@ -22,7 +22,7 @@ public class AchievementProvider {
 		registerAchievement(AchievementFactory.createLegend());
 		registerAchievement(AchievementFactory.createExpert());
 		registerAchievement(AchievementFactory.createBeginner());
-
+		registerAchievement(AchievementFactory.createPoorPig());
 		
 //		registerAchievement(10, "winning-streak", "Winning streak", "Win 10 games in a row.");
 	}

@@ -104,4 +104,10 @@ public class AchievementFactory {
 		return achievement;
 	}
 	
+	public static Achievement createPoorPig() {
+		Achievement achievement = new Achievement(10, "poor-pig", "Poor Pig", "Smash the 'Pig Pinata' during a special round");
+		achievement.addAchieveCondition(StatisticKeys.PINATAS_SMASHED, ActivationRule.GREATER_OR_EQUALS_TO, 1);
+		return achievement;
+	}
+	
 }

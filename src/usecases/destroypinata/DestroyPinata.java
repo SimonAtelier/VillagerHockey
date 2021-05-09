@@ -2,6 +2,7 @@ package usecases.destroypinata;
 
 import java.util.UUID;
 
+import gamestats.GameStatisticGateway;
 import gateways.GameGateway;
 import gateways.PlayerGateway;
 
@@ -12,6 +13,8 @@ public interface DestroyPinata {
 	void setGameGateway(GameGateway gameGateway);
 	
 	void setPlayerGateway(PlayerGateway playerGateway);
+	
+	void setGameStatisticGateway(GameStatisticGateway gameStatisticGateway);
 	
 	public interface DestroyPinataRequest {
 	
