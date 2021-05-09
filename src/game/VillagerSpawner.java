@@ -95,7 +95,7 @@ public class VillagerSpawner {
 		villager.setProfession(Profession.LIBRARIAN);
 		villager.setCustomName(villagerName);
 		villager.setCustomNameVisible(true);
-		villager.setCanPickupItems(false);		
+		villager.setCanPickupItems(false);
 		this.villager = villager;
 	}
 	

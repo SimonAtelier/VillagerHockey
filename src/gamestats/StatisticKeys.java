@@ -12,6 +12,7 @@ public interface StatisticKeys {
 	static final String WINS_TO_ZERO = "wins-to-zero";
 	static final String UNLOCKED_ACHIEVEMENTS = "unlocked-achievements";
 	static final String PINATAS_SMASHED = "pinatas-smashed";
+	static final String BAD_TRADES = "bad-trades";
 	
 	static final String[] KEYS = new String[] {
 			GAMES_WON,
@@ -23,7 +24,8 @@ public interface StatisticKeys {
 			PUCK_HITS_TOTAL,
 			WINS_TO_ZERO,
 			UNLOCKED_ACHIEVEMENTS,
-			PINATAS_SMASHED
+			PINATAS_SMASHED,
+			BAD_TRADES
 	};
 	
 }

@@ -110,4 +110,10 @@ public class AchievementFactory {
 		return achievement;
 	}
 	
+	public static Achievement createBadTrade() {
+		Achievement achievement = new Achievement(5, "bad-trade", "Bad Trade", "Try to trade.");
+		achievement.addAchieveCondition(StatisticKeys.BAD_TRADES, ActivationRule.GREATER_OR_EQUALS_TO, 1);
+		return achievement;
+	}
+	
 }
