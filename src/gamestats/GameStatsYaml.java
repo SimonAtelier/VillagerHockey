@@ -56,6 +56,7 @@ public class GameStatsYaml {
 		File file = getFile(uniquePlayerId);
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
 		
+		
 		GameStatistic gameStatistic = new GameStatistic();
 		gameStatistic.setUniquePlayerId(uniquePlayerId);
 		

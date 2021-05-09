@@ -3,11 +3,11 @@ package usecases.displayachievements;
 import java.util.ArrayList;
 import java.util.List;
 
+import achievements.AchieveCondition;
 import achievements.Achievement;
 import achievements.AchievementSystem;
 import gamestats.GameStatistic;
 import gamestats.GameStatisticGateway;
-import gamestats.GameStatsYaml;
 import gateways.PermissionGateway;
 import gateways.Permissions;
 
@@ -36,8 +36,7 @@ public class DisplayAchievementsUseCase implements DisplayAchievements {
 	private void loadGameStatistic() {
 		GameStatistic gameStatistic = gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId());
 		if (gameStatistic == null) {
-			GameStatsYaml yaml = new GameStatsYaml();
-			gameStatistic = yaml.load(getRequest().getUniquePlayerId());
+			gameStatisticGateway.createStatisticsForPlayer(getRequest().getUniquePlayerId());
 		}
 	}
 
@@ -60,13 +59,34 @@ public class DisplayAchievementsUseCase implements DisplayAchievements {
 		for (Achievement achievement : findAllAchievements()) {
 			AchievementResponseItem responseItem = new AchievementResponseItem();
 			responseItem.setPoints(achievement.getPoints());
+			responseItem.setProgress(achievement.isProgress());
+			responseItem.setActivationValuesSum(achievement.getActivationValuesSum());
 			responseItem.setName(achievement.getName());
+			responseItem.setCurrentProgress(calculateCurrentProgressValue(achievement));
 			responseItem.setDescription(achievement.getDescription());
 			responseItem.setUnlocked(
 					getAchievementSystem().isUnlockedForPlayer(achievement.getId(), getRequest().getUniquePlayerId()));
 			responseItems.add(responseItem);
 		}
 		return responseItems;
+	}
+	
+	private int calculateCurrentProgressValue(Achievement achievement) {
+		if (!achievement.isProgress())
+			return 0;
+		
+		int progessValue = 0;
+		
+		GameStatistic gameStatistic = findGameStatistic();
+		
+		for (AchieveCondition condition : achievement.getAchieveConditions())
+			progessValue += gameStatistic.getValue(condition.getPropertyKey());
+		
+		return progessValue;
+	}
+	
+	private GameStatistic findGameStatistic() {
+		return gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId());
 	}
 
 	private List<Achievement> findAllAchievements() {

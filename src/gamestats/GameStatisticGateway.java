@@ -12,6 +12,6 @@ public interface GameStatisticGateway {
 	
 	void removeStatisticsOfPlayer(UUID uniquePlayerId);
 	
-	void createStatisticsForPlayer(String gameName, UUID uniquePlayerId);
+	void createStatisticsForPlayer(UUID uniquePlayerId);
 	
 }

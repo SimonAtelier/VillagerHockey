@@ -40,7 +40,7 @@ public class InMemoryGameStatisticsGateway implements GameStatisticGateway, Prop
 	}
 
 	@Override
-	public void createStatisticsForPlayer(String gameName, UUID uniquePlayerId) {
+	public void createStatisticsForPlayer(UUID uniquePlayerId) {
 		GameStatistic gameStatistic = new GameStatsYaml().load(uniquePlayerId);
 		gameStatistic.addPropertyChangeListener(this);
 		gameStatistics.put(uniquePlayerId, gameStatistic);

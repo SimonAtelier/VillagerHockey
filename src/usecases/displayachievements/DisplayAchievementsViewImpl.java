@@ -98,6 +98,8 @@ public class DisplayAchievementsViewImpl implements DisplayAchievementsView, Lis
 		ArrayList<String> lore = new ArrayList<>();
 		lore.add("§f" + responseItem.getDescription());
 		lore.add("");
+		if (responseItem.isProgress())
+			lore.add("§7Progress: §e" + responseItem.getCurrentProgress() + "§7/§e" + responseItem.getActivationValuesSum());
 		lore.add("§7Reward:");
 		lore.add("§8+§e" + responseItem.getPoints() + " §7Achievement Points");
 		lore.add("");
@@ -109,6 +111,8 @@ public class DisplayAchievementsViewImpl implements DisplayAchievementsView, Lis
 		ArrayList<String> lore = new ArrayList<>();
 		lore.add("§f" + responseItem.getDescription());
 		lore.add("");
+		if (responseItem.isProgress())
+			lore.add("§7Progress: §e" + responseItem.getCurrentProgress() + "§7/§e" + responseItem.getActivationValuesSum());
 		lore.add("§7Reward:");
 		lore.add("§8+§e" + responseItem.getPoints() + " §7Achievement Points");
 		lore.add("");

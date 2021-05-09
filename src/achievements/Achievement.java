@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Achievement {
 
+	private boolean progress;
 	private int points;
 	private String id;
 	private String name;
@@ -29,6 +30,14 @@ public class Achievement {
 	
 	public List<AchieveCondition> getAchieveConditions() {
 		return new ArrayList<AchieveCondition>(achieveConditions);
+	}
+	
+	public boolean isProgress() {
+		return progress;
+	}
+
+	public void setProgress(boolean progress) {
+		this.progress = progress;
 	}
 	
 	public int getPoints() {
@@ -61,6 +70,13 @@ public class Achievement {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public int getActivationValuesSum() {
+		int activationValuesSum = 0;
+		for (AchieveCondition achieveCondition : achieveConditions)
+			activationValuesSum += achieveCondition.getActivationValue();
+		return activationValuesSum;
 	}
 	
 }

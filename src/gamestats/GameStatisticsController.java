@@ -23,7 +23,7 @@ public class GameStatisticsController implements JoinListener, LeaveListener, Te
 
 	@Override
 	public void onPlayerJoin(Game game, UUID player) {
-		Context.gameStatisticGateway.createStatisticsForPlayer(game.getName(), player);
+		Context.gameStatisticGateway.createStatisticsForPlayer(player);
 	}
 	
 	@Override
