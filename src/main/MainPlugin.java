@@ -89,7 +89,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 	}
 
 	private void createOrUpdatePluginFolders() {
-		String[] paths = { "plugins/VillagerHockey/games/", "plugins/VillagerHockey/playerdata/" };
+		String[] paths = { "plugins/VillagerHockey/games/", "plugins/VillagerHockey/playerdata/", "plugins/VillagerHockey/playerdata/stats/" };
 		for (String path : paths) {
 			File file = new File(path);
 			if (!file.exists()) {

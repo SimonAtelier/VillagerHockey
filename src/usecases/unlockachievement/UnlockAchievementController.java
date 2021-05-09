@@ -12,6 +12,8 @@ public class UnlockAchievementController {
 		UnlockAchievementRequestModel requestModel = new UnlockAchievementRequestModel();
 		UnlockAchievement useCase = new UnlockAchievementUseCase();
 		useCase.setAchievementSystem(Context.achievementSystem);
+		useCase.setConfiguration(Context.configuration);
+		useCase.setGameSatisticGateway(Context.gameStatisticGateway);
 		requestModel.setUniquePlayerId(uniquePlayerId);
 		requestModel.setAchievementId(achievementId);
 		useCase.execute(requestModel, presenter);

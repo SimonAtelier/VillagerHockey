@@ -9,6 +9,7 @@ import entities.Team;
 import entities.Teams;
 import game.Game;
 import gamestats.GameStatisticGateway;
+import gamestats.GameStatsYaml;
 import gamestats.StatisticKeys;
 import gateways.GameGateway;
 import gateways.StatisticsGateway;
@@ -38,12 +39,46 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 			incrementGamesLost();
 		}
 		
+		if (isToZero()) {
+			updateToZero();
+		}
+		
 		saveStatistics();
+		
+		resetPuckHits();
+		GameStatsYaml save = new GameStatsYaml();
+		for (UUID uniquePlayerId : game.getUniquePlayerIds()) {
+			save.save(uniquePlayerId);
+		}
+	}
+	
+	private void resetPuckHits() {
+		for (UUID uuid : statistics.keySet()) {
+			gameStatisticGateway.findByPlayerId(uuid).setValue(StatisticKeys.PUCK_HITS_CURRENT_GAME, 0);
+		}
+	}
+	
+	private void updateToZero() {
+		Teams teams = game.getTeams();
+		Team team = teams.findTeamWithHighestScore();
+		for (UUID player : team.getPlayers()) {
+			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.WINS_TO_ZERO, 1);
+		}
 	}
 	
 	private boolean isDraw() {
 		Teams teams = game.getTeams();
 		return teams.equalScores();
+	}
+	
+	private boolean isToZero() {
+		int zeroCount = 0;
+		Teams teams = game.getTeams();
+		for (Team team : teams.findAllTeams()) {
+			if (team.getScore() == 0)
+				zeroCount++;
+		}
+		return zeroCount == teams.getNumberOfTeams() - 1;
 	}
 	
 	private void updateTotalTimePlayedForAllPlayers() {

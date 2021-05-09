@@ -5,6 +5,7 @@ import java.util.UUID;
 import game.Game;
 import gamestats.GameStatistic;
 import gamestats.GameStatisticGateway;
+import gamestats.StatisticKeys;
 import gateways.GameGateway;
 
 public class ShootPuckUseCase implements ShootPuck {
@@ -32,7 +33,8 @@ public class ShootPuckUseCase implements ShootPuck {
 	
 	private void updatePuckHits() {
 		GameStatistic gameStatistic = getGameStatisticsGateway().findByPlayerId(getRequest().getPlayer());
-		gameStatistic.setPuckHits(gameStatistic.getPuckHits() + 1);
+		gameStatistic.add(StatisticKeys.PUCK_HITS_CURRENT_GAME, 1);
+		gameStatistic.add(StatisticKeys.PUCK_HITS_TOTAL, 1);
 	}
 	
 	private ShootPuckRequest getRequest() {

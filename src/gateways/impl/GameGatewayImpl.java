@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import achievements.AchievementSystemController;
 import context.Context;
 import entities.config.Configuration;
 import game.BaseGame;
@@ -92,6 +93,7 @@ public class GameGatewayImpl implements GameGateway {
 			game.addTeamScoreListener(new ScoreEventListener());
 			new UpdateJoinSignController(game);
 			new GameStatisticsController(game);
+			game.addJoinListener(new AchievementSystemController(Context.achievementSystem));
 			return true;
 		}
 	}

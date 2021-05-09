@@ -29,7 +29,7 @@ public class LeaveGameUseCase implements LeaveGame {
 		leave();
 		notifyPlayers();
 	}
-	
+
 	private void findPlayers() {
 		players = gameGateway.findGameOfPlayer(uniquePlayerId).getUniquePlayerIds();
 	}

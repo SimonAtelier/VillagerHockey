@@ -2,6 +2,10 @@ package usecases.unlockachievement;
 
 import achievements.Achievement;
 import achievements.AchievementSystem;
+import entities.config.Configuration;
+import gamestats.GameStatisticGateway;
+import gamestats.GameStatsYaml;
+import gamestats.StatisticKeys;
 
 public class UnlockAchievementUseCase implements UnlockAchievement {
 
@@ -9,11 +13,18 @@ public class UnlockAchievementUseCase implements UnlockAchievement {
 	private UnlockAchievementRequest request;
 	private UnlockAchievementResponse response;
 	private AchievementSystem achievementSystem;
+	private Configuration configuration;
+	private GameStatisticGateway gameStatisticGateway;
 
 	@Override
 	public void execute(UnlockAchievementRequest request, UnlockAchievementResponse response) {
 		setRequest(request);
 		setResponse(response);
+		
+		if (achievementsAreNotEnabled()) {
+			return;
+		}
+		
 		findAchievement();
 		
 		if (noAchievementFound()) {
@@ -27,9 +38,17 @@ public class UnlockAchievementUseCase implements UnlockAchievement {
 		}
 		
 		unlock();
+		
+		gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId()).add(StatisticKeys.UNLOCKED_ACHIEVEMENTS, 1);
+		new GameStatsYaml().save(getRequest().getUniquePlayerId());
+		
 		sendUnlockResponse();
 	}
 	
+	private boolean achievementsAreNotEnabled() {
+		return !configuration.isAchievementsEnabled();
+	}
+
 	private void sendAlreadyUnlockedResponse() {
 		getResponse().onAlreadyUnlocked(getRequest().getAchievementId());
 	}
@@ -86,6 +105,16 @@ public class UnlockAchievementUseCase implements UnlockAchievement {
 	@Override
 	public void setAchievementSystem(AchievementSystem achievementSystem) {
 		this.achievementSystem = achievementSystem;
+	}
+
+	@Override
+	public void setConfiguration(Configuration configuration) {
+		this.configuration = configuration;
+	}
+
+	@Override
+	public void setGameSatisticGateway(GameStatisticGateway gameStatisticGateway) {
+		this.gameStatisticGateway = gameStatisticGateway;	
 	}
 
 }

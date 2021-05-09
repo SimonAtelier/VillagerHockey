@@ -30,7 +30,7 @@ public class GameStatisticsController implements JoinListener, LeaveListener, Te
 	public void onTeamScored(String gameName, String team) {
 		UUID uniquePlayerId = Context.gameStatisticGateway.findLastHitter(gameName);
 		GameStatistic gameStatistic = Context.gameStatisticGateway.findByPlayerId(uniquePlayerId);
-		gameStatistic.setScoredGoals(gameStatistic.getScoredGoals() + 1);
+		gameStatistic.add(StatisticKeys.GOALS_SCORED_SELF, 1);
 	}
 
 }

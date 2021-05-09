@@ -6,8 +6,7 @@ import game.countdown.CountDown;
 import game.countdown.CountDownListener;
 import game.countdown.OnCountDownFinished;
 import usecases.displaywinner.DisplayWinnerController;
-import usecases.updatestatistics.UpdateStatisticsRequestModel;
-import usecases.updatestatistics.UpdateStatisticsUseCase;
+import usecases.updatestatistics.UpdateStatisticsController;
 
 public class WinnerCountDownController implements CountDownListener {
 
@@ -20,12 +19,7 @@ public class WinnerCountDownController implements CountDownListener {
 	}
 	
 	private void updateStatistics(String game) {
-		UpdateStatisticsRequestModel request = new UpdateStatisticsRequestModel();
-		request.setGame(game);
-		UpdateStatisticsUseCase useCase = new UpdateStatisticsUseCase();
-		useCase.setStatisticsGateway(Context.statisticsGateway);
-		useCase.setGameGateway(Context.gameGateway);
-		useCase.execute(request);
+		new UpdateStatisticsController().onUpdate(game);
 	}
 
 	@Override

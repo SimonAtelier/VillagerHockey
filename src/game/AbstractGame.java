@@ -20,6 +20,7 @@ public abstract class AbstractGame implements Game {
 
 	private final Object PLAYERS_LOCK = new Object();
 
+	private long tickCount;
 	private boolean started;
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
@@ -65,6 +66,7 @@ public abstract class AbstractGame implements Game {
 	
 	@Override
 	public void tick() {
+		tickCount++;
 		gameState.onTick(this);
 	}
 

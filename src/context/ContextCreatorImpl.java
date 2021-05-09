@@ -2,9 +2,11 @@ package context;
 
 import achievements.AchievementProvider;
 import achievements.AchievementSystem;
+import achievements.AchievementSystemController;
 import achievements.AchievementSystemImpl;
 import entities.config.Configuration;
 import entities.config.ConfigurationLoader;
+import gamestats.GameStatisticGateway;
 import gamestats.InMemoryGameStatisticsGateway;
 import gateways.impl.CommandGatewayImpl;
 import gateways.impl.GameGatewayImpl;
@@ -36,7 +38,13 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.statisticsGateway = new StatisticsGatewayImpl();
 		Context.messageView.setPrefix(Context.configuration.getPrefix());
 		Context.achievementSystem = createAchievementSystem();
-		Context.gameStatisticGateway = new InMemoryGameStatisticsGateway();
+		Context.gameStatisticGateway = createGameStatisticsGateway(Context.achievementSystem);
+	}
+	
+	private GameStatisticGateway createGameStatisticsGateway(AchievementSystem achievementSystem) {
+		InMemoryGameStatisticsGateway gameStatisticsGateway = new InMemoryGameStatisticsGateway();
+		gameStatisticsGateway.addPropertyChangeListener(new AchievementSystemController(achievementSystem));
+		return gameStatisticsGateway;
 	}
 	
 	private AchievementSystem createAchievementSystem() {
