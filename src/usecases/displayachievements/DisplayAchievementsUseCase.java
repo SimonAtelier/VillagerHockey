@@ -62,7 +62,8 @@ public class DisplayAchievementsUseCase implements DisplayAchievements {
 			responseItem.setProgress(achievement.isProgress());
 			responseItem.setActivationValuesSum(achievement.getActivationValuesSum());
 			responseItem.setName(achievement.getName());
-			responseItem.setCurrentProgress(calculateCurrentProgressValue(achievement));
+			responseItem.setCurrentProgress(
+					calculateCurrentProgressValue(achievement, achievement.getActivationValuesSum()));
 			responseItem.setDescription(achievement.getDescription());
 			responseItem.setUnlocked(
 					getAchievementSystem().isUnlockedForPlayer(achievement.getId(), getRequest().getUniquePlayerId()));
@@ -70,21 +71,21 @@ public class DisplayAchievementsUseCase implements DisplayAchievements {
 		}
 		return responseItems;
 	}
-	
-	private int calculateCurrentProgressValue(Achievement achievement) {
+
+	private int calculateCurrentProgressValue(Achievement achievement, int maxValue) {
 		if (!achievement.isProgress())
 			return 0;
-		
+
 		int progessValue = 0;
-		
+
 		GameStatistic gameStatistic = findGameStatistic();
-		
+
 		for (AchieveCondition condition : achievement.getAchieveConditions())
 			progessValue += gameStatistic.getValue(condition.getPropertyKey());
-		
-		return progessValue;
+
+		return progessValue > maxValue ? maxValue : progessValue;
 	}
-	
+
 	private GameStatistic findGameStatistic() {
 		return gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId());
 	}
