@@ -1,0 +1,119 @@
+package usecases.displayachievements;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import achievements.Achievement;
+import achievements.AchievementSystem;
+import gamestats.GameStatistic;
+import gamestats.GameStatisticGateway;
+import gamestats.GameStatsYaml;
+import gateways.PermissionGateway;
+import gateways.Permissions;
+
+public class DisplayAchievementsUseCase implements DisplayAchievements {
+
+	private DisplayAchievementsRequest request;
+	private DisplayAchievementsResponse response;
+	private PermissionGateway permissionGateway;
+	private AchievementSystem achievementSystem;
+	private GameStatisticGateway gameStatisticGateway;
+
+	@Override
+	public void execute(DisplayAchievementsRequest request, DisplayAchievementsResponse response) {
+		setRequest(request);
+		setResponse(response);
+
+		if (playerHasNoPermission()) {
+			sendPlayerHasNoPermissionResponse();
+			return;
+		}
+
+		loadGameStatistic();
+		sendSuccessResponse();
+	}
+
+	private void loadGameStatistic() {
+		GameStatistic gameStatistic = gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId());
+		if (gameStatistic == null) {
+			GameStatsYaml yaml = new GameStatsYaml();
+			gameStatistic = yaml.load(getRequest().getUniquePlayerId());
+		}
+	}
+
+	private void sendSuccessResponse() {
+		List<AchievementResponseItem> responseItems = createResponseItems();
+		getResponse().onDisplay(responseItems);
+	}
+
+	private void sendPlayerHasNoPermissionResponse() {
+		getResponse().onNoPermission();
+	}
+
+	private boolean playerHasNoPermission() {
+		return !getPermissionGateway().hasPermission(getRequest().getUniquePlayerId(),
+				Permissions.DISPLAY_ACHIEVEMENTS);
+	}
+
+	private List<AchievementResponseItem> createResponseItems() {
+		List<AchievementResponseItem> responseItems = new ArrayList<AchievementResponseItem>();
+		for (Achievement achievement : findAllAchievements()) {
+			AchievementResponseItem responseItem = new AchievementResponseItem();
+			responseItem.setPoints(achievement.getPoints());
+			responseItem.setName(achievement.getName());
+			responseItem.setDescription(achievement.getDescription());
+			responseItem.setUnlocked(
+					getAchievementSystem().isUnlockedForPlayer(achievement.getId(), getRequest().getUniquePlayerId()));
+			responseItems.add(responseItem);
+		}
+		return responseItems;
+	}
+
+	private List<Achievement> findAllAchievements() {
+		return getAchievementSystem().findAllAchievements();
+	}
+
+	private DisplayAchievementsRequest getRequest() {
+		return request;
+	}
+
+	private void setRequest(DisplayAchievementsRequest request) {
+		this.request = request;
+	}
+
+	private DisplayAchievementsResponse getResponse() {
+		return response;
+	}
+
+	private void setResponse(DisplayAchievementsResponse response) {
+		this.response = response;
+	}
+
+	private AchievementSystem getAchievementSystem() {
+		return achievementSystem;
+	}
+
+	@Override
+	public void setAchievementSystem(AchievementSystem achievementSystem) {
+		this.achievementSystem = achievementSystem;
+	}
+
+	public GameStatisticGateway getGameStatisticsGateway() {
+		return gameStatisticGateway;
+	}
+
+	@Override
+	public void setGameStatisticsGateway(GameStatisticGateway gameStatisticGateway) {
+		this.gameStatisticGateway = gameStatisticGateway;
+	}
+
+	private PermissionGateway getPermissionGateway() {
+		return permissionGateway;
+	}
+
+	@Override
+	public void setPermissionGateway(PermissionGateway permissionGateway) {
+		this.permissionGateway = permissionGateway;
+	}
+
+}
