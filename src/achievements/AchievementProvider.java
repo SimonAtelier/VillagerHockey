@@ -7,6 +7,7 @@ public class AchievementProvider {
 	public void registerAchievements(AchievementSystem achievementSystem) {
 		setAchievementSystem(achievementSystem);
 		
+		registerAchievement(AchievementFactory.createEz());
 		registerAchievement(AchievementFactory.createFirstContact());
 		registerAchievement(AchievementFactory.createHeavyHitter());
 		registerAchievement(AchievementFactory.createWinnerWinner());
@@ -20,7 +21,8 @@ public class AchievementProvider {
 		registerAchievement(AchievementFactory.createAchievementGoalThree());
 		registerAchievement(AchievementFactory.createLegend());
 		registerAchievement(AchievementFactory.createExpert());
-		registerAchievement(AchievementFactory.createEz());
+		registerAchievement(AchievementFactory.createBeginner());
+
 		
 //		registerAchievement(10, "winning-streak", "Winning streak", "Win 10 games in a row.");
 	}

@@ -5,6 +5,7 @@ import entities.command.CommandRegistration;
 import usecases.addgame.AddGameCommand;
 import usecases.addteam.AddTeamCommand;
 import usecases.addteamspawn.AddTeamSpawnCommand;
+import usecases.displayachievements.DisplayAchievementsCommand;
 import usecases.joingame.JoinGameCommand;
 import usecases.kickplayer.KickPlayerCommand;
 import usecases.leavegame.LeaveGameCommand;
@@ -41,6 +42,7 @@ public class CommandProviderImpl implements CommandProvider {
 		commandRegistration.registerCommand(new StartGameCommand());
 		commandRegistration.registerCommand(new StopGameCommand());
 		commandRegistration.registerCommand(new ShowStatisticsCommand());
+		commandRegistration.registerCommand(new DisplayAchievementsCommand());
 	}
 
 }

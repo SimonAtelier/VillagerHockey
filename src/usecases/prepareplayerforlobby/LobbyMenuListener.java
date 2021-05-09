@@ -9,8 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import achievements.AchievementsViewImpl;
 import context.Context;
+import usecases.displayachievements.DisplayAchievementsController;
 import usecases.forcestart.ForceStartCommand;
 import usecases.leavegame.LeaveGameCommand;
 
@@ -65,8 +65,7 @@ public class LobbyMenuListener implements Listener {
 	}
 	
 	private void onDisplayAchievements(UUID player) {
-		AchievementsViewImpl view = new AchievementsViewImpl(player);
-		view.display();
+		new DisplayAchievementsController().onDisplayAchievements(player);
 	}
 	
 	private void onLeaveGame(UUID player) {

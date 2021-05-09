@@ -48,4 +48,6 @@ public interface Permissions {
 	
 	static final String EXECUTE_NONE_GAME_COMMANDS = "vh.admin.nonegamecommands";
 	
+	static final String DISPLAY_ACHIEVEMENTS = "vh.base";
+	
 }
