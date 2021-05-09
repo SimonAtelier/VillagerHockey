@@ -105,7 +105,7 @@ public class AchievementFactory {
 	}
 	
 	public static Achievement createPoorPig() {
-		Achievement achievement = new Achievement(10, "poor-pig", "Poor Pig", "Smash the 'Pig Pinata' during a special round.");
+		Achievement achievement = new Achievement(5, "poor-pig", "Poor Pig", "Smash the 'Pig Pinata' during a special round.");
 		achievement.addAchieveCondition(StatisticKeys.PINATAS_SMASHED, ActivationRule.GREATER_OR_EQUALS_TO, 1);
 		return achievement;
 	}
@@ -113,6 +113,13 @@ public class AchievementFactory {
 	public static Achievement createBadTrade() {
 		Achievement achievement = new Achievement(5, "bad-trade", "Bad Trade", "Try to trade.");
 		achievement.addAchieveCondition(StatisticKeys.BAD_TRADES, ActivationRule.GREATER_OR_EQUALS_TO, 1);
+		return achievement;
+	}
+	
+	public static Achievement createPinataKing() {
+		Achievement achievement = new Achievement(10, "pinata-king", "Pinata King", "Smash the 'Pig Pinata' 10 times in total.");
+		achievement.addAchieveCondition(StatisticKeys.PINATAS_SMASHED, ActivationRule.GREATER_OR_EQUALS_TO, 10);
+		achievement.setProgress(true);
 		return achievement;
 	}
 	
