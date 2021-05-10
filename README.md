@@ -20,3 +20,28 @@ Villager Hockey is a minigame.
 	* Polo
 	* Pig Pinata
 	* Boat Boogie
+	
+# Custom Achievements
+Custom achievements are specified in a file named achievements.json.
+
+#### Example:
+
+
+### Achievements Condition Keys
+An achievement is unlocked by one or more 'Achieve Conditions'. An Achieve Condition references to a specific game statistic value defined by a key.
+
+### List of Keys
+- games_won
+- games_lost
+- games_draw
+- games_played
+- games_won_to_zero
+- goals_scored_self
+- puck_hits_current
+- puck_hits_total
+- unlocked_achievements
+- pinatas_smashed
+- bad_trades
+- winning_streak
+- winning_streak_last
+- winning_streak_longest
