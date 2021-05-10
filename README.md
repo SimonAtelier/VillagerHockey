@@ -94,40 +94,40 @@ References the total amount of lost games per player.
 #### games_draw
 References the total amount of games played in a draw per player.
 
-### games_played
+#### games_played
 References the total amount of played games per player.
 
-### games_won_to_zero
+#### games_won_to_zero
 References the total amount of games won to zero per player.
 
-### goals_scored_self
+#### goals_scored_self
 References the total amount of goals scored by a player.
 
-### puck_hits_current
+#### puck_hits_current
 The number of times a player hittet the puck in his current game.
 
-### puck_hits_total
+#### puck_hits_total
 References times a player hittet the puck in all played games.
 
-### unlocked_achievements
+#### unlocked_achievements
 Amount of unlocked achievements per player.
 
-### pinatas_smashed
+#### pinatas_smashed
 The number of times a player smashed the 'Pig Pinata'.
 
-### bad_trades
+#### bad_trades
 The number of times a player tried to trade with the puck (Villager).
 
-### winning_streak
+#### winning_streak
 TODO
 
-### winning_streak_last
+#### winning_streak_last
 TODO
 
-### winning_streak_longest
+#### winning_streak_longest
 TODO
 
-### achievement_points_earned
+#### achievement_points_earned
 The total amount of earned achievement points per player. (Including already spent ones).
 
 ### Example
