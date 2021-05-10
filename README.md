@@ -83,6 +83,7 @@ An achievement is unlocked by one or more 'Achieve Conditions'. An Achieve Condi
 - winning_streak
 - winning_streak_last
 - winning_streak_longest
+- achievement_points_earned
 
 ### Example
 Now we went on with the fun stuff! Let's asume we want unlock an achievement if a player wins his first five games.
