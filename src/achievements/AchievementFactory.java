@@ -37,27 +37,27 @@ public class AchievementFactory {
 	
 	public static Achievement createTheyHadNoChance() {
 		Achievement achievement = new Achievement(5, "no-chance", "They had no chance!", "Win a game to zero.");
-		achievement.addAchieveCondition(StatisticKeys.WINS_TO_ZERO, ActivationRule.EQUALS, 1);
+		achievement.addAchieveCondition(StatisticKeys.GAMES_WON_TO_ZERO, ActivationRule.EQUALS, 1);
 		return achievement;
 	}
 	
 	public static Achievement createStrongHoldTierOne() {
 		Achievement achievement = new Achievement(5, "strong-hold-tier-one", "Strong Hold I", "Win 20 games to zero.");
-		achievement.addAchieveCondition(StatisticKeys.WINS_TO_ZERO, ActivationRule.GREATER_OR_EQUALS_TO, 20);
+		achievement.addAchieveCondition(StatisticKeys.GAMES_WON_TO_ZERO, ActivationRule.GREATER_OR_EQUALS_TO, 20);
 		achievement.setProgress(true);
 		return achievement;
 	}
 	
 	public static Achievement createStrongHoldTierTwo() {
 		Achievement achievement = new Achievement(5, "strong-hold-tier-two", "Strong Hold II", "Win 40 games to zero.");
-		achievement.addAchieveCondition(StatisticKeys.WINS_TO_ZERO, ActivationRule.GREATER_OR_EQUALS_TO, 40);
+		achievement.addAchieveCondition(StatisticKeys.GAMES_WON_TO_ZERO, ActivationRule.GREATER_OR_EQUALS_TO, 40);
 		achievement.setProgress(true);
 		return achievement;
 	}
 	
 	public static Achievement createStrongHoldTierThree() {
 		Achievement achievement = new Achievement(5, "strong-hold-tier-three", "Strong Hold III", "Win 80 games to zero.");
-		achievement.addAchieveCondition(StatisticKeys.WINS_TO_ZERO, ActivationRule.GREATER_OR_EQUALS_TO, 80);
+		achievement.addAchieveCondition(StatisticKeys.GAMES_WON_TO_ZERO, ActivationRule.GREATER_OR_EQUALS_TO, 80);
 		achievement.setProgress(true);
 		return achievement;
 	}

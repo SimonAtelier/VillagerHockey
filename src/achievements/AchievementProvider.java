@@ -1,5 +1,9 @@
 package achievements;
 
+import java.io.IOException;
+
+import prototype.AchievementsConfig;
+
 public class AchievementProvider {
 	
 	private AchievementSystem achievementSystem;
@@ -7,25 +11,33 @@ public class AchievementProvider {
 	public void registerAchievements(AchievementSystem achievementSystem) {
 		setAchievementSystem(achievementSystem);
 		
-		registerAchievement(AchievementFactory.createEz());
-		registerAchievement(AchievementFactory.createFirstContact());
-		registerAchievement(AchievementFactory.createHeavyHitter());
-		registerAchievement(AchievementFactory.createWinnerWinner());
-		registerAchievement(AchievementFactory.createWoodenSpoon());
-		registerAchievement(AchievementFactory.createTheyHadNoChance());
-		registerAchievement(AchievementFactory.createStrongHoldTierOne());
-		registerAchievement(AchievementFactory.createStrongHoldTierTwo());
-		registerAchievement(AchievementFactory.createStrongHoldTierThree());
-		registerAchievement(AchievementFactory.createAchievementGoalOne());
-		registerAchievement(AchievementFactory.createAchievementGoalTwo());
-		registerAchievement(AchievementFactory.createAchievementGoalThree());
-		registerAchievement(AchievementFactory.createLegend());
-		registerAchievement(AchievementFactory.createExpert());
-		registerAchievement(AchievementFactory.createBeginner());
-		registerAchievement(AchievementFactory.createPoorPig());
-		registerAchievement(AchievementFactory.createBadTrade());
-		registerAchievement(AchievementFactory.createPinataKing());
+//		registerAchievement(AchievementFactory.createEz());
+//		registerAchievement(AchievementFactory.createFirstContact());
+//		registerAchievement(AchievementFactory.createHeavyHitter());
+//		registerAchievement(AchievementFactory.createWinnerWinner());
+//		registerAchievement(AchievementFactory.createWoodenSpoon());
+//		registerAchievement(AchievementFactory.createTheyHadNoChance());
+//		registerAchievement(AchievementFactory.createStrongHoldTierOne());
+//		registerAchievement(AchievementFactory.createStrongHoldTierTwo());
+//		registerAchievement(AchievementFactory.createStrongHoldTierThree());
+//		registerAchievement(AchievementFactory.createAchievementGoalOne());
+//		registerAchievement(AchievementFactory.createAchievementGoalTwo());
+//		registerAchievement(AchievementFactory.createAchievementGoalThree());
+//		registerAchievement(AchievementFactory.createLegend());
+//		registerAchievement(AchievementFactory.createExpert());
+//		registerAchievement(AchievementFactory.createBeginner());
+//		registerAchievement(AchievementFactory.createPoorPig());
+//		registerAchievement(AchievementFactory.createBadTrade());
+//		registerAchievement(AchievementFactory.createPinataKing());
 		
+		try {
+			AchievementsConfig achievementConfig = new AchievementsConfig();
+			for (Achievement achievement : achievementConfig.getAchievements()) {
+				registerAchievement(achievement);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 //		registerAchievement(10, "winning-streak", "Winning streak", "Win 10 games in a row.");
 	}
 	
