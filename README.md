@@ -85,6 +85,9 @@ An achievement is unlocked by one or more 'Achieve Conditions'. An Achieve Condi
 - winning_streak_longest
 - achievement_points_earned
 
+**games_won** Stores the total amount of won games per player.
+**games_lost** Stores the total amount of lost games per player.
+
 ### Example
 Now we went on with the fun stuff! Let's asume we want unlock an achievement if a player wins his first five games.
 In this case we need to ensure that the player won five games and didn't play more than five games in total.
