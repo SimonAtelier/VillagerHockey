@@ -83,3 +83,32 @@ An achievement is unlocked by one or more 'Achieve Conditions'. An Achieve Condi
 - winning_streak
 - winning_streak_last
 - winning_streak_longest
+
+### Example
+Now we went on with the fun stuff! Let's asume we want to let the player unlock an achievement if he wins his first five games.
+In this case we need to ensure that the player won five games and didn't play more than five games in total.
+We use the keys **games_won** and **games_played** for the achive conditions.
+```json
+{
+  "Id": "win_first_five",
+  "Name": "High five!",
+  "Description": "Win the first 5 games.",
+  "Points": 10,
+  "Progress": false,
+  "Achieve Conditions": [
+    {
+      "Key": "games_played",
+      "Rule": "==",
+      "Value": 5
+    },
+    {
+      "Key": "games_won",
+      "Rule": "==",
+      "Value": 5
+    }
+  ]
+}
+```
+
+
+
