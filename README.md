@@ -104,7 +104,7 @@ References the total amount of games won to zero per player.
 References the total amount of goals scored by a player.
 
 #### puck_hits_current
-The number of times a player hittet the puck in his current game.
+The number of times a player has hit the puck in his current game.
 
 #### puck_hits_total
 References times a player hittet the puck in all played games.
