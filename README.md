@@ -29,16 +29,16 @@ The following example shows an achievements list with one custom achievement.
 {
    "Achievements List":[
       {
-         "Id":"ez",
-         "Name":"EZ!",
-         "Description":"Easiest achievement ever! Just join.",
-         "Points":5,
+         "Id": "ez",
+         "Name": "EZ!",
+         "Description": "Easiest achievement ever! Just join.",
+         "Points": 5,
 	 "Progress Keys": [],
-         "Achieve Conditions":[
+         "Achieve Conditions": [
             {
-               "Key":"games_played",
-               "Rule":">=",
-               "Value":0
+               "Key": "games_played",
+               "Rule": ">=",
+               "Value": 0
             }
          ]
       }
