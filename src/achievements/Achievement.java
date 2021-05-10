@@ -72,10 +72,17 @@ public class Achievement {
 		this.description = description;
 	}
 	
+	public void setProgress(String key, boolean progress) {
+		for (AchieveCondition condition : achieveConditions) {
+			if (condition.getPropertyKey().equals(key))
+				condition.setProgress(progress);
+		}
+	}
+	
 	public int getActivationValuesSum() {
 		int activationValuesSum = 0;
 		for (AchieveCondition achieveCondition : achieveConditions)
-			activationValuesSum += achieveCondition.getActivationValue();
+			activationValuesSum += achieveCondition.isProgress() ? achieveCondition.getActivationValue() : 0;
 		return activationValuesSum;
 	}
 	

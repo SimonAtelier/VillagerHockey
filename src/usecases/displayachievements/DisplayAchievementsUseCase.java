@@ -81,7 +81,8 @@ public class DisplayAchievementsUseCase implements DisplayAchievements {
 		GameStatistic gameStatistic = findGameStatistic();
 
 		for (AchieveCondition condition : achievement.getAchieveConditions())
-			progessValue += gameStatistic.getValue(condition.getPropertyKey());
+			if (condition.isProgress())
+				progessValue += gameStatistic.getValue(condition.getPropertyKey());
 
 		return progessValue > maxValue ? maxValue : progessValue;
 	}

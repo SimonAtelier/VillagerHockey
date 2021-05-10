@@ -2,6 +2,7 @@ package achievements;
 
 public class AchieveCondition {
 
+	private boolean progress;
 	private int activationValue;
 	private String propertyKey;
 	private ActivationRule activationRule;
@@ -10,6 +11,14 @@ public class AchieveCondition {
 		this.activationValue = activationValue;
 		this.propertyKey = propertyKey;
 		this.activationRule = activationRule;
+	}
+	
+	public boolean isProgress() {
+		return progress;
+	}
+	
+	public void setProgress(boolean progress) {
+		this.progress = progress;
 	}
 
 	public boolean isActive(int value) {
