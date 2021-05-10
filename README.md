@@ -51,6 +51,7 @@ The following example shows an achievements list with one custom achievement.
 - **Description** Displayable description of the achievement.
 - **Points** The Amount of points given to the player by unlocking the achievement.
 - **Progress** Determines the type of the achievement.
+	- Progress is true whenever more steps are needed to fulfill the condition, winning a certain amount of games for example.
 - **Achive Conditions** One or more conditions which must be fulfilled to unlock the specific achievement.
 
 ### Achievements Condition Keys
