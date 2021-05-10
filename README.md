@@ -25,7 +25,24 @@ Villager Hockey is a minigame.
 Custom achievements are specified in a file named achievements.json.
 
 #### Example:
-
+```json
+{
+	"Achievements List" : [
+		{
+			"Id" : "ez",
+			"Name" : "EZ!",
+			"Description" : "Join the game for the first time.",
+			"Points" : 5,
+			"Progress" : false,
+			"Achieve Conditions" : [
+				{
+					"Key" : "games_played",
+					"Rule" : ">=",
+					"Value" : 0
+				}
+			]
+		},
+```
 
 ### Achievements Condition Keys
 An achievement is unlocked by one or more 'Achieve Conditions'. An Achieve Condition references to a specific game statistic value defined by a key.
