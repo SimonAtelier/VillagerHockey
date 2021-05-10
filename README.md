@@ -41,7 +41,7 @@ Custom achievements are specified in a file named achievements.json.
 					"Value" : 0
 				}
 			]
-		},
+}
 ```
 
 ### Achievements Condition Keys
