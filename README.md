@@ -33,7 +33,7 @@ The following example shows an achievements list with one custom achievement.
          "Name":"EZ!",
          "Description":"Easiest achievement ever! Just join.",
          "Points":5,
-         "Progress":false,
+	 "Progress Keys": [],
          "Achieve Conditions":[
             {
                "Key":"games_played",
@@ -50,8 +50,8 @@ The following example shows an achievements list with one custom achievement.
 - **Name** Displayable name of the achievement.
 - **Description** Displayable description of the achievement.
 - **Points** The Amount of points given to the player by unlocking the achievement.
-- **Progress** Determines the type of the achievement.
-	- Progress is true whenever more steps are needed to fulfill the condition, winning a certain amount of games for example.
+- **Progress Keys** Determines the type of the achievement.
+	- Whenever more steps are needed to fulfill the condition, winning a certain amount of games for example. Keys define the displayed goal amount.
 - **Achive Conditions** One or more conditions which must be fulfilled to unlock the specific achievement.
 
 ### Achieve Condition Values
@@ -94,7 +94,7 @@ We use the keys **games_won** and **games_played** for the achive conditions.
   "Name": "High five!",
   "Description": "Win the first 5 games.",
   "Points": 10,
-  "Progress": false,
+  "Progress Keys": ["games_won"],
   "Achieve Conditions": [
     {
       "Key": "games_played",
