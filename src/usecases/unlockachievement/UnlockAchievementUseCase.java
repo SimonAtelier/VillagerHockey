@@ -37,12 +37,24 @@ public class UnlockAchievementUseCase implements UnlockAchievement {
 			return;
 		}
 		
-		unlock();
-		
-		gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId()).add(StatisticKeys.UNLOCKED_ACHIEVEMENTS, 1);
-		new GameStatsYaml().save(getRequest().getUniquePlayerId());
-		
+		unlockAchievement();
+		updateAchievementsUnlockedStatistic();
+		updatePointsEarnedStatistic();
+		saveStatistic();
 		sendUnlockResponse();
+	}
+	
+	private void saveStatistic() {
+		new GameStatsYaml().save(getRequest().getUniquePlayerId());
+	}
+ 	
+	private void updateAchievementsUnlockedStatistic() {
+		gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId()).add(StatisticKeys.UNLOCKED_ACHIEVEMENTS, 1);
+	}
+	
+	private void updatePointsEarnedStatistic() {
+		int points = achievementSystem.findAchievementById(getRequest().getAchievementId()).getPoints();
+		gameStatisticGateway.findByPlayerId(getRequest().getUniquePlayerId()).add(StatisticKeys.ACHIEVEMENT_POINTS_EARNED, points);
 	}
 	
 	private boolean achievementsAreNotEnabled() {
@@ -57,7 +69,7 @@ public class UnlockAchievementUseCase implements UnlockAchievement {
 		return getAchievementSystem().isUnlockedForPlayer(getRequest().getAchievementId(), getRequest().getUniquePlayerId());
 	}
 	
-	private void unlock() {
+	private void unlockAchievement() {
 		getAchievementSystem().unlockAchievementForPlayer(getRequest().getUniquePlayerId(), getRequest().getAchievementId());
 	}
 	

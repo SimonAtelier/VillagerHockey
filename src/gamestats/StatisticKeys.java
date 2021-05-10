@@ -16,6 +16,7 @@ public interface StatisticKeys {
 	static final String WINNING_STREAK = "winning_streak";
 	static final String WINNING_STREAK_LAST = "winning_streak_last";
 	static final String WINNING_STREAK_LONGEST = "winning_streak_longest";
+	static final String ACHIEVEMENT_POINTS_EARNED = "achievement_points_earned";
 	
 	static final String[] KEYS = new String[] {
 			GAMES_WON,
@@ -29,7 +30,8 @@ public interface StatisticKeys {
 			UNLOCKED_ACHIEVEMENTS,
 			PINATAS_SMASHED,
 			BAD_TRADES,
-			WINNING_STREAK
+			WINNING_STREAK,
+			ACHIEVEMENT_POINTS_EARNED
 	};
 	
 }
