@@ -1,7 +1,7 @@
-package usecases.teleportplayerstolobby;
+package usecases.api.teleportplayerstolobby;
 
 import context.Context;
-import usecases.teleportplayerstolobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
+import usecases.api.teleportplayerstolobby.TeleportPlayersToLobby.TeleportPlayersToLobbyResponse;
 
 public class TeleportPlayersToLobbyController {
 

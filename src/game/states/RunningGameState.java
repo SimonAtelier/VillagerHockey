@@ -8,7 +8,7 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.game.GameCountDownController;
-import usecases.teleportplayerstolobby.TeleportPlayersToLobbyController;
+import usecases.api.teleportplayerstolobby.TeleportPlayersToLobbyController;
 
 public class RunningGameState extends AbstractGameState implements OnCountDownFinished {
 
