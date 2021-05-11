@@ -27,7 +27,7 @@ The following example shows an achievements list with one custom achievement.
 #### Example:
 ```json
 {
-   "Achievements List":[
+   "achievements_list":[
       {
          "id": "ez",
          "name": "EZ!",
