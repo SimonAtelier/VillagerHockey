@@ -1,6 +1,6 @@
-package usecases.setplayingtime;
+package usecases.api.setplayingtime;
 
-import usecases.setplayingtime.SetPlayingTime.SetPlayingTimeResponse;
+import usecases.api.setplayingtime.SetPlayingTime.SetPlayingTimeResponse;
 
 public class SetPlayingTimePresenter implements SetPlayingTimeResponse {
 

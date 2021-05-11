@@ -1,8 +1,8 @@
-package usecases.setplayingtime;
+package usecases.api.setplayingtime;
 
 import java.util.UUID;
 
-import usecases.setplayingtime.SetPlayingTime.SetPlayingTimeRequest;
+import usecases.api.setplayingtime.SetPlayingTime.SetPlayingTimeRequest;
 
 public class SetPlayingTimeRequestModel implements SetPlayingTimeRequest {
 

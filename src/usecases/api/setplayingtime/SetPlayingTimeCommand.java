@@ -1,12 +1,12 @@
-package usecases.setplayingtime;
+package usecases.api.setplayingtime;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.setplayingtime.SetPlayingTime.SetPlayingTimeRequest;
-import usecases.setplayingtime.SetPlayingTime.SetPlayingTimeResponse;
+import usecases.api.setplayingtime.SetPlayingTime.SetPlayingTimeRequest;
+import usecases.api.setplayingtime.SetPlayingTime.SetPlayingTimeResponse;
 
 public class SetPlayingTimeCommand extends AbstractCommand {
 

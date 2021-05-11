@@ -12,13 +12,13 @@ import usecases.api.leavegame.LeaveGameCommand;
 import usecases.api.listgames.ListGamesCommand;
 import usecases.api.setlobby.SetLobbyCommand;
 import usecases.api.setminplayers.SetMinPlayersCommand;
+import usecases.api.setplayingtime.SetPlayingTimeCommand;
 import usecases.api.showhelp.ShowHelpCommand;
 import usecases.api.startgame.StartGameCommand;
 import usecases.api.stopgame.StopGameCommand;
 import usecases.hockey.savegame.SaveGameCommand;
 import usecases.hockey.setgoal.SetGoalCommand;
 import usecases.hockey.setvillagerspawn.SetVillagerSpawnCommand;
-import usecases.setplayingtime.SetPlayingTimeCommand;
 import usecases.showstatistics.ShowStatisticsCommand;
 
 public class CommandProviderImpl implements CommandProvider {

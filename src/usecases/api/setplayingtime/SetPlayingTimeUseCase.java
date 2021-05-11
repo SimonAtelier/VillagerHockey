@@ -1,4 +1,4 @@
-package usecases.setplayingtime;
+package usecases.api.setplayingtime;
 
 import game.Game;
 import gateways.GameGateway;
