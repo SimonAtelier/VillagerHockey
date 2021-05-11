@@ -1,4 +1,4 @@
-package usecases.showteams;
+package usecases.api.showteams;
 
 import java.util.ArrayList;
 import java.util.List;

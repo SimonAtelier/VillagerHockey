@@ -10,11 +10,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import context.Context;
-import usecases.showteams.ShowTeams;
-import usecases.showteams.ShowTeamsPresenter;
-import usecases.showteams.ShowTeamsRequestModel;
-import usecases.showteams.ShowTeamsUseCase;
-import usecases.showteams.ShowTeams.ShowTeamsResponse;
+import usecases.api.showteams.ShowTeams;
+import usecases.api.showteams.ShowTeamsPresenter;
+import usecases.api.showteams.ShowTeamsRequestModel;
+import usecases.api.showteams.ShowTeamsUseCase;
+import usecases.api.showteams.ShowTeams.ShowTeamsResponse;
 
 public class ShowTeamsEventListener implements Listener {
 

@@ -1,4 +1,4 @@
-package usecases.showteams;
+package usecases.api.showteams;
 
 import java.util.List;
 import java.util.UUID;

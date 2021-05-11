@@ -1,8 +1,8 @@
-package usecases.showteams;
+package usecases.api.showteams;
 
 import java.util.UUID;
 
-import usecases.showteams.ShowTeams.ShowTeamsRequest;
+import usecases.api.showteams.ShowTeams.ShowTeamsRequest;
 
 public class ShowTeamsRequestModel implements ShowTeamsRequest {
 

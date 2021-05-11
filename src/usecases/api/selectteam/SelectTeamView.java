@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import game.event.TeamSelectListener;
-import usecases.showteams.ShowTeamsResponseItem;
+import usecases.api.showteams.ShowTeamsResponseItem;
 
 public interface SelectTeamView {
 	

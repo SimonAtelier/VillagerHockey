@@ -1,4 +1,4 @@
-package usecases.showteams;
+package usecases.api.showteams;
 
 public class ShowTeamsResponseItem {
 
