@@ -1,4 +1,4 @@
-package usecases.startgame;
+package usecases.api.startgame;
 
 import game.Game;
 import gateways.GameGateway;

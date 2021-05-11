@@ -1,4 +1,4 @@
-package usecases.startgame;
+package usecases.api.startgame;
 
 public interface StartGameViewMessages {
 

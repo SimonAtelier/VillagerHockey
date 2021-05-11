@@ -1,11 +1,11 @@
-package usecases.startgame;
+package usecases.api.startgame;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.startgame.StartGame.StartGameRequest;
+import usecases.api.startgame.StartGame.StartGameRequest;
 
 public class StartGameCommand extends AbstractCommand {
 

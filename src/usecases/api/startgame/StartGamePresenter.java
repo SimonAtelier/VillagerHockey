@@ -1,6 +1,6 @@
-package usecases.startgame;
+package usecases.api.startgame;
 
-import usecases.startgame.StartGame.StartGameResponse;
+import usecases.api.startgame.StartGame.StartGameResponse;
 
 public class StartGamePresenter implements StartGameResponse {
 
