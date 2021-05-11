@@ -20,7 +20,13 @@ Villager Hockey is a minigame.
 	* Polo
 	* Pig Pinata
 	* Boat Boogie
-	
+
+### Predefined Custom Achievements (Work In Progress)
+This table shows the currently predefined achievements. This collection is work in progress and might change heavily.
+It's used to keep track of the current WIP.
+|id|name|description|points|
+|--|--|--|--|
+
 # Custom Achievements
 Custom achievements are specified in a file named achievements.json.
 The following example shows an achievements list with one custom achievement.
@@ -156,7 +162,5 @@ the **games_won** key as 'Progress Key'.
   ]
 }
 ```
-### Predefined Achievements (Work In Progress)
-|id|name|
 
 
