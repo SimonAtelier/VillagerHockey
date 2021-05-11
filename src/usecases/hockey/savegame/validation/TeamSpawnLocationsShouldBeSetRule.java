@@ -1,9 +1,9 @@
-package usecases.savegame.validation;
+package usecases.hockey.savegame.validation;
 
 import entities.Team;
 import game.Game;
 import usecases.hockey.savegame.SaveGame.SaveGameResponse;
-import usecases.savegame.validation.SaveGameValidator.SaveGameValidationRule;
+import usecases.hockey.savegame.validation.SaveGameValidator.SaveGameValidationRule;
 
 public class TeamSpawnLocationsShouldBeSetRule implements SaveGameValidationRule {
 

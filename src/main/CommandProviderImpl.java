@@ -2,6 +2,7 @@ package main;
 
 import entities.command.CommandProvider;
 import entities.command.CommandRegistration;
+import usecases.achievements.displayachievements.DisplayAchievementsCommand;
 import usecases.addteamspawn.AddTeamSpawnCommand;
 import usecases.api.addgame.AddGameCommand;
 import usecases.api.addteam.AddTeamCommand;
@@ -14,7 +15,6 @@ import usecases.api.setminplayers.SetMinPlayersCommand;
 import usecases.api.showhelp.ShowHelpCommand;
 import usecases.api.startgame.StartGameCommand;
 import usecases.api.stopgame.StopGameCommand;
-import usecases.displayachievements.DisplayAchievementsCommand;
 import usecases.hockey.savegame.SaveGameCommand;
 import usecases.hockey.setgoal.SetGoalCommand;
 import usecases.hockey.setvillagerspawn.SetVillagerSpawnCommand;

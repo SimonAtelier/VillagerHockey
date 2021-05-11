@@ -1,4 +1,4 @@
-package usecases.displayachievements;
+package usecases.achievements.displayachievements;
 
 import java.util.UUID;
 

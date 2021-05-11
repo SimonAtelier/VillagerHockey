@@ -1,8 +1,8 @@
-package usecases.displayachievements;
+package usecases.achievements.displayachievements;
 
 import java.util.UUID;
 
-import usecases.displayachievements.DisplayAchievements.DisplayAchievementsRequest;
+import usecases.achievements.displayachievements.DisplayAchievements.DisplayAchievementsRequest;
 
 public class DisplayAchievementsRequestModel implements DisplayAchievementsRequest {
 

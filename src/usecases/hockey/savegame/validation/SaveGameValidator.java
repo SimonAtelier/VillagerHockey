@@ -1,4 +1,4 @@
-package usecases.savegame.validation;
+package usecases.hockey.savegame.validation;
 
 import java.util.ArrayList;
 import java.util.List;

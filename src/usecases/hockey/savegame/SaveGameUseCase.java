@@ -6,14 +6,14 @@ import game.Game;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
-import usecases.savegame.validation.AllGoalsShouldBeSetRule;
-import usecases.savegame.validation.AmountOfTeamSpawnsShouldBeEqualRule;
-import usecases.savegame.validation.LobbyShouldBeSetRule;
-import usecases.savegame.validation.NumberOfTeamsShouldBeTwoRule;
-import usecases.savegame.validation.PlayingTimeShouldNotBeLessOrEqualToZeroRule;
-import usecases.savegame.validation.SaveGameValidator;
-import usecases.savegame.validation.TeamSpawnLocationsShouldBeSetRule;
-import usecases.savegame.validation.VillagerSpawnLocationShouldBeSetRule;
+import usecases.hockey.savegame.validation.AllGoalsShouldBeSetRule;
+import usecases.hockey.savegame.validation.AmountOfTeamSpawnsShouldBeEqualRule;
+import usecases.hockey.savegame.validation.LobbyShouldBeSetRule;
+import usecases.hockey.savegame.validation.NumberOfTeamsShouldBeTwoRule;
+import usecases.hockey.savegame.validation.PlayingTimeShouldNotBeLessOrEqualToZeroRule;
+import usecases.hockey.savegame.validation.SaveGameValidator;
+import usecases.hockey.savegame.validation.TeamSpawnLocationsShouldBeSetRule;
+import usecases.hockey.savegame.validation.VillagerSpawnLocationShouldBeSetRule;
 
 public class SaveGameUseCase implements SaveGame {
 

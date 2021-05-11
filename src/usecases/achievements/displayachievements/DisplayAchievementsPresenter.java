@@ -1,8 +1,8 @@
-package usecases.displayachievements;
+package usecases.achievements.displayachievements;
 
 import java.util.List;
 
-import usecases.displayachievements.DisplayAchievements.DisplayAchievementsResponse;
+import usecases.achievements.displayachievements.DisplayAchievements.DisplayAchievementsResponse;
 
 public class DisplayAchievementsPresenter implements DisplayAchievementsResponse {
 

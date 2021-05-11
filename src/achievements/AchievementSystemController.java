@@ -9,7 +9,7 @@ import game.event.JoinListener;
 import gamestats.GameStatistic;
 import gamestats.PropertyChangeListener;
 import gamestats.StatsProvider;
-import usecases.unlockachievement.UnlockAchievementController;
+import usecases.achievements.unlockachievement.UnlockAchievementController;
 
 public class AchievementSystemController implements PropertyChangeListener, JoinListener {
 

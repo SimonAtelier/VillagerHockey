@@ -1,6 +1,6 @@
-package usecases.unlockachievement;
+package usecases.achievements.unlockachievement;
 
-import usecases.unlockachievement.UnlockAchievement.UnlockAchievementResponse;
+import usecases.achievements.unlockachievement.UnlockAchievement.UnlockAchievementResponse;
 
 public class UnlockAchievementPresenter implements UnlockAchievementResponse {
 

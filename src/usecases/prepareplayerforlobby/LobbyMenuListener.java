@@ -10,9 +10,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import context.Context;
+import usecases.achievements.displayachievements.DisplayAchievementsController;
 import usecases.api.forcestart.ForceStartCommand;
 import usecases.api.leavegame.LeaveGameCommand;
-import usecases.displayachievements.DisplayAchievementsController;
 
 public class LobbyMenuListener implements Listener {
 	

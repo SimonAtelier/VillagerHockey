@@ -1,8 +1,8 @@
-package usecases.unlockachievement;
+package usecases.achievements.unlockachievement;
 
 import java.util.UUID;
 
-import usecases.unlockachievement.UnlockAchievement.UnlockAchievementRequest;
+import usecases.achievements.unlockachievement.UnlockAchievement.UnlockAchievementRequest;
 
 public class UnlockAchievementRequestModel implements UnlockAchievementRequest {
 

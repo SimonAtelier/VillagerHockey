@@ -1,8 +1,8 @@
-package usecases.savegame.validation;
+package usecases.hockey.savegame.validation;
 
 import game.Game;
 import usecases.hockey.savegame.SaveGame.SaveGameResponse;
-import usecases.savegame.validation.SaveGameValidator.SaveGameValidationRule;
+import usecases.hockey.savegame.validation.SaveGameValidator.SaveGameValidationRule;
 
 public class VillagerSpawnLocationShouldBeSetRule implements SaveGameValidationRule {
 

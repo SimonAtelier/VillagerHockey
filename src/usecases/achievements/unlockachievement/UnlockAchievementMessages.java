@@ -1,4 +1,4 @@
-package usecases.unlockachievement;
+package usecases.achievements.unlockachievement;
 
 public interface UnlockAchievementMessages {
 
