@@ -1,6 +1,6 @@
-package usecases.forcestart;
+package usecases.api.forcestart;
 
-import usecases.forcestart.ForceStart.ForceStartResponse;
+import usecases.api.forcestart.ForceStart.ForceStartResponse;
 
 public class ForceStartPresenter implements ForceStartResponse {
 

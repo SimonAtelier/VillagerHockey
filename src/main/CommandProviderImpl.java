@@ -8,6 +8,7 @@ import usecases.api.addteam.AddTeamCommand;
 import usecases.api.joingame.JoinGameCommand;
 import usecases.api.setminplayers.SetMinPlayersCommand;
 import usecases.api.startgame.StartGameCommand;
+import usecases.api.stopgame.StopGameCommand;
 import usecases.displayachievements.DisplayAchievementsCommand;
 import usecases.kickplayer.KickPlayerCommand;
 import usecases.leavegame.LeaveGameCommand;
@@ -19,7 +20,6 @@ import usecases.setplayingtime.SetPlayingTimeCommand;
 import usecases.setvillagerspawn.SetVillagerSpawnCommand;
 import usecases.showhelp.ShowHelpCommand;
 import usecases.showstatistics.ShowStatisticsCommand;
-import usecases.stopgame.StopGameCommand;
 
 public class CommandProviderImpl implements CommandProvider {
 

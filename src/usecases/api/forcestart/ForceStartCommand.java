@@ -1,11 +1,11 @@
-package usecases.forcestart;
+package usecases.api.forcestart;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.forcestart.ForceStart.ForceStartResponse;
+import usecases.api.forcestart.ForceStart.ForceStartResponse;
 
 public class ForceStartCommand extends AbstractCommand {
 
