@@ -1,12 +1,12 @@
-package usecases.addteam;
+package usecases.api.addteam;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.addteam.AddTeam.AddTeamRequest;
-import usecases.addteam.AddTeam.AddTeamResponse;
+import usecases.api.addteam.AddTeam.AddTeamRequest;
+import usecases.api.addteam.AddTeam.AddTeamResponse;
 
 public class AddTeamCommand extends AbstractCommand {
 

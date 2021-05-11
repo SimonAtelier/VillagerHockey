@@ -1,8 +1,8 @@
-package usecases.addteam;
+package usecases.api.addteam;
 
 import java.util.List;
 
-import usecases.addteam.AddTeam.AddTeamResponse;
+import usecases.api.addteam.AddTeam.AddTeamResponse;
 
 public class AddTeamPresenter implements AddTeamResponse {
 

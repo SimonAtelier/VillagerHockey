@@ -1,4 +1,4 @@
-package usecases.addteam;
+package usecases.api.addteam;
 
 public interface AddTeamView {
 

@@ -1,8 +1,8 @@
-package usecases.addteam;
+package usecases.api.addteam;
 
 import java.util.UUID;
 
-import usecases.addteam.AddTeam.AddTeamRequest;
+import usecases.api.addteam.AddTeam.AddTeamRequest;
 
 public class AddTeamRequestModel implements AddTeamRequest {
 	
