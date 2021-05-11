@@ -1,10 +1,10 @@
-package usecases.executecommand;
+package usecases.api.executecommand;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
+import usecases.api.executecommand.ExecuteCommand.ExecuteCommandResponse;
 
 public class ExecuteCommandController {
 

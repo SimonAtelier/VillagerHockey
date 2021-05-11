@@ -1,6 +1,6 @@
-package usecases.executecommand;
+package usecases.api.executecommand;
 
-import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
+import usecases.api.executecommand.ExecuteCommand.ExecuteCommandResponse;
 
 public class ExecuteCommandPresenter implements ExecuteCommandResponse {
 

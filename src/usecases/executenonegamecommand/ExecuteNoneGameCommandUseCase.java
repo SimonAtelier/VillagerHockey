@@ -5,7 +5,7 @@ import java.util.UUID;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
-import usecases.executecommand.RootCommandLabel;
+import usecases.api.executecommand.RootCommandLabel;
 
 public class ExecuteNoneGameCommandUseCase implements ExecuteNoneGameCommand {
 	

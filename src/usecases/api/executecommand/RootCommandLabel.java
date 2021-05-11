@@ -1,4 +1,4 @@
-package usecases.executecommand;
+package usecases.api.executecommand;
 
 public interface RootCommandLabel {
 

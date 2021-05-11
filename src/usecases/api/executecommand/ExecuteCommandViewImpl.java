@@ -1,4 +1,4 @@
-package usecases.executecommand;
+package usecases.api.executecommand;
 
 import java.util.UUID;
 
