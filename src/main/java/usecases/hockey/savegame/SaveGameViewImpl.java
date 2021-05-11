@@ -3,7 +3,7 @@ package usecases.hockey.savegame;
 import java.util.UUID;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class SaveGameViewImpl implements SaveGameView {
 

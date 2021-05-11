@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class LeaveGameViewImpl implements LeaveGameView {
 

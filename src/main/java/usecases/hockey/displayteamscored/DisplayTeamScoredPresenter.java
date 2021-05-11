@@ -5,8 +5,8 @@ import java.util.UUID;
 
 import entities.ColorUtil;
 import entities.TeamColor;
+import minigame.view.MessageCodes;
 import usecases.hockey.displayteamscored.DisplayTeamScored.DisplayTeamScoredResponse;
-import view.message.MessageCodes;
 
 public class DisplayTeamScoredPresenter implements DisplayTeamScoredResponse {
 

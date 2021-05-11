@@ -3,7 +3,7 @@ package usecases.api.startgame;
 import java.util.UUID;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class StartGameViewImpl implements StartGameView {
 

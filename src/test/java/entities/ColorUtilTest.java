@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import view.message.MessageCodes;
+import minigame.view.MessageCodes;
 
 public class ColorUtilTest {
 

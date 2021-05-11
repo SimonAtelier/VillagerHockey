@@ -3,8 +3,8 @@ package usecases.hockey.destroypinata;
 import java.util.UUID;
 
 import context.Context;
+import minigame.view.MessageView;
 import usecases.hockey.destroypinata.DestroyPinata.DestroyPinataResponse;
-import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;

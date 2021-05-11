@@ -13,6 +13,7 @@ import context.Context;
 import context.ContextCreatorImpl;
 import entities.command.ArgumentsWithLabel;
 import gateways.CommandGateway;
+import minigame.view.bukkit.ViewFactoryBukkit;
 import usecases.api.executecommand.ExecuteCommand;
 import usecases.api.executecommand.ExecuteCommandController;
 import usecases.api.executecommand.ExecuteCommandPresenter;
@@ -43,6 +44,8 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void createContext() {
 		new ContextCreatorImpl().createContext();
+		Context.viewFactory = new ViewFactoryBukkit(this, "[MyTest]");
+		Context.messageView = Context.viewFactory.createMessageView();
 	}
 
 	private void loadGames() {

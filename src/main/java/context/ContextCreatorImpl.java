@@ -18,7 +18,6 @@ import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
 import gateways.impl.StatisticsGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
-import view.message.MessageViewImpl;
 
 public class ContextCreatorImpl implements ContextCreator {
 
@@ -29,7 +28,6 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.permissionGateway = new PermissionGatewayImpl();
 		Context.inventoryGateway = new InventoryGatewayYaml();
 		Context.playerGateway = new PlayerGatewayImpl();
-		Context.messageView = new MessageViewImpl();
 		Context.commandGateway = new CommandGatewayImpl();
 		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
 		Context.signGateway = new SignGatewayImpl();

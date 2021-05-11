@@ -3,7 +3,7 @@ package usecases.hockey.setgoal;
 import java.util.UUID;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class SetGoalViewImpl implements SetGoalView {
 

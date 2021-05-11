@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import context.Context;
 import entities.config.MapTitleConfiguration;
-import view.message.MessageView;
+import minigame.view.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;

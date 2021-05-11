@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class BreakJoinSignViewImpl implements BreakJoinSignView {
 

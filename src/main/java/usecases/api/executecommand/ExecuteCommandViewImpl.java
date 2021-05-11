@@ -3,7 +3,7 @@ package usecases.api.executecommand;
 import java.util.UUID;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class ExecuteCommandViewImpl implements ExecuteCommandView {
 

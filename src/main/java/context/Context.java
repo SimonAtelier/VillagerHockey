@@ -13,7 +13,8 @@ import gateways.PlayerGateway;
 import gateways.SignGateway;
 import gateways.StatisticsGateway;
 import gateways.TeamSpawnsGateway;
-import view.message.MessageView;
+import minigame.view.MessageView;
+import minigame.view.ViewFactory;
 
 public class Context {
 
@@ -44,5 +45,7 @@ public class Context {
 	public static AchievementSystem achievementSystem;
 	
 	public static GameStatisticGateway gameStatisticGateway;
+	
+	public static ViewFactory viewFactory;
 	
 }

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
+import minigame.view.MessageView;
 import usecases.hockey.pinata.Pinata.PinataResponse;
-import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;

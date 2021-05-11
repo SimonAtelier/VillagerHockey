@@ -20,9 +20,9 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import context.Context;
 import game.event.TeamSelectListener;
+import minigame.view.MessageView;
 import plugin.MainPlugin;
 import usecases.api.showteams.ShowTeamsResponseItem;
-import view.message.MessageView;
 
 public class SelectTeamViewImpl implements SelectTeamView, Listener {
 

@@ -2,14 +2,14 @@ package entities;
 
 import java.util.HashMap;
 
-import view.message.MessageCodes;
+import minigame.view.MessageCodes;
 
 public class ColorUtil {
 	
-	private static HashMap<TeamColor, MessageCodes> mapping;
+	private static HashMap<TeamColor, String> mapping;
 	
 	static {
-		mapping = new HashMap<TeamColor, MessageCodes>();
+		mapping = new HashMap<TeamColor, String>();
 		mapping.put(TeamColor.BLACK, MessageCodes.BLACK);
 		mapping.put(TeamColor.DARK_BLUE, MessageCodes.DARK_BLUE);
 		mapping.put(TeamColor.DARK_GREEN, MessageCodes.DARK_GREEN);
@@ -28,7 +28,7 @@ public class ColorUtil {
 		mapping.put(TeamColor.WHITE, MessageCodes.WHITE);
 	}
 
-	public static MessageCodes toMessageCode(TeamColor teamColor) {
+	public static String toMessageCode(TeamColor teamColor) {
 		return mapping.get(teamColor);
 	}
 	

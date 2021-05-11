@@ -3,7 +3,7 @@ package usecases.api.forcestart;
 import java.util.UUID;
 
 import context.Context;
-import view.message.MessageView;
+import minigame.view.MessageView;
 
 public class ForceStartViewImpl implements ForceStartView {
 
