@@ -13,14 +13,14 @@ import context.Context;
 import context.ContextCreatorImpl;
 import entities.command.ArgumentsWithLabel;
 import gateways.CommandGateway;
-import usecases.executecommand.ExecuteCommand;
-import usecases.executecommand.ExecuteCommand.ExecuteCommandResponse;
-import usecases.executecommand.ExecuteCommandController;
-import usecases.executecommand.ExecuteCommandPresenter;
-import usecases.executecommand.ExecuteCommandUseCase;
-import usecases.executecommand.ExecuteCommandView;
-import usecases.executecommand.ExecuteCommandViewImpl;
-import usecases.executecommand.RootCommandLabel;
+import usecases.api.executecommand.ExecuteCommand;
+import usecases.api.executecommand.ExecuteCommandController;
+import usecases.api.executecommand.ExecuteCommandPresenter;
+import usecases.api.executecommand.ExecuteCommandUseCase;
+import usecases.api.executecommand.ExecuteCommandView;
+import usecases.api.executecommand.ExecuteCommandViewImpl;
+import usecases.api.executecommand.RootCommandLabel;
+import usecases.api.executecommand.ExecuteCommand.ExecuteCommandResponse;
 
 public class MainPlugin extends JavaPlugin implements CommandExecutor {
 

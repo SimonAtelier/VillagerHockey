@@ -1,4 +1,4 @@
-package usecases.setminplayers;
+package usecases.api.setminplayers;
 
 import java.util.UUID;
 

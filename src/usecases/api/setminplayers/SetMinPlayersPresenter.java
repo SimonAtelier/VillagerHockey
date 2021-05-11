@@ -1,6 +1,6 @@
-package usecases.setminplayers;
+package usecases.api.setminplayers;
 
-import usecases.setminplayers.SetMinPlayers.SetMinPlayersResponse;
+import usecases.api.setminplayers.SetMinPlayers.SetMinPlayersResponse;
 
 public class SetMinPlayersPresenter implements SetMinPlayersResponse {
 

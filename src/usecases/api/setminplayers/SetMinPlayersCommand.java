@@ -1,11 +1,11 @@
-package usecases.setminplayers;
+package usecases.api.setminplayers;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.setminplayers.SetMinPlayers.SetMinPlayersResponse;
+import usecases.api.setminplayers.SetMinPlayers.SetMinPlayersResponse;
 
 public class SetMinPlayersCommand extends AbstractCommand {
 

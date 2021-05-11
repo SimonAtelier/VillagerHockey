@@ -14,8 +14,8 @@ import game.Game;
 import game.VillagerSpawner;
 import gamestats.GameStatisticsController;
 import gateways.GameGateway;
+import usecases.api.jointeam.JoinTeamController;
 import usecases.displayteamscored.ScoreEventListener;
-import usecases.jointeam.JoinTeamController;
 import usecases.updatejoinsigns.UpdateJoinSignController;
 
 public class GameGatewayImpl implements GameGateway {
