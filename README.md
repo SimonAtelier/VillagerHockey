@@ -1,6 +1,7 @@
 [wiki-link]: https://github.com/SimonAtelier/VillagerHockey/wiki
 
 # Villager-Hockey - Plugin
+[![GitHub last commit](https://img.shields.io/github/last-commit/iSach/UltraCosmetics.svg)](https://github.com/SimonAtelier/VillagerHockey/commits/master)
 [![wiki](https://img.shields.io/badge/go%20to-wiki-blue.svg)][wiki-link]
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6ceaca0c2b141cfbe8b0ab792ecaaf2)](https://app.codacy.com/gh/SimonAtelier/VillagerHockey?utm_source=github.com&utm_medium=referral&utm_content=SimonAtelier/VillagerHockey&utm_campaign=Badge_Grade_Settings)
 
