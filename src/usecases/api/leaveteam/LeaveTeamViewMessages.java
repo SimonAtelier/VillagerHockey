@@ -1,4 +1,4 @@
-package usecases.leaveteam;
+package usecases.api.leaveteam;
 
 public interface LeaveTeamViewMessages {
 

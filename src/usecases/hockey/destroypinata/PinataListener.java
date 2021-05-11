@@ -1,4 +1,4 @@
-package usecases.destroypinata;
+package usecases.hockey.destroypinata;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;

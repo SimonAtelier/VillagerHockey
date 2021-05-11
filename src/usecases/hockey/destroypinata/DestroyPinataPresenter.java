@@ -1,9 +1,9 @@
-package usecases.destroypinata;
+package usecases.hockey.destroypinata;
 
 import java.util.UUID;
 
 import context.Context;
-import usecases.destroypinata.DestroyPinata.DestroyPinataResponse;
+import usecases.hockey.destroypinata.DestroyPinata.DestroyPinataResponse;
 import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;

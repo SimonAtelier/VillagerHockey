@@ -1,8 +1,8 @@
-package usecases.destroypinata;
+package usecases.hockey.destroypinata;
 
 import java.util.UUID;
 
-import usecases.destroypinata.DestroyPinata.DestroyPinataRequest;
+import usecases.hockey.destroypinata.DestroyPinata.DestroyPinataRequest;
 
 public class DestroyPinataRequestModel implements DestroyPinataRequest {
 

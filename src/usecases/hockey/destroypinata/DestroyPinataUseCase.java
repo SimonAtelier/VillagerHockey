@@ -1,4 +1,4 @@
-package usecases.destroypinata;
+package usecases.hockey.destroypinata;
 
 import java.util.List;
 import java.util.UUID;

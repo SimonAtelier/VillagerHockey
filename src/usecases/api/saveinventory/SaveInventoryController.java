@@ -1,9 +1,9 @@
-package usecases.saveinventory;
+package usecases.api.saveinventory;
 
 import java.util.UUID;
 
 import context.Context;
-import usecases.saveinventory.SaveInventory.SaveInventoryRequest;
+import usecases.api.saveinventory.SaveInventory.SaveInventoryRequest;
 
 public class SaveInventoryController {
 

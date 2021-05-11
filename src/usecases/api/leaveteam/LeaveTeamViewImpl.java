@@ -1,4 +1,4 @@
-package usecases.leaveteam;
+package usecases.api.leaveteam;
 
 import java.util.List;
 import java.util.UUID;

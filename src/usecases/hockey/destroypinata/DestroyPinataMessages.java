@@ -1,4 +1,4 @@
-package usecases.destroypinata;
+package usecases.hockey.destroypinata;
 
 public interface DestroyPinataMessages {
 	

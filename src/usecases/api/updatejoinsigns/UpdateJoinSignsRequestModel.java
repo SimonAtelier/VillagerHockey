@@ -1,6 +1,6 @@
-package usecases.updatejoinsigns;
+package usecases.api.updatejoinsigns;
 
-import usecases.updatejoinsigns.UpdateJoinSigns.UpdateJoinSignsRequest;
+import usecases.api.updatejoinsigns.UpdateJoinSigns.UpdateJoinSignsRequest;
 
 public class UpdateJoinSignsRequestModel implements UpdateJoinSignsRequest {
 

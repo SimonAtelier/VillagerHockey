@@ -1,4 +1,4 @@
-package usecases.updatejoinsigns;
+package usecases.api.updatejoinsigns;
 
 import java.util.List;
 

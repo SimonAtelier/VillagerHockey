@@ -1,8 +1,8 @@
-package usecases.leaveteam;
+package usecases.api.leaveteam;
 
 import java.util.UUID;
 
-import usecases.leaveteam.LeaveTeam.LeaveTeamRequest;
+import usecases.api.leaveteam.LeaveTeam.LeaveTeamRequest;
 
 public class LeaveTeamRequestModel implements LeaveTeamRequest {
 

@@ -1,9 +1,9 @@
-package usecases.leaveteam;
+package usecases.api.leaveteam;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.leaveteam.LeaveTeam.LeaveTeamResponse;
+import usecases.api.leaveteam.LeaveTeam.LeaveTeamResponse;
 import view.teamarmour.ColoredTeamArmourView;
 
 public class LeaveTeamPresenter implements LeaveTeamResponse {
