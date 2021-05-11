@@ -1,4 +1,4 @@
-package usecases.showhelp;
+package usecases.api.showhelp;
 
 import java.util.UUID;
 

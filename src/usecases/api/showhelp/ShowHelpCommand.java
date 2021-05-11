@@ -1,11 +1,11 @@
-package usecases.showhelp;
+package usecases.api.showhelp;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.showhelp.ShowHelp.ShowHelpResponse;
+import usecases.api.showhelp.ShowHelp.ShowHelpResponse;
 
 public class ShowHelpCommand extends AbstractCommand {
 
