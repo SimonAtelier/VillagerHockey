@@ -1,12 +1,12 @@
-package usecases.stopgame;
+package usecases.api.stopgame;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.stopgame.StopGame.StopGameRequest;
-import usecases.stopgame.StopGame.StopGameResponse;
+import usecases.api.stopgame.StopGame.StopGameRequest;
+import usecases.api.stopgame.StopGame.StopGameResponse;
 
 public class StopGameCommand extends AbstractCommand {
 

@@ -1,4 +1,4 @@
-package usecases.stopgame;
+package usecases.api.stopgame;
 
 public interface StopGameViewMessages {
 

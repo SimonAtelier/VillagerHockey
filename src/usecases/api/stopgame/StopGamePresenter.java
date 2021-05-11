@@ -1,9 +1,9 @@
-package usecases.stopgame;
+package usecases.api.stopgame;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.stopgame.StopGame.StopGameResponse;
+import usecases.api.stopgame.StopGame.StopGameResponse;
 
 public class StopGamePresenter implements StopGameResponse {
 
