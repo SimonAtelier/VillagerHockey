@@ -1,9 +1,9 @@
-package usecases.spawnvillager;
+package usecases.hockey.spawnvillager;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.spawnvillager.SpawnVillager.SpawnVillagerResponse;
+import usecases.hockey.spawnvillager.SpawnVillager.SpawnVillagerResponse;
 
 public class SpawnVillagerPresenter implements SpawnVillagerResponse {
 

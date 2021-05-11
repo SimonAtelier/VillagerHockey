@@ -1,4 +1,4 @@
-package usecases.spawnvillager;
+package usecases.hockey.spawnvillager;
 
 import java.util.List;
 import java.util.UUID;

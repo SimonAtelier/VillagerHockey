@@ -1,4 +1,4 @@
-package usecases.spawnvillager;
+package usecases.hockey.spawnvillager;
 
 public interface SpawnVillagerViewMessages {
 	

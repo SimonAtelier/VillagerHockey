@@ -1,4 +1,4 @@
-package usecases.spawnvillager;
+package usecases.hockey.spawnvillager;
 
 import entities.config.Configuration;
 import game.Game;

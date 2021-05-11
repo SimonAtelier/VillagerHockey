@@ -1,6 +1,6 @@
-package usecases.spawnvillager;
+package usecases.hockey.spawnvillager;
 
-import usecases.spawnvillager.SpawnVillager.SpawnVillagerRequest;
+import usecases.hockey.spawnvillager.SpawnVillager.SpawnVillagerRequest;
 
 public class SpawnVillagerRequestModel implements SpawnVillagerRequest {
 
