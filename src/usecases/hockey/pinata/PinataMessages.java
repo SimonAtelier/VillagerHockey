@@ -1,4 +1,4 @@
-package usecases.pinata;
+package usecases.hockey.pinata;
 
 public interface PinataMessages {
 

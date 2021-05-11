@@ -1,10 +1,10 @@
-package usecases.pinata;
+package usecases.hockey.pinata;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import usecases.pinata.Pinata.PinataResponse;
+import usecases.hockey.pinata.Pinata.PinataResponse;
 import view.message.MessageView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;

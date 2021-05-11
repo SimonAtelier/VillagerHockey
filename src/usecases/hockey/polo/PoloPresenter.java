@@ -1,4 +1,4 @@
-package usecases.polo;
+package usecases.hockey.polo;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import entities.Location;
 import entities.TeamColor;
-import usecases.polo.Polo.PoloResponse;
+import usecases.hockey.polo.Polo.PoloResponse;
 import util.LocationConvert;
 import view.title.TitleView;
 import view.title.TitleViewImpl;

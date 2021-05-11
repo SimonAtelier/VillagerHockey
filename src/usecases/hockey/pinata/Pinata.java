@@ -1,4 +1,4 @@
-package usecases.pinata;
+package usecases.hockey.pinata;
 
 import java.util.List;
 import java.util.UUID;

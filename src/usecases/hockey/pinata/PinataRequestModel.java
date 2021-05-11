@@ -1,6 +1,6 @@
-package usecases.pinata;
+package usecases.hockey.pinata;
 
-import usecases.pinata.Pinata.PinataRequest;
+import usecases.hockey.pinata.Pinata.PinataRequest;
 
 public class PinataRequestModel implements PinataRequest {
 	

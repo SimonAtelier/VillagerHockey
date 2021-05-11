@@ -1,4 +1,4 @@
-package usecases.polo;
+package usecases.hockey.polo;
 
 import context.Context;
 

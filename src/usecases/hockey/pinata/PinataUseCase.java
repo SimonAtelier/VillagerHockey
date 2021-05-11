@@ -1,4 +1,4 @@
-package usecases.pinata;
+package usecases.hockey.pinata;
 
 import game.Game;
 import gateways.GameGateway;

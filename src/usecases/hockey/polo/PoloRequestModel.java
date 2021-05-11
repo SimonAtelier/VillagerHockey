@@ -1,6 +1,6 @@
-package usecases.polo;
+package usecases.hockey.polo;
 
-import usecases.polo.Polo.PoloRequest;
+import usecases.hockey.polo.Polo.PoloRequest;
 
 public class PoloRequestModel implements PoloRequest {
 
