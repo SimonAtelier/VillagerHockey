@@ -1,11 +1,9 @@
-package test.entities;
+package entities;
 
 import static org.junit.Assert.assertNotNull;
 
 import org.bukkit.Color;
 import org.junit.Test;
-
-import entities.TeamColor;
 
 public class TamColorToBukkitColorTest {
 	

@@ -1,4 +1,4 @@
-package test.entities;
+package entities;
 
 import java.util.List;
 import java.util.UUID;
@@ -6,12 +6,8 @@ import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Test;
 
-import entities.Location;
-import entities.Team;
-import entities.TeamColor;
-
 public class TeamTest {
-
+	
 	@Test
 	public void constructTeamWithColorAndNameGetReturnsValues() {
 		String name = "Team-1";

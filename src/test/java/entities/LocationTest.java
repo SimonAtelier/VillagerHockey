@@ -1,9 +1,7 @@
-package test.entities;
+package entities;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import entities.Location;
 
 public class LocationTest {
 

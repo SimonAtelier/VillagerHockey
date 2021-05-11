@@ -1,12 +1,10 @@
-package test.entities;
+package entities;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import entities.ColorUtil;
-import entities.TeamColor;
 import view.message.MessageCodes;
 
 public class ColorUtilTest {
