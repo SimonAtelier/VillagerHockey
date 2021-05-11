@@ -21,6 +21,11 @@ Villager Hockey is a minigame.
 	* Pig Pinata
 	* Boat Boogie
 
+# Arena Structure
+- Villager Spawner
+- Goals
+- Team Spawns
+
 # Predefined Custom Achievements (Work In Progress)
 This table shows the currently predefined achievements. This collection is work in progress and might change heavily.
 It's used to keep track of the current WIP.
