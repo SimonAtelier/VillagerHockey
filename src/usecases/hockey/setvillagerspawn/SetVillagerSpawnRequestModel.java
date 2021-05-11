@@ -1,8 +1,8 @@
-package usecases.setvillagerspawn;
+package usecases.hockey.setvillagerspawn;
 
 import java.util.UUID;
 
-import usecases.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnRequest;
+import usecases.hockey.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnRequest;
 
 public class SetVillagerSpawnRequestModel implements SetVillagerSpawnRequest {
 

@@ -11,7 +11,7 @@ import game.Goal.GoalResponse;
 import game.event.LeaveListener;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
-import usecases.loadinventory.LoadInventoryController;
+import usecases.api.loadinventory.LoadInventoryController;
 import view.score.ScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {

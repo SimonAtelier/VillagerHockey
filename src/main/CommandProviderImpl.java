@@ -16,9 +16,9 @@ import usecases.api.startgame.StartGameCommand;
 import usecases.api.stopgame.StopGameCommand;
 import usecases.displayachievements.DisplayAchievementsCommand;
 import usecases.hockey.setgoal.SetGoalCommand;
+import usecases.hockey.setvillagerspawn.SetVillagerSpawnCommand;
 import usecases.savegame.SaveGameCommand;
 import usecases.setplayingtime.SetPlayingTimeCommand;
-import usecases.setvillagerspawn.SetVillagerSpawnCommand;
 import usecases.showstatistics.ShowStatisticsCommand;
 
 public class CommandProviderImpl implements CommandProvider {

@@ -1,4 +1,4 @@
-package usecases.setvillagerspawn;
+package usecases.hockey.setvillagerspawn;
 
 import context.Context;
 import entities.Location;

@@ -1,4 +1,4 @@
-package usecases.setvillagerspawn;
+package usecases.hockey.setvillagerspawn;
 
 import java.util.UUID;
 

@@ -1,12 +1,12 @@
-package usecases.setvillagerspawn;
+package usecases.hockey.setvillagerspawn;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.Location;
-import usecases.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnRequest;
-import usecases.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnResponse;
+import usecases.hockey.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnRequest;
+import usecases.hockey.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnResponse;
 
 public class SetVillagerSpawnController {
 	

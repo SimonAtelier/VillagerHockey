@@ -1,6 +1,6 @@
-package usecases.setvillagerspawn;
+package usecases.hockey.setvillagerspawn;
 
-import usecases.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnResponse;
+import usecases.hockey.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnResponse;
 
 public class SetVillagerSpawnPresenter implements SetVillagerSpawnResponse {
 

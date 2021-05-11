@@ -1,10 +1,10 @@
-package usecases.setvillagerspawn;
+package usecases.hockey.setvillagerspawn;
 
 import java.util.List;
 import java.util.UUID;
 
 import entities.command.AbstractCommand;
-import usecases.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnResponse;
+import usecases.hockey.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnResponse;
 
 public class SetVillagerSpawnCommand extends AbstractCommand {
 
