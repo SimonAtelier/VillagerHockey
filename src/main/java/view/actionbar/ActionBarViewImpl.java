@@ -19,13 +19,8 @@ public class ActionBarViewImpl implements ActionBarView {
 
 	private void sendActionBar(Player player, String message) {
 		final String newMessage = message.replace("_", " ");
-		String s = ChatColor.translateAlternateColorCodes('&', newMessage);
-
-		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("Test"));
-		
-//		IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + s + "\"}");
-//		PacketPlayOutChat bar = new PacketPlayOutChat(icbc, ChatMessageType.GAME_INFO);
-//		((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
+		String text = ChatColor.translateAlternateColorCodes('&', newMessage);
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(text));
 	}
 
 }
