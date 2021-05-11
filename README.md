@@ -46,24 +46,24 @@ The following example shows an achievements list with one custom achievement.
 }
 ```
 ### Achievement Values
-- **Id** Unique Identifier for the achievement. Internally used to adress the achievement. 
-- **Name** Displayable name of the achievement.
-- **Description** Displayable description of the achievement.
-- **Points** The Amount of points given to the player by unlocking the achievement.
-- **Progress Keys** Determines the type of the achievement.
+- **id** Unique Identifier for the achievement. Internally used to adress the achievement. 
+- **name** Displayable name of the achievement.
+- **description** Displayable description of the achievement.
+- **points** The Amount of points given to the player by unlocking the achievement.
+- **progress_keys** Determines the type of the achievement.
 	- Whenever more steps are needed to fulfill the condition, winning a certain amount of games for example. Keys define the displayed goal amount.
-- **Achive Conditions** One or more conditions which must be fulfilled to unlock the specific achievement.
+- **achive_conditions** One or more conditions which must be fulfilled to unlock the specific achievement.
 
 ### Achieve Condition Values
-- **Key** The referenced statistic key.
-- **Rule** A rule is not more than just a comparison operator.
+- **key** The referenced statistic key.
+- **rule** A rule is not more than just a comparison operator.
 	- Possible values are:
 		- **"=="**
 		- **">="**
 		- **"<="**
 		- **">"**
 		- **"<"**
-- **Value** The value to be campared by the rule. (The example above means: if (games_played >= 0) then unlock)
+- **value** The value to be campared by the rule. (The example above means: if (games_played >= 0) then unlock)
 		
 ### Achievements Condition Keys
 An achievement is unlocked by one or more 'Achieve Conditions'. An Achieve Condition references to a specific game statistic value defined by a key.
