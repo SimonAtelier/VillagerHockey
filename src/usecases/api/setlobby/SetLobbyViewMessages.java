@@ -1,4 +1,4 @@
-package usecases.setlobby;
+package usecases.api.setlobby;
 
 public interface SetLobbyViewMessages {
 

@@ -1,11 +1,11 @@
-package usecases.setlobby;
+package usecases.api.setlobby;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.setlobby.SetLobby.SetLobbyResponse;
+import usecases.api.setlobby.SetLobby.SetLobbyResponse;
 
 public class SetLobbyCommand extends AbstractCommand {
 

@@ -1,12 +1,12 @@
-package usecases.setlobby;
+package usecases.api.setlobby;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.Location;
-import usecases.setlobby.SetLobby.SetLobbyRequest;
-import usecases.setlobby.SetLobby.SetLobbyResponse;
+import usecases.api.setlobby.SetLobby.SetLobbyRequest;
+import usecases.api.setlobby.SetLobby.SetLobbyResponse;
 
 public class SetLobbyController {
 

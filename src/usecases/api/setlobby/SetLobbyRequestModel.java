@@ -1,8 +1,8 @@
-package usecases.setlobby;
+package usecases.api.setlobby;
 
 import java.util.UUID;
 
-import usecases.setlobby.SetLobby.SetLobbyRequest;
+import usecases.api.setlobby.SetLobby.SetLobbyRequest;
 
 public class SetLobbyRequestModel implements SetLobbyRequest {
 

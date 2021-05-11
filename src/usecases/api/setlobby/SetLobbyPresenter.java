@@ -1,6 +1,6 @@
-package usecases.setlobby;
+package usecases.api.setlobby;
 
-import usecases.setlobby.SetLobby.SetLobbyResponse;
+import usecases.api.setlobby.SetLobby.SetLobbyResponse;
 
 public class SetLobbyPresenter implements SetLobbyResponse {
 

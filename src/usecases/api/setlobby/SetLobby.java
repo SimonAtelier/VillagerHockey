@@ -1,4 +1,4 @@
-package usecases.setlobby;
+package usecases.api.setlobby;
 
 import java.util.UUID;
 
