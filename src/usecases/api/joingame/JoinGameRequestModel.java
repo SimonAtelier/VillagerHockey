@@ -1,8 +1,8 @@
-package usecases.joingame;
+package usecases.api.joingame;
 
 import java.util.UUID;
 
-import usecases.joingame.JoinGame.JoinGameRequest;
+import usecases.api.joingame.JoinGame.JoinGameRequest;
 
 public class JoinGameRequestModel implements JoinGameRequest {
 	

@@ -1,4 +1,4 @@
-package usecases.joingame;
+package usecases.api.joingame;
 
 import java.util.List;
 import java.util.UUID;

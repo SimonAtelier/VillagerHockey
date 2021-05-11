@@ -1,4 +1,4 @@
-package usecases.joingame;
+package usecases.api.joingame;
 
 public interface JoinGameViewMessages {
 

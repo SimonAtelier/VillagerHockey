@@ -1,12 +1,12 @@
-package usecases.joingame;
+package usecases.api.joingame;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.joingame.JoinGame.JoinGameRequest;
-import usecases.joingame.JoinGame.JoinGameResponse;
+import usecases.api.joingame.JoinGame.JoinGameRequest;
+import usecases.api.joingame.JoinGame.JoinGameResponse;
 
 public class JoinGameCommand extends AbstractCommand {
 
