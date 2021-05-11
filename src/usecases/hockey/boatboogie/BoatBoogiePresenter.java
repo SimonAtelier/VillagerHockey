@@ -1,4 +1,4 @@
-package usecases.boatboogie;
+package usecases.hockey.boatboogie;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,7 +10,7 @@ import org.bukkit.entity.Boat;
 import org.bukkit.entity.EntityType;
 
 import entities.Location;
-import usecases.boatboogie.BoatBoogie.BoatBoogieResponse;
+import usecases.hockey.boatboogie.BoatBoogie.BoatBoogieResponse;
 import util.LocationConvert;
 import view.title.TitleView;
 import view.title.TitleViewImpl;

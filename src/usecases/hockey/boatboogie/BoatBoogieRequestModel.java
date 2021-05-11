@@ -1,6 +1,6 @@
-package usecases.boatboogie;
+package usecases.hockey.boatboogie;
 
-import usecases.boatboogie.BoatBoogie.BoatBoogieRequest;
+import usecases.hockey.boatboogie.BoatBoogie.BoatBoogieRequest;
 
 public class BoatBoogieRequestModel implements BoatBoogieRequest {
 

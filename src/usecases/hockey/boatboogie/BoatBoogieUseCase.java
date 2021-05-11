@@ -1,4 +1,4 @@
-package usecases.boatboogie;
+package usecases.hockey.boatboogie;
 
 import java.util.ArrayList;
 import java.util.List;

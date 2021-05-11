@@ -1,4 +1,4 @@
-package usecases.boatboogie;
+package usecases.hockey.boatboogie;
 
 import java.util.List;
 import java.util.UUID;

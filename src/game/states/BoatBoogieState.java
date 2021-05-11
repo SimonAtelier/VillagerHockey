@@ -6,7 +6,7 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.Goal.GoalResponse;
-import usecases.boatboogie.BoatBoogieController;
+import usecases.hockey.boatboogie.BoatBoogieController;
 
 public class BoatBoogieState extends AbstractGameState {
 

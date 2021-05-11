@@ -1,4 +1,4 @@
-package usecases.boatboogie;
+package usecases.hockey.boatboogie;
 
 import gateways.GameGateway;
 import gateways.PlayerGateway;
