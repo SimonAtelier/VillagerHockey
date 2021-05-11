@@ -1,9 +1,9 @@
-package usecases.chatingame;
+package usecases.api.chatingame;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.chatingame.ChatIngame.ChatIngameResponse;
+import usecases.api.chatingame.ChatIngame.ChatIngameResponse;
 
 public class ChatIngamePresenter implements ChatIngameResponse {
 

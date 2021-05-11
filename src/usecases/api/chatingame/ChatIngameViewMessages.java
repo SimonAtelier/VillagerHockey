@@ -1,4 +1,4 @@
-package usecases.chatingame;
+package usecases.api.chatingame;
 
 public interface ChatIngameViewMessages {
 

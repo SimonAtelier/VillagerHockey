@@ -1,4 +1,4 @@
-package usecases.chatingame;
+package usecases.api.chatingame;
 
 import java.util.UUID;
 

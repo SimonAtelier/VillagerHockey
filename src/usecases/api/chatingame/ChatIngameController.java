@@ -1,10 +1,10 @@
-package usecases.chatingame;
+package usecases.api.chatingame;
 
 import java.util.UUID;
 
 import context.Context;
-import usecases.chatingame.ChatIngame.ChatIngameRequest;
-import usecases.chatingame.ChatIngame.ChatIngameResponse;
+import usecases.api.chatingame.ChatIngame.ChatIngameRequest;
+import usecases.api.chatingame.ChatIngame.ChatIngameResponse;
 
 public class ChatIngameController {
 
