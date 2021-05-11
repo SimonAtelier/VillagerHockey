@@ -1,4 +1,4 @@
-package usecases.teleportplayertolobby;
+package usecases.api.teleportplayertolobby;
 
 import java.util.UUID;
 
