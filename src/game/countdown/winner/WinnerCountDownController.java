@@ -6,7 +6,7 @@ import game.countdown.CountDown;
 import game.countdown.CountDownListener;
 import game.countdown.OnCountDownFinished;
 import usecases.displaywinner.DisplayWinnerController;
-import usecases.updatestatistics.UpdateStatisticsController;
+import usecases.hockey.updatestatistics.UpdateStatisticsController;
 
 public class WinnerCountDownController implements CountDownListener {
 

@@ -1,4 +1,4 @@
-package usecases.updatestatistics;
+package usecases.hockey.updatestatistics;
 
 import gamestats.GameStatisticGateway;
 import gateways.GameGateway;

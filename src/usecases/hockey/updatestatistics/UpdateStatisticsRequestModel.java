@@ -1,6 +1,6 @@
-package usecases.updatestatistics;
+package usecases.hockey.updatestatistics;
 
-import usecases.updatestatistics.UpdateStatistics.UpdateStatisticsRequest;
+import usecases.hockey.updatestatistics.UpdateStatistics.UpdateStatisticsRequest;
 
 public class UpdateStatisticsRequestModel implements UpdateStatisticsRequest {
 	

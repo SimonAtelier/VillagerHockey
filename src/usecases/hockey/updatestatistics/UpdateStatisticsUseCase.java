@@ -1,4 +1,4 @@
-package usecases.updatestatistics;
+package usecases.hockey.updatestatistics;
 
 import java.util.HashMap;
 import java.util.List;
