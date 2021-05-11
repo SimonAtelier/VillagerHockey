@@ -1,4 +1,4 @@
-package usecases.kickplayer;
+package usecases.api.kickplayer;
 
 import java.util.List;
 import java.util.UUID;

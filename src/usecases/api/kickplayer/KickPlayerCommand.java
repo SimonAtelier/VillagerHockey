@@ -1,12 +1,12 @@
-package usecases.kickplayer;
+package usecases.api.kickplayer;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.kickplayer.KickPlayer.KickPlayerRequest;
-import usecases.kickplayer.KickPlayer.KickPlayerResponse;
+import usecases.api.kickplayer.KickPlayer.KickPlayerRequest;
+import usecases.api.kickplayer.KickPlayer.KickPlayerResponse;
 
 public class KickPlayerCommand extends AbstractCommand {
 

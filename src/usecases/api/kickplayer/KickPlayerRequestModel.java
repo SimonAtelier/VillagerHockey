@@ -1,8 +1,8 @@
-package usecases.kickplayer;
+package usecases.api.kickplayer;
 
 import java.util.UUID;
 
-import usecases.kickplayer.KickPlayer.KickPlayerRequest;
+import usecases.api.kickplayer.KickPlayer.KickPlayerRequest;
 
 public class KickPlayerRequestModel implements KickPlayerRequest {
 	

@@ -1,9 +1,9 @@
-package usecases.kickplayer;
+package usecases.api.kickplayer;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.kickplayer.KickPlayer.KickPlayerResponse;
+import usecases.api.kickplayer.KickPlayer.KickPlayerResponse;
 
 public class KickPlayerPresenter implements KickPlayerResponse {
 

@@ -1,4 +1,4 @@
-package usecases.kickplayer;
+package usecases.api.kickplayer;
 
 public interface KickPlayerViewMessages {
 
