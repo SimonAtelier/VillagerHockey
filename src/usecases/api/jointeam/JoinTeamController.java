@@ -1,10 +1,10 @@
-package usecases.jointeam;
+package usecases.api.jointeam;
 
 import java.util.UUID;
 
 import context.Context;
 import game.event.TeamSelectListener;
-import usecases.jointeam.JoinTeam.JoinTeamResponse;
+import usecases.api.jointeam.JoinTeam.JoinTeamResponse;
 import view.teamarmour.ColoredTeamArmourView;
 import view.teamarmour.ColoredTeamArmourViewImpl;
 

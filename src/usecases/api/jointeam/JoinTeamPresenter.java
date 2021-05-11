@@ -1,9 +1,9 @@
-package usecases.jointeam;
+package usecases.api.jointeam;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.jointeam.JoinTeam.JoinTeamResponse;
+import usecases.api.jointeam.JoinTeam.JoinTeamResponse;
 import view.teamarmour.ColoredTeamArmourView;
 
 public class JoinTeamPresenter implements JoinTeamResponse {

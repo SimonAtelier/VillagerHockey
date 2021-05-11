@@ -1,4 +1,4 @@
-package usecases.jointeam;
+package usecases.api.jointeam;
 
 public interface JoinTeamViewMessages {
 

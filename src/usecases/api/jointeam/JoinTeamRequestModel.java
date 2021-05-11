@@ -1,8 +1,8 @@
-package usecases.jointeam;
+package usecases.api.jointeam;
 
 import java.util.UUID;
 
-import usecases.jointeam.JoinTeam.JoinTeamRequest;
+import usecases.api.jointeam.JoinTeam.JoinTeamRequest;
 
 public class JoinTeamRequestModel implements JoinTeamRequest {
 

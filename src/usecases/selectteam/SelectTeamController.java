@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import context.Context;
 import game.event.TeamSelectListener;
-import usecases.jointeam.JoinTeamController;
+import usecases.api.jointeam.JoinTeamController;
 import usecases.leaveteam.LeaveTeam;
 import usecases.leaveteam.LeaveTeamPresenter;
 import usecases.leaveteam.LeaveTeamRequestModel;
