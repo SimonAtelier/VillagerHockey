@@ -1,0 +1,145 @@
+###################################
+## VILLAGER HOCKEY CONFIGURATION ##
+###################################
+
+# Chat prefix
+# type: String
+# The chat prefix used for plugin messages
+chat-prefix: "&7[&bVillagerHockey&7]&f"
+
+# Spectator messages enabled
+# type: boolean
+spectator-messages-enabled: true
+
+# Spectator messages radius
+# type: int
+spectator-messages-radius: 100
+
+# Lobby time
+# type: int
+# The time to wait (in seconds) until the game starts (if enough players)
+lobby-time: 60
+
+# Lobby gamemode 
+# type: String (possible values: "ADVENTURE", "CREATIVE", "SPECTATOR", "SURVIVAL")
+# The game mode of the waiting lobby
+lobby-gamemode: "ADVENTURE"
+
+# Auto balance enabled
+# type: boolean
+# Determines if the players can select a team or not (if false players can select a team)
+auto-balance-enabled: false
+
+# Achievements enabled
+# type: boolean
+# Determines if the achievements features is used or not (used if true; false otherwise)
+achievements-enabled: false
+
+# Cosmetics enabled
+# type: boolean
+# Determines if the cosmetics feature is used or not (used if true; false otherwise)
+cosmetics-enabled: false
+
+# Villager AI
+# type: boolean
+# Determines if the villager should spawn with or without an ai
+villager-ai-enabled: false
+
+# Villager default name
+# type: String
+# The name used for villagers if 'villager-random-names-enabled' is false
+villager-default-name: "The Puck"
+
+# Villager random names enabled
+# type: boolean
+# Determines if random names are used for villagers
+villager-random-names-enabled: true
+
+# Villager random names
+# type: List
+# Random villager names used if 'villager-random-names-enabled' is true
+villager-random-names:
+- "Notch"
+- "Herobrine"
+- "Dinnerbone"
+- "Grumm"
+- "Steve"
+- "Alex"
+- "Jeb"
+- "Mercury Villager"
+- "Beta"
+- "Villain"
+- "Wayne"
+
+# Chat with all
+# type: String
+# The label messages to all players should start with
+chat-with-all-label: "!"
+
+# Title configuration
+titles:
+  # Goal title
+  goal:
+    # Enable goal title
+    # type: boolean
+    # Determines if the goal title is displayed
+    enabled: true
+
+    # Title Fade-In time
+    # type: int
+    # The time how long the title fade-in should take (in seconds)
+    title-fade-in-time: 1
+
+    # Title Fade-Out time
+    # type: int
+    # The time how long the title fade-out should take (in seconds)
+    title-fade-out-time: 1
+
+    # Title Stay time
+    # type: int
+    # The time how long the title will stay (in seconds)
+    title-stay-time: 2
+
+  # Map title
+  map:
+    # Enable map title
+    # type: boolean
+    # Determines if the map title is displayed
+    enabled: true
+
+    # Title Fade-In time
+    # type: int
+    # The time how long the title fade-in should take (in seconds)
+    title-fade-in-time: 1
+
+    # Title Fade-Out time
+    # type: int
+    # The time how long the title fade-out should take (in seconds)
+    title-fade-out-time: 1
+
+    # Title Stay time
+    # type: int
+    # The time how long the title will stay (in seconds)
+    title-stay-time: 2
+
+  # Map title
+  win:
+    # Enable win title
+    # type: boolean
+    # Determines if the map title is displayed
+    enabled: true
+
+    # Title Fade-In time
+    # type: int
+    # The time how long the title fade-in should take (in seconds)
+    title-fade-in-time: 1
+
+    # Title Fade-Out time
+    # type: int
+    # The time how long the title fade-out should take (in seconds)
+    title-fade-out-time: 1
+
+    # Title Stay time
+    # type: int
+    # The time how long the title will stay (in seconds)
+    title-stay-time: 15

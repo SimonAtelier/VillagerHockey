@@ -1,0 +1,85 @@
+name: VillagerHockey
+main: plugin.MainPlugin
+authors:
+website: "https://github.com/SimonAtelier/Villager_Hockey"
+version: 0.0.1
+api-version: 1.15
+depend: []
+softdepend: [Multiverse-Core]
+commands:
+  vh:
+    description: The base command for all VillagerHockey commands
+    usage: /<command>
+    permission:
+  vh addgame:
+    description:
+    usage: /<command> [name]
+    permission:
+  vh addteamspawn:
+    description:
+    usage: /<command> [game] [team]
+    permission:
+  vh join:
+    description:
+    usage: /<command> [game]
+    permission:
+  vh kick:
+    description:
+    usage: /<command> [player] [reason]
+    permission:
+  vh leave:
+    description:
+    usage: /<command>
+    permission:
+  vh list:
+    description:
+    usage: /<command>
+    permission:
+  vh save:
+    description:
+    usage: /<command> [name]
+    permission:
+  vh setgoal:
+    description:
+    usage: /<command> [game] [team] [loc]
+    permission:
+  vh setlobby:
+    description:
+    usage: /<command> [game]
+    permission:
+  vh setspawner:
+    description:
+    usage: /<command> [game]
+    permission:
+  vh help:
+    description:
+    usage: /<command>
+    permission:
+  vh setminplayers:
+    description:
+    usage: /<command> [game] [minplayers]
+    permission:
+  vh setplayingtime:
+    description:
+    usage: /<command> [game] [playingtime]
+    permission:
+  vh addteam:
+    description:
+    usage: /<command> [game] [name] [color]
+    permission:
+  vh removegame:
+    description:
+    usage: /<command> [game]
+    permission:
+  vh start:
+    description:
+    usage: /<command> [game]
+    permission:
+  vh stop:
+    description:
+    usage: /<command> [game]
+    permission:
+  vh stats:
+    description:
+    usage: /<command>
+    permission:
