@@ -29,16 +29,16 @@ The following example shows an achievements list with one custom achievement.
 {
    "Achievements List":[
       {
-         "Id": "ez",
-         "Name": "EZ!",
-         "Description": "Easiest achievement ever! Just join.",
-         "Points": 5,
-	 "Progress Keys": [],
-         "Achieve Conditions": [
+         "id": "ez",
+         "name": "EZ!",
+         "description": "Easiest achievement ever! Just join.",
+         "points": 5,
+	 "progress_keys": [],
+         "achieve_conditions": [
             {
-               "Key": "games_played",
-               "Rule": ">=",
-               "Value": 0
+               "key": "games_played",
+               "rule": ">=",
+               "value": 0
             }
          ]
       }
@@ -137,21 +137,21 @@ We use the keys **games_won** and **games_played** for the achive conditions. In
 the **games_won** key as 'Progress Key'.
 ```json
 {
-  "Id": "win_first_five",
-  "Name": "High five!",
-  "Description": "Win the first 5 games.",
-  "Points": 10,
-  "Progress Keys": ["games_won"],
-  "Achieve Conditions": [
+  "id": "win_first_five",
+  "name": "High five!",
+  "description": "Win the first 5 games.",
+  "points": 10,
+  "progress_keys": ["games_won"],
+  "achieve_conditions": [
     {
-      "Key": "games_played",
-      "Rule": "==",
-      "Value": 5
+      "key": "games_played",
+      "rule": "==",
+      "value": 5
     },
     {
-      "Key": "games_won",
-      "Rule": "==",
-      "Value": 5
+      "key": "games_won",
+      "rule": "==",
+      "value": 5
     }
   ]
 }
