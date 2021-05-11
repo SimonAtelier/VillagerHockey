@@ -8,7 +8,7 @@
 
 Villager Hockey is a spigot minigame plugin.
 
-# TODO: Description
+**TODO:** Description
 
 ## Features
 - Team Selection GUI
