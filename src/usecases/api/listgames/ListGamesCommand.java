@@ -1,11 +1,11 @@
-package usecases.listgames;
+package usecases.api.listgames;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.listgames.ListGames.ListGamesResponse;
+import usecases.api.listgames.ListGames.ListGamesResponse;
 
 public class ListGamesCommand extends AbstractCommand {
 

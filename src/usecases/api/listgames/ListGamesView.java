@@ -1,4 +1,4 @@
-package usecases.listgames;
+package usecases.api.listgames;
 
 import java.util.List;
 

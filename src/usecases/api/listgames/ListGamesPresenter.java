@@ -1,8 +1,8 @@
-package usecases.listgames;
+package usecases.api.listgames;
 
 import java.util.List;
 
-import usecases.listgames.ListGames.ListGamesResponse;
+import usecases.api.listgames.ListGames.ListGamesResponse;
 
 public class ListGamesPresenter implements ListGamesResponse {
 
