@@ -1,8 +1,9 @@
 [wiki-link]: https://github.com/SimonAtelier/VillagerHockey/wiki
 
-# Villager-Hockey - Spigot Minigame Plugin
 [![wiki](https://img.shields.io/badge/go%20to-wiki-blue.svg)][wiki-link]
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6ceaca0c2b141cfbe8b0ab792ecaaf2)](https://app.codacy.com/gh/SimonAtelier/VillagerHockey?utm_source=github.com&utm_medium=referral&utm_content=SimonAtelier/VillagerHockey&utm_campaign=Badge_Grade_Settings)
+
+# Villager-Hockey - Spigot Minigame Plugin
 
 <img src="https://i.imgur.com/8f4UNds.png">
 
