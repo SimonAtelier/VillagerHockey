@@ -9,12 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import context.Context;
-import usecases.api.showteams.ShowTeams;
-import usecases.api.showteams.ShowTeamsPresenter;
-import usecases.api.showteams.ShowTeamsRequestModel;
-import usecases.api.showteams.ShowTeamsUseCase;
-import usecases.api.showteams.ShowTeams.ShowTeamsResponse;
+import usecases.api.showteams.ShowTeamsController;
 
 public class ShowTeamsEventListener implements Listener {
 
@@ -22,36 +17,26 @@ public class ShowTeamsEventListener implements Listener {
 	public void onPlayerInteract(PlayerInteractEvent e) {
 		if (!isRightClick(e))
 			return;
-		
+
 		if (!isItemValid(e))
 			return;
-		
+
 		Player player = e.getPlayer();
 		e.setCancelled(true);
-		
-		executeShowTeamsUseCase(player.getUniqueId());
+
+		onShowTeam(player.getUniqueId());
 	}
-	
-	private void executeShowTeamsUseCase(UUID uniquePlayerId) {
-		ShowTeamsRequestModel requestModel = new ShowTeamsRequestModel();
-		requestModel.setPlayer(uniquePlayerId);
-		
-		SelectTeamView view = new SelectTeamViewImpl(uniquePlayerId);
-		view.setTeamSelectListener(new SelectTeamController());
-		
-		ShowTeamsResponse presenter = new ShowTeamsPresenter(view);
-		
-		ShowTeams useCase = new ShowTeamsUseCase();
-		useCase.setGameGateway(Context.gameGateway);
-		useCase.execute(requestModel, presenter);
+
+	private void onShowTeam(UUID uniquePlayerId) {
+		new ShowTeamsController().onShowTeams(uniquePlayerId);
 	}
-		
+
 	private boolean isItemValid(PlayerInteractEvent e) {
 		if (e.getItem() == null)
 			return false;
 		return e.getItem().getType() == Material.LEATHER_HELMET;
 	}
-	
+
 	private boolean isRightClick(PlayerInteractEvent e) {
 		return e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
 	}
