@@ -1,4 +1,4 @@
-package usecases.executenonegamecommand;
+package usecases.api.executenonegamecommand;
 
 import java.util.UUID;
 

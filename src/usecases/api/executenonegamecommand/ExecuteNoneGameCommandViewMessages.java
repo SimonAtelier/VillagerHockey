@@ -1,4 +1,4 @@
-package usecases.executenonegamecommand;
+package usecases.api.executenonegamecommand;
 
 public interface ExecuteNoneGameCommandViewMessages {
 

@@ -1,6 +1,6 @@
-package usecases.executenonegamecommand;
+package usecases.api.executenonegamecommand;
 
-import usecases.executenonegamecommand.ExecuteNoneGameCommand.ExecuteNoneGameCommandResponse;
+import usecases.api.executenonegamecommand.ExecuteNoneGameCommand.ExecuteNoneGameCommandResponse;
 
 public class ExecuteNoneGameCommandPresenter implements ExecuteNoneGameCommandResponse {
 
