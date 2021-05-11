@@ -2,7 +2,7 @@ package game;
 
 import org.bukkit.Bukkit;
 
-import main.MainPlugin;
+import plugin.MainPlugin;
 
 public class GameLoopImpl implements GameLoop {
 

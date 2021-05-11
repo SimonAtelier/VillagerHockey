@@ -20,7 +20,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import context.Context;
 import game.event.TeamSelectListener;
-import main.MainPlugin;
+import plugin.MainPlugin;
 import usecases.api.showteams.ShowTeamsResponseItem;
 import view.message.MessageView;
 

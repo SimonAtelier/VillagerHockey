@@ -4,13 +4,10 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import net.minecraft.server.v1_15_R1.ChatMessageType;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_15_R1.PacketPlayOutChat;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class ActionBarViewImpl implements ActionBarView {
 	
@@ -23,9 +20,12 @@ public class ActionBarViewImpl implements ActionBarView {
 	private void sendActionBar(Player player, String message) {
 		final String newMessage = message.replace("_", " ");
 		String s = ChatColor.translateAlternateColorCodes('&', newMessage);
-		IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + s + "\"}");
-		PacketPlayOutChat bar = new PacketPlayOutChat(icbc, ChatMessageType.GAME_INFO);
-		((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
+
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("Test"));
+		
+//		IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + s + "\"}");
+//		PacketPlayOutChat bar = new PacketPlayOutChat(icbc, ChatMessageType.GAME_INFO);
+//		((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
 	}
 
 }

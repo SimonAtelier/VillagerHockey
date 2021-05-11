@@ -1,4 +1,4 @@
-package main;
+package plugin;
 
 import java.io.File;
 import java.util.UUID;

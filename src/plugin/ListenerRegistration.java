@@ -1,4 +1,4 @@
-package main;
+package plugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;

@@ -1,5 +1,5 @@
 name: VillagerHockey
-main: main.MainPlugin
+main: plugin.MainPlugin
 authors:
 website: "https://github.com/SimonAtelier/Villager_Hockey"
 version: 0.0.1

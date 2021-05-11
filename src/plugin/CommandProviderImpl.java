@@ -1,4 +1,4 @@
-package main;
+package plugin;
 
 import entities.command.CommandProvider;
 import entities.command.CommandRegistration;

@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import context.Context;
-import main.MainPlugin;
+import plugin.MainPlugin;
 
 public class DisplayAchievementsViewImpl implements DisplayAchievementsView, Listener {
 

@@ -1,6 +1,6 @@
 package test.entities;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertNotNull;
 
 import org.bukkit.Color;
 import org.junit.Test;
