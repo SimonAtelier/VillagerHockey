@@ -1,4 +1,4 @@
-package usecases.addgame;
+package usecases.api.addgame;
 
 import java.util.UUID;
 

@@ -2,9 +2,9 @@ package main;
 
 import entities.command.CommandProvider;
 import entities.command.CommandRegistration;
-import usecases.addgame.AddGameCommand;
 import usecases.addteam.AddTeamCommand;
 import usecases.addteamspawn.AddTeamSpawnCommand;
+import usecases.api.addgame.AddGameCommand;
 import usecases.displayachievements.DisplayAchievementsCommand;
 import usecases.joingame.JoinGameCommand;
 import usecases.kickplayer.KickPlayerCommand;

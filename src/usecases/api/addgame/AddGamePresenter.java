@@ -1,6 +1,6 @@
-package usecases.addgame;
+package usecases.api.addgame;
 
-import usecases.addgame.AddGame.AddGameResponse;
+import usecases.api.addgame.AddGame.AddGameResponse;
 
 public class AddGamePresenter implements AddGameResponse {
 

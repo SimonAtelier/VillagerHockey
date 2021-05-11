@@ -1,4 +1,4 @@
-package usecases.addgame;
+package usecases.api.addgame;
 
 public interface AddGameView {
 	
