@@ -26,13 +26,4 @@ public class StatisticsImplTest {
 		Assert.assertEquals(10, statistics.getGamesDraw());
 	}
 	
-	@Test
-	public void getGamesLostReturnsDifference() {
-		StatisticsImpl statistics = new StatisticsImpl();
-		statistics.setGamesPlayed(40);
-		statistics.setGamesWon(10);
-		statistics.setGamesDraw(20);
-		Assert.assertEquals(10, statistics.getGamesLost());
-	}
-	
 }
