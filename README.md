@@ -21,11 +21,34 @@ Villager Hockey is a minigame.
 	* Pig Pinata
 	* Boat Boogie
 
-### Predefined Custom Achievements (Work In Progress)
+# Predefined Custom Achievements (Work In Progress)
 This table shows the currently predefined achievements. This collection is work in progress and might change heavily.
 It's used to keep track of the current WIP.
-|id|name|description|points|
-|--|--|--|--|
+
+|id|name|description|points|notes|
+|--|--|--|--|--|
+|ez|EZ!|Join the game for the first time.|5||
+|first_contact|First Contact|Hit the puck for the first time.|5||
+|heavy_hitter|Heavy Hitter|Hit the puck 100 times in a single game.|5||
+|winner_winner|Winner Winner Chicken Dinner!|Win your first game.|5||
+|wooden_spoon|Wooden Spoon|Lose a total of 50 games.|10||
+|no_chance|They had no chance at all!|Win a game to zero.|5||
+|strong_hold_tier_one|Strong Hold I|Win 20 games to zero.|5||
+|strong_hold_tier_two|Strong Hold II|Win 40 games to zero.|5||
+|strong_hold_tier_three|Strong Hold III|Win 80 games to zero.|5||
+|achievement_goal_one|Achievement Goal I|Unlock 5 achievements.|5||
+|achievement_goal_two|Achievement Goal II|Unlock 10 achievements.|5||
+|achievement_goal_three|Achievement Goal III|Unlock 20 achievements.|5||
+|legend|Legend|Play a total of 10000 games.|50||
+|expert|Expert|Play a total of 500 games.|15||
+|beginner|Beginner|Play a total of 100 games.|10||
+|poor_pig|Poor Pig|Smash the 'Pig Pinata' during a special round.|5||
+|pinata_king|Pinata King|Smash the 'Pig Pinata' 10 times in total.|10||
+|bad_trade|Bad Trade|Try to trade.|5||
+|anniversary|Anniversary|Win a total of 25 games.|5||
+|winning_streak_one|Winning Streak I|Win a total of 5 games in a row.|5||
+|win_first_five|High five!|Win the first 5 games.|10||
+|money_money_money|Money, Money, Money|Earn 500 Achievement Points.|10||
 
 # Custom Achievements
 Custom achievements are specified in a file named achievements.json.
