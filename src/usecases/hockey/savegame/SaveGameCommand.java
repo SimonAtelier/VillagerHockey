@@ -1,11 +1,11 @@
-package usecases.savegame;
+package usecases.hockey.savegame;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.savegame.SaveGame.SaveGameResponse;
+import usecases.hockey.savegame.SaveGame.SaveGameResponse;
 
 public class SaveGameCommand extends AbstractCommand {
 

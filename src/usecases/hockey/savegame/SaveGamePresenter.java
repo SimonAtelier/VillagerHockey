@@ -1,6 +1,6 @@
-package usecases.savegame;
+package usecases.hockey.savegame;
 
-import usecases.savegame.SaveGame.SaveGameResponse;
+import usecases.hockey.savegame.SaveGame.SaveGameResponse;
 
 public class SaveGamePresenter implements SaveGameResponse {
 	

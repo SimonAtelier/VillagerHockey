@@ -1,7 +1,7 @@
 package usecases.savegame.validation;
 
 import game.Game;
-import usecases.savegame.SaveGame.SaveGameResponse;
+import usecases.hockey.savegame.SaveGame.SaveGameResponse;
 import usecases.savegame.validation.SaveGameValidator.SaveGameValidationRule;
 
 public class NumberOfTeamsShouldBeTwoRule implements SaveGameValidationRule {

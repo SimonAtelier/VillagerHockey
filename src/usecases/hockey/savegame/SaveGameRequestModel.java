@@ -1,8 +1,8 @@
-package usecases.savegame;
+package usecases.hockey.savegame;
 
 import java.util.UUID;
 
-import usecases.savegame.SaveGame.SaveGameRequest;
+import usecases.hockey.savegame.SaveGame.SaveGameRequest;
 
 public class SaveGameRequestModel implements SaveGameRequest {
 

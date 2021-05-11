@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.Game;
-import usecases.savegame.SaveGame.SaveGameResponse;
+import usecases.hockey.savegame.SaveGame.SaveGameResponse;
 
 public class SaveGameValidator {
 

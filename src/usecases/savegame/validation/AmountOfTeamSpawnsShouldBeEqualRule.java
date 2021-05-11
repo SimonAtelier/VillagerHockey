@@ -4,7 +4,7 @@ import java.util.List;
 
 import entities.Team;
 import game.Game;
-import usecases.savegame.SaveGame.SaveGameResponse;
+import usecases.hockey.savegame.SaveGame.SaveGameResponse;
 import usecases.savegame.validation.SaveGameValidator.SaveGameValidationRule;
 
 public class AmountOfTeamSpawnsShouldBeEqualRule implements SaveGameValidationRule {

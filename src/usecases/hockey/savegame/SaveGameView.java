@@ -1,4 +1,4 @@
-package usecases.savegame;
+package usecases.hockey.savegame;
 
 public interface SaveGameView {
 
