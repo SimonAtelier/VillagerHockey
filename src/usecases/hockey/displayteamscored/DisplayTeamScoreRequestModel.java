@@ -1,6 +1,6 @@
-package usecases.displayteamscored;
+package usecases.hockey.displayteamscored;
 
-import usecases.displayteamscored.DisplayTeamScored.DisplayTeamScoredRequest;
+import usecases.hockey.displayteamscored.DisplayTeamScored.DisplayTeamScoredRequest;
 
 public class DisplayTeamScoreRequestModel implements DisplayTeamScoredRequest {
 

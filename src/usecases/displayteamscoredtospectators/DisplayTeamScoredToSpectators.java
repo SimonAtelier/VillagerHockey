@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import gateways.GameGateway;
 import gateways.PlayerGateway;
-import usecases.displayteamscored.ScoreResponseItem;
+import usecases.hockey.displayteamscored.ScoreResponseItem;
 
 public interface DisplayTeamScoredToSpectators {
 

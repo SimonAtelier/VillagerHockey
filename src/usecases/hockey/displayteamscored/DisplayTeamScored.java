@@ -1,4 +1,4 @@
-package usecases.displayteamscored;
+package usecases.hockey.displayteamscored;
 
 import java.util.List;
 import java.util.UUID;

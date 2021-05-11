@@ -3,7 +3,7 @@ package usecases.displayteamscoredtospectators;
 import java.util.List;
 import java.util.UUID;
 
-import usecases.displayteamscored.ScoreResponseItem;
+import usecases.hockey.displayteamscored.ScoreResponseItem;
 
 public interface DisplayTeamScoredToSpectatorsView {
 		

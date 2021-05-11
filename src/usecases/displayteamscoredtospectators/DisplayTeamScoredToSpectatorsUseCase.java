@@ -9,7 +9,7 @@ import entities.Team;
 import game.Game;
 import gateways.GameGateway;
 import gateways.PlayerGateway;
-import usecases.displayteamscored.ScoreResponseItem;
+import usecases.hockey.displayteamscored.ScoreResponseItem;
 import util.LocationConvert;
 
 public class DisplayTeamScoredToSpectatorsUseCase implements DisplayTeamScoredToSpectators {

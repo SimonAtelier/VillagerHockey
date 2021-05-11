@@ -1,4 +1,4 @@
-package usecases.displayteamscored;
+package usecases.hockey.displayteamscored;
 
 public class ScoreResponseItem {
 	

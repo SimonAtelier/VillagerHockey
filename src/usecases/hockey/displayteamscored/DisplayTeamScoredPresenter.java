@@ -1,11 +1,11 @@
-package usecases.displayteamscored;
+package usecases.hockey.displayteamscored;
 
 import java.util.List;
 import java.util.UUID;
 
 import entities.ColorUtil;
 import entities.TeamColor;
-import usecases.displayteamscored.DisplayTeamScored.DisplayTeamScoredResponse;
+import usecases.hockey.displayteamscored.DisplayTeamScored.DisplayTeamScoredResponse;
 import view.message.MessageCodes;
 
 public class DisplayTeamScoredPresenter implements DisplayTeamScoredResponse {

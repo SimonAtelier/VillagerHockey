@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import context.Context;
-import usecases.displayteamscored.ScoreResponseItem;
+import usecases.hockey.displayteamscored.ScoreResponseItem;
 import view.message.MessageView;
 
 public class DisplayTeamScoredToSpectatorsViewImpl implements DisplayTeamScoredToSpectatorsView {

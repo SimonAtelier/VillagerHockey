@@ -1,8 +1,8 @@
-package usecases.displayteamscored;
+package usecases.hockey.displayteamscored;
 
 import context.Context;
 import game.event.TeamScoreListener;
-import usecases.displayteamscored.DisplayTeamScored.DisplayTeamScoredResponse;
+import usecases.hockey.displayteamscored.DisplayTeamScored.DisplayTeamScoredResponse;
 
 public class ScoreEventListener implements TeamScoreListener {
 
