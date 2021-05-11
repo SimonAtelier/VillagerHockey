@@ -119,13 +119,13 @@ The number of times a player smashed the 'Pig Pinata'.
 The number of times a player tried to trade with the puck (Villager).
 
 #### winning_streak
-TODO
+The current nunber of games won in a row per player. Resets to zero when the player ends this streak by loosing a game.
 
 #### winning_streak_last
-TODO
+The length of the last winning streak in won games per player (after ending a streak).
 
 #### winning_streak_longest
-TODO
+The longest personal winning streak achieved by a player.
 
 #### achievement_points_earned
 The total amount of earned achievement points per player. (Including already spent ones).
