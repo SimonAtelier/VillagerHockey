@@ -7,6 +7,7 @@
 <img src="https://i.imgur.com/8f4UNds.png">
 
 Villager Hockey is a spigot minigame plugin.
+This minigame is mainly developed for the community server of 'Redaktion Holtex'.
 
 **TODO:** Description
 
