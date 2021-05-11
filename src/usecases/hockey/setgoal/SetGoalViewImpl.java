@@ -1,4 +1,4 @@
-package usecases.setgoal;
+package usecases.hockey.setgoal;
 
 import java.util.UUID;
 

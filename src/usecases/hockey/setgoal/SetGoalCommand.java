@@ -1,4 +1,4 @@
-package usecases.setgoal;
+package usecases.hockey.setgoal;
 
 import java.util.List;
 import java.util.UUID;
@@ -7,8 +7,8 @@ import context.Context;
 import entities.Location;
 import entities.command.AbstractCommand;
 import gateways.PlayerGateway;
-import usecases.setgoal.SetGoal.SetGoalRequest;
-import usecases.setgoal.SetGoal.SetGoalResponse;
+import usecases.hockey.setgoal.SetGoal.SetGoalRequest;
+import usecases.hockey.setgoal.SetGoal.SetGoalResponse;
 
 public class SetGoalCommand extends AbstractCommand {
 

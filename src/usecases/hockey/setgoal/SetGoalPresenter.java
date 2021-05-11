@@ -1,6 +1,6 @@
-package usecases.setgoal;
+package usecases.hockey.setgoal;
 
-import usecases.setgoal.SetGoal.SetGoalResponse;
+import usecases.hockey.setgoal.SetGoal.SetGoalResponse;
 
 public class SetGoalPresenter implements SetGoalResponse {
 

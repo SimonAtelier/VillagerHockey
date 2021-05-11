@@ -1,4 +1,4 @@
-package usecases.setgoal;
+package usecases.hockey.setgoal;
 
 import entities.Location;
 import entities.Teams;

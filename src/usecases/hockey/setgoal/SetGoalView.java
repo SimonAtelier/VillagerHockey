@@ -1,4 +1,4 @@
-package usecases.setgoal;
+package usecases.hockey.setgoal;
 
 public interface SetGoalView {
 

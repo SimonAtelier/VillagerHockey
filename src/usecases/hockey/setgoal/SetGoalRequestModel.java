@@ -1,8 +1,8 @@
-package usecases.setgoal;
+package usecases.hockey.setgoal;
 
 import java.util.UUID;
 
-import usecases.setgoal.SetGoal.SetGoalRequest;
+import usecases.hockey.setgoal.SetGoal.SetGoalRequest;
 
 public class SetGoalRequestModel implements SetGoalRequest {
 
