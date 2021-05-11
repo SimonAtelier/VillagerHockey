@@ -1,4 +1,4 @@
-package usecases.loadinventory;
+package usecases.api.loadinventory;
 
 import java.util.UUID;
 
