@@ -169,6 +169,7 @@ Now we went on with the fun stuff! Let's asume we want unlock an achievement if 
 In this case we need to ensure that the player won five games and didn't play more than five games in total.
 We use the keys **games_won** and **games_played** for the achive conditions. In addition we want to show the player his progress by using
 the **games_won** key as 'Progress Key'.
+Overall this is a bad example, cause limited time achievements are generally bad. Players might have a negative gameplay experience. But it is possible to describe such types of achievements.
 ```json
 {
   "id": "win_first_five",
@@ -190,6 +191,5 @@ the **games_won** key as 'Progress Key'.
   ]
 }
 ```
-Overall this is a bad example, cause limited time achievements are generally bad. Players might have a negative gameplay experience. But it is possible to describe such types of achievements.
 
  
