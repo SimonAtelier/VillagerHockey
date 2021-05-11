@@ -6,12 +6,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import context.Context;
-import usecases.leavegame.LeaveGame;
-import usecases.leavegame.LeaveGamePresenter;
-import usecases.leavegame.LeaveGameUseCase;
-import usecases.leavegame.LeaveGameView;
-import usecases.leavegame.LeaveGameViewImpl;
-import usecases.leavegame.LeaveGame.LeaveGameResponse;
+import usecases.api.leavegame.LeaveGame;
+import usecases.api.leavegame.LeaveGamePresenter;
+import usecases.api.leavegame.LeaveGameUseCase;
+import usecases.api.leavegame.LeaveGameView;
+import usecases.api.leavegame.LeaveGameViewImpl;
+import usecases.api.leavegame.LeaveGame.LeaveGameResponse;
 
 public class QuitEventListener implements Listener {
 

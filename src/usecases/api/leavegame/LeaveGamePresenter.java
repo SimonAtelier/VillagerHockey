@@ -1,9 +1,9 @@
-package usecases.leavegame;
+package usecases.api.leavegame;
 
 import java.util.List;
 import java.util.UUID;
 
-import usecases.leavegame.LeaveGame.LeaveGameResponse;
+import usecases.api.leavegame.LeaveGame.LeaveGameResponse;
 
 public class LeaveGamePresenter implements LeaveGameResponse {
 

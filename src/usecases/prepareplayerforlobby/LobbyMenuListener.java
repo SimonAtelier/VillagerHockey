@@ -11,8 +11,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 import context.Context;
 import usecases.api.forcestart.ForceStartCommand;
+import usecases.api.leavegame.LeaveGameCommand;
 import usecases.displayachievements.DisplayAchievementsController;
-import usecases.leavegame.LeaveGameCommand;
 
 public class LobbyMenuListener implements Listener {
 	

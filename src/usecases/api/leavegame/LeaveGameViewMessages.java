@@ -1,4 +1,4 @@
-package usecases.leavegame;
+package usecases.api.leavegame;
 
 public interface LeaveGameViewMessages {
 

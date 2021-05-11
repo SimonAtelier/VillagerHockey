@@ -1,4 +1,4 @@
-package usecases.leavegame;
+package usecases.api.leavegame;
 
 import java.util.List;
 import java.util.UUID;

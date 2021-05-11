@@ -1,11 +1,11 @@
-package usecases.leavegame;
+package usecases.api.leavegame;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import entities.command.AbstractCommand;
-import usecases.leavegame.LeaveGame.LeaveGameResponse;
+import usecases.api.leavegame.LeaveGame.LeaveGameResponse;
 
 public class LeaveGameCommand extends AbstractCommand {
 
