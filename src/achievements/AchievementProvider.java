@@ -1,5 +1,6 @@
 package achievements;
 
+import java.io.File;
 import java.io.IOException;
 
 import prototype.AchievementsConfig;
@@ -12,7 +13,8 @@ public class AchievementProvider {
 		setAchievementSystem(achievementSystem);
 		
 		try {
-			AchievementsConfig achievementConfig = new AchievementsConfig();
+			File file = new File("plugins/VillagerHockey/achievements.json");
+			AchievementsConfig achievementConfig = new AchievementsConfig(file);
 			for (Achievement achievement : achievementConfig.getAchievements()) {
 				registerAchievement(achievement);
 			}
