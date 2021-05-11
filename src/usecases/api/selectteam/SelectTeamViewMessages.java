@@ -1,4 +1,4 @@
-package usecases.selectteam;
+package usecases.api.selectteam;
 
 public interface SelectTeamViewMessages {
 

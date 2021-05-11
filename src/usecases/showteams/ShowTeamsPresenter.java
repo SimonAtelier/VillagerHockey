@@ -2,7 +2,7 @@ package usecases.showteams;
 
 import java.util.List;
 
-import usecases.selectteam.SelectTeamView;
+import usecases.api.selectteam.SelectTeamView;
 import usecases.showteams.ShowTeams.ShowTeamsResponse;
 
 public class ShowTeamsPresenter implements ShowTeamsResponse {
