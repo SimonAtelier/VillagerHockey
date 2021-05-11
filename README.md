@@ -190,5 +190,6 @@ the **games_won** key as 'Progress Key'.
   ]
 }
 ```
+Overall this is a bad example, cause limited time achievements are generally bad. Players might have a negative gameplay experience. But it is possible to describe such types of achievements.
 
-
+ 
