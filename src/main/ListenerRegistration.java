@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import usecases.api.chatingame.ChatEventListener;
 import usecases.api.executenonegamecommand.PlayerCommandPreprocessListener;
 import usecases.api.selectteam.ShowTeamsEventListener;
+import usecases.encaps.prepareplayerforlobby.LobbyMenuListener;
 import usecases.hockey.destroypinata.PinataListener;
 import usecases.performaction.breakblock.BreakBlockEventListener;
 import usecases.performaction.breakjoinsign.BreakJoinSignEventListener;
@@ -26,7 +27,6 @@ import usecases.performaction.receivedamage.ReceiveDamageEventListener;
 import usecases.performaction.shootpuck.ShootPuckEventListener;
 import usecases.performaction.swaphanditems.SwapHandItemsEventListener;
 import usecases.performaction.trade.TradeEventListener;
-import usecases.prepareplayerforlobby.LobbyMenuListener;
 
 public class ListenerRegistration {
 

@@ -3,7 +3,6 @@ package main;
 import entities.command.CommandProvider;
 import entities.command.CommandRegistration;
 import usecases.achievements.displayachievements.DisplayAchievementsCommand;
-import usecases.addteamspawn.AddTeamSpawnCommand;
 import usecases.api.addgame.AddGameCommand;
 import usecases.api.addteam.AddTeamCommand;
 import usecases.api.joingame.JoinGameCommand;
@@ -16,10 +15,11 @@ import usecases.api.setplayingtime.SetPlayingTimeCommand;
 import usecases.api.showhelp.ShowHelpCommand;
 import usecases.api.startgame.StartGameCommand;
 import usecases.api.stopgame.StopGameCommand;
+import usecases.encaps.addteamspawn.AddTeamSpawnCommand;
+import usecases.encaps.showstatistics.ShowStatisticsCommand;
 import usecases.hockey.savegame.SaveGameCommand;
 import usecases.hockey.setgoal.SetGoalCommand;
 import usecases.hockey.setvillagerspawn.SetVillagerSpawnCommand;
-import usecases.showstatistics.ShowStatisticsCommand;
 
 public class CommandProviderImpl implements CommandProvider {
 
