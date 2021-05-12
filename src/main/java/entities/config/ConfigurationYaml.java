@@ -187,5 +187,19 @@ public class ConfigurationYaml implements Configuration {
 			return config.getInt("titles.goal.title-stay-time");
 		return 2;
 	}
+
+	@Override
+	public String getScoreboardTitle() {
+		if (config.contains("scoreboard-title"))
+			return config.getString("scoreboard-title");
+		return "VILLAGER HOCKEY";
+	}
+
+	@Override
+	public String getScoreboardServerAdress() {
+		if (config.contains("scoreboard-server"))
+			return config.getString("scoreboard-server");
+		return "foo.your-server.bar";
+	}
 	
 }

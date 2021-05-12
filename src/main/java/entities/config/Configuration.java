@@ -29,5 +29,9 @@ public interface Configuration extends WinTitleConfiguration, MapTitleConfigurat
 	boolean isUseRandomVillagerNamesEnabled();
 	
 	List<String> getRandomVillagerNames();
+	
+	String getScoreboardTitle();
+	
+	String getScoreboardServerAdress();
 		
 }

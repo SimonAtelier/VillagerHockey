@@ -25,10 +25,12 @@ public class HockeyScoreView {
 	}
 
 	public void display(UUID viewer) {
+		
+		String title = Context.configuration.getScoreboardTitle();
+		String serverAdress = Context.configuration.getScoreboardServerAdress();
 		ScoreViewModel scoreViewModel = Context.viewFactory.createScoreViewModel();
-		scoreViewModel.setTitle("§eVILLAGER HOCKEY");
+		scoreViewModel.setTitle(title);
 		scoreViewModel.addItem(" ");
-		scoreViewModel.addItem("Scores");
 
 		GameGateway gameGateway = Context.gameGateway;
 		Game game = gameGateway.findGameOfPlayer(viewer);
@@ -41,7 +43,7 @@ public class HockeyScoreView {
 		}
 		
 		scoreViewModel.addItem("  ");
-		scoreViewModel.addItem("§eserver.foo.bar");
+		scoreViewModel.addItem(serverAdress);
 		scoreViewModel.setViewer(viewer);
 		scoreView.display(scoreViewModel);
 	}
