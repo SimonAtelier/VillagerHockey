@@ -36,7 +36,7 @@ spectator-messages-radius: 100
 # Lobby time
 # type: int
 # The time to wait (in seconds) until the game starts (if enough players)
-lobby-time: 60
+lobby-time: 20
 
 # Lobby gamemode 
 # type: String (possible values: "ADVENTURE", "CREATIVE", "SPECTATOR", "SURVIVAL")
