@@ -7,7 +7,7 @@ import context.Context;
 import minigame.view.MessageView;
 import minigame.view.TitleView;
 import minigame.view.TitleViewModel;
-import view.score.ScoreView;
+import view.score.HockeyScoreView;
 
 public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 
@@ -47,7 +47,7 @@ public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 	@Override
 	public void displayTeamScores(List<UUID> viewers, List<ScoreResponseItem> scores) {
 		for (UUID viewer : viewers) {
-			ScoreView view = new ScoreView();
+			HockeyScoreView view = new HockeyScoreView();
 			view.update(viewer, scores);
 		}
 	}

@@ -12,7 +12,7 @@ import game.event.LeaveListener;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.api.loadinventory.LoadInventoryController;
-import view.score.ScoreView;
+import view.score.HockeyScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {
 
@@ -46,7 +46,7 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		removePlayerFromTeam(player);
 		restoreInventory(player);
 		restorePlayerData(player);
-		new ScoreView().hide(player);
+		new HockeyScoreView().hide(player);
 	}
 	
 	private void removeVehicle(UUID player) {

@@ -11,15 +11,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import view.hockeysticks.HockeySticksView;
 import view.hockeysticks.HockeySticksViewImpl;
-import view.score.ScoreView;
+import view.score.HockeyScoreView;
 
 public class PreparePlayerForGameViewImpl implements PreparePlayerForGameView {
 
-	private ScoreView scoreView;
+	private HockeyScoreView scoreView;
 	private HockeySticksView hockeySticksView;
 	
 	public PreparePlayerForGameViewImpl() {
-		scoreView = new ScoreView();
+		scoreView = new HockeyScoreView();
 		hockeySticksView = new HockeySticksViewImpl();
 	}
 	
