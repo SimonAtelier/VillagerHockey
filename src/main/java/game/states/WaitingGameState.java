@@ -72,10 +72,10 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		PreparePlayerForGame useCase = new PreparePlayerForGameUseCase();
 		
 		for (UUID player : game.getUniquePlayerIds()) {
-			useCase.execute(player, presenter);
 			if (game.getTeams().findTeamOfPlayer(player) == null) {
 				game.selectLowestTeam(player);
 			}
+			useCase.execute(player, presenter);
 		}
 	}
 	

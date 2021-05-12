@@ -36,9 +36,13 @@ public class HockeyScoreView {
 		Game game = gameGateway.findGameOfPlayer(viewer);
 		
 		List<Team> teams = game.getTeams().findAllTeams();
+		Team teamOfPlayer = game.getTeams().findTeamOfPlayer(viewer);
+		
 		for (Team team : teams) {
-			String messageCode = ColorUtil.toMessageCode(team.getColor());
+			String messageCode = ColorUtil.toMessageCode(team.getColor());			
 			String item = messageCode + team.getName() + " §r: " + team.getScore();
+			if (teamOfPlayer != null)
+				item += team.getName().equals(teamOfPlayer.getName()) ? "  §7YOU" : "";
 			scoreViewModel.addItem(item);
 		}
 		
@@ -51,5 +55,5 @@ public class HockeyScoreView {
 	public void update(UUID viewer, List<ScoreResponseItem> scores) {
 		display(viewer);
 	}
-
+	
 }
