@@ -19,13 +19,13 @@ This minigame is mainly developed for the community server of 'Redaktion Holtex'
 	* 16 different colors
 - Colored Team Armor
 - Team Chat and Game Chat
-
 - Achievement System
 - Custom Achievements
 - Special Rounds
 	* Polo
 	* Pig Pinata
 	* Boat Boogie
+- Custom Random Villager (Puck) Names
 
 # Arena Structure
 - Villager Spawner
