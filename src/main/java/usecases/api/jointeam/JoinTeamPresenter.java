@@ -3,8 +3,8 @@ package usecases.api.jointeam;
 import java.util.List;
 import java.util.UUID;
 
+import minigame.view.ColoredTeamArmourView;
 import usecases.api.jointeam.JoinTeam.JoinTeamResponse;
-import view.teamarmour.ColoredTeamArmourView;
 
 public class JoinTeamPresenter implements JoinTeamResponse {
 

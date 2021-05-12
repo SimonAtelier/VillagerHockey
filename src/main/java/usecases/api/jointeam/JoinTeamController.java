@@ -4,9 +4,8 @@ import java.util.UUID;
 
 import context.Context;
 import game.event.TeamSelectListener;
+import minigame.view.ColoredTeamArmourView;
 import usecases.api.jointeam.JoinTeam.JoinTeamResponse;
-import view.teamarmour.ColoredTeamArmourView;
-import view.teamarmour.ColoredTeamArmourViewImpl;
 
 public class JoinTeamController implements TeamSelectListener {
 	
@@ -35,7 +34,7 @@ public class JoinTeamController implements TeamSelectListener {
 	}
 	
 	private JoinTeamResponse createResponse() {
-		ColoredTeamArmourView teamArmourView = new ColoredTeamArmourViewImpl();
+		ColoredTeamArmourView teamArmourView = Context.viewFactory.createColoredTeamArmourView();
 		JoinTeamView view = new JoinTeamViewImpl(getPlayer());
 		JoinTeamResponse presenter = new JoinTeamPresenter(view, teamArmourView);
 		return presenter;

@@ -4,16 +4,15 @@ import java.util.UUID;
 
 import context.Context;
 import game.event.TeamSelectListener;
+import minigame.view.ColoredTeamArmourView;
 import usecases.api.jointeam.JoinTeamController;
 import usecases.api.leaveteam.LeaveTeam;
+import usecases.api.leaveteam.LeaveTeam.LeaveTeamResponse;
 import usecases.api.leaveteam.LeaveTeamPresenter;
 import usecases.api.leaveteam.LeaveTeamRequestModel;
 import usecases.api.leaveteam.LeaveTeamUseCase;
 import usecases.api.leaveteam.LeaveTeamView;
 import usecases.api.leaveteam.LeaveTeamViewImpl;
-import usecases.api.leaveteam.LeaveTeam.LeaveTeamResponse;
-import view.teamarmour.ColoredTeamArmourView;
-import view.teamarmour.ColoredTeamArmourViewImpl;
 
 public class SelectTeamController implements TeamSelectListener {
 
@@ -24,7 +23,7 @@ public class SelectTeamController implements TeamSelectListener {
 	}
 	
 	private void executeLeaveTeamUseCase(UUID uniquePlayerId) {
-		ColoredTeamArmourView teamArmourView = new ColoredTeamArmourViewImpl();
+		ColoredTeamArmourView teamArmourView = Context.viewFactory.createColoredTeamArmourView();
 		
 		LeaveTeamView view = new LeaveTeamViewImpl();
 		LeaveTeamResponse presenter = new LeaveTeamPresenter(view, teamArmourView);
