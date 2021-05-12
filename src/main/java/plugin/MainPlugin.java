@@ -44,7 +44,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 
 	private void createContext() {
 		new ContextCreatorImpl().createContext();
-		Context.viewFactory = new ViewFactoryBukkit(this, "[MyTest]");
+		Context.viewFactory = new ViewFactoryBukkit(this, Context.configuration.getPrefix());
 		Context.messageView = Context.viewFactory.createMessageView();
 	}
 

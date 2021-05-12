@@ -3,8 +3,8 @@ package game.countdown.game;
 import java.util.List;
 import java.util.UUID;
 
-import view.actionbar.ActionBarView;
-import view.actionbar.ActionBarViewImpl;
+import context.Context;
+import minigame.view.ActionBarView;
 import view.title.TitleView;
 import view.title.TitleViewImpl;
 import view.title.TitleViewModel;
@@ -16,7 +16,7 @@ public class GameCountDownViewImpl implements GameCountDownView {
 	
 	public GameCountDownViewImpl() {
 		titleView = new TitleViewImpl();
-		actionBarView = new ActionBarViewImpl();
+		actionBarView = Context.viewFactory.createActionBarView();
 	}
 	
 	@Override

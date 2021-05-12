@@ -34,7 +34,6 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
 		Context.playerDataGateway = new PlayerDataGatewayYaml();
 		Context.statisticsGateway = new StatisticsGatewayImpl();
-		Context.messageView.setPrefix(Context.configuration.getPrefix());
 		Context.achievementSystem = createAchievementSystem();
 		Context.gameStatisticGateway = createGameStatisticsGateway(Context.achievementSystem);
 	}
