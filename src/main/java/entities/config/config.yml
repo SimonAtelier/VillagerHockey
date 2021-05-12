@@ -122,7 +122,7 @@ titles:
     # The time how long the title will stay (in seconds)
     title-stay-time: 2
 
-  # Map title
+  # Win title
   win:
     # Enable win title
     # type: boolean
@@ -142,4 +142,4 @@ titles:
     # Title Stay time
     # type: int
     # The time how long the title will stay (in seconds)
-    title-stay-time: 15
+    title-stay-time: 2
