@@ -10,7 +10,9 @@
 Villager Hockey is a spigot minigame plugin.
 This minigame is mainly developed for the community server of 'Redaktion Holtex'.
 
-**TODO:** Description
+## Description
+
+Villager Hockey is a minigame where two teams play 'Ice Hockey' with a 'Villager' as puck. As rackets the players have fishes with knockback. Each team trys to score by knocking the 'Villager' into the goal of the enemy team. After a given play time the team with the highest score wins.
 
 ## Features
 - Team Selection GUI
