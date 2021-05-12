@@ -12,14 +12,13 @@ import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import context.Context;
 import entities.Location;
 import entities.TeamColor;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 import usecases.hockey.polo.Polo.PoloResponse;
 import util.LocationConvert;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
-import view.title.TitleViewModelImpl;
 
 public class PoloPresenter implements PoloResponse {
 
@@ -48,7 +47,7 @@ public class PoloPresenter implements PoloResponse {
 	}
 
 	private void broadcastTitle() {
-		TitleView titleView = new TitleViewImpl();
+		TitleView titleView = Context.viewFactory.createTitleView();
 		titleView.setTitleViewModel(createTitleViewModel());
 
 		for (UUID player : responseModel.getPlayers()) {
@@ -57,7 +56,7 @@ public class PoloPresenter implements PoloResponse {
 	}
 
 	private TitleViewModel createTitleViewModel() {
-		TitleViewModel titleViewModel = new TitleViewModelImpl();
+		TitleViewModel titleViewModel = Context.viewFactory.createTitleViewModel();
 		titleViewModel.setTitle("§cPOLO!");
 		titleViewModel.setSubtitle("§eSPECIAL ROUND!");
 		titleViewModel.setFadeInTimeInSeconds(1);

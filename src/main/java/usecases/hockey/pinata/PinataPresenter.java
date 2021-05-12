@@ -5,11 +5,9 @@ import java.util.UUID;
 
 import context.Context;
 import minigame.view.MessageView;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 import usecases.hockey.pinata.Pinata.PinataResponse;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
-import view.title.TitleViewModelImpl;
 
 public class PinataPresenter implements PinataResponse {
 
@@ -20,7 +18,7 @@ public class PinataPresenter implements PinataResponse {
 	}
 
 	private void broadcastSpecialRoundStartedTitle(List<UUID> players) {
-		TitleView titleView = new TitleViewImpl();
+		TitleView titleView = Context.viewFactory.createTitleView();
 		titleView.setTitleViewModel(createSpecialRoundTitleViewModel());
 
 		for (UUID viewer : players)
@@ -36,7 +34,7 @@ public class PinataPresenter implements PinataResponse {
 	}
 
 	private TitleViewModel createSpecialRoundTitleViewModel() {
-		TitleViewModel titleViewModel = new TitleViewModelImpl();
+		TitleViewModel titleViewModel = Context.viewFactory.createTitleViewModel();
 		titleViewModel.setTitle(PinataMessages.PINATA_TITLE);
 		titleViewModel.setSubtitle(PinataMessages.PINATA_SUBTITLE);
 		titleViewModel.setFadeInTimeInSeconds(1);

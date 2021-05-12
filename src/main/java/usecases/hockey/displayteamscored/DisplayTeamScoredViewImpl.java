@@ -5,10 +5,9 @@ import java.util.UUID;
 
 import context.Context;
 import minigame.view.MessageView;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 import view.score.ScoreView;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
 
 public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 
@@ -32,7 +31,7 @@ public class DisplayTeamScoredViewImpl implements DisplayTeamScoredView {
 		String subtitle = DisplayTeamScoredMessages.DISPLAY_TEAM_SCORED_GOAL_SUBTITLE;
 		subtitle = subtitle.replace("$team$", team);
 
-		TitleView titleView = new TitleViewImpl();
+		TitleView titleView = Context.viewFactory.createTitleView();
 		TitleViewModel model = titleView.getTitleViewModel();
 		model.setTitle(title);
 		model.setSubtitle(subtitle);

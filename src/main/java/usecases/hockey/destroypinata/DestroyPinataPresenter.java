@@ -4,11 +4,9 @@ import java.util.UUID;
 
 import context.Context;
 import minigame.view.MessageView;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 import usecases.hockey.destroypinata.DestroyPinata.DestroyPinataResponse;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
-import view.title.TitleViewModelImpl;
 
 public class DestroyPinataPresenter implements DestroyPinataResponse {
 
@@ -30,7 +28,7 @@ public class DestroyPinataPresenter implements DestroyPinataResponse {
 	}
 	
 	private void broadcastPinataDestroyedTitle() {
-		TitleView titleView = new TitleViewImpl();
+		TitleView titleView = Context.viewFactory.createTitleView();
 		titleView.setTitleViewModel(createTitleViewModel());
 		
 		for (UUID player : getResponseModel().getPlayers())
@@ -38,7 +36,7 @@ public class DestroyPinataPresenter implements DestroyPinataResponse {
 	}
 	
 	private TitleViewModel createTitleViewModel() {
-		TitleViewModel titleViewModel = new TitleViewModelImpl();
+		TitleViewModel titleViewModel = Context.viewFactory.createTitleViewModel();
 		titleViewModel.setTitle(DestroyPinataMessages.DESTROY_PINATA_TITLE);
 		titleViewModel.setSubtitle(createSubtitle());
 		titleViewModel.setFadeInTimeInSeconds(1);

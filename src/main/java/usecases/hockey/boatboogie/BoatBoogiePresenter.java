@@ -9,13 +9,12 @@ import org.bukkit.World;
 import org.bukkit.entity.Boat;
 import org.bukkit.entity.EntityType;
 
+import context.Context;
 import entities.Location;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 import usecases.hockey.boatboogie.BoatBoogie.BoatBoogieResponse;
 import util.LocationConvert;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
-import view.title.TitleViewModelImpl;
 
 public class BoatBoogiePresenter implements BoatBoogieResponse {
 
@@ -40,7 +39,7 @@ public class BoatBoogiePresenter implements BoatBoogieResponse {
 	}
 	
 	private void broadcastTitle() {
-		TitleView titleView = new TitleViewImpl();
+		TitleView titleView = Context.viewFactory.createTitleView();
 		titleView.setTitleViewModel(createTitleViewModel());
 		
 		for (UUID player : responseModel.getPlayers())
@@ -48,7 +47,7 @@ public class BoatBoogiePresenter implements BoatBoogieResponse {
 	}
 	
 	private TitleViewModel createTitleViewModel() {
-		TitleViewModel titleViewModel = new TitleViewModelImpl();
+		TitleViewModel titleViewModel = Context.viewFactory.createTitleViewModel();
 		titleViewModel.setTitle("§cBOAT BOOGIE!");
 		titleViewModel.setSubtitle("§eSPECIAL ROUND!");
 		titleViewModel.setFadeInTimeInSeconds(1);
