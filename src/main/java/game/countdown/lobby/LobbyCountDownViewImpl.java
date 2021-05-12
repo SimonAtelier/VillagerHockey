@@ -9,16 +9,15 @@ import org.bukkit.entity.Player;
 import context.Context;
 import entities.config.MapTitleConfiguration;
 import minigame.view.MessageView;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 
 public class LobbyCountDownViewImpl implements LobbyCountDownView {
 
 	private TitleView titleView;
 	
 	public LobbyCountDownViewImpl() {
-		titleView = new TitleViewImpl();
+		titleView = Context.viewFactory.createTitleView();
 	}
 	
 	private void displayMessage(UUID viewer, String message) {

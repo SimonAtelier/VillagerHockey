@@ -5,9 +5,8 @@ import java.util.UUID;
 
 import context.Context;
 import minigame.view.ActionBarView;
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 
 public class GameCountDownViewImpl implements GameCountDownView {
 
@@ -15,7 +14,7 @@ public class GameCountDownViewImpl implements GameCountDownView {
 	private ActionBarView actionBarView;
 	
 	public GameCountDownViewImpl() {
-		titleView = new TitleViewImpl();
+		titleView = Context.viewFactory.createTitleView();
 		actionBarView = Context.viewFactory.createActionBarView();
 	}
 	

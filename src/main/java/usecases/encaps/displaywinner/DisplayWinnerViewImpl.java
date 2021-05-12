@@ -3,28 +3,24 @@ package usecases.encaps.displaywinner;
 import java.util.List;
 import java.util.UUID;
 
-import view.title.TitleView;
-import view.title.TitleViewImpl;
-import view.title.TitleViewModel;
+import context.Context;
+import minigame.view.TitleView;
+import minigame.view.TitleViewModel;
 
 public class DisplayWinnerViewImpl implements DisplayWinnerView {
 
 	private TitleView titleView;
 	
 	public DisplayWinnerViewImpl() {
-		titleView = new TitleViewImpl();
+		titleView = Context.viewFactory.createTitleView();
 	}
 	
 	@Override
-	public void displayTitle(List<UUID> viewers) {
+	public void displayTitle(TitleViewModel titleViewModel, List<UUID> viewers) {
+		titleView.setTitleViewModel(titleViewModel);
 		for (UUID viewer : viewers) {
 			titleView.display(viewer);
 		}
-	}
-
-	@Override
-	public TitleViewModel getTitleViewModel() {
-		return titleView.getTitleViewModel();
 	}
 	
 }
