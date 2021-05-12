@@ -22,6 +22,7 @@ public class PinataState extends AbstractGameState {
 	@Override
 	public void leaveGameState(Game game) {
 		game.getVillagerSpawner().setAIEnabled(false);
+		game.setGoalsEnabled(true);
 	}
 	
 	@Override
