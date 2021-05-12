@@ -106,6 +106,7 @@ public abstract class AbstractGame implements Game {
 		getGameState().onPlayerLeave(this, player);
 		gameChangeSupport.firePlayerLeave(player);
 		if (getPlayersCount() == 0) {
+			getTeams().resetTeamScores();
 			getGameState().transitionToGameState(this, new WaitingGameState());
 		}
 	}
