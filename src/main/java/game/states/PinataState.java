@@ -15,7 +15,13 @@ public class PinataState extends AbstractGameState {
 	public void enterGameState(Game game) {
 		game.setGoalsEnabled(false);
 		game.getVillagerSpawner().spawnPassenger();
+		game.getVillagerSpawner().setAIEnabled(true);
 		new PinataController().onPinata(game.getName());
+	}
+	
+	@Override
+	public void leaveGameState(Game game) {
+		game.getVillagerSpawner().setAIEnabled(false);
 	}
 	
 	@Override

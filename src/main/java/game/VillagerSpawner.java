@@ -114,6 +114,12 @@ public class VillagerSpawner {
 
 	public void setAIEnabled(boolean aiEnabled) {
 		this.aiEnabled = aiEnabled;
+		if (villager == null)
+			return;
+		if (aiEnabled)
+			villager.removePotionEffect(PotionEffectType.SLOW);
+		else
+			villager.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 255));
 	}
 
 	public String getRandomName() {
