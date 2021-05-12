@@ -52,7 +52,7 @@ public class ContextCreatorImpl implements ContextCreator {
 	
 	private Configuration loadConfiguration() {
 		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		configurationLoader.setResourcePath("/entities/config/config.yml");
+		configurationLoader.setResourcePath("/config.yml");
 		configurationLoader.setPluginFolderPath("plugins/VillagerHockey/config.yml");
 		return configurationLoader.loadConfiguration();
 	}

@@ -1,0 +1,347 @@
+{
+  "achievements_list": [
+    {
+      "id": "ez",
+      "name": "EZ!",
+      "description": "Join the game for the first time.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "games_played",
+          "rule": ">=",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "first_contact",
+      "name": "First Contact",
+      "description": "Hit the puck for the first time.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "puck_hits_total",
+          "rule": ">=",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "heavy_hitter",
+      "name": "Heavy Hitter",
+      "description": "Hit the puck 100 times in a single game.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "puck_hits_current",
+          "rule": ">=",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "id": "winner_winner",
+      "name": "Winner Winner Chicken Dinner!",
+      "description": "Win your first game.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "games_won",
+          "rule": ">=",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "wooden_spoon",
+      "name": "Wooden Spoon",
+      "description": "Lose a total of 50 games.",
+      "points": 10,
+      "progress_keys": [
+        "games_lost"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_lost",
+          "rule": ">=",
+          "value": 50
+        }
+      ]
+    },
+    {
+      "id": "no_chance",
+      "name": "They had no chance at all!",
+      "description": "Win a game to zero.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "games_won_to_zero",
+          "rule": ">=",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "strong_hold_tier_one",
+      "name": "Strong Hold I",
+      "description": "Win 20 games to zero.",
+      "points": 5,
+      "progress_keys": [
+        "games_won_to_zero"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_won_to_zero",
+          "rule": ">=",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "strong_hold_tier_two",
+      "name": "Strong Hold II",
+      "description": "Win 40 games to zero.",
+      "points": 5,
+      "progress_keys": [
+        "games_won_to_zero"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_won_to_zero",
+          "rule": ">=",
+          "value": 40
+        }
+      ]
+    },
+    {
+      "id": "strong_hold_tier_three",
+      "name": "Strong Hold III",
+      "description": "Win 80 games to zero.",
+      "points": 5,
+      "progress_keys": [
+        "games_won_to_zero"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_won_to_zero",
+          "rule": ">=",
+          "value": 80
+        }
+      ]
+    },
+    {
+      "id": "achievement_goal_one",
+      "name": "Achievement Goal I",
+      "description": "Unlock 5 achievements.",
+      "points": 5,
+      "progress_keys": [
+        "unlocked_achievements"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "unlocked_achievements",
+          "rule": ">=",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "achievement_goal_two",
+      "name": "Achievement Goal II",
+      "description": "Unlock 10 achievements.",
+      "points": 5,
+      "progress_keys": [
+        "unlocked_achievements"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "unlocked_achievements",
+          "rule": ">=",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "achievement_goal_three",
+      "name": "Achievement Goal III",
+      "description": "Unlock 20 achievements.",
+      "points": 5,
+      "progress_keys": [
+        "unlocked_achievements"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "unlocked_achievements",
+          "rule": ">=",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "legend",
+      "name": "Legend",
+      "description": "Play a total of 10000 games.",
+      "points": 50,
+      "progress_keys": [
+        "games_played"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_played",
+          "rule": ">=",
+          "value": 10000
+        }
+      ]
+    },
+    {
+      "id": "expert",
+      "name": "Expert",
+      "description": "Play a total of 500 games.",
+      "points": 15,
+      "progress_keys": [
+        "games_played"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_played",
+          "rule": ">=",
+          "value": 500
+        }
+      ]
+    },
+    {
+      "id": "beginner",
+      "name": "Beginner",
+      "description": "Play a total of 100 games.",
+      "points": 10,
+      "progress_keys": [
+        "games_played"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_played",
+          "rule": ">=",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "id": "poor_pig",
+      "name": "Poor Pig",
+      "description": "Smash the 'Pig Pinata' during a special round.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "pinatas_smashed",
+          "rule": ">=",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "pinata_king",
+      "name": "Pinata King",
+      "description": "Smash the 'Pig Pinata' 10 times in total.",
+      "points": 10,
+      "progress_keys": [
+        "pinatas_smashed"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "pinatas_smashed",
+          "rule": ">=",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "bad_trade",
+      "name": "Bad Trade",
+      "description": "Try to trade.",
+      "points": 5,
+      "progress_keys": [],
+      "achieve_conditions": [
+        {
+          "key": "bad_trades",
+          "rule": ">=",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "anniversary",
+      "name": "Anniversary",
+      "description": "Win a total of 25 games.",
+      "points": 5,
+      "progress_keys": [
+        "games_won"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_won",
+          "rule": ">=",
+          "value": 25
+        }
+      ]
+    },
+    {
+      "id": "winning_streak_one",
+      "name": "Winning Streak I",
+      "description": "Win a total of 5 games in a row.",
+      "points": 5,
+      "progress_keys": [
+        "winning_streak"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "winning_streak",
+          "rule": ">=",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "win_first_five",
+      "name": "High five!",
+      "description": "Win the first 5 games.",
+      "points": 10,
+      "progress_keys": [
+        "games_won"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "games_played",
+          "rule": "==",
+          "value": 5
+        },
+        {
+          "key": "games_won",
+          "rule": "==",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "money_money_money",
+      "name": "Money, Money, Money",
+      "description": "Earn 500 Achievement Points.",
+      "points": 10,
+      "progress_keys": [
+        "achievement_points_earned"
+      ],
+      "achieve_conditions": [
+        {
+          "key": "achievement_points_earned",
+          "rule": ">=",
+          "value": 500
+        }
+      ]
+    }
+  ]
+}
