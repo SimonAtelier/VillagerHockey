@@ -13,12 +13,12 @@
 # Scoreboard title
 # type: String
 # The title of the ingame scoreboard
-scoreboard-title: "§eVILLAGER HOCKEY§r"
+scoreboard-title: "&eVILLAGER HOCKEY&r"
 
 # Scoreboard server 
 # type: String
 # The server name or adress of your server
-scoreboard-server: "§efoo.your-server.bar§r"
+scoreboard-server: "&efoo.your-server.bar&r"
 
 # Chat prefix
 # type: String

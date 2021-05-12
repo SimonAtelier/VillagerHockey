@@ -8,7 +8,7 @@ import achievements.Achievement;
 public class Test {
 
 	public static void main(String[] args) throws Exception {
-		File file = new File(AchievementsListToMarkdownTable.class.getResource("achievements.json").getFile());
+		File file = new File(AchievementsListToMarkdownTable.class.getResource("/achievements.json").getFile());
 		AchievementsConfig config = new AchievementsConfig(file);
 		List<Achievement> achievements = config.getAchievements();
 		

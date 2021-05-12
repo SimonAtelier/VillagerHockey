@@ -18,13 +18,14 @@ import achievements.ActivationRule;
 
 public class AchievementsConfig {
 
+	private File file;
+	
 	public AchievementsConfig(File file) {
-		
+		this.file = file;
 	}
 	
 	public List<Achievement> getAchievements() throws IOException {
 		List<Achievement> achievements = new ArrayList<Achievement>();
-		File file = new File("plugins/VillagerHockey/achievements.json");
 		FileReader reader = new FileReader(file);
 		JsonParser parser = new JsonParser();
 		Object obj = parser.parse(reader);
@@ -53,8 +54,6 @@ public class AchievementsConfig {
 		}
 		return achievements;
 	}
-	
-	
 
 	private void conditions(Achievement achievement, JsonArray conditions) {
 		Iterator<JsonElement> iterator = conditions.iterator();

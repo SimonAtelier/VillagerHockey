@@ -100,7 +100,7 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 			}
 		}
 	}
-
+	
 	public static MainPlugin getInstance() {
 		return instance;
 	}
