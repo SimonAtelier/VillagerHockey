@@ -47,7 +47,8 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		new SaveInventoryController().onSaveInventory(player, true);
 		preparePlayerForLobby(player);
 		teleportPlayerToLobby(player);
-		if (getPlayersToStart(getGame()) <= 0) {
+		
+		if (shouldStartCountDown()) {
 			lobbyCountDown.start();
 		}
 	}
@@ -77,6 +78,10 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	private boolean shouldStopCountDown(Game game) {
 		return game.getPlayersCount() < game.getMinimumPlayersToStart();
+	}
+	
+	private boolean shouldStartCountDown() {
+		return getPlayersToStart(getGame()) <= 0;
 	}
 
 	private int getPlayersToStart(Game game) {
