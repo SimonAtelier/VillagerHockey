@@ -65,7 +65,6 @@ public abstract class AbstractGame implements Game {
 	
 	@Override
 	public void tick() {
-		tickCount++;
 		gameState.onTick(this);
 	}
 
