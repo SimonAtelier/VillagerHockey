@@ -34,6 +34,7 @@ public abstract class AbstractGame implements Game {
 	public AbstractGame(String name) {
 		this.name = name;
 		gameState = new StoppedGameState();
+		gameState.setGame(this);
 		teams = new Teams();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);
@@ -231,7 +232,6 @@ public abstract class AbstractGame implements Game {
 		GameState oldGameState = this.gameState;
 		gameState.setGame(this);
 		this.gameState = gameState;
-		oldGameState.setGame(null);
 		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);
 	}
 
