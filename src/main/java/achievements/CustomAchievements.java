@@ -55,20 +55,7 @@ public class CustomAchievements {
 	}
 
 	private ActivationRule getActivationRule(String rule) {
-		switch (rule) {
-		case "==":
-			return ActivationRule.EQUALS;
-		case "<=":
-			return ActivationRule.LESS_OR_EQUALS_TO;
-		case "<":
-			return ActivationRule.LESS_THAN;
-		case ">=":
-			return ActivationRule.GREATER_OR_EQUALS_TO;
-		case ">":
-			return ActivationRule.GREATER_THAN;
-		default:
-			return null;
-		}
+		return ActivationRule.getByString(rule);
 	}
 
 	private Achievement fromJsonObject(JsonObject jsonObject) {
