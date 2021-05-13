@@ -9,9 +9,6 @@ import entities.Location;
 import entities.Team;
 import game.Goal.GoalResponse;
 import game.event.LeaveListener;
-import gateways.PlayerDataGateway;
-import gateways.impl.PlayerDataGatewayYaml;
-import usecases.api.loadinventory.LoadInventoryController;
 import view.score.HockeyScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener {
@@ -43,33 +40,11 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	@Override
 	public void onPlayerLeave(Game game, UUID player) {
 		removeVehicle(player);
-		removePlayerFromTeam(player);
-		restoreInventory(player);
-		restorePlayerData(player);
 		new HockeyScoreView().hide(player);
 	}
 	
 	private void removeVehicle(UUID player) {
 		Context.playerGateway.removeVehicle(player);
-	}
-
-	private void removePlayerFromTeam(UUID player) {
-		getTeams().removePlayer(player);
-	}
-	
-	private void restoreInventory(UUID player) {
-		new LoadInventoryController().onLoadInventory(player);
-	}
-
-	private void restorePlayerData(UUID player) {
-		PlayerDataGateway playerDataGateway = new PlayerDataGatewayYaml();
-		playerDataGateway.load(player);
-	}
-
-	@Override
-	public void selectLowestTeam(UUID player) {
-		Team team = getTeams().findLowestTeam();
-		gameChangeSupport.fireTeamSelected(player, team.getName());
 	}
 
 	@Override

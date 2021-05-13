@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import entities.Location;
+import entities.Team;
 import entities.Teams;
 import game.event.GameChangeSupport;
 import game.event.GameStateChangeListener;
@@ -15,6 +16,9 @@ import game.event.TeamSelectListener;
 import game.states.GameState;
 import game.states.StoppedGameState;
 import game.states.WaitingGameState;
+import gateways.PlayerDataGateway;
+import gateways.impl.PlayerDataGatewayYaml;
+import usecases.api.loadinventory.LoadInventoryController;
 
 public abstract class AbstractGame implements Game {
 
@@ -104,10 +108,36 @@ public abstract class AbstractGame implements Game {
 		removePlayer(player);
 		getGameState().onPlayerLeave(player);
 		gameChangeSupport.firePlayerLeave(player);
+		handleLeave(player);
 		if (getPlayersCount() == 0) {
 			getTeams().resetTeamScores();
 			getGameState().transitionToGameState(new WaitingGameState());
 		}
+	}
+	
+	@Override
+	public void selectLowestTeam(UUID player) {
+		Team team = getTeams().findLowestTeam();
+		gameChangeSupport.fireTeamSelected(player, team.getName());
+	}
+	
+	private void handleLeave(UUID player) {
+		removePlayerFromTeam(player);
+		restoreInventory(player);
+		restorePlayerData(player);
+	}
+	
+	private void removePlayerFromTeam(UUID player) {
+		getTeams().removePlayer(player);
+	}
+	
+	private void restoreInventory(UUID player) {
+		new LoadInventoryController().onLoadInventory(player);
+	}
+
+	private void restorePlayerData(UUID player) {
+		PlayerDataGateway playerDataGateway = new PlayerDataGatewayYaml();
+		playerDataGateway.load(player);
 	}
 
 	@Override
