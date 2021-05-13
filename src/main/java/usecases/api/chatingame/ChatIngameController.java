@@ -14,14 +14,19 @@ public class ChatIngameController {
 		
 		ChatIngameView view = new ChatIngameViewImpl(player);
 		ChatIngameResponse presenter = new ChatIngamePresenter(view);
+		ChatIngame useCase = createUseCase();
+		useCase.execute(createRequest(player, message), presenter);
+		
+		return true;
+	}
+	
+	private ChatIngame createUseCase() {
 		ChatIngame useCase = new ChatIngameUseCase();
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.setPlayerGateway(Context.playerGateway);
 		useCase.setConfiguration(Context.configuration);
-		useCase.execute(createRequest(player, message), presenter);
-		
-		return true;
+		return useCase;
 	}
 	
 	private ChatIngameRequest createRequest(UUID player, String message) {
