@@ -20,7 +20,6 @@ public abstract class AbstractGame implements Game {
 
 	private final Object PLAYERS_LOCK = new Object();
 
-	private long tickCount;
 	private boolean started;
 	private int minimumPlayersToStart;
 	private int playingTimeInSeconds;
