@@ -10,12 +10,7 @@ import game.countdown.SecondsBasedCountDown;
 import game.countdown.lobby.LobbyCountDownController;
 import usecases.api.saveinventory.SaveInventoryController;
 import usecases.api.teleportplayertolobby.TeleportPlayerToLobbyController;
-import usecases.encaps.prepareplayerforgame.PreparePlayerForGame;
-import usecases.encaps.prepareplayerforgame.PreparePlayerForGamePresenter;
-import usecases.encaps.prepareplayerforgame.PreparePlayerForGameUseCase;
-import usecases.encaps.prepareplayerforgame.PreparePlayerForGameView;
-import usecases.encaps.prepareplayerforgame.PreparePlayerForGameViewImpl;
-import usecases.encaps.prepareplayerforgame.PreparePlayerForGame.PreparePlayerForGameResponse;
+import usecases.encaps.prepareplayerforgame.PreparePlayerForGameController;
 import usecases.encaps.prepareplayerforlobby.PreparePlayerForLobbyCommand;
 
 public class WaitingGameState extends AbstractGameState implements OnCountDownFinished {
@@ -26,7 +21,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	public void onTick(Game game) {
 		lobbyCountDown.tick();
 	}
-	
+
 	@Override
 	public void enterGameState(Game game) {
 		super.enterGameState(game);
@@ -37,7 +32,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);
 		lobbyCountDown.setCountDownListener(controller);
 	}
-	
+
 	@Override
 	public void leaveGameState(Game game) {
 		super.leaveGameState(game);
@@ -46,7 +41,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void onCountDownFinished(Game game) {
-		transitionToGameState(game, new RespawnGameState(new RunningGameState()));		
+		transitionToGameState(game, new RespawnGameState(new RunningGameState()));
 	}
 
 	@Override
@@ -65,21 +60,16 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 			lobbyCountDown.stop();
 		}
 	}
-		
+
 	private void preparePlayersForGame(Game game) {
-		PreparePlayerForGameView view = new PreparePlayerForGameViewImpl();
-		PreparePlayerForGameResponse presenter = new PreparePlayerForGamePresenter(view);
-		PreparePlayerForGame useCase = new PreparePlayerForGameUseCase();
-		
 		for (UUID player : game.getUniquePlayerIds()) {
-			if (game.getTeams().findTeamOfPlayer(player) == null) {
+			if (game.getTeams().findTeamOfPlayer(player) == null)
 				game.selectLowestTeam(player);
-			}
-			useCase.execute(player, presenter);
+			new PreparePlayerForGameController().onPreparePlayersForGame(game.getName(), player);
 		}
 	}
-	
-	private void preparePlayerForLobby(UUID player) {		
+
+	private void preparePlayerForLobby(UUID player) {
 		new PreparePlayerForLobbyCommand().execute(player);
 	}
 

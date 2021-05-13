@@ -5,14 +5,13 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Teams;
-import game.Goal.GoalResponse;
 import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
 import game.event.TeamSelectListener;
 import game.states.GameStateContext;
 
-public interface Game extends GameStateContext {
+public interface Game extends GameStateContext, HockeyGame {
 	
 	void tick();
 	
@@ -71,27 +70,7 @@ public interface Game extends GameStateContext {
 	List<UUID> getUniquePlayerIds();
 	
 	Teams getTeams();
-	
-	void setGoalsEnabled(boolean goalsEnabled);
-	
-	boolean isGoalsEnabled();
-	
-	GoalResponse checkGoal();
-	
-	VillagerSpawner getVillagerSpawner();
-	
-	void selectLowestTeam(UUID player);
 		
-	Goal findGoalOfTeam(String team);
-	
-	void addGoal(Goal goal);
-	
-	void setVillagerSpawnLocation(Location location);
-	
-	void onTeamScored(String team, int points);
-	
-	boolean isCanLeaveVehicle();
-	
-	void setCanLeaveVehicle(boolean canLeaveVehilce);
+	void selectLowestTeam(UUID player);
 	
 }
