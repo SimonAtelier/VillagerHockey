@@ -1,4 +1,4 @@
-package prototype;
+package achievements;
 
 import java.io.File;
 import java.io.FileReader;
@@ -12,18 +12,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import achievements.AchieveCondition;
-import achievements.Achievement;
-import achievements.ActivationRule;
-
-public class AchievementsConfig {
+public class CustomAchievements {
 
 	private File file;
-	
-	public AchievementsConfig(File file) {
+
+	public CustomAchievements(File file) {
 		this.file = file;
 	}
-	
+
 	public List<Achievement> getAchievements() throws IOException {
 		List<Achievement> achievements = new ArrayList<Achievement>();
 		FileReader reader = new FileReader(file);
@@ -39,18 +35,9 @@ public class AchievementsConfig {
 			conditions(achievement, conditions.getAsJsonArray("achieve_conditions"));
 			achievements.add(achievement);
 			
-			
-			try {
-				JsonArray keys = (JsonArray) element.getAsJsonObject().getAsJsonArray("progress_keys");
-				if (keys.size() > 0)
-					achievement.setProgress(true);
-				for (int i = 0; i < keys.size(); i++) {
-					achievement.setProgress(keys.get(i).getAsString(), true);
-				}
-			} catch (Exception e) {
-
-			}
-			
+			JsonArray keys = (JsonArray) element.getAsJsonObject().getAsJsonArray("progress_keys");
+			for (int i = 0; i < keys.size(); i++)
+				achievement.setProgress(keys.get(i).getAsString(), true);
 		}
 		return achievements;
 	}

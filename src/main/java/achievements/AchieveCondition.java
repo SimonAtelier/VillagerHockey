@@ -12,7 +12,7 @@ public class AchieveCondition extends Condition {
 		return progress;
 	}
 	
-	public void setProgress(boolean progress) {
+	protected void setProgress(boolean progress) {
 		this.progress = progress;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Achievement {
 
-	private boolean progress;
 	private int points;
 	private String id;
 	private String name;
@@ -43,11 +42,11 @@ public class Achievement {
 	}
 	
 	public boolean isProgress() {
+		boolean progress = false;
+		for (AchieveCondition condition : achieveConditions) {
+			progress |= condition.isProgress();
+		}
 		return progress;
-	}
-
-	public void setProgress(boolean progress) {
-		this.progress = progress;
 	}
 	
 	public int getPoints() {

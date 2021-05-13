@@ -5,8 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import prototype.AchievementsConfig;
-
 public class AchievementProvider {
 	
 	private AchievementSystem achievementSystem;
@@ -17,7 +15,7 @@ public class AchievementProvider {
 		createOrUpdateAchievements();
 		try {
 			File file = new File("plugins/VillagerHockey/achievements.json");
-			AchievementsConfig achievementConfig = new AchievementsConfig(file);
+			CustomAchievements achievementConfig = new CustomAchievements(file);
 			for (Achievement achievement : achievementConfig.getAchievements()) {
 				registerAchievement(achievement);
 			}
