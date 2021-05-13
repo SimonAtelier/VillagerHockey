@@ -24,7 +24,7 @@ public class PoloState extends AbstractGameState {
 	
 	@Override
 	public void leaveGameState() {
-		// Empty
+		// Do nothing
 	}
 	
 	@Override
