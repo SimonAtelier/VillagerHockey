@@ -65,7 +65,7 @@ public abstract class AbstractGame implements Game {
 	
 	@Override
 	public void tick() {
-		gameState.onTick(this);
+		gameState.onTick();
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public abstract class AbstractGame implements Game {
 		}
 		started = true;
 		gameLoop.start();
-		getGameState().transitionToGameState(this, new WaitingGameState());
+		getGameState().transitionToGameState(new WaitingGameState());
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public abstract class AbstractGame implements Game {
 			return;
 		started = false;
 		gameLoop.stop();
-		getGameState().transitionToGameState(this, new StoppedGameState());
+		getGameState().transitionToGameState(new StoppedGameState());
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public abstract class AbstractGame implements Game {
 			return;
 
 		if (addPlayer(player)) {
-			getGameState().onPlayerJoin(this, player);
+			getGameState().onPlayerJoin(player);
 			gameChangeSupport.firePlayerJoin(player);
 		}
 	}
@@ -101,11 +101,11 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public void leave(UUID player) {
 		removePlayer(player);
-		getGameState().onPlayerLeave(this, player);
+		getGameState().onPlayerLeave(player);
 		gameChangeSupport.firePlayerLeave(player);
 		if (getPlayersCount() == 0) {
 			getTeams().resetTeamScores();
-			getGameState().transitionToGameState(this, new WaitingGameState());
+			getGameState().transitionToGameState(new WaitingGameState());
 		}
 	}
 
@@ -229,7 +229,9 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public void setGameState(GameState gameState) {
 		GameState oldGameState = this.gameState;
+		gameState.setGame(this);
 		this.gameState = gameState;
+		oldGameState.setGame(null);
 		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);
 	}
 
@@ -240,7 +242,7 @@ public abstract class AbstractGame implements Game {
 
 	@Override
 	public boolean canPlayerJoin(UUID player) {
-		return getGameState().canPlayerJoin(this, player);
+		return getGameState().canPlayerJoin(player);
 	}
 
 	@Override

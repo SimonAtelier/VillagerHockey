@@ -1,6 +1,5 @@
 package game.states;
 
-import game.Game;
 import usecases.hockey.pinata.PinataController;
 
 public class PinataState extends AbstractGameState {
@@ -12,28 +11,28 @@ public class PinataState extends AbstractGameState {
 	}
 	
 	@Override
-	public void enterGameState(Game game) {
-		game.setGoalsEnabled(false);
-		game.getVillagerSpawner().spawnPassenger();
-		game.getVillagerSpawner().setAIEnabled(true);
-		new PinataController().onPinata(game.getName());
+	public void enterGameState() {
+		getGame().setGoalsEnabled(false);
+		getGame().getVillagerSpawner().spawnPassenger();
+		getGame().getVillagerSpawner().setAIEnabled(true);
+		new PinataController().onPinata(getGame().getName());
 	}
 	
 	@Override
-	public void leaveGameState(Game game) {
-		game.getVillagerSpawner().setAIEnabled(false);
-		game.setGoalsEnabled(true);
+	public void leaveGameState() {
+		getGame().getVillagerSpawner().setAIEnabled(false);
+		getGame().setGoalsEnabled(true);
 	}
 	
 	@Override
-	public void onTick(Game game) {
+	public void onTick() {
 		
-		if (game.getVillagerSpawner().isPassengerAlive())
+		if (getGame().getVillagerSpawner().isPassengerAlive())
 			return;
 		
-		game.getVillagerSpawner().removeVillager();
-		game.setGoalsEnabled(true);
-		transitionToGameState(game, new RespawnGameState(gameState));
+		getGame().getVillagerSpawner().removeVillager();
+		getGame().setGoalsEnabled(true);
+		transitionToGameState(new RespawnGameState(gameState));
 	}
 	
 	@Override

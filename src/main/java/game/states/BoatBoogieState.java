@@ -17,29 +17,28 @@ public class BoatBoogieState extends AbstractGameState {
 	}
 	
 	@Override
-	public void enterGameState(Game game) {
-		super.enterGameState(game);
-		game.setCanLeaveVehicle(false);
-		new BoatBoogieController().onBoatBoogie(game.getName());
+	public void enterGameState() {
+		getGame().setCanLeaveVehicle(false);
+		new BoatBoogieController().onBoatBoogie(getGame().getName());
 	}
 	
 	@Override
-	public void leaveGameState(Game game) {
-		super.leaveGameState(game);
+	public void leaveGameState() {
+		// Do nothing
 	}
 	
 	@Override
-	public void onTick(Game game) {
-		GoalResponse goalResponse = game.checkGoal();
+	public void onTick() {
+		GoalResponse goalResponse = getGame().checkGoal();
 		
 		if (goalResponse == null)
 			return;
 
-		game.setCanLeaveVehicle(true);
-		game.getVillagerSpawner().removeVillager();
-		game.onTeamScored(goalResponse.getTeam(), 1);
-		removeVehicles(game);
-		transitionToGameState(game, new RespawnGameState(gameState));
+		getGame().setCanLeaveVehicle(true);
+		getGame().getVillagerSpawner().removeVillager();
+		getGame().onTeamScored(goalResponse.getTeam(), 1);
+		removeVehicles(getGame());
+		transitionToGameState(new RespawnGameState(gameState));
 	}
 	
 	

@@ -6,20 +6,24 @@ import game.Game;
 
 public interface GameState {
 
-	void onTick(Game game);
+	void onTick();
 	
-	void enterGameState(Game game);
+	void enterGameState();
 	
-	void leaveGameState(Game game);
+	void leaveGameState();
 	
-	void transitionToGameState(Game game, GameState gameState);
+	void transitionToGameState(GameState gameState);
 	
-	void onPlayerJoin(Game game, UUID player);
+	void onPlayerJoin(UUID player);
 	
-	void onPlayerLeave(Game game, UUID player);
+	void onPlayerLeave(UUID player);
 	
-	boolean canPlayerJoin(Game game, UUID player);
+	boolean canPlayerJoin(UUID player);
 	
 	String getName();
+	
+	Game getGame();
+	
+	void setGame(Game game);
 	
 }

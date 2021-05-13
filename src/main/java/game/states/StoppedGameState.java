@@ -2,12 +2,10 @@ package game.states;
 
 import java.util.UUID;
 
-import game.Game;
-
 public class StoppedGameState extends AbstractGameState {
 
 	@Override
-	public boolean canPlayerJoin(Game game, UUID player) {
+	public boolean canPlayerJoin(UUID player) {
 		return false;
 	}
 
@@ -17,13 +15,13 @@ public class StoppedGameState extends AbstractGameState {
 	}
 
 	@Override
-	public void enterGameState(Game game) {
-		super.enterGameState(game);
+	public void enterGameState() {
+		// Do nothing
 	}
 
 	@Override
-	public void leaveGameState(Game game) {
-		super.leaveGameState(game);
+	public void leaveGameState() {
+		// Do nothing
 	}
 
 }

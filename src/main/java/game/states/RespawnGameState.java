@@ -27,22 +27,20 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 	}
 	
 	@Override
-	public void onTick(Game game) {
+	public void onTick() {
 		respawnCountDown.tick();
-		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(game.getName());
+		new TeleportPlayersToTeamSpawnsController().onTeleportPlayersToTeamSpawns(getGame().getName());
 	}
 	
 	@Override
-	public void enterGameState(Game game) {
-		super.enterGameState(game);
-		initializeCountDown(game);
+	public void enterGameState() {
+		initializeCountDown(getGame());
 		respawnCountDown.start();	
 	}
 
 	@Override
-	public void leaveGameState(Game game) {
-		super.leaveGameState(game);
-		new SpawnVillagerController().onSpawnVillager(game.getName());
+	public void leaveGameState() {
+		new SpawnVillagerController().onSpawnVillager(getGame().getName());
 	}
 
 	@Override
@@ -50,9 +48,9 @@ public class RespawnGameState extends AbstractGameState implements OnCountDownFi
 		if (game.getGameState().getClass() != RespawnGameState.class)
 			return;
 		if (specialRound()) {
-			transitionToGameState(game, createRandomSpecialRound());
+			transitionToGameState(createRandomSpecialRound());
 		} else {
-			transitionToGameState(game, gameState);
+			transitionToGameState(gameState);
 		}
 	}
 	

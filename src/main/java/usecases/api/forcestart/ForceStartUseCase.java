@@ -36,7 +36,7 @@ public class ForceStartUseCase implements ForceStart {
 			return;
 		}
 		
-		game.getGameState().transitionToGameState(game, new RespawnGameState(new RunningGameState()));
+		game.getGameState().transitionToGameState(new RespawnGameState(new RunningGameState()));
 		
 		response.displayForcedStart(game.getName());
 	}

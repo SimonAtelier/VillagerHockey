@@ -13,30 +13,30 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 	private CountDown winnerCountdown;
 	
 	@Override
-	public void onTick(Game game) {
+	public void onTick() {
 		winnerCountdown.tick();
 	}
 	
 	@Override
-	public void enterGameState(Game game) {
-		super.enterGameState(game);
-		game.getVillagerSpawner().removeVillager();
+	public void enterGameState() {
+		super.enterGameState();
+		getGame().getVillagerSpawner().removeVillager();
 		WinnerCountDownController controller = new WinnerCountDownController();
 		controller.setOnCountDownFinished(this);
-		winnerCountdown = new SecondsBasedCountDown(game, 5);
+		winnerCountdown = new SecondsBasedCountDown(getGame(), 5);
 		winnerCountdown.setCountDownListener(controller);
 		winnerCountdown.start();
 	}
 
 	@Override
-	public void leaveGameState(Game game) {
-		super.leaveGameState(game);
-		game.leaveAll();
-		game.getTeams().resetTeamScores();
+	public void leaveGameState() {
+		super.leaveGameState();
+		getGame().leaveAll();
+		getGame().getTeams().resetTeamScores();
 	}
 
 	@Override
-	public boolean canPlayerJoin(Game game, UUID player) {
+	public boolean canPlayerJoin(UUID player) {
 		return false;
 	}
 
@@ -47,7 +47,7 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 
 	@Override
 	public void onCountDownFinished(Game game) {
-		transitionToGameState(game, new WaitingGameState());	
+		transitionToGameState(new WaitingGameState());	
 	}
 
 }

@@ -18,45 +18,44 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	private CountDown lobbyCountDown;
 
 	@Override
-	public void onTick(Game game) {
+	public void onTick() {
 		lobbyCountDown.tick();
 	}
 
 	@Override
-	public void enterGameState(Game game) {
-		super.enterGameState(game);
-		game.getVillagerSpawner().removeVillager();
+	public void enterGameState() {
+		getGame().getVillagerSpawner().removeVillager();
 		int lobbyTimeInSeconds = Context.configuration.getLobbyTime();
 		LobbyCountDownController controller = new LobbyCountDownController();
 		controller.setOnCountDownFinished(this);
-		lobbyCountDown = new SecondsBasedCountDown(game, lobbyTimeInSeconds);
+		lobbyCountDown = new SecondsBasedCountDown(getGame(), lobbyTimeInSeconds);
 		lobbyCountDown.setCountDownListener(controller);
 	}
 
 	@Override
-	public void leaveGameState(Game game) {
-		super.leaveGameState(game);
-		preparePlayersForGame(game);
+	public void leaveGameState() {
+		super.leaveGameState();
+		preparePlayersForGame(getGame());
 	}
 
 	@Override
 	public void onCountDownFinished(Game game) {
-		transitionToGameState(game, new RespawnGameState(new RunningGameState()));
+		transitionToGameState(new RespawnGameState(new RunningGameState()));
 	}
 
 	@Override
-	public void onPlayerJoin(Game game, UUID player) {
+	public void onPlayerJoin(UUID player) {
 		new SaveInventoryController().onSaveInventory(player, true);
 		preparePlayerForLobby(player);
 		teleportPlayerToLobby(player);
-		if (getPlayersToStart(game) <= 0) {
+		if (getPlayersToStart(getGame()) <= 0) {
 			lobbyCountDown.start();
 		}
 	}
 
 	@Override
-	public void onPlayerLeave(Game game, UUID player) {
-		if (shouldStopCountDown(game)) {
+	public void onPlayerLeave(UUID player) {
+		if (shouldStopCountDown(getGame())) {
 			lobbyCountDown.stop();
 		}
 	}
@@ -86,8 +85,8 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 	}
 
 	@Override
-	public boolean canPlayerJoin(Game game, UUID player) {
-		return !game.isMaximumAmountOfPlayersReached();
+	public boolean canPlayerJoin(UUID player) {
+		return !getGame().isMaximumAmountOfPlayersReached();
 	}
 
 	@Override
