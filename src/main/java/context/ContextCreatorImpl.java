@@ -16,7 +16,6 @@ import gateways.impl.PermissionGatewayImpl;
 import gateways.impl.PlayerDataGatewayYaml;
 import gateways.impl.PlayerGatewayImpl;
 import gateways.impl.SignGatewayImpl;
-import gateways.impl.StatisticsGatewayImpl;
 import gateways.impl.TeamSpawnGatewayImpl;
 
 public class ContextCreatorImpl implements ContextCreator {
@@ -33,7 +32,6 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.signGateway = new SignGatewayImpl();
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
 		Context.playerDataGateway = new PlayerDataGatewayYaml();
-		Context.statisticsGateway = new StatisticsGatewayImpl();
 		Context.achievementSystem = createAchievementSystem();
 		Context.gameStatisticGateway = createGameStatisticsGateway(Context.achievementSystem);
 	}

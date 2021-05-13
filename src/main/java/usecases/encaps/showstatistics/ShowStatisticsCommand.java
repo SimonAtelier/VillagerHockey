@@ -17,7 +17,7 @@ public class ShowStatisticsCommand extends AbstractCommand {
 		ShowStatistics useCase = new ShowStatisticsUseCase();
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.setPlayerGateway(Context.playerGateway);
-		useCase.setStatisticsGateway(Context.statisticsGateway);
+		useCase.setGameStaticticGateway(Context.gameStatisticGateway);
 		useCase.execute(createRequest(player), presenter);
 	}
 	

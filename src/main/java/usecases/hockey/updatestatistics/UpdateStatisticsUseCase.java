@@ -1,35 +1,31 @@
 package usecases.hockey.updatestatistics;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.UUID;
 
-import entities.Statistics;
 import entities.Team;
 import entities.Teams;
 import game.Game;
 import gamestats.GameStatistic;
 import gamestats.GameStatisticGateway;
-import gamestats.GameStatsYaml;
 import gamestats.StatisticKeys;
 import gateways.GameGateway;
-import gateways.StatisticsGateway;
 
 public class UpdateStatisticsUseCase implements UpdateStatistics {
 
+	private HashSet<UUID> players;
 	private Game game;
-	private HashMap<UUID, Statistics> statistics;
 	private GameGateway gameGateway;
-	private StatisticsGateway statisticsGateway;
 	private GameStatisticGateway gameStatisticGateway;
 
 	@Override
 	public void execute(UpdateStatisticsRequest request) {
 		String name = request.getGame();
 		this.game = gameGateway.findGameByName(name);
-		this.statistics = new HashMap<UUID, Statistics>();
 
-		loadStatisticsOfPlayers();
+		players = new HashSet<UUID>(game.getUniquePlayerIds());
+
 		incrementGamesPlayedForAllPlayers();
 		updateTotalTimePlayedForAllPlayers();
 
@@ -47,10 +43,6 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		saveStatistics();
 
 		resetPuckHits();
-		GameStatsYaml save = new GameStatsYaml();
-		for (UUID uniquePlayerId : game.getUniquePlayerIds()) {
-			save.save(uniquePlayerId);
-		}
 	}
 
 	private void updateLongestWinningStreak(UUID player) {
@@ -68,7 +60,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 	}
 
 	private void resetPuckHits() {
-		for (UUID uuid : statistics.keySet()) {
+		for (UUID uuid : getPlayers()) {
 			gameStatisticGateway.findByPlayerId(uuid).setValue(StatisticKeys.PUCK_HITS_CURRENT_GAME, 0);
 		}
 	}
@@ -98,21 +90,9 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 
 	private void updateTotalTimePlayedForAllPlayers() {
 		int playingTimeInSeconds = game.getPlayingTimeInSeconds();
-		for (UUID uuid : statistics.keySet()) {
-			Statistics statistics = this.statistics.get(uuid);
-			statistics.setTotalTimePlayedInSeconds(statistics.getTotalTimePlayedInSeconds() + playingTimeInSeconds);
-		}
-	}
-
-	private void loadStatisticsOfPlayers() {
-		Teams teams = game.getTeams();
-		List<Team> teamsList = teams.findAllTeams();
-		for (Team team : teamsList) {
-			List<UUID> players = team.getPlayers();
-			for (UUID player : players) {
-				Statistics statistics = statisticsGateway.findStatistics(player);
-				this.statistics.put(player, statistics);
-			}
+		for (UUID uuid : getPlayers()) {
+			gameStatisticGateway.findByPlayerId(uuid).add(StatisticKeys.TOTAL_TIME_PLAYED_IN_SECONDS,
+					playingTimeInSeconds);
 		}
 	}
 
@@ -120,8 +100,6 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		Teams teams = game.getTeams();
 		Team team = teams.findTeamWithHighestScore();
 		for (UUID player : team.getPlayers()) {
-			Statistics statistics = this.statistics.get(player);
-			statistics.setGamesWon(statistics.getGamesWon() + 1);
 			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.GAMES_WON, 1);
 			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.WINNING_STREAK, 1);
 			updateLongestWinningStreak(player);
@@ -132,8 +110,6 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 		Teams teams = game.getTeams();
 		Team team = teams.findTeamWithLowestScore();
 		for (UUID player : team.getPlayers()) {
-			Statistics statistics = this.statistics.get(player);
-			statistics.setGamesLost(statistics.getGamesLost() + 1);
 			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.GAMES_LOST, 1);
 			updateLastWinningStreak(player);
 			updateLongestWinningStreak(player);
@@ -142,9 +118,7 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 	}
 
 	private void incrementGamesDraw() {
-		for (UUID player : statistics.keySet()) {
-			Statistics statistics = this.statistics.get(player);
-			statistics.setGamesDraw(statistics.getGamesDraw() + 1);
+		for (UUID player : getPlayers()) {
 			gameStatisticGateway.findByPlayerId(player).add(StatisticKeys.GAMES_DRAW, 1);
 			updateLastWinningStreak(player);
 			updateLongestWinningStreak(player);
@@ -153,32 +127,24 @@ public class UpdateStatisticsUseCase implements UpdateStatistics {
 	}
 
 	private void incrementGamesPlayedForAllPlayers() {
-		for (UUID uuid : statistics.keySet()) {
-			Statistics statistics = this.statistics.get(uuid);
-			statistics.setGamesPlayed(statistics.getGamesPlayed() + 1);
+		for (UUID uuid : getPlayers()) {
 			gameStatisticGateway.findByPlayerId(uuid).add(StatisticKeys.GAMES_PLAYED, 1);
 		}
 	}
 
 	private void saveStatistics() {
-		for (UUID uuid : statistics.keySet()) {
-			Statistics statistics = this.statistics.get(uuid);
-			statisticsGateway.saveStatistics(uuid, statistics);
+		for (UUID uuid : getPlayers()) {
+			gameStatisticGateway.saveStatistics(uuid);
 		}
+	}
+
+	private Collection<UUID> getPlayers() {
+		return players;
 	}
 
 	@Override
 	public void setGameGateway(GameGateway gameGateway) {
 		this.gameGateway = gameGateway;
-	}
-
-	@Override
-	public void setStatisticsGateway(StatisticsGateway statisticsGateway) {
-		this.statisticsGateway = statisticsGateway;
-	}
-
-	private GameStatisticGateway getGameStatisticGateway() {
-		return gameStatisticGateway;
 	}
 
 	@Override

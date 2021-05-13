@@ -11,7 +11,6 @@ import gateways.PermissionGateway;
 import gateways.PlayerDataGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
-import gateways.StatisticsGateway;
 import gateways.TeamSpawnsGateway;
 import minigame.view.MessageView;
 import minigame.view.ViewFactory;
@@ -39,8 +38,6 @@ public class Context {
 	public static Configuration configuration;
 	
 	public static PlayerDataGateway playerDataGateway;
-	
-	public static StatisticsGateway statisticsGateway;
 	
 	public static AchievementSystem achievementSystem;
 	
