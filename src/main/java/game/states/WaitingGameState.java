@@ -34,7 +34,6 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void leaveGameState() {
-		super.leaveGameState();
 		preparePlayersForGame(getGame());
 	}
 
