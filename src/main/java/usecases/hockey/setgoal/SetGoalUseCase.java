@@ -3,7 +3,7 @@ package usecases.hockey.setgoal;
 import entities.Location;
 import entities.Teams;
 import game.Game;
-import game.Goal;
+import game.hockey.Goal;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;

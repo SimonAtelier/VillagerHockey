@@ -1,27 +1,27 @@
-package game.states.hockey;
+package game.hockey.states;
 
 import java.util.List;
 import java.util.UUID;
 
 import context.Context;
 import game.Game;
-import game.Goal.GoalResponse;
+import game.hockey.Goal.GoalResponse;
 import game.states.base.AbstractGameState;
 import game.states.base.GameState;
-import usecases.hockey.polo.PoloController;
+import usecases.hockey.boatboogie.BoatBoogieController;
 
-public class PoloState extends AbstractGameState {
+public class BoatBoogieState extends AbstractGameState {
 
 	private GameState gameState;
 	
-	public PoloState(GameState gameState) {
+	public BoatBoogieState(GameState gameState) {
 		this.gameState = gameState;
 	}
 	
 	@Override
 	public void enterGameState() {
 		getGame().setCanLeaveVehicle(false);
-		new PoloController().onPolo(getGame().getName());
+		new BoatBoogieController().onBoatBoogie(getGame().getName());
 	}
 	
 	@Override

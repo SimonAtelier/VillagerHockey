@@ -45,6 +45,7 @@ public abstract class AbstractGame implements Game {
 		gameChangeSupport = new GameChangeSupport(this);
 		gameLoop = new GameLoopImpl();
 		gameLoop.setGame(this);
+		gameCycle = new GameCycleAdapter();
 	}
 
 	protected boolean addPlayer(UUID player) {

@@ -8,7 +8,7 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.lobby.LobbyCountDownController;
-import game.states.hockey.RespawnGameState;
+import game.hockey.states.RespawnGameState;
 import usecases.api.saveinventory.SaveInventoryController;
 import usecases.api.teleportplayertolobby.TeleportPlayerToLobbyController;
 import usecases.encaps.prepareplayerforgame.PreparePlayerForGameController;

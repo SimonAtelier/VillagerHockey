@@ -2,7 +2,7 @@ package usecases.hockey.spawnvillager;
 
 import entities.config.Configuration;
 import game.Game;
-import game.VillagerSpawner;
+import game.hockey.VillagerSpawner;
 import gateways.GameGateway;
 
 public class SpawnVillagerUseCase implements SpawnVillager {

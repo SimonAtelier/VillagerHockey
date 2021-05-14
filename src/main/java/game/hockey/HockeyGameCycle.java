@@ -1,10 +1,10 @@
 package game.hockey;
 
 import game.GameCycle;
-import game.HockeyGame;
-import game.Goal.GoalResponse;
+import game.hockey.Goal.GoalResponse;
+import game.hockey.states.RespawnGameState;
 import game.states.base.RunningGameState;
-import game.states.hockey.RespawnGameState;
+import usecases.encaps.displaywinner.DisplayWinnerController;
 import usecases.hockey.updatestatistics.UpdateStatisticsController;
 
 public class HockeyGameCycle implements GameCycle {
@@ -24,6 +24,7 @@ public class HockeyGameCycle implements GameCycle {
 	public void onEnterAnnounceWinner() {
 		updateStatistics();
 		removeVillager();
+		displayWinner();
 	}
 	
 	@Override
@@ -34,6 +35,10 @@ public class HockeyGameCycle implements GameCycle {
 		removeVillager();
 		hockeyGame.onTeamScored(goalResponse.getTeam(), 1);
 		runningGameState.transitionToGameState(new RespawnGameState(runningGameState));
+	}
+	
+	private void displayWinner() {
+		new DisplayWinnerController().onDisplayWinner(hockeyGame.getName());
 	}
 
 	private void removeVillager() {

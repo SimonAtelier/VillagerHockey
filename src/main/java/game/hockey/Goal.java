@@ -1,9 +1,10 @@
-package game;
+package game.hockey;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Villager;
 
 import entities.Region;
+import game.Game;
 import util.LocationConvert;
 
 public class Goal extends Region {

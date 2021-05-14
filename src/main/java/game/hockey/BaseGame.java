@@ -1,4 +1,4 @@
-package game;
+package game.hockey;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,10 @@ import java.util.UUID;
 import context.Context;
 import entities.Location;
 import entities.Team;
-import game.Goal.GoalResponse;
+import game.AbstractGame;
+import game.Game;
 import game.event.LeaveListener;
-import game.hockey.HockeyGameCycle;
+import game.hockey.Goal.GoalResponse;
 import view.score.HockeyScoreView;
 
 public class BaseGame extends AbstractGame implements LeaveListener, HockeyGame {

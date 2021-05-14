@@ -1,7 +1,7 @@
-package game;
+package game.hockey;
 
 import entities.Location;
-import game.Goal.GoalResponse;
+import game.hockey.Goal.GoalResponse;
 
 public interface HockeyGame {
 

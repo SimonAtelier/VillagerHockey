@@ -11,9 +11,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import context.Context;
 import entities.Team;
 import entities.TeamColor;
-import game.BaseGame;
 import game.Game;
-import game.Goal;
+import game.hockey.BaseGame;
+import game.hockey.Goal;
 import util.LocationConvert;
 
 public class GamePersistanceYaml {

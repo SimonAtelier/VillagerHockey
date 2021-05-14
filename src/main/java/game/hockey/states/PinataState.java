@@ -1,4 +1,4 @@
-package game.states.hockey;
+package game.hockey.states;
 
 import game.states.base.AbstractGameState;
 import game.states.base.GameState;
