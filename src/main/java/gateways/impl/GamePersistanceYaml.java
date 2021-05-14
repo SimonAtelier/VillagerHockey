@@ -12,7 +12,7 @@ import context.Context;
 import entities.Team;
 import entities.TeamColor;
 import game.Game;
-import game.hockey.BaseGame;
+import game.hockey.HockeyGameImpl;
 import game.hockey.Goal;
 import util.LocationConvert;
 
@@ -82,7 +82,7 @@ public class GamePersistanceYaml {
 	}
 
 	public Game loadGame(String name) throws GatewayException {
-		Game game = new BaseGame("");
+		Game game = new HockeyGameImpl("");
 		File file = new File("plugins/VillagerHockey/games/" + name + ".yml");
 
 		try {

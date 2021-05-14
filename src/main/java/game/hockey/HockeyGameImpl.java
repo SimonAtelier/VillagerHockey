@@ -13,14 +13,14 @@ import game.event.LeaveListener;
 import game.hockey.Goal.GoalResponse;
 import view.score.HockeyScoreView;
 
-public class BaseGame extends AbstractGame implements LeaveListener, HockeyGame {
+public class HockeyGameImpl extends AbstractGame implements LeaveListener, HockeyGame {
 
 	private boolean canLeaveVehicle;
 	private boolean goalsEnabled;
 	private VillagerSpawner villagerSpawner;
 	private List<Goal> goals;
 
-	public BaseGame(String name) {
+	public HockeyGameImpl(String name) {
 		super(name);
 		goalsEnabled = true;
 		villagerSpawner = new VillagerSpawner();

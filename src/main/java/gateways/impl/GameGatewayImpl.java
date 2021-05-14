@@ -10,7 +10,7 @@ import achievements.AchievementSystemController;
 import context.Context;
 import entities.config.Configuration;
 import game.Game;
-import game.hockey.BaseGame;
+import game.hockey.HockeyGameImpl;
 import game.hockey.VillagerSpawner;
 import gamestats.GameStatisticsController;
 import gateways.GameGateway;
@@ -78,7 +78,7 @@ public class GameGatewayImpl implements GameGateway {
 
 	@Override
 	public void addGame(String name) {
-		addGame(new BaseGame(name));
+		addGame(new HockeyGameImpl(name));
 	}
 
 	private boolean addGame(Game game) {
