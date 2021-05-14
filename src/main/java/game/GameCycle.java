@@ -1,6 +1,6 @@
 package game;
 
-import game.states.base.RunningGameState;
+import game.states.RunningGameState;
 
 public interface GameCycle {
 	

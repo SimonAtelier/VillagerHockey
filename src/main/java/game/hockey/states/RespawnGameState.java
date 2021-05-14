@@ -5,8 +5,8 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.respawn.RespawnCountDownController;
-import game.states.base.AbstractGameState;
-import game.states.base.GameState;
+import game.states.AbstractGameState;
+import game.states.GameState;
 import usecases.encaps.teleportplayerstoteamspawns.TeleportPlayersToTeamSpawnsController;
 import usecases.hockey.spawnvillager.SpawnVillagerController;
 

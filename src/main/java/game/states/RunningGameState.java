@@ -1,4 +1,4 @@
-package game.states.base;
+package game.states;
 
 import java.util.UUID;
 

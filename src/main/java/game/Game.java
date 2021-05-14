@@ -10,7 +10,7 @@ import game.event.LeaveListener;
 import game.event.TeamScoreListener;
 import game.event.TeamSelectListener;
 import game.hockey.HockeyGame;
-import game.states.base.GameStateContext;
+import game.states.GameStateContext;
 
 public interface Game extends GameStateContext, HockeyGame {
 	

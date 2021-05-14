@@ -6,8 +6,8 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.hockey.Goal.GoalResponse;
-import game.states.base.AbstractGameState;
-import game.states.base.GameState;
+import game.states.AbstractGameState;
+import game.states.GameState;
 import usecases.hockey.polo.PoloController;
 
 public class PoloState extends AbstractGameState {

@@ -1,7 +1,7 @@
 package game.hockey.states;
 
-import game.states.base.AbstractGameState;
-import game.states.base.GameState;
+import game.states.AbstractGameState;
+import game.states.GameState;
 import usecases.hockey.pinata.PinataController;
 
 public class PinataState extends AbstractGameState {

@@ -3,7 +3,7 @@ package game.hockey;
 import game.GameCycle;
 import game.hockey.Goal.GoalResponse;
 import game.hockey.states.RespawnGameState;
-import game.states.base.RunningGameState;
+import game.states.RunningGameState;
 import usecases.encaps.displaywinner.DisplayWinnerController;
 import usecases.hockey.updatestatistics.UpdateStatisticsController;
 

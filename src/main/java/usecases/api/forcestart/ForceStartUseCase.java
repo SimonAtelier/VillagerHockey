@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import game.Game;
 import game.hockey.states.RespawnGameState;
-import game.states.base.RunningGameState;
-import game.states.base.WaitingGameState;
+import game.states.RunningGameState;
+import game.states.WaitingGameState;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
