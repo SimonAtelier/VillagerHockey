@@ -1,10 +1,12 @@
-package game.states;
+package game.states.hockey;
 
 import game.Game;
 import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.respawn.RespawnCountDownController;
+import game.states.base.AbstractGameState;
+import game.states.base.GameState;
 import usecases.encaps.teleportplayerstoteamspawns.TeleportPlayersToTeamSpawnsController;
 import usecases.hockey.spawnvillager.SpawnVillagerController;
 

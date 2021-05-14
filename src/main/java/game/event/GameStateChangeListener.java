@@ -1,7 +1,7 @@
 package game.event;
 
 import game.Game;
-import game.states.GameState;
+import game.states.base.GameState;
 
 public interface GameStateChangeListener {
 

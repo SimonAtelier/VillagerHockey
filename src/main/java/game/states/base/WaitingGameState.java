@@ -1,4 +1,4 @@
-package game.states;
+package game.states.base;
 
 import java.util.UUID;
 
@@ -8,6 +8,7 @@ import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
 import game.countdown.lobby.LobbyCountDownController;
+import game.states.hockey.RespawnGameState;
 import usecases.api.saveinventory.SaveInventoryController;
 import usecases.api.teleportplayertolobby.TeleportPlayerToLobbyController;
 import usecases.encaps.prepareplayerforgame.PreparePlayerForGameController;
@@ -24,7 +25,7 @@ public class WaitingGameState extends AbstractGameState implements OnCountDownFi
 
 	@Override
 	public void enterGameState() {
-		getGame().getVillagerSpawner().removeVillager();
+		getGame().getGameCycle().onEnterWaitingGameState(); 
 		initializeCountDown();
 	}
 	

@@ -6,7 +6,6 @@ import game.countdown.CountDown;
 import game.countdown.CountDownListener;
 import game.countdown.OnCountDownFinished;
 import usecases.encaps.displaywinner.DisplayWinnerController;
-import usecases.hockey.updatestatistics.UpdateStatisticsController;
 
 public class WinnerCountDownController implements CountDownListener {
 
@@ -14,12 +13,7 @@ public class WinnerCountDownController implements CountDownListener {
 	
 	@Override
 	public void onStart(String game, int timeLeftInSeconds) {
-		updateStatistics(game);
 		new DisplayWinnerController().onDisplayWinner(game);
-	}
-	
-	private void updateStatistics(String game) {
-		new UpdateStatisticsController().onUpdate(game);
 	}
 
 	@Override

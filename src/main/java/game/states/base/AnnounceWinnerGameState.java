@@ -1,4 +1,4 @@
-package game.states;
+package game.states.base;
 
 import java.util.UUID;
 
@@ -19,7 +19,7 @@ public class AnnounceWinnerGameState extends AbstractGameState implements OnCoun
 	
 	@Override
 	public void enterGameState() {
-		getGame().getVillagerSpawner().removeVillager();
+		getGame().getGameCycle().onEnterAnnounceWinner();
 		initializeCountDown();
 	}
 	

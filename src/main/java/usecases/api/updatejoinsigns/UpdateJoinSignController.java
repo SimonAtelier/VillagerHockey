@@ -7,7 +7,7 @@ import game.Game;
 import game.event.GameStateChangeListener;
 import game.event.JoinListener;
 import game.event.LeaveListener;
-import game.states.GameState;
+import game.states.base.GameState;
 
 public class UpdateJoinSignController implements JoinListener, LeaveListener, GameStateChangeListener {
 

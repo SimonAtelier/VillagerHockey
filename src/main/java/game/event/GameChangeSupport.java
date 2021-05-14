@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import game.Game;
-import game.states.GameState;
+import game.states.base.GameState;
 
 public class GameChangeSupport {
 

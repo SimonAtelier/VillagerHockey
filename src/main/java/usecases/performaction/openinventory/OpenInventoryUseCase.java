@@ -3,7 +3,7 @@ package usecases.performaction.openinventory;
 import java.util.UUID;
 
 import game.Game;
-import game.states.WaitingGameState;
+import game.states.base.WaitingGameState;
 import gateways.GameGateway;
 
 public class OpenInventoryUseCase implements OpenInventory {

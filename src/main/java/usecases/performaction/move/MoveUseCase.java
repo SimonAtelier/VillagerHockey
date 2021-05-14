@@ -2,7 +2,7 @@ package usecases.performaction.move;
 
 import java.util.UUID;
 
-import game.states.RespawnGameState;
+import game.states.hockey.RespawnGameState;
 import gateways.GameGateway;
 
 public class MoveUseCase implements Move {

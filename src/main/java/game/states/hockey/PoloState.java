@@ -1,4 +1,4 @@
-package game.states;
+package game.states.hockey;
 
 import java.util.List;
 import java.util.UUID;
@@ -6,20 +6,22 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.Goal.GoalResponse;
-import usecases.hockey.boatboogie.BoatBoogieController;
+import game.states.base.AbstractGameState;
+import game.states.base.GameState;
+import usecases.hockey.polo.PoloController;
 
-public class BoatBoogieState extends AbstractGameState {
+public class PoloState extends AbstractGameState {
 
 	private GameState gameState;
 	
-	public BoatBoogieState(GameState gameState) {
+	public PoloState(GameState gameState) {
 		this.gameState = gameState;
 	}
 	
 	@Override
 	public void enterGameState() {
 		getGame().setCanLeaveVehicle(false);
-		new BoatBoogieController().onBoatBoogie(getGame().getName());
+		new PoloController().onPolo(getGame().getName());
 	}
 	
 	@Override

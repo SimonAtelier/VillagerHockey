@@ -1,4 +1,4 @@
-package game.states;
+package game.states.base;
 
 import game.event.GameStateChangeListener;
 

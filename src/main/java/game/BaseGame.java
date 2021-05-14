@@ -9,9 +9,10 @@ import entities.Location;
 import entities.Team;
 import game.Goal.GoalResponse;
 import game.event.LeaveListener;
+import game.hockey.HockeyGameCycle;
 import view.score.HockeyScoreView;
 
-public class BaseGame extends AbstractGame implements LeaveListener {
+public class BaseGame extends AbstractGame implements LeaveListener, HockeyGame {
 
 	private boolean canLeaveVehicle;
 	private boolean goalsEnabled;
@@ -24,6 +25,7 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 		villagerSpawner = new VillagerSpawner();
 		goals = new ArrayList<Goal>();
 		addLeaveListener(this);
+		setGameCycle(new HockeyGameCycle(this));
 	}
 	
 	@Override

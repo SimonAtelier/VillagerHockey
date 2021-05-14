@@ -13,9 +13,9 @@ import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
 import game.event.TeamSelectListener;
-import game.states.GameState;
-import game.states.StoppedGameState;
-import game.states.WaitingGameState;
+import game.states.base.GameState;
+import game.states.base.StoppedGameState;
+import game.states.base.WaitingGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.api.loadinventory.LoadInventoryController;
@@ -32,6 +32,7 @@ public abstract class AbstractGame implements Game {
 	private GameLoop gameLoop;
 	private Location lobby;
 	private Teams teams;
+	private GameCycle gameCycle;
 	protected List<UUID> players;
 	protected GameChangeSupport gameChangeSupport;
 
@@ -289,6 +290,16 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public Teams getTeams() {
 		return teams;
+	}
+
+	@Override
+	public GameCycle getGameCycle() {
+		return gameCycle;
+	}
+
+	@Override
+	public void setGameCycle(GameCycle gameCycle) {
+		this.gameCycle = gameCycle;
 	}
 
 }

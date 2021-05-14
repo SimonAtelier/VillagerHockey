@@ -9,7 +9,7 @@ import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
 import game.event.TeamSelectListener;
-import game.states.GameStateContext;
+import game.states.base.GameStateContext;
 
 public interface Game extends GameStateContext, HockeyGame {
 	
@@ -72,5 +72,9 @@ public interface Game extends GameStateContext, HockeyGame {
 	Teams getTeams();
 		
 	void selectLowestTeam(UUID player);
+	
+	GameCycle getGameCycle();
+	
+	void setGameCycle(GameCycle gameCycle);
 	
 }

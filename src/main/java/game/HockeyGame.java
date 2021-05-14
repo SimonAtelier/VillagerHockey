@@ -25,4 +25,6 @@ public interface HockeyGame {
 	
 	VillagerSpawner getVillagerSpawner();
 	
+	String getName();
+	
 }

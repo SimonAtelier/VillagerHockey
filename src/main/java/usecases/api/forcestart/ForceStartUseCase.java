@@ -3,9 +3,9 @@ package usecases.api.forcestart;
 import java.util.UUID;
 
 import game.Game;
-import game.states.RespawnGameState;
-import game.states.RunningGameState;
-import game.states.WaitingGameState;
+import game.states.base.RunningGameState;
+import game.states.base.WaitingGameState;
+import game.states.hockey.RespawnGameState;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
