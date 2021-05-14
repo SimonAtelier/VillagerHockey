@@ -8,12 +8,7 @@ public class StoppedGameState extends AbstractGameState {
 	public boolean canPlayerJoin(UUID player) {
 		return false;
 	}
-
-	@Override
-	public String getName() {
-		return "Stopped";
-	}
-
+	
 	@Override
 	public void enterGameState() {
 		// Do nothing
@@ -22,6 +17,11 @@ public class StoppedGameState extends AbstractGameState {
 	@Override
 	public void leaveGameState() {
 		// Do nothing
+	}
+	
+	@Override
+	public String getName() {
+		return "Stopped";
 	}
 
 }
