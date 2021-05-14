@@ -303,4 +303,15 @@ public abstract class AbstractGame implements Game {
 		this.gameCycle = gameCycle;
 	}
 
+	@Override
+	public void onLoad() {
+		getGameCycle().onLoad();
+	}
+
+	@Override
+	public void onUnload() {
+		getGameCycle().onUnload();
+		leaveAll();
+	}
+
 }

@@ -1,5 +1,7 @@
 package game.hockey;
 
+import context.Context;
+import entities.config.Configuration;
 import game.GameCycle;
 import game.hockey.Goal.GoalResponse;
 import game.hockey.states.RespawnGameState;
@@ -16,15 +18,34 @@ public class HockeyGameCycle implements GameCycle {
 	}
 	
 	@Override
+	public void onLoad() {
+		setupSpawner();
+	}
+	
+	@Override
+	public void onUnload() {
+		removeVillager();
+	}
+
+	@Override
 	public void onEnterWaitingGameState() {
 		removeVillager();		
 	}
 
 	@Override
 	public void onEnterAnnounceWinner() {
-		updateStatistics();
 		removeVillager();
+		updateStatistics();
 		displayWinner();
+	}
+	
+	private void setupSpawner() {
+		Configuration configuration = Context.configuration;
+		VillagerSpawner villagerSpawner = hockeyGame.getVillagerSpawner();
+		villagerSpawner.setAIEnabled(configuration.isVillagerAIEnabled());
+		villagerSpawner.setVillagerName(configuration.getVillagerName());
+		villagerSpawner.setRandomVillagerNamesEnabled(configuration.isUseRandomVillagerNamesEnabled());
+		villagerSpawner.setRandomNames(configuration.getRandomVillagerNames());
 	}
 	
 	@Override

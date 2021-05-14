@@ -36,7 +36,7 @@ public class GameGatewayImpl implements GameGateway {
 		for (File f : files) {
 			String name = f.getName().replace(".yml", "");
 			Game game = repository.loadGame(name);
-			setupFromPluginConfiguration(game, Context.configuration);
+			game.onLoad();
 			addGame(game);
 			game.start();
 		}
@@ -45,19 +45,8 @@ public class GameGatewayImpl implements GameGateway {
 	@Override
 	public void unloadGames() {
 		for (Game game : findAllGames()) {
-			game.getVillagerSpawner().removeVillager();
-			for (UUID uniquePlayerId : game.getUniquePlayerIds()) {
-				game.leave(uniquePlayerId);
-			}
+			game.onUnload();
 		}
-	}
-
-	public void setupFromPluginConfiguration(Game game, Configuration configuration) {
-		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
-		villagerSpawner.setAIEnabled(configuration.isVillagerAIEnabled());
-		villagerSpawner.setVillagerName(configuration.getVillagerName());
-		villagerSpawner.setRandomVillagerNamesEnabled(configuration.isUseRandomVillagerNamesEnabled());
-		villagerSpawner.setRandomNames(configuration.getRandomVillagerNames());
 	}
 
 	@Override

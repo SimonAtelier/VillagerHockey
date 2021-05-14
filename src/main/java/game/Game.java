@@ -78,4 +78,8 @@ public interface Game extends GameStateContext, HockeyGame {
 	
 	void setGameCycle(GameCycle gameCycle);
 	
+	void onLoad();
+	
+	void onUnload();
+	
 }

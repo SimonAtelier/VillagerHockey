@@ -21,5 +21,17 @@ public class GameCycleAdapter implements GameCycle {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void onLoad() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onUnload() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
