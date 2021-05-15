@@ -8,7 +8,13 @@ import java.io.InputStream;
 public class AchievementProvider {
 	
 	private AchievementSystem achievementSystem;
-	private String pluginFolderPath = "plugins/VillagerHockey/achievements.json";
+	private String pluginFolderPath;
+	private String resourcePath;
+	
+	public AchievementProvider(String pluginFolderPath, String resourcePath) {
+		this.pluginFolderPath = pluginFolderPath;
+		this.resourcePath = resourcePath;
+	}
 	
 	public void registerAchievements(AchievementSystem achievementSystem) {
 		setAchievementSystem(achievementSystem);
@@ -31,15 +37,17 @@ public class AchievementProvider {
 		try {
 			createAchievementsFromResource();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	private void createAchievementsFromResource() throws IOException {
-		String resourcePath = "/achievements.json";
 		File file = new File(pluginFolderPath);
-		file.createNewFile();
+		
+		if(!file.exists()) {
+			file.createNewFile();
+		}
+		
 		InputStream is = null;
 		FileOutputStream os = null;
 		try {

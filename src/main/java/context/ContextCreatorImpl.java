@@ -44,7 +44,7 @@ public class ContextCreatorImpl implements ContextCreator {
 	
 	private AchievementSystem createAchievementSystem() {
 		AchievementSystem achievementSystem = new AchievementSystemImpl();
-		achievementSystem.applyProvider(new AchievementProvider());
+		achievementSystem.applyProvider(new AchievementProvider("plugins/VillagerHockey/achievements.json", "/achievements.json"));
 		return achievementSystem;
 	}
 	
