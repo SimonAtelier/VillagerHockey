@@ -101,7 +101,6 @@ public abstract class AbstractGame implements Game {
 
 		if (addPlayer(player)) {
 			getGameState().onPlayerJoin(player);
-			getGameCycle().onPlayerLeave(player);
 			gameChangeSupport.firePlayerJoin(player);
 		}
 	}
@@ -110,6 +109,7 @@ public abstract class AbstractGame implements Game {
 	public void leave(UUID player) {
 		removePlayer(player);
 		getGameState().onPlayerLeave(player);
+		getGameCycle().onPlayerLeave(player);
 		gameChangeSupport.firePlayerLeave(player);
 		handleLeave(player);
 		if (getPlayersCount() == 0) {
