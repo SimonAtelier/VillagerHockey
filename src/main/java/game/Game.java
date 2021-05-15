@@ -59,7 +59,7 @@ public interface Game extends GameStateContext {
 	void setMinimumPlayersToStart(int minimumPlayersToStart);
 	
 	int getMaximumAmountOfPlayers();
-
+	
 	Location getLobby();
 
 	void setLobby(Location lobby);

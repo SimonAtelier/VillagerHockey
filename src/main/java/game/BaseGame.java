@@ -26,13 +26,13 @@ public class BaseGame implements Game {
 
 	private final Object PLAYERS_LOCK = new Object();
 
-	private boolean started;
 	private int minimumPlayersToStart;
+	private Location lobby;	
+	private boolean started;
 	private int playingTimeInSeconds;
 	private String name;
 	private GameState gameState;
 	private GameLoop gameLoop;
-	private Location lobby;
 	private Teams teams;
 	private GameCycle gameCycle;
 	protected List<UUID> players;
