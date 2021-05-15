@@ -1,4 +1,6 @@
-package game.loop;
+package game;
+
+import game.loop.GameLoop;
 
 public interface GameLoopFactory {
 
