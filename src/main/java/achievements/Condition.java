@@ -16,24 +16,12 @@ public class Condition {
 		return activationValue;
 	}
 
-	public void setActivationValue(int activationValue) {
-		this.activationValue = activationValue;
-	}
-
 	public String getPropertyKey() {
 		return propertyKey;
 	}
-
-	public void setPropertyKey(String propertyKey) {
-		this.propertyKey = propertyKey;
-	}
-
+	
 	public ActivationRule getActivationRule() {
 		return activationRule;
-	}
-
-	public void setActivationRule(ActivationRule activationRule) {
-		this.activationRule = activationRule;
 	}
 	
 	public boolean isActive(int value) {
