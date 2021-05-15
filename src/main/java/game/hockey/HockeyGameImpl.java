@@ -1,8 +1,8 @@
 package game.hockey;
 
-import game.AbstractGame;
+import game.BaseGame;
 
-public class HockeyGameImpl extends AbstractGame {
+public class HockeyGameImpl extends BaseGame {
 
 	public HockeyGameImpl(String name) {
 		super(name);

@@ -20,7 +20,7 @@ import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.api.loadinventory.LoadInventoryController;
 
-public abstract class AbstractGame implements Game {
+public class BaseGame implements Game {
 
 	private final Object PLAYERS_LOCK = new Object();
 
@@ -36,7 +36,7 @@ public abstract class AbstractGame implements Game {
 	protected List<UUID> players;
 	private GameChangeSupport gameChangeSupport;
 
-	public AbstractGame(String name) {
+	public BaseGame(String name) {
 		this.name = name;
 		gameState = new StoppedGameState();
 		gameState.setGame(this);
