@@ -14,7 +14,7 @@ public class AchievementProvider {
 		setAchievementSystem(achievementSystem);
 		createOrUpdateAchievements();
 		try {
-			File file = new File("plugins/VillagerHockey/achievements.json");
+			File file = new File(pluginFolderPath);
 			CustomAchievements achievementConfig = new CustomAchievements(file);
 			for (Achievement achievement : achievementConfig.getAchievements()) {
 				registerAchievement(achievement);
@@ -25,18 +25,18 @@ public class AchievementProvider {
 	}
 	
 	private void createOrUpdateAchievements() {
-		File file = new File("plugins/VillagerHockey/achievements.json");
+		File file = new File(pluginFolderPath);
 		if (file.exists())
 			return;
 		try {
-			createAchievemnetsFromResource();
+			createAchievementsFromResource();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	private void createAchievemnetsFromResource() throws IOException {
+	private void createAchievementsFromResource() throws IOException {
 		String resourcePath = "/achievements.json";
 		File file = new File(pluginFolderPath);
 		file.createNewFile();
