@@ -5,13 +5,14 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Teams;
+import game.event.GameChangeSupport;
 import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
 import game.event.TeamSelectListener;
 import game.states.GameStateContext;
 
-public interface Game extends GameStateContext, HockeyGame {
+public interface Game extends GameStateContext {
 	
 	void tick();
 	
@@ -58,7 +59,7 @@ public interface Game extends GameStateContext, HockeyGame {
 	void setMinimumPlayersToStart(int minimumPlayersToStart);
 	
 	int getMaximumAmountOfPlayers();
-
+	
 	Location getLobby();
 
 	void setLobby(Location lobby);
@@ -72,5 +73,15 @@ public interface Game extends GameStateContext, HockeyGame {
 	Teams getTeams();
 		
 	void selectLowestTeam(UUID player);
+	
+	GameCycle getGameCycle();
+	
+	void setGameCycle(GameCycle gameCycle);
+	
+	void onLoad();
+	
+	void onUnload();
+	
+	GameChangeSupport getChangeSupport();
 	
 }

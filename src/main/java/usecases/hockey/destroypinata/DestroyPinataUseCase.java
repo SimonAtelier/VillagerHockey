@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import game.Game;
+import game.hockey.HockeyGameCycle;
 import gamestats.GameStatistic;
 import gamestats.GameStatisticGateway;
 import gamestats.StatisticKeys;
@@ -14,6 +15,7 @@ public class DestroyPinataUseCase implements DestroyPinata {
 
 	private int points = 2;
 	private Game game;
+	private HockeyGameCycle hockey;
 	private DestroyPinataRequest request;
 	private DestroyPinataResponse response;
 	private GameGateway gameGateway;
@@ -28,23 +30,26 @@ public class DestroyPinataUseCase implements DestroyPinata {
 		if (!findGame())
 			return;
 
+		hockey = (HockeyGameCycle) game.getGameCycle();
+
 		removeVillager();
 		updateStatistic();
 		score();
 		sendDestroyedPinataResponse();
 	}
-	
+
 	private void updateStatistic() {
 		GameStatistic gameStatistic = getGameStatisticGateway().findByPlayerId(getRequest().getDestroyer());
 		gameStatistic.add(StatisticKeys.PINATAS_SMASHED, 1);
 	}
 
 	private void removeVillager() {
-		game.getVillagerSpawner().removeVillager();
+		hockey.removeVillager();
 	}
 
 	private void score() {
-		game.onTeamScored(game.getTeams().findTeamOfPlayer(getRequest().getDestroyer()).getName(), points);
+		HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+		hockey.onTeamScored(game.getTeams().findTeamOfPlayer(getRequest().getDestroyer()).getName(), points);
 	}
 
 	private boolean findGame() {

@@ -14,4 +14,6 @@ public interface GameStatisticGateway {
 	
 	void createStatisticsForPlayer(UUID uniquePlayerId);
 	
+	void saveStatistics(UUID uniquePlayerId);
+	
 }

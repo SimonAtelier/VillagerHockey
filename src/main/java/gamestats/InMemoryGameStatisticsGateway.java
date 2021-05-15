@@ -45,6 +45,12 @@ public class InMemoryGameStatisticsGateway implements GameStatisticGateway, Prop
 		gameStatistic.addPropertyChangeListener(this);
 		gameStatistics.put(uniquePlayerId, gameStatistic);
 	}
+	
+	@Override
+	public void saveStatistics(UUID uniquePlayerId) {
+		GameStatsYaml statistics = new GameStatsYaml();
+		statistics.save(uniquePlayerId);
+	}
 
 	@Override
 	public void onPropertyChanged(StatsProvider statsProvider) {

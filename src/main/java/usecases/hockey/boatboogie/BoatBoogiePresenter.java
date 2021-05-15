@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.TreeSpecies;
-import org.bukkit.World;
 import org.bukkit.entity.Boat;
 import org.bukkit.entity.EntityType;
 
@@ -24,13 +23,12 @@ public class BoatBoogiePresenter implements BoatBoogieResponse {
 	public void onPresentBoats(BoatBoogieResponseModel responseModel) {
 		setResponseModel(responseModel);
 		
-		World world = Bukkit.getWorld(responseModel.getWorldName());
 		List<UUID> players = responseModel.getPlayers();
 		List<Location> locations = responseModel.getLocations();
 		
 		for (int i = 0; i < players.size(); i++) {
 			org.bukkit.Location l = LocationConvert.toBukkitLocation(locations.get(i));
-			Boat boat = (Boat) world.spawnEntity(l, EntityType.BOAT);
+			Boat boat = (Boat) l.getWorld().spawnEntity(l, EntityType.BOAT);
 			boat.setWoodType(TreeSpecies.DARK_OAK);
 			boat.addPassenger(Bukkit.getPlayer(players.get(i)));
 		}

@@ -3,7 +3,6 @@ package game.states;
 import java.util.UUID;
 
 import game.Game;
-import game.Goal.GoalResponse;
 import game.countdown.CountDown;
 import game.countdown.OnCountDownFinished;
 import game.countdown.SecondsBasedCountDown;
@@ -24,12 +23,7 @@ public class RunningGameState extends AbstractGameState implements OnCountDownFi
 	@Override
 	public void onTick() {
 		gameCountDown.tick();
-		GoalResponse goalResponse = getGame().checkGoal();
-		if (goalResponse == null)
-			return;
-		getGame().getVillagerSpawner().removeVillager();
-		getGame().onTeamScored(goalResponse.getTeam(), 1);
-		getGame().getGameState().transitionToGameState(new RespawnGameState(this));
+		getGame().getGameCycle().onTickRunning(this);
 	}
 
 	@Override

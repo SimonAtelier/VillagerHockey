@@ -8,7 +8,6 @@ import entities.TeamColor;
 
 public class PoloResponseModel {
 
-	private String worldName;
 	private List<UUID> players;
 	private List<Location> locations;
 	private List<TeamColor> teamColors;
@@ -19,14 +18,6 @@ public class PoloResponseModel {
 
 	public void setPlayers(List<UUID> players) {
 		this.players = players;
-	}
-
-	public String getWorldName() {
-		return worldName;
-	}
-
-	public void setWorldName(String gameName) {
-		this.worldName = gameName;
 	}
 
 	public List<Location> getLocations() {

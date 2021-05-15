@@ -2,6 +2,7 @@ package context;
 
 import achievements.AchievementSystem;
 import entities.config.Configuration;
+import game.GameLoopFactory;
 import gamestats.GameStatisticGateway;
 import gateways.CommandGateway;
 import gateways.GameGateway;
@@ -11,7 +12,6 @@ import gateways.PermissionGateway;
 import gateways.PlayerDataGateway;
 import gateways.PlayerGateway;
 import gateways.SignGateway;
-import gateways.StatisticsGateway;
 import gateways.TeamSpawnsGateway;
 import minigame.view.MessageView;
 import minigame.view.ViewFactory;
@@ -40,12 +40,12 @@ public class Context {
 	
 	public static PlayerDataGateway playerDataGateway;
 	
-	public static StatisticsGateway statisticsGateway;
-	
 	public static AchievementSystem achievementSystem;
 	
 	public static GameStatisticGateway gameStatisticGateway;
 	
 	public static ViewFactory viewFactory;
+	
+	public static GameLoopFactory gameLoopFactory;
 	
 }

@@ -7,52 +7,131 @@ import java.util.UUID;
 import context.Context;
 import entities.Location;
 import entities.Team;
-import game.Goal.GoalResponse;
+import entities.Teams;
+import game.event.GameChangeSupport;
+import game.event.GameStateChangeListener;
+import game.event.JoinListener;
 import game.event.LeaveListener;
+import game.event.TeamScoreListener;
+import game.event.TeamSelectListener;
+import game.loop.GameLoop;
+import game.states.GameState;
+import game.states.StoppedGameState;
+import game.states.WaitingGameState;
 import gateways.PlayerDataGateway;
 import gateways.impl.PlayerDataGatewayYaml;
 import usecases.api.loadinventory.LoadInventoryController;
-import view.score.HockeyScoreView;
 
-public class BaseGame extends AbstractGame implements LeaveListener {
+public class BaseGame implements Game {
 
-	private boolean canLeaveVehicle;
-	private boolean goalsEnabled;
-	private VillagerSpawner villagerSpawner;
-	private List<Goal> goals;
+	private final Object PLAYERS_LOCK = new Object();
+
+	private int minimumPlayersToStart;
+	private Location lobby;	
+	private boolean started;
+	private int playingTimeInSeconds;
+	private String name;
+	private GameState gameState;
+	private GameLoop gameLoop;
+	private Teams teams;
+	private GameCycle gameCycle;
+	protected List<UUID> players;
+	private GameChangeSupport gameChangeSupport;
 
 	public BaseGame(String name) {
-		super(name);
-		goalsEnabled = true;
-		villagerSpawner = new VillagerSpawner();
-		goals = new ArrayList<Goal>();
-		addLeaveListener(this);
+		this.name = name;
+		gameState = new StoppedGameState();
+		gameState.setGame(this);
+		teams = new Teams();
+		players = new ArrayList<UUID>();
+		gameChangeSupport = new GameChangeSupport(this);
+		this.gameLoop = Context.gameLoopFactory.createGameLoop();
+		gameLoop.setGame(this);
+		gameCycle = new GameCycleAdapter();
 	}
-	
-	@Override
-	public GoalResponse checkGoal() {
-		for (Team team : getTeams().findAllTeams()) {
-			Goal goal = findGoalOfTeam(team.getName());
-			GoalResponse response = goal.check();
-			if (response.isSored())
-				return response;
+
+	protected boolean addPlayer(UUID player) {
+		synchronized (PLAYERS_LOCK) {
+			if (player == null)
+				return false;
+			if (players.contains(player))
+				return false;
+			players.add(player);
+			return true;
 		}
-		return null;
+	}
+
+	protected boolean removePlayer(UUID player) {
+		synchronized (PLAYERS_LOCK) {
+			if (player == null)
+				return false;
+			if (!players.contains(player))
+				return false;
+			players.remove(player);
+			return true;
+		}
 	}
 	
 	@Override
-	public void onPlayerLeave(Game game, UUID player) {
-		removeVehicle(player);
+	public void tick() {
+		gameState.onTick();
+	}
+
+	@Override
+	public void start() {
+		if (started) {
+			return;
+		}
+		started = true;
+		gameLoop.start();
+		getGameState().transitionToGameState(new WaitingGameState());
+	}
+
+	@Override
+	public void stop() {
+		if (!started)
+			return;
+		started = false;
+		gameLoop.stop();
+		getGameState().transitionToGameState(new StoppedGameState());
+	}
+
+	@Override
+	public void join(UUID player) {
+		if (!canPlayerJoin(player))
+			return;
+
+		if (addPlayer(player)) {
+			getGameState().onPlayerJoin(player);
+			gameChangeSupport.firePlayerJoin(player);
+		}
+	}
+
+	@Override
+	public void leave(UUID player) {
+		removePlayer(player);
+		getGameState().onPlayerLeave(player);
+		getGameCycle().onPlayerLeave(player);
+		gameChangeSupport.firePlayerLeave(player);
+		handleLeave(player);
+		if (getPlayersCount() == 0) {
+			getTeams().resetTeamScores();
+			getGameState().transitionToGameState(new WaitingGameState());
+		}
+	}
+	
+	@Override
+	public void selectLowestTeam(UUID player) {
+		Team team = getTeams().findLowestTeam();
+		gameChangeSupport.fireTeamSelected(player, team.getName());
+	}
+	
+	private void handleLeave(UUID player) {
 		removePlayerFromTeam(player);
 		restoreInventory(player);
 		restorePlayerData(player);
-		new HockeyScoreView().hide(player);
 	}
 	
-	private void removeVehicle(UUID player) {
-		Context.playerGateway.removeVehicle(player);
-	}
-
 	private void removePlayerFromTeam(UUID player) {
 		getTeams().removePlayer(player);
 	}
@@ -67,64 +146,180 @@ public class BaseGame extends AbstractGame implements LeaveListener {
 	}
 
 	@Override
-	public void selectLowestTeam(UUID player) {
-		Team team = getTeams().findLowestTeam();
-		gameChangeSupport.fireTeamSelected(player, team.getName());
+	public void leaveAll() {
+		for (UUID player : getUniquePlayerIds()) {
+			leave(player);
+		}
 	}
 
 	@Override
-	public void onTeamScored(String teamName, int score) {
-		Team team = getTeams().findTeamByName(teamName);
-		team.setScore(team.getScore() + score);
-		gameChangeSupport.fireTeamScored(teamName);
+	public void addGameStateChangeListener(GameStateChangeListener listener) {
+		gameChangeSupport.addGameStateChangeListener(listener);
 	}
 
 	@Override
-	public void addGoal(Goal goal) {
-		if (goal == null)
-			return;
-		goals.add(goal);
+	public void removeGameStateChangeListener(GameStateChangeListener listener) {
+		gameChangeSupport.removeGameStateChangeListener(listener);
 	}
 
 	@Override
-	public Goal findGoalOfTeam(String team) {
-		for (int i = 0; i < goals.size(); i++) {
-			Goal goal = goals.get(i);
-			if (goal.getTeam().equals(team)) {
-				return goal;
+	public void addJoinListener(JoinListener listener) {
+		gameChangeSupport.addJoinListener(listener);
+	}
+
+	@Override
+	public void removeJoinListener(JoinListener listener) {
+		gameChangeSupport.removeJoinListener(listener);
+	}
+
+	@Override
+	public void addLeaveListener(LeaveListener listener) {
+		gameChangeSupport.addLeaveListener(listener);
+	}
+
+	@Override
+	public void removeLeaveListener(LeaveListener listener) {
+		gameChangeSupport.removeLeaveListener(listener);
+	}
+
+	@Override
+	public void addTeamSelectListener(TeamSelectListener listener) {
+		gameChangeSupport.addTeamSelectListener(listener);
+	}
+
+	@Override
+	public void removeTeamSelectListener(TeamSelectListener listener) {
+		gameChangeSupport.removeTeamSelectListener(listener);
+	}
+
+	@Override
+	public void addTeamScoreListener(TeamScoreListener listener) {
+		gameChangeSupport.addTeamScoreListener(listener);
+	}
+
+	@Override
+	public void removeTeamScoreListener(TeamScoreListener listener) {
+		gameChangeSupport.removeTeamScoreListener(listener);
+	}
+
+	@Override
+	public boolean isStarted() {
+		return started;
+	}
+
+	@Override
+	public int getMinimumPlayersToStart() {
+		return minimumPlayersToStart;
+	}
+
+	@Override
+	public void setMinimumPlayersToStart(int minimumPlayersToStart) {
+		this.minimumPlayersToStart = minimumPlayersToStart;
+	}
+
+	@Override
+	public int getMaximumAmountOfPlayers() {
+		return getTeams().getMaximumAmountOfPlayers();
+	}
+
+	@Override
+	public int getPlayingTimeInSeconds() {
+		return playingTimeInSeconds;
+	}
+
+	@Override
+	public void setPlayingTimeInSeconds(int playingTimeInSeconds) {
+		this.playingTimeInSeconds = playingTimeInSeconds;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public Location getLobby() {
+		return lobby;
+	}
+
+	@Override
+	public void setLobby(Location lobby) {
+		this.lobby = lobby;
+	}
+
+	@Override
+	public int getPlayersCount() {
+		return players.size();
+	}
+
+	@Override
+	public GameState getGameState() {
+		return gameState;
+	}
+
+	@Override
+	public void setGameState(GameState gameState) {
+		GameState oldGameState = this.gameState;
+		gameState.setGame(this);
+		this.gameState = gameState;
+		gameChangeSupport.fireGameStateChanged(oldGameState, gameState);
+	}
+
+	@Override
+	public boolean isMaximumAmountOfPlayersReached() {
+		return getMaximumAmountOfPlayers() == getPlayersCount();
+	}
+
+	@Override
+	public boolean canPlayerJoin(UUID player) {
+		return getGameState().canPlayerJoin(player);
+	}
+
+	@Override
+	public List<UUID> getUniquePlayerIds() {
+		List<UUID> players = new ArrayList<UUID>();
+		synchronized (PLAYERS_LOCK) {
+			for (UUID player : this.players) {
+				players.add(player);
 			}
 		}
-		return null;
+		return players;
 	}
 
 	@Override
-	public VillagerSpawner getVillagerSpawner() {
-		return villagerSpawner;
+	public Teams getTeams() {
+		return teams;
 	}
 
 	@Override
-	public void setVillagerSpawnLocation(Location location) {
-		villagerSpawner.setVillagerSpawnLocation(location);
+	public GameCycle getGameCycle() {
+		return gameCycle;
 	}
 
 	@Override
-	public void setGoalsEnabled(boolean goalsEnabled) {
-		this.goalsEnabled = goalsEnabled;
+	public void setGameCycle(GameCycle gameCycle) {
+		this.gameCycle = gameCycle;
 	}
 
 	@Override
-	public boolean isGoalsEnabled() {
-		return goalsEnabled;
+	public GameChangeSupport getChangeSupport() {
+		return gameChangeSupport;
 	}
 
 	@Override
-	public boolean isCanLeaveVehicle() {
-		return canLeaveVehicle;
+	public void onLoad() {
+		getGameCycle().onLoad();
 	}
 
 	@Override
-	public void setCanLeaveVehicle(boolean canLeaveVehicle) {
-		this.canLeaveVehicle = canLeaveVehicle;
+	public void onUnload() {
+		getGameCycle().onUnload();
+		leaveAll();
 	}
-	
+
 }

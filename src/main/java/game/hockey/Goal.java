@@ -1,10 +1,8 @@
-package game;
+package game.hockey;
 
-import org.bukkit.Location;
-import org.bukkit.entity.Villager;
-
+import entities.Location;
 import entities.Region;
-import util.LocationConvert;
+import game.Game;
 
 public class Goal extends Region {
 
@@ -16,21 +14,9 @@ public class Goal extends Region {
 		this.team = team;
 	}
 
-	public GoalResponse check() {
-		if (!game.isGoalsEnabled())
-			return new GoalResponse(false, game, team);
-
-		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
-		Villager villager = villagerSpawner.getVillager();
-
-		if (villager == null)
-			return new GoalResponse(false, game, team);
-
-		Location location = villager.getLocation();
-		if (contains(LocationConvert.toEntityLocation(location))) {
+	public GoalResponse check(Location location) {
+		if (contains(location))
 			return new GoalResponse(true, game, team);
-		}
-		
 		return new GoalResponse(false, game, team);
 	}
 

@@ -1,4 +1,6 @@
-package game;
+package game.loop;
+
+import game.Game;
 
 public interface GameLoop {
 

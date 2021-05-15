@@ -17,6 +17,7 @@ public interface StatisticKeys {
 	static final String WINNING_STREAK_LAST = "winning_streak_last";
 	static final String WINNING_STREAK_LONGEST = "winning_streak_longest";
 	static final String ACHIEVEMENT_POINTS_EARNED = "achievement_points_earned";
+	static final String TOTAL_TIME_PLAYED_IN_SECONDS = "total_time_played_in_seconds";
 	
 	static final String[] KEYS = new String[] {
 			GAMES_WON,

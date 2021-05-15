@@ -2,9 +2,9 @@ package usecases.encaps.showstatistics;
 
 import java.util.UUID;
 
+import gamestats.GameStatisticGateway;
 import gateways.PermissionGateway;
 import gateways.PlayerGateway;
-import gateways.StatisticsGateway;
 
 public interface ShowStatistics {
 
@@ -13,8 +13,8 @@ public interface ShowStatistics {
 	void setPermissionGateway(PermissionGateway permissionGateway);
 	
 	void setPlayerGateway(PlayerGateway playerGateway);
-	
-	void setStatisticsGateway(StatisticsGateway statisticsGateway);
+		
+	void setGameStaticticGateway(GameStatisticGateway gameStatisticGateway);
 	
 	public interface ShowStatisticsRequest {
 		

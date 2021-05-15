@@ -7,7 +7,6 @@ import entities.Location;
 
 public class BoatBoogieResponseModel {
 
-	private String worldName;
 	private List<UUID> players;
 	private List<Location> locations;
 
@@ -19,14 +18,6 @@ public class BoatBoogieResponseModel {
 		this.players = players;
 	}
 
-	public String getWorldName() {
-		return worldName;
-	}
-
-	public void setWorldName(String gameName) {
-		this.worldName = gameName;
-	}
-
 	public List<Location> getLocations() {
 		return locations;
 	}
@@ -34,5 +25,5 @@ public class BoatBoogieResponseModel {
 	public void setLocations(List<Location> locations) {
 		this.locations = locations;
 	}
-	
+
 }

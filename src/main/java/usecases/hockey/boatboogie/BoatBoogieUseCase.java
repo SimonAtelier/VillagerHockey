@@ -27,7 +27,6 @@ public class BoatBoogieUseCase implements BoatBoogie {
 		
 		BoatBoogieResponseModel responseModel = new BoatBoogieResponseModel();
 		responseModel.setPlayers(game.getUniquePlayerIds());
-		responseModel.setWorldName(game.getVillagerSpawner().getVillagerSpawnLocation().getWorld().getName());
 		
 		List<Location> locations = new ArrayList<Location>();
 		for (UUID uniquePlayerId : responseModel.getPlayers()) {

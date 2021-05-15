@@ -4,6 +4,11 @@ public class Region {
 
 	private Location locationOne;
 	private Location locationTwo;
+	
+	public Region() {
+		locationOne = new Location();
+		locationTwo = new Location();
+	}
 
 	public boolean contains(Location location) {
 		double x = location.getX();

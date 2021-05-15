@@ -3,7 +3,8 @@ package usecases.hockey.setgoal;
 import entities.Location;
 import entities.Teams;
 import game.Game;
-import game.Goal;
+import game.hockey.Goal;
+import game.hockey.HockeyGameCycle;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -39,20 +40,21 @@ public class SetGoalUseCase implements SetGoal {
 		}
 
 		Game game = gameGateway.findGameByName(request.getGame());
+		HockeyGameCycle hockey = (HockeyGameCycle) game;
 		
 		if (request.getLocationId().equals("loc1")) {
 			Goal goal = new Goal(game, request.getTeam());
-			game.addGoal(goal);
+			hockey.addGoal(goal);
 			goal.setLocationOne(createLocationFromRequest());
 		}
 		
-		if (game.findGoalOfTeam(request.getTeam()) == null) {
+		if (hockey.findGoalOfTeam(request.getTeam()) == null) {
 			response.onSetLocationWithIdFirst("loc1");
 			return;
 		}
 
 		if (request.getLocationId().equals("loc2")) {
-			Goal goal = game.findGoalOfTeam(request.getTeam());
+			Goal goal = hockey.findGoalOfTeam(request.getTeam());
 			goal.setLocationTwo(createLocationFromRequest());
 		}
 
