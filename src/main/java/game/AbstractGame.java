@@ -101,6 +101,7 @@ public abstract class AbstractGame implements Game {
 
 		if (addPlayer(player)) {
 			getGameState().onPlayerJoin(player);
+			getGameCycle().onPlayerLeave(player);
 			gameChangeSupport.firePlayerJoin(player);
 		}
 	}

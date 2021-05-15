@@ -1,5 +1,6 @@
 package game.hockey;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,14 @@ import org.bukkit.entity.Villager.Profession;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import io.github.simonatelier.save.Exporter;
+import io.github.simonatelier.save.Importer;
+import io.github.simonatelier.save.Input;
+import io.github.simonatelier.save.Output;
+import io.github.simonatelier.save.Savable;
 import util.LocationConvert;
 
-public class VillagerSpawner {
+public class VillagerSpawner implements Savable {
 
 	private boolean passenger;
 	private boolean aiEnabled;
@@ -201,6 +207,31 @@ public class VillagerSpawner {
 		if (passengerEntity == null)
 			return false;
 		return !passengerEntity.isDead();
+	}
+	
+	@Override
+	public void write(Exporter exporter) throws IOException {
+		Location location = villagerSpawnLocation;
+		Output output = exporter.getOutput(this);
+		output.write(location.getX(), "villagerSpawnerX");
+		output.write(location.getY(), "villagerSpawnerY");
+		output.write(location.getZ(), "villagerSpawnerZ");
+		output.write(location.getWorld().getName(), "villagerSpawnerWorld");
+	}
+
+	@Override
+	public void read(Importer importer) throws IOException {
+		Input input = importer.getInput(this);
+		double x = input.readDouble("villagerSpawnerX");
+		double y = input.readDouble("villagerSpawnerY");
+		double z = input.readDouble("villagerSpawnerZ");
+		String worldName = input.readString("villagerSpawnerWorld");
+		entities.Location location = new entities.Location();
+		location.setX(x);
+		location.setY(y);
+		location.setZ(z);
+		location.setWorld(worldName);
+		setVillagerSpawnLocation(location);
 	}
 
 }

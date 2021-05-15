@@ -28,7 +28,6 @@ public class PoloUseCase implements Polo {
 		
 		PoloResponseModel responseModel = new PoloResponseModel();
 		responseModel.setPlayers(game.getUniquePlayerIds());
-		responseModel.setWorldName(game.getVillagerSpawner().getVillagerSpawnLocation().getWorld().getName());
 		
 		List<TeamColor> teamColors = new ArrayList<TeamColor>();
 		List<Location> locations = new ArrayList<Location>();

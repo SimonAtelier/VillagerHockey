@@ -1,5 +1,7 @@
 package game.hockey.states;
 
+import game.hockey.HockeyGameCycle;
+import game.hockey.VillagerSpawner;
 import game.states.AbstractGameState;
 import game.states.GameState;
 import usecases.hockey.pinata.PinataController;
@@ -12,28 +14,36 @@ public class PinataState extends AbstractGameState {
 		this.gameState = gameState;
 	}
 	
+	private HockeyGameCycle getGameCycle() {
+		return (HockeyGameCycle) getGame().getGameCycle();
+	}
+	
+	private VillagerSpawner getVillagerSpawner() {
+		return getGameCycle().getVillagerSpawner();
+	}
+	
 	@Override
 	public void enterGameState() {
-		getGame().setGoalsEnabled(false);
-		getGame().getVillagerSpawner().spawnPassenger();
-		getGame().getVillagerSpawner().setAIEnabled(true);
+		getGameCycle().setGoalsEnabled(false);
+		getVillagerSpawner().spawnPassenger();
+		getVillagerSpawner().setAIEnabled(true);
 		new PinataController().onPinata(getGame().getName());
 	}
 	
 	@Override
 	public void leaveGameState() {
-		getGame().getVillagerSpawner().setAIEnabled(false);
-		getGame().setGoalsEnabled(true);
+		getVillagerSpawner().setAIEnabled(false);
+		getGameCycle().setGoalsEnabled(true);
 	}
 	
 	@Override
 	public void onTick() {
 		
-		if (getGame().getVillagerSpawner().isPassengerAlive())
+		if (getGameCycle().getVillagerSpawner().isPassengerAlive())
 			return;
 		
-		getGame().getVillagerSpawner().removeVillager();
-		getGame().setGoalsEnabled(true);
+		getGameCycle().removeVillager();
+		getGameCycle().setGoalsEnabled(true);
 		transitionToGameState(new RespawnGameState(gameState));
 	}
 	

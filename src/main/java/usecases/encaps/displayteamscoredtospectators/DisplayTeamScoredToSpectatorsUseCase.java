@@ -7,6 +7,7 @@ import java.util.UUID;
 import entities.Location;
 import entities.Team;
 import game.Game;
+import game.hockey.HockeyGameCycle;
 import gateways.GameGateway;
 import gateways.PlayerGateway;
 import usecases.hockey.displayteamscored.ScoreResponseItem;
@@ -68,7 +69,8 @@ public class DisplayTeamScoredToSpectatorsUseCase implements DisplayTeamScoredTo
 	}
 	
 	private Location findVillagerSpawnLocation() {
-		return LocationConvert.toEntityLocation(game.getVillagerSpawner().getVillagerSpawnLocation());
+		HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+		return LocationConvert.toEntityLocation(hockey.getVillagerSpawner().getVillagerSpawnLocation());
 	}
 	
 	private Game findGameByName(String game) {

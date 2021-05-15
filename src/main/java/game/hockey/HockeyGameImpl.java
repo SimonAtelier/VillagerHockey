@@ -2,52 +2,30 @@ package game.hockey;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import context.Context;
-import entities.Location;
 import entities.Team;
 import game.AbstractGame;
 import game.Game;
-import game.event.LeaveListener;
-import game.hockey.Goal.GoalResponse;
-import view.score.HockeyScoreView;
 
-public class HockeyGameImpl extends AbstractGame implements LeaveListener, HockeyGame {
+public class HockeyGameImpl extends AbstractGame implements HockeyGame {
 
-	private boolean canLeaveVehicle;
-	private boolean goalsEnabled;
-	private VillagerSpawner villagerSpawner;
 	private List<Goal> goals;
 
 	public HockeyGameImpl(String name) {
 		super(name);
-		goalsEnabled = true;
-		villagerSpawner = new VillagerSpawner();
+
 		goals = new ArrayList<Goal>();
-		addLeaveListener(this);
-		setGameCycle(new HockeyGameCycle(this));
+		setGameCycle(new HockeyGameCycle((Game) this, this));
 	}
 	
-	@Override
-	public GoalResponse checkGoal() {
-		for (Team team : getTeams().findAllTeams()) {
-			Goal goal = findGoalOfTeam(team.getName());
-			GoalResponse response = goal.check();
-			if (response.isSored())
-				return response;
+	public Goal findGoalOfTeam(String team) {
+		for (int i = 0; i < goals.size(); i++) {
+			Goal goal = goals.get(i);
+			if (goal.getTeam().equals(team)) {
+				return goal;
+			}
 		}
 		return null;
-	}
-	
-	@Override
-	public void onPlayerLeave(Game game, UUID player) {
-		removeVehicle(player);
-		new HockeyScoreView().hide(player);
-	}
-	
-	private void removeVehicle(UUID player) {
-		Context.playerGateway.removeVehicle(player);
 	}
 
 	@Override
@@ -64,45 +42,4 @@ public class HockeyGameImpl extends AbstractGame implements LeaveListener, Hocke
 		goals.add(goal);
 	}
 
-	@Override
-	public Goal findGoalOfTeam(String team) {
-		for (int i = 0; i < goals.size(); i++) {
-			Goal goal = goals.get(i);
-			if (goal.getTeam().equals(team)) {
-				return goal;
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public VillagerSpawner getVillagerSpawner() {
-		return villagerSpawner;
-	}
-
-	@Override
-	public void setVillagerSpawnLocation(Location location) {
-		villagerSpawner.setVillagerSpawnLocation(location);
-	}
-
-	@Override
-	public void setGoalsEnabled(boolean goalsEnabled) {
-		this.goalsEnabled = goalsEnabled;
-	}
-
-	@Override
-	public boolean isGoalsEnabled() {
-		return goalsEnabled;
-	}
-
-	@Override
-	public boolean isCanLeaveVehicle() {
-		return canLeaveVehicle;
-	}
-
-	@Override
-	public void setCanLeaveVehicle(boolean canLeaveVehicle) {
-		this.canLeaveVehicle = canLeaveVehicle;
-	}
-	
 }

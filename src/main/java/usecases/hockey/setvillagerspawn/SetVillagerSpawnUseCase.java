@@ -3,6 +3,7 @@ package usecases.hockey.setvillagerspawn;
 import context.Context;
 import entities.Location;
 import game.Game;
+import game.hockey.HockeyGameCycle;
 import gateways.GameGateway;
 import gateways.PermissionGateway;
 import gateways.Permissions;
@@ -33,7 +34,8 @@ public class SetVillagerSpawnUseCase implements SetVillagerSpawn {
 	private void setVillagerSpawnLocation() {
 		GameGateway gameGateway = Context.gameGateway;
 		Game game = gameGateway.findGameByName(request.getGame());
-		game.setVillagerSpawnLocation(createLocationFromRequest(request));
+		HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+		hockey.setVillagerSpawnLocation(createLocationFromRequest(request));
 	}
 	
 	private boolean noSuchGame() {

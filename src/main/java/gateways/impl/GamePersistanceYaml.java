@@ -13,6 +13,8 @@ import entities.Team;
 import entities.TeamColor;
 import game.Game;
 import game.hockey.HockeyGameImpl;
+import io.github.simonatelier.save.YamlConfigurationExporter;
+import io.github.simonatelier.save.YamlConfigurationImporter;
 import game.hockey.Goal;
 import util.LocationConvert;
 
@@ -38,7 +40,10 @@ public class GamePersistanceYaml {
 			yml.set("name", game.getName());
 			yml.set("time", game.getPlayingTimeInSeconds());
 			yml.set("minplayers", game.getMinimumPlayersToStart());
-			yml.set("villagerspawn", game.getVillagerSpawner().getVillagerSpawnLocation());
+//			yml.set("villagerspawn", game.getVillagerSpawner().getVillagerSpawnLocation());
+			
+			game.getGameCycle().write(new YamlConfigurationExporter(yml));
+			
 			yml.set("lobby", LocationConvert.toBukkitLocation(game.getLobby()));
 
 			List<Team> teams = game.getTeams().findAllTeams();
@@ -95,7 +100,10 @@ public class GamePersistanceYaml {
 			game.setName(yml.getString("name").trim());
 			game.setPlayingTimeInSeconds(yml.getInt("time"));
 			game.setMinimumPlayersToStart(yml.getInt("minplayers"));
-			game.setVillagerSpawnLocation(LocationConvert.toEntityLocation((Location) yml.get("villagerspawn")));
+//			game.setVillagerSpawnLocation(LocationConvert.toEntityLocation((Location) yml.get("villagerspawn")));
+			
+			game.getGameCycle().read(new YamlConfigurationImporter(yml));
+			
 			game.setLobby(LocationConvert.toEntityLocation((Location) yml.get("lobby")));
 
 			for (Object o : yml.getList("teams")) {

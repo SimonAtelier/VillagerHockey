@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
@@ -28,14 +27,13 @@ public class PoloPresenter implements PoloResponse {
 	public void onPresent(PoloResponseModel responseModel) {
 		this.responseModel = responseModel;
 
-		World world = Bukkit.getWorld(responseModel.getWorldName());
 		List<UUID> players = responseModel.getPlayers();
 		List<Location> locations = responseModel.getLocations();
 
 		for (int i = 0; i < players.size(); i++) {
 			TeamColor teamColor = responseModel.getTeamColors().get(i);
 			org.bukkit.Location l = LocationConvert.toBukkitLocation(locations.get(i));
-			Horse horse = (Horse) world.spawnEntity(l, EntityType.HORSE);
+			Horse horse = (Horse) l.getWorld().spawnEntity(l, EntityType.HORSE);
 			horse.setTamed(true);
 			horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
 			horse.getInventory().setArmor(

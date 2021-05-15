@@ -2,6 +2,7 @@ package usecases.hockey.spawnvillager;
 
 import entities.config.Configuration;
 import game.Game;
+import game.hockey.HockeyGameCycle;
 import game.hockey.VillagerSpawner;
 import gateways.GameGateway;
 
@@ -30,7 +31,8 @@ public class SpawnVillagerUseCase implements SpawnVillager {
 	}
 	
 	private void spawn() {
-		VillagerSpawner villagerSpawner = game.getVillagerSpawner();
+		HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+		VillagerSpawner villagerSpawner = hockey.getVillagerSpawner();
 		villagerSpawner.setPassenger(getRequest().isPassenger());
 		villagerSpawner.setAIEnabled(getConfiguration().isVillagerAIEnabled());
 		villagerSpawner.spawnVillager();

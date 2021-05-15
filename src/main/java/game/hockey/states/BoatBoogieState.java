@@ -6,6 +6,7 @@ import java.util.UUID;
 import context.Context;
 import game.Game;
 import game.hockey.Goal.GoalResponse;
+import game.hockey.HockeyGameCycle;
 import game.states.AbstractGameState;
 import game.states.GameState;
 import usecases.hockey.boatboogie.BoatBoogieController;
@@ -18,9 +19,13 @@ public class BoatBoogieState extends AbstractGameState {
 		this.gameState = gameState;
 	}
 	
+	private HockeyGameCycle getGameCycle() {
+		return (HockeyGameCycle) getGame().getGameCycle();
+	}
+	
 	@Override
 	public void enterGameState() {
-		getGame().setCanLeaveVehicle(false);
+		getGameCycle().setCanLeaveVehicle(false);
 		new BoatBoogieController().onBoatBoogie(getGame().getName());
 	}
 	
@@ -31,13 +36,13 @@ public class BoatBoogieState extends AbstractGameState {
 	
 	@Override
 	public void onTick() {
-		GoalResponse goalResponse = getGame().checkGoal();
+		GoalResponse goalResponse = getGameCycle().checkGoal();
 		
 		if (goalResponse == null)
 			return;
 
-		getGame().setCanLeaveVehicle(true);
-		getGame().getVillagerSpawner().removeVillager();
+		getGameCycle().setCanLeaveVehicle(true);
+		getGameCycle().removeVillager();
 		getGame().onTeamScored(goalResponse.getTeam(), 1);
 		removeVehicles(getGame());
 		transitionToGameState(new RespawnGameState(gameState));
@@ -46,11 +51,8 @@ public class BoatBoogieState extends AbstractGameState {
 	
 	private void removeVehicles(Game game) {
 		List<UUID> players = game.getUniquePlayerIds();
-		
-		for (UUID uniquePlayerId : players) {
+		for (UUID uniquePlayerId : players)
 			Context.playerGateway.removeVehicle(uniquePlayerId);
-		}
-		
 	}
 	
 	@Override

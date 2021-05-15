@@ -8,10 +8,8 @@ import java.util.UUID;
 
 import achievements.AchievementSystemController;
 import context.Context;
-import entities.config.Configuration;
 import game.Game;
 import game.hockey.HockeyGameImpl;
-import game.hockey.VillagerSpawner;
 import gamestats.GameStatisticsController;
 import gateways.GameGateway;
 import usecases.api.jointeam.JoinTeamController;
