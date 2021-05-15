@@ -1,6 +1,8 @@
 package game.hockey;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.entity.Villager;
@@ -27,14 +29,14 @@ public class HockeyGameCycle implements GameCycle, Savable {
 	private boolean canLeaveVehicle;
 	private boolean goalsEnabled;
 	private VillagerSpawner villagerSpawner;
-	public HockeyGame hockeyGame;
+	private List<Goal> goals;
 	private Game game;
 
-	public HockeyGameCycle(Game game, HockeyGame hockeyGame) {
+	public HockeyGameCycle(Game game) {
 		this.game = game;
-		this.hockeyGame = hockeyGame;
 		this.goalsEnabled = true;
 		villagerSpawner = new VillagerSpawner();
+		goals = new ArrayList<Goal>();
 	}
 
 	@Override
@@ -52,7 +54,7 @@ public class HockeyGameCycle implements GameCycle, Savable {
 		removeVehicle(player);
 		new HockeyScoreView().hide(player);
 	}
-	
+
 	private void removeVehicle(UUID player) {
 		Context.playerGateway.removeVehicle(player);
 	}
@@ -86,32 +88,48 @@ public class HockeyGameCycle implements GameCycle, Savable {
 		onTeamScored(goalResponse.getTeam(), 1);
 		runningGameState.transitionToGameState(new RespawnGameState(runningGameState));
 	}
-	
+
 	public void onTeamScored(String teamName, int score) {
 		Team team = game.getTeams().findTeamByName(teamName);
 		team.setScore(team.getScore() + score);
 		game.getChangeSupport().fireTeamScored(teamName);
 	}
-	
+
 	public GoalResponse checkGoal() {
 		if (!isGoalsEnabled())
 			return null;
 
 		Villager villager = villagerSpawner.getVillager();
-		
+
 		if (villager == null)
 			return null;
-		
+
 		Location location = LocationConvert.toEntityLocation(villager.getLocation());
 
 		for (Team team : game.getTeams().findAllTeams()) {
-			Goal goal = hockeyGame.findGoalOfTeam(team.getName());
+			Goal goal = findGoalOfTeam(team.getName());
 			GoalResponse response = goal.check(location);
 			if (response.isSored())
 				return response;
 		}
 
 		return null;
+	}
+
+	public Goal findGoalOfTeam(String team) {
+		for (int i = 0; i < goals.size(); i++) {
+			Goal goal = goals.get(i);
+			if (goal.getTeam().equals(team)) {
+				return goal;
+			}
+		}
+		return null;
+	}
+
+	public void addGoal(Goal goal) {
+		if (goal == null)
+			return;
+		goals.add(goal);
 	}
 
 	private void displayWinner() {

@@ -16,6 +16,7 @@ import game.hockey.HockeyGameImpl;
 import io.github.simonatelier.save.YamlConfigurationExporter;
 import io.github.simonatelier.save.YamlConfigurationImporter;
 import game.hockey.Goal;
+import game.hockey.HockeyGameCycle;
 import util.LocationConvert;
 
 public class GamePersistanceYaml {
@@ -40,8 +41,7 @@ public class GamePersistanceYaml {
 			yml.set("name", game.getName());
 			yml.set("time", game.getPlayingTimeInSeconds());
 			yml.set("minplayers", game.getMinimumPlayersToStart());
-//			yml.set("villagerspawn", game.getVillagerSpawner().getVillagerSpawnLocation());
-			
+
 			game.getGameCycle().write(new YamlConfigurationExporter(yml));
 			
 			yml.set("lobby", LocationConvert.toBukkitLocation(game.getLobby()));
@@ -56,7 +56,8 @@ public class GamePersistanceYaml {
 			yml.set("teams", teamNames);
 			
 			for (Team team : teams) {
-				Goal goal = game.findGoalOfTeam(team.getName());
+				HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+				Goal goal = hockey.findGoalOfTeam(team.getName());
 				Location loc1 = LocationConvert.toBukkitLocation(goal.getLocationOne());
 				Location loc2 = LocationConvert.toBukkitLocation(goal.getLocationTwo());
 				
@@ -100,8 +101,6 @@ public class GamePersistanceYaml {
 			game.setName(yml.getString("name").trim());
 			game.setPlayingTimeInSeconds(yml.getInt("time"));
 			game.setMinimumPlayersToStart(yml.getInt("minplayers"));
-//			game.setVillagerSpawnLocation(LocationConvert.toEntityLocation((Location) yml.get("villagerspawn")));
-			
 			game.getGameCycle().read(new YamlConfigurationImporter(yml));
 			
 			game.setLobby(LocationConvert.toEntityLocation((Location) yml.get("lobby")));
@@ -114,8 +113,9 @@ public class GamePersistanceYaml {
 				Team team = new Team(name2, color);
 				game.getTeams().add(team);
 				
-				Goal goal = new Goal(game, name2);	
-				game.addGoal(goal);
+				Goal goal = new Goal(game, name2);
+				HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+				hockey.addGoal(goal);
 				
 				Location loc1 = (Location)yml.get(name1 + ".goal.loc1");
 				Location loc2 = (Location)yml.get(name1 + ".goal.loc2");
