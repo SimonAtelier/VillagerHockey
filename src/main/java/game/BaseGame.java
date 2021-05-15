@@ -14,6 +14,7 @@ import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
 import game.event.TeamSelectListener;
+import game.loop.GameLoop;
 import game.states.GameState;
 import game.states.StoppedGameState;
 import game.states.WaitingGameState;

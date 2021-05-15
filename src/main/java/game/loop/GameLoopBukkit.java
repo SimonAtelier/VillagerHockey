@@ -1,7 +1,9 @@
-package game;
+package game.loop;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import game.Game;
 
 public class GameLoopBukkit implements GameLoop {
 

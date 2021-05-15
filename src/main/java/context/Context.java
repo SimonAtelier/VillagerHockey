@@ -2,7 +2,7 @@ package context;
 
 import achievements.AchievementSystem;
 import entities.config.Configuration;
-import game.GameLoopFactory;
+import game.loop.GameLoopFactory;
 import gamestats.GameStatisticGateway;
 import gateways.CommandGateway;
 import gateways.GameGateway;
