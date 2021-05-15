@@ -43,7 +43,7 @@ public class PoloState extends AbstractGameState {
 
 		getGameCycle().setCanLeaveVehicle(true);
 		getGameCycle().removeVillager();
-		getGame().onTeamScored(goalResponse.getTeam(), 1);
+		getGameCycle().onTeamScored(goalResponse.getTeam(), 1);
 		removeVehicles(getGame());
 		transitionToGameState(new RespawnGameState(gameState));
 	}

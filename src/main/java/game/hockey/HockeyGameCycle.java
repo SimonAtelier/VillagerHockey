@@ -83,10 +83,16 @@ public class HockeyGameCycle implements GameCycle, Savable {
 		if (goalResponse == null)
 			return;
 		removeVillager();
-		hockeyGame.onTeamScored(goalResponse.getTeam(), 1);
+		onTeamScored(goalResponse.getTeam(), 1);
 		runningGameState.transitionToGameState(new RespawnGameState(runningGameState));
 	}
-
+	
+	public void onTeamScored(String teamName, int score) {
+		Team team = game.getTeams().findTeamByName(teamName);
+		team.setScore(team.getScore() + score);
+		game.getChangeSupport().fireTeamScored(teamName);
+	}
+	
 	public GoalResponse checkGoal() {
 		if (!isGoalsEnabled())
 			return null;

@@ -4,7 +4,7 @@ public interface HockeyGame {
 
 	void addGoal(Goal goal);
 	
-	void onTeamScored(String team, int points);
+//	void onTeamScored(String team, int points);
 		
 	Goal findGoalOfTeam(String team);
 	

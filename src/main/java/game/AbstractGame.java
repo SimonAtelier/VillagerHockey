@@ -34,7 +34,7 @@ public abstract class AbstractGame implements Game {
 	private Teams teams;
 	private GameCycle gameCycle;
 	protected List<UUID> players;
-	protected GameChangeSupport gameChangeSupport;
+	private GameChangeSupport gameChangeSupport;
 
 	public AbstractGame(String name) {
 		this.name = name;
@@ -302,6 +302,11 @@ public abstract class AbstractGame implements Game {
 	@Override
 	public void setGameCycle(GameCycle gameCycle) {
 		this.gameCycle = gameCycle;
+	}
+
+	@Override
+	public GameChangeSupport getChangeSupport() {
+		return gameChangeSupport;
 	}
 
 	@Override

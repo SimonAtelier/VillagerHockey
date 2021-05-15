@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import entities.Location;
 import entities.Teams;
+import game.event.GameChangeSupport;
 import game.event.JoinListener;
 import game.event.LeaveListener;
 import game.event.TeamScoreListener;
@@ -81,5 +82,7 @@ public interface Game extends GameStateContext, HockeyGame {
 	void onLoad();
 	
 	void onUnload();
+	
+	GameChangeSupport getChangeSupport();
 	
 }

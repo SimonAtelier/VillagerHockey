@@ -3,7 +3,6 @@ package game.hockey;
 import java.util.ArrayList;
 import java.util.List;
 
-import entities.Team;
 import game.AbstractGame;
 import game.Game;
 
@@ -26,13 +25,6 @@ public class HockeyGameImpl extends AbstractGame implements HockeyGame {
 			}
 		}
 		return null;
-	}
-
-	@Override
-	public void onTeamScored(String teamName, int score) {
-		Team team = getTeams().findTeamByName(teamName);
-		team.setScore(team.getScore() + score);
-		gameChangeSupport.fireTeamScored(teamName);
 	}
 
 	@Override

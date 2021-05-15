@@ -48,7 +48,8 @@ public class DestroyPinataUseCase implements DestroyPinata {
 	}
 
 	private void score() {
-		game.onTeamScored(game.getTeams().findTeamOfPlayer(getRequest().getDestroyer()).getName(), points);
+		HockeyGameCycle hockey = (HockeyGameCycle) game.getGameCycle();
+		hockey.onTeamScored(game.getTeams().findTeamOfPlayer(getRequest().getDestroyer()).getName(), points);
 	}
 
 	private boolean findGame() {
