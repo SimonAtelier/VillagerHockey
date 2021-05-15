@@ -10,7 +10,6 @@ public class Achievement {
 	private String name;
 	private String description;
 	private List<AchieveCondition> achieveConditions;
-	private List<Condition> failConditions;
 	
 	public Achievement(int points, String id, String name, String description) {
 		this.points = points;
@@ -18,21 +17,12 @@ public class Achievement {
 		this.name = name;
 		this.description = description;
 		this.achieveConditions = new ArrayList<AchieveCondition>();
-		this.failConditions = new ArrayList<Condition>();
 	}
 	
 	public void addAchieveCondition(String propertyKey, ActivationRule activationRule, int activationValue) {
 		addAchieveCondition(new AchieveCondition(propertyKey, activationRule, activationValue));
 	}
 	
-	public void addFailCondition(String propertyKey, ActivationRule activationRule, int activationValue) {
-		addFailCondition(new Condition(propertyKey, activationRule, activationValue));
-	}
-	
-	public void addFailCondition(Condition condition) {
-		failConditions.add(condition);
-	}
-
 	public void addAchieveCondition(AchieveCondition achieveCondition) {
 		achieveConditions.add(achieveCondition);
 	}
