@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import context.Context;
 import entities.Location;
 import entities.Team;
 import entities.Teams;
@@ -43,7 +44,7 @@ public class BaseGame implements Game {
 		teams = new Teams();
 		players = new ArrayList<UUID>();
 		gameChangeSupport = new GameChangeSupport(this);
-		gameLoop = new GameLoopImpl();
+		this.gameLoop = Context.gameLoopFactory.createGameLoop();
 		gameLoop.setGame(this);
 		gameCycle = new GameCycleAdapter();
 	}

@@ -2,6 +2,7 @@ package context;
 
 import achievements.AchievementSystem;
 import entities.config.Configuration;
+import game.GameLoopFactory;
 import gamestats.GameStatisticGateway;
 import gateways.CommandGateway;
 import gateways.GameGateway;
@@ -44,5 +45,7 @@ public class Context {
 	public static GameStatisticGateway gameStatisticGateway;
 	
 	public static ViewFactory viewFactory;
+	
+	public static GameLoopFactory gameLoopFactory;
 	
 }

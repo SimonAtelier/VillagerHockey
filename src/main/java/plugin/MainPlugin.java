@@ -12,6 +12,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import context.Context;
 import context.ContextCreatorImpl;
 import entities.command.ArgumentsWithLabel;
+import game.GameLoop;
+import game.GameLoopFactory;
+import game.GameLoopBukkit;
 import gateways.CommandGateway;
 import minigame.view.bukkit.ViewFactoryBukkit;
 import usecases.api.executecommand.ExecuteCommand;
@@ -46,6 +49,12 @@ public class MainPlugin extends JavaPlugin implements CommandExecutor {
 		new ContextCreatorImpl().createContext();
 		Context.viewFactory = new ViewFactoryBukkit(this, Context.configuration.getPrefix());
 		Context.messageView = Context.viewFactory.createMessageView();
+		Context.gameLoopFactory = new GameLoopFactory() {
+			@Override
+			public GameLoop createGameLoop() {
+				return new GameLoopBukkit(instance);
+			}
+		};
 	}
 
 	private void loadGames() {
