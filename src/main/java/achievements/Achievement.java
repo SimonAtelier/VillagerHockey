@@ -19,10 +19,6 @@ public class Achievement {
 		this.achieveConditions = new ArrayList<AchieveCondition>();
 	}
 	
-	public void addAchieveCondition(String propertyKey, ActivationRule activationRule, int activationValue) {
-		addAchieveCondition(new AchieveCondition(propertyKey, activationRule, activationValue));
-	}
-	
 	public void addAchieveCondition(AchieveCondition achieveCondition) {
 		achieveConditions.add(achieveCondition);
 	}
