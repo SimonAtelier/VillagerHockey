@@ -14,6 +14,9 @@ public class PinataListener implements Listener {
 	public void on(EntityDeathEvent e) {
 		Player player = e.getEntity().getKiller();
 		
+		if (player == null)
+			return;
+		
 		if (!Context.gameGateway.isIngame(player.getUniqueId()))
 			return;
 		
