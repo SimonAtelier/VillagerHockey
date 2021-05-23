@@ -12,6 +12,10 @@ import usecases.hockey.setgoal.SetGoal.SetGoalResponse;
 
 public class SetGoalCommand extends AbstractCommand {
 
+	public SetGoalCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		SetGoalRequest request = createRequest(player, arguments);
@@ -40,11 +44,6 @@ public class SetGoalCommand extends AbstractCommand {
 	private Location getLocationOfPlayer(UUID player) {
 		PlayerGateway playerGateway = Context.playerGateway;
 		return playerGateway.findLocationOfPlayer(player);
-	}
-
-	@Override
-	public String getName() {
-		return "setgoal";
 	}
 
 	@Override

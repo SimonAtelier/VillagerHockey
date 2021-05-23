@@ -9,6 +9,10 @@ import usecases.api.showhelp.ShowHelp.ShowHelpResponse;
 
 public class ShowHelpCommand extends AbstractCommand {
 
+	public ShowHelpCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		ShowHelp useCase = new ShowHelpUseCase();
@@ -17,11 +21,6 @@ public class ShowHelpCommand extends AbstractCommand {
 		useCase.setCommandGateway(Context.commandGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.execute(player, presenter);
-	}
-
-	@Override
-	public String getName() {
-		return "help";
 	}
 
 	@Override

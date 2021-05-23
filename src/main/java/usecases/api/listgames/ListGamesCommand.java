@@ -9,6 +9,10 @@ import usecases.api.listgames.ListGames.ListGamesResponse;
 
 public class ListGamesCommand extends AbstractCommand {
 
+	public ListGamesCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		ListGames useCase = new ListGamesUseCase();
@@ -17,11 +21,6 @@ public class ListGamesCommand extends AbstractCommand {
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.execute(player, presenter);
-	}
-
-	@Override
-	public String getName() {
-		return "list";
 	}
 
 	@Override

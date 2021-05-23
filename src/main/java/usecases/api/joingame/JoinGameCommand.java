@@ -10,6 +10,10 @@ import usecases.api.joingame.JoinGame.JoinGameResponse;
 
 public class JoinGameCommand extends AbstractCommand {
 
+	public JoinGameCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		JoinGameRequest request = createRequest(player, arguments);
@@ -27,11 +31,6 @@ public class JoinGameCommand extends AbstractCommand {
 		request.setUniquePlayerId(player);
 		request.setGame(arguments.get(0));
 		return request;
-	}
-
-	@Override
-	public String getName() {
-		return "join";
 	}
 
 	@Override

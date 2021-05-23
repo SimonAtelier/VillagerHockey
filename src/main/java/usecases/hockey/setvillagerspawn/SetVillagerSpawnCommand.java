@@ -8,6 +8,10 @@ import usecases.hockey.setvillagerspawn.SetVillagerSpawn.SetVillagerSpawnRespons
 
 public class SetVillagerSpawnCommand extends AbstractCommand {
 
+	public SetVillagerSpawnCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		SetVillagerSpawn useCase = new SetVillagerSpawnUseCase();
@@ -15,11 +19,6 @@ public class SetVillagerSpawnCommand extends AbstractCommand {
 		SetVillagerSpawnResponse presenter = new SetVillagerSpawnPresenter(view);
 		SetVillagerSpawnController controller = new SetVillagerSpawnController(useCase, presenter);
 		controller.handleRequest(player, arguments);
-	}
-
-	@Override
-	public String getName() {
-		return "setspawner";
 	}
 
 	@Override

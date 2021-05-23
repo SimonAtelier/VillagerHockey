@@ -10,6 +10,10 @@ import usecases.api.stopgame.StopGame.StopGameResponse;
 
 public class StopGameCommand extends AbstractCommand {
 
+	public StopGameCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		StopGameView view = new StopGameViewImpl(player);
@@ -25,11 +29,6 @@ public class StopGameCommand extends AbstractCommand {
 		requestModel.setPlayer(player);
 		requestModel.setGame(arguments.get(0));
 		return requestModel;
-	}
-
-	@Override
-	public String getName() {
-		return "stop";
 	}
 
 	@Override

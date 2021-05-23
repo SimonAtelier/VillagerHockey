@@ -5,6 +5,7 @@ import entities.command.CommandRegistration;
 import usecases.achievements.displayachievements.DisplayAchievementsCommand;
 import usecases.api.addgame.AddGameCommand;
 import usecases.api.addteam.AddTeamCommand;
+import usecases.api.forcestart.ForceStartCommand;
 import usecases.api.joingame.JoinGameCommand;
 import usecases.api.kickplayer.KickPlayerCommand;
 import usecases.api.leavegame.LeaveGameCommand;
@@ -25,24 +26,25 @@ public class CommandProviderImpl implements CommandProvider {
 
 	@Override
 	public void registerCommands(CommandRegistration commandRegistration) {
-		commandRegistration.registerCommand(new AddGameCommand());
-		commandRegistration.registerCommand(new AddTeamSpawnCommand());
-		commandRegistration.registerCommand(new JoinGameCommand());
-		commandRegistration.registerCommand(new KickPlayerCommand());
-		commandRegistration.registerCommand(new LeaveGameCommand());
-		commandRegistration.registerCommand(new ListGamesCommand());
-		commandRegistration.registerCommand(new SaveGameCommand());
-		commandRegistration.registerCommand(new SetGoalCommand());
-		commandRegistration.registerCommand(new SetLobbyCommand());
-		commandRegistration.registerCommand(new SetVillagerSpawnCommand());
-		commandRegistration.registerCommand(new ShowHelpCommand());
-		commandRegistration.registerCommand(new SetMinPlayersCommand());
-		commandRegistration.registerCommand(new SetPlayingTimeCommand());
-		commandRegistration.registerCommand(new AddTeamCommand());
-		commandRegistration.registerCommand(new StartGameCommand());
-		commandRegistration.registerCommand(new StopGameCommand());
-		commandRegistration.registerCommand(new ShowStatisticsCommand());
-		commandRegistration.registerCommand(new DisplayAchievementsCommand());
+		commandRegistration.registerCommand(new AddGameCommand("addgame"));
+		commandRegistration.registerCommand(new AddTeamSpawnCommand("addteamspawn"));
+		commandRegistration.registerCommand(new JoinGameCommand("join"));
+		commandRegistration.registerCommand(new KickPlayerCommand("kick"));
+		commandRegistration.registerCommand(new LeaveGameCommand("leave"));
+		commandRegistration.registerCommand(new ListGamesCommand("list"));
+		commandRegistration.registerCommand(new SaveGameCommand("save"));
+		commandRegistration.registerCommand(new SetGoalCommand("setgoal"));
+		commandRegistration.registerCommand(new SetLobbyCommand("setlobby"));
+		commandRegistration.registerCommand(new SetVillagerSpawnCommand("setspawner"));
+		commandRegistration.registerCommand(new ShowHelpCommand("help"));
+		commandRegistration.registerCommand(new SetMinPlayersCommand("setminplayers"));
+		commandRegistration.registerCommand(new SetPlayingTimeCommand("setplayingtime"));
+		commandRegistration.registerCommand(new AddTeamCommand("addteam"));
+		commandRegistration.registerCommand(new StartGameCommand("start"));
+		commandRegistration.registerCommand(new StopGameCommand("stop"));
+		commandRegistration.registerCommand(new ShowStatisticsCommand("stats"));
+		commandRegistration.registerCommand(new DisplayAchievementsCommand("rewards"));
+		commandRegistration.registerCommand(new ForceStartCommand("forcestart"));
 	}
 
 }

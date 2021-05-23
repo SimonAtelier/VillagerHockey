@@ -10,6 +10,10 @@ import usecases.api.addteam.AddTeam.AddTeamResponse;
 
 public class AddTeamCommand extends AbstractCommand {
 
+	public AddTeamCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		AddTeamRequest request = createRequest(player, arguments);
@@ -28,11 +32,6 @@ public class AddTeamCommand extends AbstractCommand {
 		requestModel.setName(arguments.get(1));
 		requestModel.setColor(arguments.get(2));
 		return requestModel;
-	}
-
-	@Override
-	public String getName() {
-		return "addteam";
 	}
 
 	@Override

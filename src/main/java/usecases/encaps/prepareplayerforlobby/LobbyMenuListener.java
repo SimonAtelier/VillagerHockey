@@ -69,12 +69,12 @@ public class LobbyMenuListener implements Listener {
 	}
 	
 	private void onLeaveGame(UUID player) {
-		LeaveGameCommand command = new LeaveGameCommand();
+		LeaveGameCommand command = new LeaveGameCommand("leave");
 		command.execute(player, new ArrayList<String>());
 	}
 	
 	private void onForceStart(UUID player) {
-		ForceStartCommand command = new ForceStartCommand();
+		ForceStartCommand command = new ForceStartCommand("forcestart");
 		command.execute(player, new ArrayList<String>());
 	}
 

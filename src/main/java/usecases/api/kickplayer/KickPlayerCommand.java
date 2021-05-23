@@ -10,6 +10,10 @@ import usecases.api.kickplayer.KickPlayer.KickPlayerResponse;
 
 public class KickPlayerCommand extends AbstractCommand {
 
+	public KickPlayerCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		KickPlayerRequest request = createRequest(player, arguments);
@@ -28,11 +32,6 @@ public class KickPlayerCommand extends AbstractCommand {
 		request.setPlayerToKick(arguments.get(0));
 		request.setKickMessage(arguments.get(1));
 		return request;
-	}
-
-	@Override
-	public String getName() {
-		return "kick";
 	}
 
 	@Override

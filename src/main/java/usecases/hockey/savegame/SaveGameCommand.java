@@ -9,6 +9,10 @@ import usecases.hockey.savegame.SaveGame.SaveGameResponse;
 
 public class SaveGameCommand extends AbstractCommand {
 
+	public SaveGameCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		SaveGame useCase = new SaveGameUseCase();
@@ -20,11 +24,6 @@ public class SaveGameCommand extends AbstractCommand {
 		useCase.setGameGateway(Context.gameGateway);
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.execute(requestModel, presenter);
-	}
-
-	@Override
-	public String getName() {
-		return "save";
 	}
 
 	@Override

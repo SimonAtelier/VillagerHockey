@@ -9,6 +9,10 @@ import usecases.api.startgame.StartGame.StartGameRequest;
 
 public class StartGameCommand extends AbstractCommand {
 
+	public StartGameCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		StartGameView view = new StartGameViewImpl(player);
@@ -24,11 +28,6 @@ public class StartGameCommand extends AbstractCommand {
 		requestModel.setGame(arguments.get(0));
 		requestModel.setPlayer(player);
 		return requestModel;
-	}
-
-	@Override
-	public String getName() {
-		return "start";
 	}
 
 	@Override

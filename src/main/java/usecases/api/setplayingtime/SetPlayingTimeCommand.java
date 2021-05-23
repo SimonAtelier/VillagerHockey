@@ -10,6 +10,10 @@ import usecases.api.setplayingtime.SetPlayingTime.SetPlayingTimeResponse;
 
 public class SetPlayingTimeCommand extends AbstractCommand {
 
+	public SetPlayingTimeCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		SetPlayingTimeRequest request = createRequest(player, arguments);
@@ -27,11 +31,6 @@ public class SetPlayingTimeCommand extends AbstractCommand {
 		requestModel.setGame(arguments.get(0));
 		requestModel.setPlayingTime(arguments.get(1));
 		return requestModel;
-	}
-
-	@Override
-	public String getName() {
-		return "setplayingtime";
 	}
 
 	@Override

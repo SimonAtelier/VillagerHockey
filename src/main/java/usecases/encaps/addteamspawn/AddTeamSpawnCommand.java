@@ -11,6 +11,10 @@ import usecases.encaps.addteamspawn.AddTeamSpawn.AddTeamSpawnResponse;
 
 public class AddTeamSpawnCommand extends AbstractCommand {
 
+	public AddTeamSpawnCommand(String name) {
+		super(name);
+	}
+	
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		AddTeamSpawnRequest request = createRequest(player, arguments);
@@ -41,12 +45,7 @@ public class AddTeamSpawnCommand extends AbstractCommand {
 	private Location getLocationOfPlayer(UUID player) {
 		return Context.playerGateway.findLocationOfPlayer(player);
 	}
-
-	@Override
-	public String getName() {
-		return "addteamspawn";
-	}
-
+	
 	@Override
 	public String[] getArgumentLabels() {
 		return new String[] { "game", "team" };

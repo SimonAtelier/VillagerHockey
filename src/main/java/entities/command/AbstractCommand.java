@@ -2,6 +2,12 @@ package entities.command;
 
 public abstract class AbstractCommand implements Command {
 
+	private String name;
+	
+	public AbstractCommand(String name) {
+		this.name = name;
+	}
+	
 	@Override
 	public String getSyntax() {
 		StringBuffer buffer = new StringBuffer();
@@ -12,6 +18,11 @@ public abstract class AbstractCommand implements Command {
 			buffer.append("}");
 		}
 		return buffer.toString();
+	}
+	
+	@Override
+	public String getName() {
+		return name;
 	}
 
 }

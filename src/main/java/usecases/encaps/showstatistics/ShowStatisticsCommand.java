@@ -10,6 +10,10 @@ import usecases.encaps.showstatistics.ShowStatistics.ShowStatisticsResponse;
 
 public class ShowStatisticsCommand extends AbstractCommand {
 
+	public ShowStatisticsCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		ShowStatisticsView view = new ShowStatisticsViewImpl(player);
@@ -25,11 +29,6 @@ public class ShowStatisticsCommand extends AbstractCommand {
 		ShowStatisticsRequestModel requestModel = new ShowStatisticsRequestModel();
 		requestModel.setPlayer(player);
 		return requestModel;
-	}
-
-	@Override
-	public String getName() {
-		return "stats";
 	}
 
 	@Override

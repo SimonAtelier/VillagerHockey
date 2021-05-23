@@ -9,6 +9,10 @@ import usecases.api.forcestart.ForceStart.ForceStartResponse;
 
 public class ForceStartCommand extends AbstractCommand {
 
+	public ForceStartCommand(String name) {
+		super(name);
+	}
+
 	@Override
 	public void execute(UUID player, List<String> arguments) {
 		ForceStartView view = new ForceStartViewImpl(player);
@@ -18,12 +22,7 @@ public class ForceStartCommand extends AbstractCommand {
 		useCase.setPermissionGateway(Context.permissionGateway);
 		useCase.execute(player, presenter);
 	}
-
-	@Override
-	public String getName() {
-		return "forcestart";
-	}
-
+	
 	@Override
 	public String[] getArgumentLabels() {
 		return new String[] {};
