@@ -27,6 +27,9 @@ public class CommandGatewayImpl implements CommandGateway {
 
 	@Override
 	public void registerCommand(Command command) {
+		String commandName = command.getName();
+		if (commandName == null)
+			throw new NullPointerException("Command name cannot be null.");
 		commands.put(command.getName(), command);
 	}
 
