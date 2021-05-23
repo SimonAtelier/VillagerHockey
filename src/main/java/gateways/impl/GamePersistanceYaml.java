@@ -21,15 +21,21 @@ import util.LocationConvert;
 
 public class GamePersistanceYaml {
 	
+	private String path;
+	
+	public GamePersistanceYaml(String path) {
+		this.path = path;
+	}
+
 	public void deleteGame(Game game) {
-		File file = new File("plugins/VillagerHockey/games/" + game.getName() + ".yml");
+		File file = new File(path + game.getName() + ".yml");
 		if (file.exists()) {
 			file.delete();
 		}
 	}
 
 	public void saveGame(Game game) throws GatewayException {
-		File file = new File("plugins/VillagerHockey/games/" + game.getName() + ".yml");
+		File file = new File(path + game.getName() + ".yml");
 
 		try {
 

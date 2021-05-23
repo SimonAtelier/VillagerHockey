@@ -20,16 +20,18 @@ public class GameGatewayImpl implements GameGateway {
 
 	private final Object GAMES_MAP_LOCK = new Object();
 
+	private String path;
 	private HashMap<String, Game> games;
 
-	public GameGatewayImpl() {
+	public GameGatewayImpl(String path) {
+		this.path = path;
 		games = new HashMap<String, Game>();
 	}
 
 	@Override
 	public void loadGames() {
-		GamePersistanceYaml repository = new GamePersistanceYaml();
-		File file = new File("plugins/VillagerHockey/games/");
+		GamePersistanceYaml repository = new GamePersistanceYaml(path);
+		File file = new File(path);
 		File[] files = file.listFiles();
 		for (File f : files) {
 			String name = f.getName().replace(".yml", "");
@@ -128,18 +130,18 @@ public class GameGatewayImpl implements GameGateway {
 
 	@Override
 	public Game loadGame(String name) throws GatewayException {
-		return new GamePersistanceYaml().loadGame(name);
+		return new GamePersistanceYaml(path).loadGame(name);
 	}
 
 	@Override
 	public void saveGame(String game) throws GatewayException {
-		new GamePersistanceYaml().saveGame(findGameByName(game));
+		new GamePersistanceYaml(path).saveGame(findGameByName(game));
 	}
 
 	@Override
 	public void deleteGame(String game) {
 		removeGame(findGameByName(game));
-		new GamePersistanceYaml().deleteGame(findGameByName(game));
+		new GamePersistanceYaml(path).deleteGame(findGameByName(game));
 	}
 
 }

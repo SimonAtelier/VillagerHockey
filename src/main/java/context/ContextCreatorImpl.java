@@ -23,7 +23,7 @@ public class ContextCreatorImpl implements ContextCreator {
 	@Override
 	public void createContext() {
 		Context.configuration = loadConfiguration();
-		Context.gameGateway = new GameGatewayImpl();
+		Context.gameGateway = new GameGatewayImpl("plugins/VillagerHockey/games/");
 		Context.permissionGateway = new PermissionGatewayImpl();
 		Context.inventoryGateway = new InventoryGatewayYaml("plugins/VillagerHockey/playerdata/");
 		Context.playerGateway = new PlayerGatewayImpl();
