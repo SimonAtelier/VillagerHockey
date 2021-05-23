@@ -19,7 +19,6 @@ import game.states.GameState;
 import game.states.StoppedGameState;
 import game.states.WaitingGameState;
 import gateways.PlayerDataGateway;
-import gateways.impl.PlayerDataGatewayYaml;
 import usecases.api.loadinventory.LoadInventoryController;
 
 public class BaseGame implements Game {
@@ -141,7 +140,7 @@ public class BaseGame implements Game {
 	}
 
 	private void restorePlayerData(UUID player) {
-		PlayerDataGateway playerDataGateway = new PlayerDataGatewayYaml();
+		PlayerDataGateway playerDataGateway = Context.playerDataGateway;
 		playerDataGateway.load(player);
 	}
 

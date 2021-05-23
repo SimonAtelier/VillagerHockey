@@ -31,7 +31,7 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
 		Context.signGateway = new SignGatewayImpl();
 		Context.joinSignGateway = new JoinSignsGatewayImpl();
-		Context.playerDataGateway = new PlayerDataGatewayYaml();
+		Context.playerDataGateway = new PlayerDataGatewayYaml("plugins/VillagerHockey/playerdata/");
 		Context.achievementSystem = createAchievementSystem();
 		Context.gameStatisticGateway = createGameStatisticsGateway(Context.achievementSystem);
 	}

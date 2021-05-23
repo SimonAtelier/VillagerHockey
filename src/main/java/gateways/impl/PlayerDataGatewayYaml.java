@@ -14,8 +14,14 @@ import gateways.PlayerDataGateway;
 
 public class PlayerDataGatewayYaml implements PlayerDataGateway {
 
+	private String path;
+	
+	public PlayerDataGatewayYaml(String path) {
+		this.path = path;
+	}
+	
 	private File getFile(Player player) throws GatewayException {
-		File file = new File("plugins/VillagerHockey/playerdata/" + player.getUniqueId() + ".yml");
+		File file = new File(path + player.getUniqueId() + ".yml");
 		if (!file.exists()) {
 			try {
 				file.createNewFile();
