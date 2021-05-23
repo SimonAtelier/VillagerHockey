@@ -17,9 +17,14 @@ import gateways.InventoryGateway;
 public class InventoryGatewayYaml implements InventoryGateway {
 
 	private String ymlPath = "inventory";
+	private String path;
+	
+	public InventoryGatewayYaml(String path) {
+		this.path = path;
+	}
 	
 	private File getFile(Player player) throws GatewayException {
-		File file = new File("plugins/VillagerHockey/playerdata/"
+		File file = new File(path
 				+ player.getUniqueId() + ".yml");
 		if (!file.exists()) {
 			try {

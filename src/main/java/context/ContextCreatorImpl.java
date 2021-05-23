@@ -25,7 +25,7 @@ public class ContextCreatorImpl implements ContextCreator {
 		Context.configuration = loadConfiguration();
 		Context.gameGateway = new GameGatewayImpl();
 		Context.permissionGateway = new PermissionGatewayImpl();
-		Context.inventoryGateway = new InventoryGatewayYaml();
+		Context.inventoryGateway = new InventoryGatewayYaml("plugins/VillagerHockey/playerdata/");
 		Context.playerGateway = new PlayerGatewayImpl();
 		Context.commandGateway = new CommandGatewayImpl();
 		Context.teamSpawnsGateway = new TeamSpawnGatewayImpl();
